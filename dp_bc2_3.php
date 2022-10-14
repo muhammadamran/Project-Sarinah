@@ -6,6 +6,15 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
+// API
+$api_url = $resultAPI['url_api'] . '/dataBC23.php';
+
+var_dump($api_url);
+exit;
+$content = file_get_contents($api_url);
+$data = json_decode($content, true);
+
+$response = $data['status'];
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -31,9 +40,7 @@ include "include/cssDatatables.php";
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.3 / Master Data
-                        <?= $resultAPI['url_api']; ?>
-                    </h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.3 / Master Data</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
