@@ -17,7 +17,7 @@ if ($resultRoleModules['v_bc'] == 'show') {
     <a href="javascript:;">
         <b class="caret"></b>
         <i class="fas fa-passport"></i>
-        <span>BC</span>
+        <span>BC Master</span>
     </a>
     <ul class="sub-menu">
         <li class="<?= $uriSegments[1] == 'dp_bc2_3.php' ? 'active' : '' ?>"
