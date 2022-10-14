@@ -1,0 +1,1 @@
+<meta http-equiv="Refresh" content=“6; url=https://itinventory-sarinah.com//“ />
