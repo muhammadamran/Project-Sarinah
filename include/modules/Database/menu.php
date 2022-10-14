@@ -34,7 +34,7 @@ if ($resultRoleModules['v_cttpb'] == 'none' && $resultRoleModules['v_filterttpb'
 </li>
 <li class="<?= $uriSegments[1] == 'tbl_inventory.php' ? 'active' : '' ?>"
     style="display: <?= $resultRoleModules['v_filterttpb']; ?>">
-    <a href="tbl_tpb.php">
+    <a href="tbl_inventory.php">
         <i class="fas fa-database"></i>
         <span>Filter Tabel TPB Inventory</span>
     </a>
