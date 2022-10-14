@@ -10,6 +10,8 @@ include "include/cssDatatables.php";
 $api_url = $resultAPI['url_api'] . 'dataBC23.php';
 $content = file_get_contents($api_url);
 $data = json_decode($content, true);
+var_dump($data);
+exit;
 $response = $data['status'];
 ?>
 <!-- begin #content -->
