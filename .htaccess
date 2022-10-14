@@ -1,4 +1,4 @@
 RewriteEngine On
 
 RewriteCond %{HTTPS} ^on$
-RewriteRule ^(.*)$ http://example.com/$1 [NC,L,R]
+RewriteRule ^(.*)$ https://itinventory-sarinah.com//$1 [NC,L,R]
