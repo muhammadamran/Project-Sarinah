@@ -191,7 +191,7 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 </style>
 <script>
 $(document).ready(function() {
-    // $(".preloader").fadeOut();
+    $(".preloader").fadeOut();
 })
 </script>
 
