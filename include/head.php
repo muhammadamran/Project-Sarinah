@@ -60,6 +60,8 @@ $SetTime = $resultSetRealTime['reload'];
         integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
+    <!-- PRELOAD -->
+    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
 
