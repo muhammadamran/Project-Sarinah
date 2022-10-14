@@ -199,12 +199,12 @@ $(document).ready(function() {
 
 <body onload="display_ct()">
     <!-- begin #page-loader -->
-    <div class="preloader-load">
+    <!-- <div class="preloader-load">
         <div class="loading">
             <img src="assets/gif/1.gif" width="250">
             <p style="margin-left: 95px;" class="blink">Loading ...</p>
         </div>
-    </div>
+    </div> -->
     <!-- end #page-loader -->
     <!-- begin #page-container -->
     <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
