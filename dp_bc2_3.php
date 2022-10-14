@@ -7,13 +7,9 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API
-$api_url = $resultAPI['url_api'] . '/dataBC23.php';
-
-var_dump($api_url);
-exit;
+$api_url = $resultAPI['url_api'] . 'dataBC23.php';
 $content = file_get_contents($api_url);
 $data = json_decode($content, true);
-
 $response = $data['status'];
 ?>
 <!-- begin #content -->
@@ -61,88 +57,32 @@ $response = $data['status'];
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            $result2 = mysqli_query($dbcon, "SELECT * FROM tpb_header ORDER BY ID ASC ");
-                            if (mysqli_num_rows($result2) > 0) {
-                                $no = 0;
-                                while ($row2 = mysqli_fetch_array($result2)) {
-                                    $no++;
-                                    echo "<tr>";
-                                    echo "<td align=''><a href='dp_bc2_3_view.php?idhead=$row2[ID]' class='btn btn-success' title='View the Report'>$row2[ID]</a></td>";
-                                    echo "<td>" . $row2['NOMOR_AJU'] . "</td>";
-                                    echo "<td>" . $row2['NOMOR_BC11'] . "</td>";
-                                    echo "<td>" . $row2['NAMA_PEMASOK'] . ".</td>";
-                                    echo "<td>" . $row2['NAMA_PEMILIK'] . "</td>";
-                                    echo "<td>" . $row2['NAMA_PENGANGKUT'] . "</td>";
-                                    echo "<td>" . $row2['NAMA_PENGUSAHA'] . "</td>";
-                                    echo "</tr>";
-                            ?>
-                            <div class="modal fade" id="myModal<?php echo $row2['ID']; ?>" role="dialog">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title"><b>[Users] </b> Update Record</h4>
+                            <?php if ($response['status'] == 404) { ?>
+                            <tr>
+                                <td colspan="8">
+                                    <center>
+                                        <div style="display: grid;">
+                                            <i class="far fa-times-circle no-data"></i> Tidak ada data
                                         </div>
-                                        <div class="modal-body">
-                                            <form method="post" action=" ">
-                                                <div class="form-group">
-                                                    <label>NAMA</label>
-                                                    <input type="text" name="NAMA" value="<?php echo $row2['NAMA']; ?>"
-                                                        class="form-control" required>
-                                                    <input type="text" name="ID" value="<?php echo $row2['ID']; ?>"
-                                                        class="form-control" readonly>
-                                                </div>
-                                                <button type="submit" name="update" value="update"
-                                                    class="btn btn-primary">Update</button>
-                                                <button type="button" class="btn btn-warning"
-                                                    data-dismiss="modal">Cancel</button>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="modal fade" id="del<?php echo $row2['ID']; ?>" role="dialog">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title"><b>[Records] </b> Delete Record</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form method="post" action=" ">
-                                                <div class="form-group">
-                                                    <label>Are you sure delete this record?</label>
-                                                    <h6>Record ID : <?php echo $row2['client_name']; ?></h6>
-
-                                                    <input type="hidden" value="<?php echo $_SESSION['username']; ?>"
-                                                        name="user_name" class="form-control" required>
-                                                    <input type="hidden" value="<?php echo $row2['ID']; ?>" name="ID"
-                                                        class="form-control" required>
-                                                    <input type="hidden" value="<?php echo $row2['client_name']; ?>"
-                                                        name="client_name" class="form-control" required>
-
-                                                </div>
-                                                <button type="submit" name="delete"
-                                                    class="btn btn-danger">Delete</button>
-                                                <button type="button" class="btn btn-default"
-                                                    data-dismiss="modal">No</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                                }
-                            }
-                            mysqli_close($dbcon);
-                            ?>
+                                    </center>
+                                </td>
+                            </tr>
+                            <?php } else { ?>
+                            <?php $no = 0; ?>
+                            <?php foreach ($data['result'] as $row) { ?>
+                            <?php $no++ ?>
+                            <tr>
+                                <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
+                                <td style="text-align: center;"><?= $row['NAMA_PEMASOK'] ?></td>
+                                <td style="text-align: center;"><?= $row['NAMA_PENGANGKUT'] ?></td>
+                                <td style="text-align: center;"><?= $row['JUMLAH_BARANG'] ?></td>
+                                <td style="text-align: center;"><?= $row['JUMLAH_KONTAINER'] ?></td>
+                                <td style="text-align: center;"><?= $row['JUMLAH_KEMASAN'] ?></td>
+                                <td style="text-align: center;"><?= $row['URAIAN_STATUS'] ?></td>
+                            </tr>
+                            <?php } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
