@@ -18,15 +18,24 @@ if ($resultRoleModules['v_cttpb'] == 'none' && $resultRoleModules['v_filterttpb'
         </div>
     </div>
 </li>
-<li class="<?= $uriSegments[1] == 'tbl_tpb_count.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_cttpb']; ?>">
+<li class="<?= $uriSegments[1] == 'tbl_tpb_count.php' ? 'active' : '' ?>"
+    style="display: <?= $resultRoleModules['v_cttpb']; ?>">
     <a href="tbl_tpb_count.php">
         <i class="fab fa-contao"></i>
         <span>Count Tabel TPB</span>
     </a>
 </li>
-<li class="<?= $uriSegments[1] == 'tbl_tpb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_filterttpb']; ?>">
+<li class="<?= $uriSegments[1] == 'tbl_tpb.php' ? 'active' : '' ?>"
+    style="display: <?= $resultRoleModules['v_filterttpb']; ?>">
     <a href="tbl_tpb.php">
         <i class="fas fa-database"></i>
-        <span>Filter Tabel TPB</span>
+        <span>Filter Tabel TPB Module</span>
+    </a>
+</li>
+<li class="<?= $uriSegments[1] == 'tbl_inventory.php' ? 'active' : '' ?>"
+    style="display: <?= $resultRoleModules['v_filterttpb']; ?>">
+    <a href="tbl_tpb.php">
+        <i class="fas fa-database"></i>
+        <span>Filter Tabel TPB Inventory</span>
     </a>
 </li>
