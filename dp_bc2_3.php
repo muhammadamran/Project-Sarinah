@@ -53,7 +53,8 @@ $response = $data['status'];
                             <tr>
                                 <th class="text-nowrap" style="text-align: center;">Barang</th>
                                 <th class="text-nowrap" style="text-align: center;">Kontainer</th>
-                                <th class="text-nowrap" style="text-align: center;">Kemasan</th>
+                                <th class="text-nowrap" style="text-align: center;">Kemasan<?= $response['status'] ?>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
