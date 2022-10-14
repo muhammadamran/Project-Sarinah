@@ -193,13 +193,13 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 </style>
 <script>
 $(document).ready(function() {
-    $(".preloader").fadeOut();
+    $(".preloader-load").fadeOut();
 })
 </script>
 
 <body onload="display_ct()">
     <!-- begin #page-loader -->
-    <div class="preloader">
+    <div class="preloader-load">
         <div class="loading">
             <img src="assets/gif/1.gif" width="250">
             <p style="margin-left: 95px;" class="blink">Loading ...</p>
