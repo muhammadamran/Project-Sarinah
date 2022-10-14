@@ -35,7 +35,7 @@ $access = mysqli_fetch_array($role);
 
     <!-- begin header-nav -->
     <ul class="navbar-nav navbar-right">
-        <div style="font-size: 35px;font-weight: 100;color: #c3c3c3;">|</div>
+        <!-- <div style="font-size: 35px;font-weight: 100;color: #c3c3c3;">|</div> -->
         <li class="navbar-form" style="margin-top: 18px;font-size: 10px;">
             <i class="fas fa-clock"></i>&nbsp;
             <span id="ct"></span>
