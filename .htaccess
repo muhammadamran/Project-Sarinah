@@ -1,4 +1,3 @@
 RewriteEngine On
-
-RewriteCond %{HTTPS} ^on$
-RewriteRule ^(.*)$ https://itinventory-sarinah.com//$1 [NC,L,R]
+RewriteCond %{HTTPS} on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
