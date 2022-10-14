@@ -31,7 +31,9 @@ include "include/cssDatatables.php";
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.3 / Master Data</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.3 / Master Data
+                        <?= $resultAPI['url_api']; ?>
+                    </h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">

@@ -8,6 +8,9 @@ $resultSetRealTime = mysqli_fetch_array($dataSetRealTime);
 
 $SetTime = $resultSetRealTime['reload'];
 
+$dataAPI = $dbcon->query("SELECT * FROM api ORDER BY id ASC LIMIT 1");
+$resultAPI = mysqli_fetch_array($dataAPI);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
