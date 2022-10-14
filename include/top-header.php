@@ -4,11 +4,11 @@ $role = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$user' ");
 $access = mysqli_fetch_array($role);
 ?>
 <div id="header" class="header navbar-default">
-	<!-- begin navbar-header -->
-	<div class="navbar-header">
-		<a href="index.php" class="navbar-brand"><span class="navbar-logo"></span>
-			<!-- QUERY -->
-			<?php
+    <!-- begin navbar-header -->
+    <div class="navbar-header">
+        <a href="index.php" class="navbar-brand"><span class="navbar-logo"></span>
+            <!-- QUERY -->
+            <?php
 			$dataSettting = $dbcon->query("SELECT * FROM tbl_setting");
 			$resultSetting = mysqli_fetch_array($dataSettting);
 
@@ -19,31 +19,34 @@ $access = mysqli_fetch_array($role);
 				$alertAppName = $resultSetting['app_name'];
 			}
 			?>
-			<?php if ($resultSetting['sd_one'] == NULL || $resultSetting['sd_two'] == NULL) { ?>
-				<b>Name 1</b>&nbsp;Name 2
-			<?php } else { ?>
-				<b><?= $resultSetting['sd_one'] ?></b>&nbsp;<?= $resultSetting['sd_two'] ?>
-			<?php } ?>
-		</a>
-		<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-	</div>
-	<!-- end navbar-header -->
+            <?php if ($resultSetting['sd_one'] == NULL || $resultSetting['sd_two'] == NULL) { ?>
+            <b>Name 1</b>&nbsp;Name 2
+            <?php } else { ?>
+            <b><?= $resultSetting['sd_one'] ?></b>&nbsp;<?= $resultSetting['sd_two'] ?>
+            <?php } ?>
+        </a>
+        <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <!-- end navbar-header -->
 
-	<!-- begin header-nav -->
-	<ul class="navbar-nav navbar-right">
-		<li class="navbar-form">
-			<form action="" method="POST" name="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Cari Data TPB ..." />
-					<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-				</div>
-			</form>
-		</li>
-		<!-- <li class="dropdown">
+    <!-- begin header-nav -->
+    <ul class="navbar-nav navbar-right">
+        <li class="navbar-form">
+            <div id="display_ct()"></div>
+        </li>
+        <li class="navbar-form">
+            <form action="" method="POST" name="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Cari Data TPB ..." />
+                    <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </li>
+        <!-- <li class="dropdown">
 			<a href="#" data-toggle="dropdown" class="dropdown-toggle f-s-14">
 				<i class="fa fa-bell"></i>
 				<span class="label">5</span>
@@ -105,27 +108,27 @@ $access = mysqli_fetch_array($role);
 				</div>
 			</div>
 		</li> -->
-		<li class="dropdown navbar-user">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<?php if ($access['foto'] == NULL || $access['foto'] == 'default-user-images.jpeg') { ?>
-					<img src="assets/images/users/default-user-images.jpeg" alt="Foto Profile" />
-				<?php } else { ?>
-					<img src="assets/images/users/<?= $access['foto'] ?>" alt="Foto Profile" />
-				<?php } ?>
-				<span class="d-none d-md-inline"><?= $access['USER_NAME'] ?></span> <b class="caret"></b>
-			</a>
-			<div class="dropdown-menu dropdown-menu-right">
-				<a href="usr_profile.php" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Profile</a>
-				<!-- <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a> -->
-                <?php if ($resultForPrivileges['UPDATE_PASSWORD'] == 'Y') { ?>
-					<a href="usr_password.php" class="dropdown-item"><i class="fa-solid fas fa-lock"></i> Ganti Password</a>
+        <li class="dropdown navbar-user">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <?php if ($access['foto'] == NULL || $access['foto'] == 'default-user-images.jpeg') { ?>
+                <img src="assets/images/users/default-user-images.jpeg" alt="Foto Profile" />
+                <?php } else { ?>
+                <img src="assets/images/users/<?= $access['foto'] ?>" alt="Foto Profile" />
                 <?php } ?>
-				<!-- <a href="javascript:;" class="dropdown-item">Setting</a> -->
-				<div class="dropdown-divider"></div>
-				<a href="sign-out.php" class="dropdown-item"><i class="fa-solid fa-power-off"></i> Sign Out</a>
-			</div>
-		</li>
-	</ul>
-	<!-- end header-nav -->
+                <span class="d-none d-md-inline"><?= $access['USER_NAME'] ?></span> <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="usr_profile.php" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Profile</a>
+                <!-- <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a> -->
+                <?php if ($resultForPrivileges['UPDATE_PASSWORD'] == 'Y') { ?>
+                <a href="usr_password.php" class="dropdown-item"><i class="fa-solid fas fa-lock"></i> Ganti Password</a>
+                <?php } ?>
+                <!-- <a href="javascript:;" class="dropdown-item">Setting</a> -->
+                <div class="dropdown-divider"></div>
+                <a href="sign-out.php" class="dropdown-item"><i class="fa-solid fa-power-off"></i> Sign Out</a>
+            </div>
+        </li>
+    </ul>
+    <!-- end header-nav -->
 </div>
 <!-- end #header -->
