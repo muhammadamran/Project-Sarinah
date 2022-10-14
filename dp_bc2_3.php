@@ -5,6 +5,7 @@ include "include/head.php";
 include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
+include "include/cssDatatables.php";
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -12,11 +13,11 @@ include "include/sidebar.php";
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-passport icon-page"></i>
-                <font class="text-page">BC</font>
+                <font class="text-page">BC Master</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">BC</a></li>
+                <li class="breadcrumb-item"><a href="javascript:;">BC Master</a></li>
                 <li class="breadcrumb-item active">BC 2.3</li>
             </ol>
         </div>
@@ -63,58 +64,69 @@ include "include/sidebar.php";
                                     echo "<td>" . $row2['NAMA_PENGANGKUT'] . "</td>";
                                     echo "<td>" . $row2['NAMA_PENGUSAHA'] . "</td>";
                                     echo "</tr>";
-                                    ?>
-                                    <div class="modal fade" id="myModal<?php echo $row2['ID']; ?>" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title"><b>[Users] </b> Update Record</h4>
+                            ?>
+                            <div class="modal fade" id="myModal<?php echo $row2['ID']; ?>" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title"><b>[Users] </b> Update Record</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action=" ">
+                                                <div class="form-group">
+                                                    <label>NAMA</label>
+                                                    <input type="text" name="NAMA" value="<?php echo $row2['NAMA']; ?>"
+                                                        class="form-control" required>
+                                                    <input type="text" name="ID" value="<?php echo $row2['ID']; ?>"
+                                                        class="form-control" readonly>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <form method="post" action=" ">
-                                                        <div class="form-group">
-                                                            <label>NAMA</label>
-                                                            <input type="text" name="NAMA" value="<?php echo $row2['NAMA']; ?>" class="form-control" required>
-                                                            <input type="text" name="ID" value="<?php echo $row2['ID']; ?>" class="form-control" readonly>
-                                                        </div>
-                                                        <button type="submit" name="update" value="update" class="btn btn-primary">Update</button>
-                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
+                                                <button type="submit" name="update" value="update"
+                                                    class="btn btn-primary">Update</button>
+                                                <button type="button" class="btn btn-warning"
+                                                    data-dismiss="modal">Cancel</button>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
 
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <div class="modal fade" id="del<?php echo $row2['ID']; ?>" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title"><b>[Records] </b> Delete Record</h4>
+                            <div class="modal fade" id="del<?php echo $row2['ID']; ?>" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title"><b>[Records] </b> Delete Record</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action=" ">
+                                                <div class="form-group">
+                                                    <label>Are you sure delete this record?</label>
+                                                    <h6>Record ID : <?php echo $row2['client_name']; ?></h6>
+
+                                                    <input type="hidden" value="<?php echo $_SESSION['username']; ?>"
+                                                        name="user_name" class="form-control" required>
+                                                    <input type="hidden" value="<?php echo $row2['ID']; ?>" name="ID"
+                                                        class="form-control" required>
+                                                    <input type="hidden" value="<?php echo $row2['client_name']; ?>"
+                                                        name="client_name" class="form-control" required>
+
                                                 </div>
-                                                <div class="modal-body">
-                                                    <form method="post" action=" ">
-                                                        <div class="form-group">
-                                                            <label>Are you sure delete this record?</label>
-                                                            <h6>Record ID : <?php echo $row2['client_name']; ?></h6>
-
-                                                            <input type="hidden" value="<?php echo $_SESSION['username']; ?>" name="user_name" class="form-control" required>
-                                                            <input type="hidden" value="<?php echo $row2['ID']; ?>" name="ID" class="form-control" required>
-                                                            <input type="hidden" value="<?php echo $row2['client_name']; ?>" name="client_name" class="form-control" required>
-
-                                                        </div>
-                                                        <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                                    </form>
-                                                </div>
-                                            </div>
+                                                <button type="submit" name="delete"
+                                                    class="btn btn-danger">Delete</button>
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">No</button>
+                                            </form>
                                         </div>
                                     </div>
-                                    <?php
+                                </div>
+                            </div>
+                            <?php
                                 }
                             }
                             mysqli_close($dbcon);
