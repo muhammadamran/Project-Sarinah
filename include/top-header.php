@@ -36,7 +36,7 @@ $access = mysqli_fetch_array($role);
     <!-- begin header-nav -->
     <ul class="navbar-nav navbar-right">
         <li class="navbar-form">
-            <div id="display_ct()"></div>
+            <div id="ct"></div>
         </li>
         <li class="navbar-form">
             <form action="" method="POST" name="search">
