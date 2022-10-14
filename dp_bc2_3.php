@@ -36,6 +36,11 @@ $response = $data['status'];
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
+                    <?php
+                    $response = $data['status'];
+                    echo $response;
+                    echo "<br>";
+                    ?>
                     <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.3 / Master Data</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
@@ -53,7 +58,7 @@ $response = $data['status'];
                             <tr>
                                 <th class="text-nowrap" style="text-align: center;">Barang</th>
                                 <th class="text-nowrap" style="text-align: center;">Kontainer</th>
-                                <th class="text-nowrap" style="text-align: center;">Kemasan<?= $response['status'] ?>
+                                <th class="text-nowrap" style="text-align: center;">Kemasan<?= $response['status'] ?> aa
                                 </th>
                             </tr>
                         </thead>
