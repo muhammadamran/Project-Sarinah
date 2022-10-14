@@ -38,14 +38,17 @@ include "include/cssDatatables.php";
                     <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                         <thead>
                             <tr>
-                                <th style="text-align:center">#ID</th>
-                                <th style="text-align:center">NO. AJU</th>
-                                <th style="text-align:center">BC.11</th>
-                                <th style="text-align:center">PEMASOK</th>
-                                <th style="text-align:center">PEMILIK</th>
-                                <th style="text-align:center">PENGANGKUT</th>
-                                <th style="text-align:center">PENGUSAHA</th>
-                                <!-- <th>Action</th> -->
+                                <th rowspan="2" width="1%">#</th>
+                                <th class="text-nowrap" rowspan="2" style="text-align: center;">Nomor Pengajuan</th>
+                                <th class="text-nowrap" rowspan="2" style="text-align: center;">Pemasok</th>
+                                <th class="text-nowrap" rowspan="2" style="text-align: center;">Pengangkut</th>
+                                <th class="text-nowrap" colspan="3" style="text-align: center;">Jumlah</th>
+                                <th class="text-nowrap" rowspan="2" style="text-align: center;">Status</th>
+                            </tr>
+                            <tr>
+                                <th class="text-nowrap" style="text-align: center;">Barang</th>
+                                <th class="text-nowrap" style="text-align: center;">Kontainer</th>
+                                <th class="text-nowrap" style="text-align: center;">Kemasan</th>
                             </tr>
                         </thead>
                         <tbody>
