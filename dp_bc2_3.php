@@ -7,10 +7,8 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API
-$api_url = $resultAPI['url_api'] . 'dataBC23.php';
-$content = file_get_contents($api_url);
+$content = get_content('http://117.54.102.106/tpbbackend/api/dataBC23.php');
 $data = json_decode($content, true);
-$response = $data['status'];
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
