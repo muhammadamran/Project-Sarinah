@@ -9,7 +9,7 @@ include "include/sidebar.php";
 // Saved
 if (isset($_POST["SaveAPInDB"])) {
 
-    $url_url           = $_POST['url_url'];
+    $url_api           = $_POST['url_api'];
     $user_api          = $_POST['user_api'];
     $pass_api          = md5($_POST['pass_api']);
     $port_api          = $_POST['port_api'];
@@ -20,7 +20,7 @@ if (isset($_POST["SaveAPInDB"])) {
                                            pass_api='$pass_api',
                                            port_api='$port_api',
                                            database_module='$database_module'
-                            WHERE id='1'");
+                            WHERE id=1");
 
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
@@ -49,7 +49,7 @@ if (isset($_POST["SaveAPInDB"])) {
 // Update
 if (isset($_POST["EditAPInDB"])) {
 
-    $url_url           = $_POST['url_url'];
+    $url_api           = $_POST['url_api'];
     $user_api          = $_POST['user_api'];
     $pass_api          = md5($_POST['pass_api']);
     $port_api          = $_POST['port_api'];
@@ -60,7 +60,7 @@ if (isset($_POST["EditAPInDB"])) {
                                            pass_api='$pass_api',
                                            port_api='$port_api',
                                            database_module='$database_module'
-                            WHERE id='1'");
+                            WHERE id=1");
 
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
