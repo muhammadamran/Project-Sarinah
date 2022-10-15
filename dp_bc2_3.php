@@ -7,7 +7,6 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API - 
-$content = get_content('http://117.54.102.106/tpbbackend/api/dataBC23.php');
 $data = json_decode($content, true);
 ?>
 <!-- begin #content -->
