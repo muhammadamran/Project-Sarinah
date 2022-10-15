@@ -46,47 +46,6 @@ if (isset($_POST["SaveAPInDB"])) {
         echo "<script>window.location.href='adm_api.php?SaveFailed=true';</script>";
     }
 }
-
-// Update
-if (isset($_POST["EditAPInDB"])) {
-
-    $ID                = $_POST['ID'];
-    $url_api           = $_POST['url_api'];
-    $user_api          = $_POST['user_api'];
-    $pass_api          = md5($_POST['pass_api']);
-    $port_api          = $_POST['port_api'];
-    $database_module   = $_POST['database_module'];
-
-    $query = $dbcon->query("UPDATE api SET url_api='$url_api',
-                                           user_api='$user_api',
-                                           pass_api='$pass_api',
-                                           port_api='$port_api',
-                                           database_module='$database_module'
-                            WHERE id='$ID'");
-
-    // FOR AKTIFITAS
-    $me = $_SESSION['username'];
-    $datame = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
-    $resultme = mysqli_fetch_array($datame);
-
-    $IDUNIQme             = $resultme['USRIDUNIQ'];
-    $InputUsername        = $me;
-    $InputModul           = 'Administrator Tools/Pengatuan RealTime Reload';
-    $InputDescription     = $me . " Insert Data API & Database: " .  $reload . ", Simpan Data Sebagai Log API & Database";
-    $InputAction          = 'Insert';
-    $InputDate            = date('Y-m-d h:m:i');
-
-    $query .= $dbcon->query("INSERT INTO tbl_aktifitas
-                           (id,IDUNIQ,username,modul,description,action,date_created)
-                           VALUES
-                           ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
-
-    if ($query) {
-        echo "<script>window.location.href='adm_api.php?UpdateSuccess=true';</script>";
-    } else {
-        echo "<script>window.location.href='adm_api.php?UpdateFailed=true';</script>";
-    }
-}
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -120,58 +79,6 @@ if (isset($_POST["EditAPInDB"])) {
                     $data = $dbcon->query("SELECT * FROM api");
                     $row = mysqli_fetch_array($data);
                     ?>
-                    <?php if ($row['id'] == NULL) { ?>
-                    <form action="" method="POST">
-                        <fieldset>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">URL API</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="url_api"
-                                        value="<?= $row['url_api'] ?>" placeholder="URL API ...">
-                                    <input type="text" class="form-control" name="ID" value="<?= $row['id'] ?>">
-                                </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">User API</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="user_api"
-                                        value="<?= $row['user_api'] ?>" placeholder="User API ...">
-                                </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Pass API</label>
-                                <div class="col-md-7">
-                                    <input type="password" class="form-control" name="pass_api"
-                                        value="<?= $row['pass_api'] ?>" placeholder="Pass API ...">
-                                </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Port API</label>
-                                <div class="col-md-7">
-                                    <input type="number" class="form-control" name="port_api"
-                                        value="<?= $row['port_api'] ?>" placeholder="Port API ...">
-                                </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Database</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="database_module"
-                                        value="<?= $row['database_module'] ?>" placeholder="Database ...">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-7 offset-md-3">
-                                    <button type="submit" class="btn btn-success m-r-5" name="TestConnect"><i
-                                            class="fa-solid fa-satellite-dish"></i> Test</button>
-                                    <?php if ($resultForPrivileges['INSERT_DATA'] == 'Y') { ?>
-                                    <button type="submit" class="btn btn-primary m-r-5" name="EditAPInDB"><i
-                                            class="fa fa-save"></i> Simpan</button>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <?php } else { ?>
                     <form action="" method="POST">
                         <fieldset>
                             <div class="form-group row m-b-15">
@@ -222,7 +129,6 @@ if (isset($_POST["EditAPInDB"])) {
                             </div>
                         </fieldset>
                     </form>
-                    <?php } ?>
                 </div>
             </div>
         </div>
