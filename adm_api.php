@@ -22,6 +22,9 @@ if (isset($_POST["SaveAPInDB"])) {
                                            database_module='$database_module'
                             WHERE id=1");
 
+    var_dump($query);
+    exit;
+
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
     $datame = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
