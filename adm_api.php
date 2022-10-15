@@ -21,7 +21,7 @@ if (isset($_POST["SaveAPInDB"])) {
                                            pass_api='$pass_api',
                                            port_api='$port_api',
                                            database_module='$database_module'
-                            WHERE id=$ID");
+                            WHERE id='$ID'");
 
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
@@ -62,7 +62,7 @@ if (isset($_POST["EditAPInDB"])) {
                                            pass_api='$pass_api',
                                            port_api='$port_api',
                                            database_module='$database_module'
-                            WHERE id=$ID");
+                            WHERE id='$ID'");
 
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
