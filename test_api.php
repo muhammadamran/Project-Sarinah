@@ -1,7 +1,5 @@
 <?php
-include "include/connection.php";
-
-$api_url = $resultAPI['url_api'] . 'dataBC23.php';
+$api_url = 'http://127.0.0.1/tpbbackend/api/dataBC23.php';
 $content = file_get_contents($api_url);
 $data = json_decode($content, true);
 
