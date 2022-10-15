@@ -9,11 +9,11 @@
 // $dbcon = new mysqli($dbhost, $dbusername, $dbpassword, $dbname, $dbport) or die(mysqli_connect_errno());  
 
 // Server Prod
-$dbhost='localhost';
-$dbusername='inxmiles_tpb';
-$dbpassword='Flatrone2241TPB';
-$dbname='inxmiles_tpb';
-$dbcon = new mysqli($dbhost, $dbusername, $dbpassword, $dbname, $dbport) or die(mysqli_connect_errno());
+$dbhost = 'localhost';
+$dbusername = 'inxmiles_tpb';
+$dbpassword = 'Flatrone2241TPB';
+$dbname = 'inxmiles_tpb';
+$dbcon = new mysqli($dbhost, $dbusername, $dbpassword, $dbname) or die(mysqli_connect_errno());
 
 // Hellos ID Dev
 // $dbhost='localhost';

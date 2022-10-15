@@ -10,8 +10,6 @@ include "include/cssDatatables.php";
 $api_url = 'http://117.54.102.106/tpbbackend/api/dataBC23.php';
 $content = file_get_contents($api_url);
 $data = json_decode($content, true);
-var_dump($data);
-exit;
 $response = $data['status'];
 ?>
 <!-- begin #content -->
@@ -60,12 +58,12 @@ $response = $data['status'];
                             <tr>
                                 <th class="text-nowrap" style="text-align: center;">Barang</th>
                                 <th class="text-nowrap" style="text-align: center;">Kontainer</th>
-                                <th class="text-nowrap" style="text-align: center;">Kemasan<?= $response['status'] ?> aa
+                                <th class="text-nowrap" style="text-align: center;">Kemasan<?= $data['status'] ?> aa
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if ($response['status'] == 404) { ?>
+                            <?php if ($data['status'] == 404) { ?>
                             <tr>
                                 <td colspan="8">
                                     <center>
