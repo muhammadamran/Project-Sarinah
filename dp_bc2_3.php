@@ -7,6 +7,7 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API - 
+include "include/api.php";
 $data = json_decode($content, true);
 ?>
 <!-- begin #content -->
