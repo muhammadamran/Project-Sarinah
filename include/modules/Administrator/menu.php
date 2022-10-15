@@ -15,7 +15,8 @@ if (
 }
 ?>
 <li class="nav-header" style="display: <?= $TitleADM; ?>;">ADMINISTRATOR</li>
-<li class="has-sub <?= $uriSegments[1] == 'adm_user_manajemen_web.php' ||
+<li class="has-sub <?= $uriSegments[1] == 'adm_api.php' ||
+                        $uriSegments[1] == 'adm_user_manajemen_web.php' ||
                         $uriSegments[1] == 'adm_user_manajemen_web_update.php' ||
                         $uriSegments[1] == 'adm_user_manajemen_web_resetpassword.php' ||
                         $uriSegments[1] == 'adm_department.php' ||
