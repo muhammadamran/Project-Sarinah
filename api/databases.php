@@ -13,7 +13,7 @@ if ($cek > 0) {
 
     while ($result = $dataDB->fetch_assoc()) {
         $data[] = [
-            'data' => $result['data']
+            'data' => $result['database_module']
         ];
     }
 

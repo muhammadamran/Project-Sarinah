@@ -13,13 +13,13 @@ if (isset($_POST["SaveAPInDB"])) {
     $user_api          = $_POST['user_api'];
     $pass_api          = md5($_POST['pass_api']);
     $port_api          = $_POST['port_api'];
-    $data              = $_POST['data'];
+    $database_module   = $_POST['database_module'];
 
     $query = $dbcon->query("UPDATE api SET url_api='$url_api',
                                            user_api='$user_api',
                                            pass_api='$pass_api',
                                            port_api='$port_api',
-                                           data='$data'
+                                           database_module='$database_module'
                             WHERE id='1'");
 
     // FOR AKTIFITAS
@@ -53,13 +53,13 @@ if (isset($_POST["EditAPInDB"])) {
     $user_api          = $_POST['user_api'];
     $pass_api          = md5($_POST['pass_api']);
     $port_api          = $_POST['port_api'];
-    $data              = $_POST['data'];
+    $database_module   = $_POST['database_module'];
 
     $query = $dbcon->query("UPDATE api SET url_api='$url_api',
                                            user_api='$user_api',
                                            pass_api='$pass_api',
                                            port_api='$port_api',
-                                           data='$data'
+                                           database_module='$database_module'
                             WHERE id='1'");
 
     // FOR AKTIFITAS
@@ -152,8 +152,8 @@ if (isset($_POST["EditAPInDB"])) {
                             <div class="form-group row m-b-15">
                                 <label class="col-md-3 col-form-label">Database</label>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="data" value="<?= $row['data'] ?>"
-                                        placeholder="Database ...">
+                                    <input type="text" class="form-control" name="database_module"
+                                        value="<?= $row['database_module'] ?>" placeholder="Database ...">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -202,8 +202,8 @@ if (isset($_POST["EditAPInDB"])) {
                             <div class="form-group row m-b-15">
                                 <label class="col-md-3 col-form-label">Database</label>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="data" value="<?= $row['data'] ?>"
-                                        placeholder="Database ...">
+                                    <input type="text" class="form-control" name="database_module"
+                                        value="<?= $row['database_module'] ?>" placeholder="Database ...">
                                 </div>
                             </div>
                             <div class="form-group row">
