@@ -9,6 +9,7 @@ include "include/sidebar.php";
 // Saved
 if (isset($_POST["SaveAPInDB"])) {
 
+    $ID                = $_POST['ID'];
     $url_api           = $_POST['url_api'];
     $user_api          = $_POST['user_api'];
     $pass_api          = md5($_POST['pass_api']);
@@ -20,7 +21,7 @@ if (isset($_POST["SaveAPInDB"])) {
                                            pass_api='$pass_api',
                                            port_api='$port_api',
                                            database_module='$database_module'
-                            WHERE id=1");
+                            WHERE id=$ID");
 
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
@@ -30,7 +31,7 @@ if (isset($_POST["SaveAPInDB"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/Pengatuan RealTime Reload';
-    $InputDescription     = $me . " Update Data RealTime Reload: " .  $query . ", Simpan Data Sebagai Log API & Database";
+    $InputDescription     = $me . " Update Data API & Database: " .  $query . ", Simpan Data Sebagai Log API & Database";
     $InputAction          = 'Update';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -49,6 +50,7 @@ if (isset($_POST["SaveAPInDB"])) {
 // Update
 if (isset($_POST["EditAPInDB"])) {
 
+    $ID                = $_POST['ID'];
     $url_api           = $_POST['url_api'];
     $user_api          = $_POST['user_api'];
     $pass_api          = md5($_POST['pass_api']);
@@ -60,7 +62,7 @@ if (isset($_POST["EditAPInDB"])) {
                                            pass_api='$pass_api',
                                            port_api='$port_api',
                                            database_module='$database_module'
-                            WHERE id=1");
+                            WHERE id=$ID");
 
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
@@ -70,7 +72,7 @@ if (isset($_POST["EditAPInDB"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/Pengatuan RealTime Reload';
-    $InputDescription     = $me . " Insert Data RealTime Reload: " .  $reload . ", Simpan Data Sebagai Log API & Database";
+    $InputDescription     = $me . " Insert Data API & Database: " .  $reload . ", Simpan Data Sebagai Log API & Database";
     $InputAction          = 'Insert';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -126,6 +128,7 @@ if (isset($_POST["EditAPInDB"])) {
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="url_api"
                                         value="<?= $row['url_api'] ?>" placeholder="URL API ...">
+                                    <input type="text" class="form-control" name="ID" value="<?= $row['id'] ?>">
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
@@ -176,6 +179,7 @@ if (isset($_POST["EditAPInDB"])) {
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="url_api"
                                         value="<?= $row['url_api'] ?>" placeholder="URL API ...">
+                                    <input type="text" class="form-control" name="ID" value="<?= $row['id'] ?>">
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
