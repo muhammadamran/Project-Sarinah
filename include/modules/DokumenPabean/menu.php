@@ -26,7 +26,7 @@ if ($resultRoleModules['v_bc'] == 'show') {
         </li>
         <li class="<?= $uriSegments[1] == 'dp_bc2_5.php' ? 'active' : '' ?>"
             style="display: <?= $resultRoleModules['v_bc']; ?>">
-            <a href="dp_bc2_5.php">BC 2.4</a>
+            <a href="dp_bc2_5.php">BC 2.5</a>
         </li>
         <li class="<?= $uriSegments[1] == 'dp_bc2_6_1.php' ? 'active' : '' ?>"
             style="display: <?= $resultRoleModules['v_bc']; ?>">
