@@ -18,7 +18,8 @@ if (isset($_POST["SaveAPInDB"])) {
     $query = $dbcon->query("UPDATE api SET url_api='$url_api',
                                            user_api='$user_api',
                                            pass_api='$pass_api',
-                                           port_api='$port_api'
+                                           port_api='$port_api',
+                                           data='$data'
                             WHERE id='1'");
 
     // FOR AKTIFITAS
@@ -57,7 +58,8 @@ if (isset($_POST["EditAPInDB"])) {
     $query = $dbcon->query("UPDATE api SET url_api='$url_api',
                                            user_api='$user_api',
                                            pass_api='$pass_api',
-                                           port_api='$port_api'
+                                           port_api='$port_api',
+                                           data='$data'
                             WHERE id='1'");
 
     // FOR AKTIFITAS
