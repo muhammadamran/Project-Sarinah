@@ -7,7 +7,7 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API
-$api_url = 'http://117.54.102.106/tpbbackend/api/dataBC23.php';
+$api_url = $resultAPI['url_api'] . 'dataBC23.php';
 $content = file_get_contents($api_url);
 $data = json_decode($content, true);
 $response = $data['status'];
@@ -36,11 +36,6 @@ $response = $data['status'];
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <?php
-                    $response = $data['status'];
-                    echo $response;
-                    echo "<br>";
-                    ?>
                     <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.3 / Master Data</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
@@ -58,7 +53,7 @@ $response = $data['status'];
                             <tr>
                                 <th class="text-nowrap" style="text-align: center;">Barang</th>
                                 <th class="text-nowrap" style="text-align: center;">Kontainer</th>
-                                <th class="text-nowrap" style="text-align: center;">Kemasan<?= $data['status'] ?> aa
+                                <th class="text-nowrap" style="text-align: center;">Kemasan
                                 </th>
                             </tr>
                         </thead>
