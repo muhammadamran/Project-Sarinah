@@ -9,5 +9,3 @@ function get_content($URL)
     curl_close($ch);
     return $data;
 }
-
-$content = get_content($resultAPI['url_api'] . 'dataBC23.php');

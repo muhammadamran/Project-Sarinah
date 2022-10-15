@@ -6,6 +6,10 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'dataBC27.php');
+$data = json_decode($content, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -13,12 +17,12 @@ include "include/cssDatatables.php";
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-passport icon-page"></i>
-                <font class="text-page">BC</font>
+                <font class="text-page">BC Master</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">BC</a></li>
-                <li class="breadcrumb-item active">BC 2.7 / Master Data</li>
+                <li class="breadcrumb-item"><a href="javascript:;">BC Master</a></li>
+                <li class="breadcrumb-item active">BC 2.7</li>
             </ol>
         </div>
         <div>
@@ -35,95 +39,52 @@ include "include/cssDatatables.php";
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <div class="table-responsive">
-                        <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
-                            <thead>
-                                <tr>
-                                    <th style="text-align:center">#ID</th>
-                                    <th style="text-align:center">NO. AJU</th>
-                                    <th style="text-align:center">BC.11</th>
-                                    <th style="text-align:center">PEMASOK</th>
-                                    <th style="text-align:center">PEMILIK</th>
-                                    <th style="text-align:center">PENGANGKUT</th>
-                                    <th style="text-align:center">PENGUSAHA</th>
-                                    <!-- <th>Action</th> -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $result2 = mysqli_query($dbcon, "SELECT * FROM tpb_header ORDER BY ID DESC");
-                                if (mysqli_num_rows($result2) > 0) {
-                                    $no = 0;
-                                    while ($row2 = mysqli_fetch_array($result2)) {
-                                        $no++;
-                                        echo "<tr>";
-                                        echo "<td align=''><a href='dp_bc2_3_view.php?idhead=$row2[ID]' class='btn btn-success' title='View the Report'>$row2[ID]</a></td>";
-                                        echo "<td>" . $row2['NOMOR_AJU'] . "</td>";
-                                        echo "<td>" . $row2['NOMOR_BC11'] . "</td>";
-                                        echo "<td>" . $row2['NAMA_PEMASOK'] . ".</td>";
-                                        echo "<td>" . $row2['NAMA_PEMILIK'] . "</td>";
-                                        echo "<td>" . $row2['NAMA_PENGANGKUT'] . "</td>";
-                                        echo "<td>" . $row2['NAMA_PENGUSAHA'] . "</td>";
-                                        echo "</tr>";
-                                        ?>
-                                        <div class="modal fade" id="myModal<?php echo $row2['ID']; ?>" role="dialog">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title"><b>[Users] </b> Update Record</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="post" action=" ">
-                                                            <div class="form-group">
-                                                                <label>NAMA</label>
-                                                                <input type="text" name="NAMA" value="<?php echo $row2['NAMA']; ?>" class="form-control" required>
-                                                                <input type="text" name="ID" value="<?php echo $row2['ID']; ?>" class="form-control" readonly>
-                                                            </div>
-                                                            <button type="submit" name="update" value="update" class="btn btn-primary">Update</button>
-                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-
-                                                    </div>
-                                                </div>
-                                            </div>
+                    <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" width="1%">#</th>
+                                <th class="text-nowrap" rowspan="2" style="text-align: center;">Nomor Pengajuan</th>
+                                <th class="text-nowrap" rowspan="2" style="text-align: center;">Pemasok</th>
+                                <th class="text-nowrap" rowspan="2" style="text-align: center;">Pengangkut</th>
+                                <th class="text-nowrap" colspan="3" style="text-align: center;">Jumlah</th>
+                                <th class="text-nowrap" rowspan="2" style="text-align: center;">Status</th>
+                            </tr>
+                            <tr>
+                                <th class="text-nowrap" style="text-align: center;">Barang</th>
+                                <th class="text-nowrap" style="text-align: center;">Kontainer</th>
+                                <th class="text-nowrap" style="text-align: center;">Kemasan
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if ($data['status'] == 404) { ?>
+                            <tr>
+                                <td colspan="8">
+                                    <center>
+                                        <div style="display: grid;">
+                                            <i class="far fa-times-circle no-data"></i> Tidak ada data
                                         </div>
-
-                                        <div class="modal fade" id="del<?php echo $row2['ID']; ?>" role="dialog">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title"><b>[Records] </b> Delete Record</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="post" action=" ">
-                                                            <div class="form-group">
-                                                                <label>Are you sure delete this record?</label>
-                                                                <h6>Record ID : <?php echo $row2['client_name']; ?></h6>
-
-                                                                <input type="hidden" value="<?php echo $_SESSION['username']; ?>" name="user_name" class="form-control" required>
-                                                                <input type="hidden" value="<?php echo $row2['ID']; ?>" name="ID" class="form-control" required>
-                                                                <input type="hidden" value="<?php echo $row2['client_name']; ?>" name="client_name" class="form-control" required>
-
-                                                            </div>
-                                                            <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php
-                                    }
-                                }
-                                mysqli_close($dbcon);
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
+                                    </center>
+                                </td>
+                            </tr>
+                            <?php } else { ?>
+                            <?php $no = 0; ?>
+                            <?php foreach ($data['result'] as $row) { ?>
+                            <?php $no++ ?>
+                            <tr>
+                                <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
+                                <td style="text-align: center;"><?= $row['NAMA_PEMASOK'] ?></td>
+                                <td style="text-align: center;"><?= $row['NAMA_PENGANGKUT'] ?></td>
+                                <td style="text-align: center;"><?= $row['JUMLAH_BARANG'] ?></td>
+                                <td style="text-align: center;"><?= $row['JUMLAH_KONTAINER'] ?></td>
+                                <td style="text-align: center;"><?= $row['JUMLAH_KEMASAN'] ?></td>
+                                <td style="text-align: center;"><?= $row['URAIAN_STATUS'] ?></td>
+                            </tr>
+                            <?php } ?>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -135,17 +96,3 @@ include "include/cssDatatables.php";
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>
-<script type="text/javascript">
-    // TableLog
-    $(document).ready(function() {
-        $('#TableData').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
-        });
-    });
-</script>

@@ -150,7 +150,7 @@ if (isset($_POST["EditAPInDB"])) {
                             <div class="form-group row m-b-15">
                                 <label class="col-md-3 col-form-label">Database</label>
                                 <div class="col-md-7">
-                                    <input type="number" class="form-control" name="data" value="<?= $row['data'] ?>"
+                                    <input type="text" class="form-control" name="data" value="<?= $row['data'] ?>"
                                         placeholder="Database ...">
                                 </div>
                             </div>
@@ -200,7 +200,7 @@ if (isset($_POST["EditAPInDB"])) {
                             <div class="form-group row m-b-15">
                                 <label class="col-md-3 col-form-label">Database</label>
                                 <div class="col-md-7">
-                                    <input type="number" class="form-control" name="data" value="<?= $row['data'] ?>"
+                                    <input type="text" class="form-control" name="data" value="<?= $row['data'] ?>"
                                         placeholder="Database ...">
                                 </div>
                             </div>
