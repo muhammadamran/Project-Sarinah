@@ -6,9 +6,17 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
+
+$LimitRow = '';
+
+if (isset($_POST["SetLimit"])) {
+    if ($_POST["LimitRow"] != '') {
+        $LimitRow = $_POST['LimitRow'];
+    }
+}
 // API - 
 include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'refEPLN.php');
+$content = get_content($resultAPI['url_api'] . 'refEPLN.php?LimitRow=' . $LimitRow);
 $data = json_decode($content, true);
 ?>
 <!-- begin #content -->
@@ -46,8 +54,8 @@ $data = json_decode($content, true);
                             <div class="col-xl-6">
                                 <div class="form-group">
                                     <label>Limit Baris</label>
-                                    <input type="number" class="form-control" name="LimitRow"
-                                        value="<?= $_GET['LimitRow']; ?>" placeholder="Limit Baris" required>
+                                    <input type="number" class="form-control" name="LimitRow" value="<?= $LimitRow; ?>"
+                                        placeholder="Limit Baris" required>
                                 </div>
                             </div>
                             <div class="col-xl-12">
