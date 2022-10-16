@@ -153,8 +153,12 @@ if (isset($_POST["add_nppbkc"])) {
                                     <td style="text-align: center;">
                                         <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
                                         <?php if ($row['NPPBKC'] == NULL || $row['NPPBKC'] == '') { ?>
-                                        <a href="#AddNPPBKC<?= $row['ID'] ?>" class="btn btn-sm btn-warning"
+                                        <!-- <a href="#AddNPPBKC<?= $row['ID'] ?>" class="btn btn-sm btn-warning"
                                             data-toggle="modal" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i>
+                                            NPPBKC</a> -->
+                                        <a href="ref_perusahaan_nppbkc.php?id=<?= $row['ID'] ?>&NPWP?<?= $row['NPWP']; ?>"
+                                            class="btn btn-sm btn-warning" data-toggle="modal" title="Tambah NPPBKC"><i
+                                                class="fas fa-plus-circle"></i>
                                             NPPBKC</a>
                                         <?php } else { ?>
                                         <?= $row['NPPBKC'] ?>
@@ -184,7 +188,6 @@ if (isset($_POST["add_nppbkc"])) {
                                         <?php } ?>
                                     </td>
                                 </tr>
-                                <?php } ?>
 
                                 <!-- Tambah NPPBKC -->
                                 <div class="modal fade" id="AddNPPBKC<?= $row['ID'] ?>">
@@ -271,6 +274,7 @@ if (isset($_POST["add_nppbkc"])) {
                                     </div>
                                 </div>
                                 <!-- End Alamat -->
+                                <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>
