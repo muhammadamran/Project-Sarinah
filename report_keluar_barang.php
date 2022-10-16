@@ -283,7 +283,7 @@ $data = json_decode($content, true);
                                         <?= $row['POS_TARIF']; ?>
                                         <?php } ?>
                                     </td>
-                                    <td><?= $row['KODE_BARANG']; ?></td>
+                                    <!-- BARANG -->
                                     <td><?= $row['URAIAN']; ?></td>
                                     <td>
                                         <div style="display: flex;justify-content: space-between;align-items: center">
