@@ -189,7 +189,7 @@ if (isset($_POST["add_nppbkc"])) {
                                 <div class="modal fade" id="AddNPPBKC<?= $row['ID'] ?>">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form action="" method="POST">
+                                            <form action="" method="GET">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">[NPPBKC] Mitra - <?= $row['NAMA'] ?></h4>
                                                     <button type="button" class="close" data-dismiss="modal"
