@@ -246,10 +246,10 @@ div.table-responsive>div.dataTables_wrapper>div.row {
             $dataHeader = json_decode($contentHeader, true);
             foreach ($dataHeader['result'] as $row) {
                 $inv = $row['ID'];
-            }
 
-            var_dump($inv);
-            exit;
+                var_dump($inv);
+                exit;
+            }
 
             // $getdet = mysqli_query($dbcon, "SELECT * FROM tpb_header WHERE NOMOR_AJU = '$_GET[AJU]' ");
             // $inv = mysqli_fetch_array($getdet);
