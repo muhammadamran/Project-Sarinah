@@ -5,10 +5,8 @@ $dataHeadSettting = $dbcon->query("SELECT * FROM tbl_setting");
 $resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
 
 if (isset($_POST["find_"])) {
-    $StartTanggal   = $_POST['StartTanggal'];
     $rStartTanggal  = str_replace("-", "", $_POST['StartTanggal']);
 
-    $EndTanggal     = $_POST['EndTanggal'];
     $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
 }
 
