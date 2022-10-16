@@ -483,14 +483,16 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 <?php $bottleqty = $row['UKURAN'] * $row['JUMLAH_SATUAN']; ?>
                                 <td><?= $bottleqty; ?></td>
 
-                                $getlitre = mysqli_query($dbcon, "SELECT JUMLAH_SATUAN FROM tpb_barang_tarif WHERE
-                                ID_BARANG = '$row[ID]' AND JENIS_TARIF = 'CUKAI' ");
-                                $lit = mysqli_fetch_array($getlitre);
-
-                                <td>" . $lit['JUMLAH_SATUAN'] . "</td>
+                                <?php
+                                        // BarangTarif
+                                        $contentBarangTarif = get_content($resultAPI['url_api'] . 'reportCK5SarinahPackingList.php?function=get_BarangTarif&ID_BARANG=' . $ID_HDR);
+                                        $dataBarangTarif = json_decode($contentBarangTarif, true);
+                                        foreach ($dataBarangTarif['result'] as $row) {
+                                        ?>
+                                <td><?= $row['JUMLAH_SATUAN']; ?></td>
+                                <?php } ?>
                             </tr>
                             <?php } ?>
-
                             /* calculate total QTY */
                             $result2 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalQty FROM tpb_barang WHERE
                             ID_HEADER = '$ID_HDR' ORDER BY ID ASC");
@@ -507,15 +509,15 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             $row5 = mysqli_fetch_array($result5);
 
 
-                            echo "<tr>";
-                                echo "<td>" . "-" . "</td>";
-                                echo "<td>" . "-" . "</td>";
-                                echo "<td>" . "-" . "</td>";
-                                echo "<td>" . "TOTAL" . "</td>";
-                                echo "<td>" . "<b>" . $rowx['TotalQty'] . "</b>" . "</td>";
-                                echo "<td>" . "<b>" . $row3['TotalBottle'] . "</b>" . "</td>";
-                                echo "<td>" . "<b>" . $row5['TotalLitre'] . "</b>" . "</td>";
-                                echo "</tr>";
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>TOTAL</td>
+                                <td><b><?= $rowx['TotalQty']; ?></b></td>
+                                <td><b><?= $row3['TotalBottle']; ?></b></td>
+                                <td><b><?= $row5['TotalLitre']; ?></b></td>
+                            </tr>
                             <?php } ?>
                         </tbody>
                     </table>
