@@ -122,11 +122,11 @@ $data = json_decode($content, true);
                                             class="btn btn-sm btn-warning" target="_blank" title="Tambah NPPBKC"><i
                                                 class="fas fa-plus-circle"></i>NPPBKC</a>
                                         <?php } else { ?>
-                                        <div>
+                                        <div style="display: flex;justify-content: space-evenly;align-content: center;">
                                             <div>
                                                 <?= $row['NPPBKC'] ?>
                                             </div>
-                                            <div>
+                                            <div style="margin: -2px;">
                                                 <a href="refPerusahaanNPPBKC.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>"
                                                     class="label label-sm label-warning" target="_blank"
                                                     title="Tambah NPPBKC"><i class="fas fa-edit"></i></a>
