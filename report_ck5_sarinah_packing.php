@@ -203,14 +203,10 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                     <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
                         <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
                     </a>
-                    <a href="report_ck5_sarinah_invoice_print.php?AJU=<?php echo $_GET['AJU']; ?>"
+                    <a href="report_ck5_sarinah_invoice_print.php?AJU=<?= $_GET['AJU']; ?>"
                         class="btn btn-sm btn-white m-b-10">
                         <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print
                     </a>
-
-                    <!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10"><i class="fa fa-file-excel t-plus-1 text-success fa-fw fa-lg"></i> Export as xls</a> -->
-                    <!-- <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a> -->
-                    <!-- <a href="report_ck5_plb_detail_print.php" class="btn btn-sm btn-white m-b-10"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a> -->
                 </span>
             </div>
             <div class="line-page-table"></div>
@@ -235,35 +231,36 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                 </div>
             </div>
             <br>
-            <!-- get invoice information / start -->
-
             <?php
-
             // API - 
             include "include/api.php";
             // Header
             $contentHeader = get_content($resultAPI['url_api'] . 'reportCK5SarinahPackingList.php?function=get_Header&AJU=' . $_GET['AJU']);
             $dataHeader = json_decode($contentHeader, true);
             foreach ($dataHeader['result'] as $row) {
-                $inv = $row['ID'];
+                $ID_HDR = $row['ID'];
+                $NAMA_PENERIMA_BARANG = $row['NAMA_PENERIMA_BARANG'];
+                $NOMOR_IJIN_TPB_PENERIMA = $row['NOMOR_IJIN_TPB_PENERIMA'];
+                $ID_PENERIMA_BARANG = $row['ID_PENERIMA_BARANG'];
+                $ALAMAT_PENERIMA_BARANG = $row['ALAMAT_PENERIMA_BARANG'];
+                $KODE_NEGARA_PEMASOK = $row['KODE_NEGARA_PEMASOK'];
+                $NOMOR_AJU = $row['NOMOR_AJU'];
+                $TANGGAL_AJU = $row['TANGGAL_AJU'];
             }
-
-
-
-            var_dump($inv);
-            exit;
-
-            // $getdet = mysqli_query($dbcon, "SELECT * FROM tpb_header WHERE NOMOR_AJU = '$_GET[AJU]' ");
-            // $inv = mysqli_fetch_array($getdet);
-
-            /* kontainer info */
-            $getdet2 = mysqli_query($dbcon, "SELECT * FROM tpb_kontainer WHERE ID_HEADER = '$inv[ID]' ");
-            $kon = mysqli_fetch_array($getdet2);
-
-            /* dokumen info */
-            $getdet3 = mysqli_query($dbcon, "SELECT * FROM tpb_dokumen WHERE ID_HEADER = '$inv[ID]' ");
-            $dok = mysqli_fetch_array($getdet3);
-
+            // Kontainer
+            $contentKontainer = get_content($resultAPI['url_api'] . 'reportCK5SarinahPackingList.php?function=get_Kontainer&ID_HEADER=' . $ID_HDR);
+            $dataKontainer = json_decode($contentKontainer, true);
+            foreach ($dataKontainer['result'] as $row) {
+                $ID_KON = $row['ID'];
+                $NOMOR_KONTAINER = $row['NOMOR_KONTAINER'];
+            }
+            // Dokumen
+            $contentDokumen = get_content($resultAPI['url_api'] . 'reportCK5SarinahPackingList.php?function=get_Dokumen&ID_HEADER=' . $ID_HDR);
+            $dataDokumen = json_decode($contentDokumen, true);
+            foreach ($dataDokumen['result'] as $row) {
+                $ID_DOK = $row['ID'];
+                $NOMOR_DOKUMEN = $row['NOMOR_DOKUMEN'];
+            }
             ?>
             <!-- get invoice information / end -->
             <div class="invoice-content">
@@ -306,7 +303,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td colspan=4 height="27" align="left" valign=bottom bgcolor="#FFFFFF">Duty Free Name</td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan="2" align="left" valign=middle bgcolor="#FFFFFF">
-                                <?php echo $inv['NAMA_PENERIMA_BARANG']; ?></td>
+                                <?= $NAMA_PENERIMA_BARANG; ?></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><b><br></b></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
@@ -315,7 +312,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" valign=bottom bgcolor="#FFFFFF">Number</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan="2" align="left" valign=middle bgcolor="#FFFFFF">
-                                <?php echo $inv['NOMOR_IJIN_TPB_PENERIMA']; ?></td>
+                                <?= $NOMOR_IJIN_TPB_PENERIMA; ?></td>
 
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
                             <td align="center" valign=middle bgcolor="#FFFFFF" sdval="3" sdnum="1033;"></td>
@@ -324,7 +321,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <tr>
                             <td colspan=4 height="27" align="left" valign=bottom bgcolor="#FFFFFF">NPWP</td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><b>:</b></td>
-                            <td align="left" valign=middle bgcolor="#FFFFFF"><?php echo $inv['ID_PENERIMA_BARANG']; ?>
+                            <td align="left" valign=middle bgcolor="#FFFFFF"><?= $ID_PENERIMA_BARANG; ?>
                             </td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
@@ -333,7 +330,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF">Ex Bill Of Lading</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
-                            <td align="left" valign=middle><?php echo $kon['NOMOR_KONTAINER']; ?></td>
+                            <td align="left" valign=middle><?= $NOMOR_KONTAINER; ?></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF"><br></td>
                             <td align="center" valign=middle bgcolor="#FFFFFF" sdval="25" sdnum="1033;"></td>
@@ -343,8 +340,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td colspan=4 height="27" align="left" valign=bottom bgcolor="#FFFFFF">Street Address</td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan="2" align="left" valign=middle bgcolor="#FFFFFF">
-                                <?php echo $inv['ALAMAT_PENERIMA_BARANG']; ?></td>
-
+                                <?= $ALAMAT_PENERIMA_BARANG; ?></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
@@ -352,7 +348,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" valign=bottom bgcolor="#FFFFFF">No. Dokumen</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan=3 align="left" valign=middle bgcolor="#FFFFFF">
-                                <?php echo $dok['NOMOR_DOKUMEN']; ?></td>
+                                <?= $NOMOR_DOKUMEN; ?></td>
                             <td align="center" valign=middle bgcolor="#FFFFFF" sdval="22" sdnum="1033;"></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"></td>
                         </tr>
@@ -370,7 +366,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF">Original</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><?php echo $inv['KODE_NEGARA_PEMASOK']; ?>
+                            <td align="left" valign=bottom bgcolor="#FFFFFF"><?= $KODE_NEGARA_PEMASOK; ?>
                             </td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
@@ -391,10 +387,10 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF">BC 2.7 Number</td>
                             <td align="right" valign=bottom bgcolor="#FFFFFF"><b>:</b></td>
-                            <td colspan=2 align="left" valign=bottom bgcolor="#FFFFFF"><?php echo $inv['NOMOR_AJU']; ?>
+                            <td colspan=2 align="left" valign=bottom bgcolor="#FFFFFF"><?= $NOMOR_AJU; ?>
                             </td>
                             <td align="left" valign=bottom bgcolor="#FFFFFF">
-                                <?php echo "(" . $inv['TANGGAL_AJU'] . ")"; ?></td>
+                                <?= "(" . $TANGGAL_AJU . ")"; ?></td>
                         </tr>
                         <tr>
                             <td height="17" align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
@@ -432,7 +428,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <tbody>
                             <?php
                             include 'include/connection.php';
-                            $result = mysqli_query($dbcon, "SELECT * FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $result = mysqli_query($dbcon, "SELECT * FROM tpb_barang WHERE ID_HEADER = '$ID_HDR' ORDER BY ID ASC");
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_array($result)) {
                                     echo "<tr>";
@@ -457,15 +453,15 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 }
 
                                 /* calculate total QTY */
-                                $result2 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalQty FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                                $result2 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalQty FROM tpb_barang WHERE ID_HEADER = '$ID_HDR' ORDER BY ID ASC");
                                 $rowx = mysqli_fetch_array($result2);
 
                                 /* calculate total BOTTLE */
-                                $result3 = mysqli_query($dbcon, "SELECT sum(UKURAN*JUMLAH_SATUAN) as TotalBottle FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                                $result3 = mysqli_query($dbcon, "SELECT sum(UKURAN*JUMLAH_SATUAN) as TotalBottle FROM tpb_barang WHERE ID_HEADER = '$ID_HDR' ORDER BY ID ASC");
                                 $row3 = mysqli_fetch_array($result3);
 
                                 /* calculate total PRICE */
-                                $result5 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalLitre FROM tpb_barang_tarif WHERE ID_HEADER = '$inv[ID]' AND JENIS_TARIF = 'CUKAI'");
+                                $result5 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalLitre FROM tpb_barang_tarif WHERE ID_HEADER = '$ID_HDR' AND JENIS_TARIF = 'CUKAI'");
                                 $row5 = mysqli_fetch_array($result5);
 
 
