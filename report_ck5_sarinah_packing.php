@@ -239,13 +239,21 @@ div.table-responsive>div.dataTables_wrapper>div.row {
             $dataHeader = json_decode($contentHeader, true);
             foreach ($dataHeader['result'] as $row) {
                 $ID_HDR = $row['ID'];
+                $TGL_AJU = $row['TGL_AJU'];
+                $KODE_DOKUMEN_PABEAN = $row['KODE_$KODE_DOKUMEN_PABEAN'];
                 $NAMA_PENERIMA_BARANG = $row['NAMA_PENERIMA_BARANG'];
                 $NOMOR_IJIN_TPB_PENERIMA = $row['NOMOR_IJIN_TPB_PENERIMA'];
                 $ID_PENERIMA_BARANG = $row['ID_PENERIMA_BARANG'];
                 $ALAMAT_PENERIMA_BARANG = $row['ALAMAT_PENERIMA_BARANG'];
                 $KODE_NEGARA_PEMASOK = $row['KODE_NEGARA_PEMASOK'];
                 $NOMOR_AJU = $row['NOMOR_AJU'];
-                $TANGGAL_AJU = $row['TANGGAL_AJU'];
+
+                $dataTGLAJU = $row['TGL_AJU'];
+                $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
+                $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
+                $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
+
+                $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
             }
             // Kontainer
             $contentKontainer = get_content($resultAPI['url_api'] . 'reportCK5SarinahPackingList.php?function=get_Kontainer&ID_HEADER=' . $ID_HDR);
@@ -339,8 +347,9 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <tr>
                             <td colspan=4 height="27" align="left" bgcolor="#FFFFFF">Street Address</td>
                             <td align="left" bgcolor="#FFFFFF"><b>:</b></td>
-                            <td colspan="2" align="left" valign=middle bgcolor="#FFFFFF">
+                            <td colspan="1" align="left" valign=middle bgcolor="#FFFFFF">
                                 <?= $ALAMAT_PENERIMA_BARANG; ?></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
@@ -385,12 +394,12 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
-                            <td align="left" bgcolor="#FFFFFF">BC 2.7 Number</td>
+                            <td align="left" bgcolor="#FFFFFF">BC <?= $KODE_DOKUMEN_PABEAN; ?> Number</td>
                             <td align="right" bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan=2 align="left" bgcolor="#FFFFFF"><?= $NOMOR_AJU; ?>
                             </td>
                             <td align="left" bgcolor="#FFFFFF">
-                                <?= "(" . $TANGGAL_AJU . ")"; ?></td>
+                                <?= "(" . $datTGLAJU . ")"; ?></td>
                         </tr>
                         <tr>
                             <td height="17" align="left" bgcolor="#FFFFFF"><br></td>
@@ -416,56 +425,72 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                     <table id="example" class="table table-striped table-bordered first" style="width:100%">
                         <thead>
                             <tr>
-                                <th>RcdID</th>
-                                <th>Description</th>
-                                <th>SKU</th>
-                                <th>Details</th>
-                                <th>Quantity</th>
-                                <th>Bottle</th>
-                                <th>Litre(s)</th>
+                                <th>#</th>
+                                <th style="text-align:center">Description</th>
+                                <th style="text-align:center">SKU</th>
+                                <th style="text-align:center">Details</th>
+                                <th style="text-align:center">Quantity</th>
+                                <th style="text-align:center">Bottle</th>
+                                <th style="text-align:center">Litre(s)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            include 'include/connection.php';
-                            $result = mysqli_query($dbcon, "SELECT * FROM tpb_barang WHERE ID_HEADER = '$ID_HDR' ORDER BY ID ASC");
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_array($result)) {
-                                    echo "<tr>";
-                                    echo "<td>" . $row['ID'] . "</td>";
-                                    echo "<td>" . $row['URAIAN'] . "</td>";
-                                    echo "<td>" . $row['KODE_BARANG'] . "</td>";
-                                    echo "<td>" . $row['UKURAN'] . "</td>";
-                                    echo "<td>" . $row['JUMLAH_SATUAN'] . "</td>";
+                            // Barang
+                            $contentBarang = get_content($resultAPI['url_api'] . 'reportCK5SarinahPackingList.php?function=get_Barang&ID_HEADER=' . $ID_HDR);
+                            $dataBarang = json_decode($contentBarang, true);
+                            ?>
+                            <?php if ($dataBarang['status'] == 404) { ?>
+                            <tr>
+                                <td colspan="12">
+                                    <center>
+                                        <div style="display: flex;justify-content: center; align-items: center">
+                                            <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
+                                        </div>
+                                    </center>
+                                </td>
+                            </tr>
+                            <?php } else { ?>
+                            <?php $no = 0; ?>
+                            <?php foreach ($dataBarang['result'] as $row) { ?>
+                            <?php $no++ ?>
+                            echo "<tr>";
+                                echo "<td>" . $row['ID'] . "</td>";
+                                echo "<td>" . $row['URAIAN'] . "</td>";
+                                echo "<td>" . $row['KODE_BARANG'] . "</td>";
+                                echo "<td>" . $row['UKURAN'] . "</td>";
+                                echo "<td>" . $row['JUMLAH_SATUAN'] . "</td>";
+                                $bottleqty = $row['UKURAN'] * $row['JUMLAH_SATUAN'];
+                                echo "<td>" . $bottleqty . "</td>";
+                                /* GET LITRE DATA FROM tb_barang_tarif - start */
+                                $getlitre = mysqli_query($dbcon, "SELECT JUMLAH_SATUAN FROM tpb_barang_tarif WHERE
+                                ID_BARANG = '$row[ID]' AND JENIS_TARIF = 'CUKAI' ");
+                                $lit = mysqli_fetch_array($getlitre);
 
-                                    $bottleqty = $row['UKURAN'] * $row['JUMLAH_SATUAN'];
-                                    echo "<td>" . $bottleqty . "</td>";
+                                echo "<td>" . $lit['JUMLAH_SATUAN'] . "</td>";
 
-                                    /* GET LITRE DATA FROM tb_barang_tarif - start */
-                                    $getlitre = mysqli_query($dbcon, "SELECT JUMLAH_SATUAN FROM tpb_barang_tarif WHERE ID_BARANG = '$row[ID]' AND JENIS_TARIF = 'CUKAI' ");
-                                    $lit = mysqli_fetch_array($getlitre);
+                                /* GET LITRE DATA FROM tb_barang_tarif - end */
 
-                                    echo "<td>" . $lit['JUMLAH_SATUAN'] . "</td>";
+                                echo "</tr>";
+                            }
 
-                                    /* GET LITRE DATA FROM tb_barang_tarif - end */
+                            /* calculate total QTY */
+                            $result2 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalQty FROM tpb_barang WHERE
+                            ID_HEADER = '$ID_HDR' ORDER BY ID ASC");
+                            $rowx = mysqli_fetch_array($result2);
 
-                                    echo "</tr>";
-                                }
+                            /* calculate total BOTTLE */
+                            $result3 = mysqli_query($dbcon, "SELECT sum(UKURAN*JUMLAH_SATUAN) as TotalBottle FROM
+                            tpb_barang WHERE ID_HEADER = '$ID_HDR' ORDER BY ID ASC");
+                            $row3 = mysqli_fetch_array($result3);
 
-                                /* calculate total QTY */
-                                $result2 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalQty FROM tpb_barang WHERE ID_HEADER = '$ID_HDR' ORDER BY ID ASC");
-                                $rowx = mysqli_fetch_array($result2);
-
-                                /* calculate total BOTTLE */
-                                $result3 = mysqli_query($dbcon, "SELECT sum(UKURAN*JUMLAH_SATUAN) as TotalBottle FROM tpb_barang WHERE ID_HEADER = '$ID_HDR' ORDER BY ID ASC");
-                                $row3 = mysqli_fetch_array($result3);
-
-                                /* calculate total PRICE */
-                                $result5 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalLitre FROM tpb_barang_tarif WHERE ID_HEADER = '$ID_HDR' AND JENIS_TARIF = 'CUKAI'");
-                                $row5 = mysqli_fetch_array($result5);
+                            /* calculate total PRICE */
+                            $result5 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalLitre FROM
+                            tpb_barang_tarif WHERE ID_HEADER = '$ID_HDR' AND JENIS_TARIF = 'CUKAI'");
+                            $row5 = mysqli_fetch_array($result5);
 
 
-                                echo "<tr>";
+                            echo "<tr>";
                                 echo "<td>" . "-" . "</td>";
                                 echo "<td>" . "-" . "</td>";
                                 echo "<td>" . "-" . "</td>";
@@ -474,9 +499,8 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 echo "<td>" . "<b>" . $row3['TotalBottle'] . "</b>" . "</td>";
                                 echo "<td>" . "<b>" . $row5['TotalLitre'] . "</b>" . "</td>";
                                 echo "</tr>";
-                            }
-                            mysqli_close($con);
-                            ?>
+                            <?php } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
