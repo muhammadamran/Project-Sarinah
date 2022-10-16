@@ -13,17 +13,19 @@ $EndTanggal = '';
 
 if (isset($_POST['filter_date'])) {
     if ($_POST["StartTanggal"] != '') {
-        $StartTanggal = $_POST['StartTanggal'];
+        $StartTanggal   = $_POST['StartTanggal'];
+        $rStartTanggal  = str_replace("-", "", $_POST['StartTanggal']);
     }
 
     if ($_POST["EndTanggal"] != '') {
-        $EndTanggal = $_POST['EndTanggal'];
+        $EndTanggal     = $_POST['EndTanggal'];
+        $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
     }
 }
 
 // API - 
 include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal);
+$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $rStartTanggal . '&EndTanggal=' . $rEndTanggal);
 $data = json_decode($content, true);
 ?>
 
@@ -230,7 +232,7 @@ $data = json_decode($content, true);
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
-                                    <td>BC2.7</td>
+                                    <td><?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
                                     <td><?= $row['PLB_NOMOR_BC11']; ?></td>
                                     <td><?= $row['PLB_TANGGAL_BC11']; ?></td>
                                     <td><?= $row['NOMOR_BC11']; ?></td>
