@@ -92,8 +92,8 @@ $data = json_decode($content, true);
                                     </td>
                                     <td style="text-align: center;">
                                         <a href="report_ck5_sarinah_packing.php?AJU=<?= $row['NOMOR_AJU']; ?>"
-                                            target="_blank" class="btn btn-primary">
-                                            <i class="fas fa-eye"></i><br>
+                                            target="_blank" class="btn btn-success">
+                                            <i class="fa-solid fa-boxes-stacked"></i><br>
                                             <font
                                                 style="font-size: 8px;display: flex;width: 55px;justify-content: center;">
                                                 Packing List
@@ -102,9 +102,8 @@ $data = json_decode($content, true);
                                     </td>
                                     <td style="text-align: center;">
                                         <a href="report_ck5_sarinah_invoice.php?AJU=<?= $row['NOMOR_AJU']; ?>"
-                                            target="_blank" class="btn btn-primary">
-                                            <i class="fas fa-eye"></i><br>
-                                            <i class="fas fa-eye"></i><br>
+                                            target="_blank" class="btn btn-default">
+                                            <i class="fa-solid fa-file-invoice"></i><br>
                                             <font
                                                 style="font-size: 8px;display: flex;width: 55px;justify-content: center;">
                                                 Invoice
