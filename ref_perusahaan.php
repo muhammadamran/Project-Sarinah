@@ -119,11 +119,14 @@ $data = json_decode($content, true);
                                             data-toggle="modal" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i>
                                             NPPBKC</a> -->
                                         <a href="refPerusahaanNPPBKC.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>"
+                                            class="label label-sm label-warning" target="_blank"
+                                            title="Tambah NPPBKC"><i class="fas fa-edit"></i></a>
+                                        <?php } else { ?>
+                                        <?= $row['NPPBKC'] ?>
+                                        <a href="refPerusahaanNPPBKC.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>"
                                             class="btn btn-sm btn-warning" target="_blank" title="Tambah NPPBKC"><i
                                                 class="fas fa-plus-circle"></i>
                                             NPPBKC</a>
-                                        <?php } else { ?>
-                                        <?= $row['NPPBKC'] ?>
                                         <?php } ?>
                                         <?php } else { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak ada akses!</i>
