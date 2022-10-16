@@ -43,12 +43,15 @@ $data = json_decode($content, true);
                 <div class="panel-body text-inverse">
                     <form action="" method="POST">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-xl-6">
                                 <div class="form-group">
-                                    <label for="LIMIT">Limit</label>
-                                    <input type="number" name="LimitRow" value="<?= $_GET['LimitRow']; ?>"
-                                        placeholder="Limit Baris">
+                                    <label>Limit Baris</label>
+                                    <input type="number" class="form-control" name="LimitRow"
+                                        value="<?= $_GET['LimitRow']; ?>" placeholder="Limit Baris" required>
                                 </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <button type="submit" class="btn btn-sm btn-primary" name="SetLimit">Set</button>
                             </div>
                         </div>
                     </form>
