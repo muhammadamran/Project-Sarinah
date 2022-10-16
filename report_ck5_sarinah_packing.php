@@ -482,13 +482,14 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 <td><?= $row['JUMLAH_SATUAN']; ?></td>
                                 <?php $bottleqty = $row['UKURAN'] * $row['JUMLAH_SATUAN']; ?>
                                 <td><?= $bottleqty; ?></td>
+                                <td><?= $bottleqty; ?></td>
 
-                                <?php
-                                        // BarangTarif
-                                        $contentBarangTarif = get_content($resultAPI['url_api'] . 'reportCK5SarinahPackingList.php?function=get_BarangTarif&ID_BARANG=' . $ID_HDR);
-                                        $dataBarangTarif = json_decode($contentBarangTarif, true);
-                                        foreach ($dataBarangTarif['result'] as $row) {
-                                        ?>
+                                <!-- <?php
+                                                // BarangTarif
+                                                $contentBarangTarif = get_content($resultAPI['url_api'] . 'reportCK5SarinahPackingList.php?function=get_BarangTarif&ID_BARANG=' . $ID_HDR);
+                                                $dataBarangTarif = json_decode($contentBarangTarif, true);
+                                                foreach ($dataBarangTarif['result'] as $row) {
+                                                ?>
                                 <td><?= $row['JUMLAH_SATUAN']; ?></td>
                                 <?php } ?>
                             </tr>
@@ -506,7 +507,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             /* calculate total PRICE */
                             $result5 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalLitre FROM
                             tpb_barang_tarif WHERE ID_HEADER = '$ID_HDR' AND JENIS_TARIF = 'CUKAI'");
-                            $row5 = mysqli_fetch_array($result5);
+                            $row5 = mysqli_fetch_array($result5); -->
 
 
                             <tr>
