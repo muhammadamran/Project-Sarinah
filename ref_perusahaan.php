@@ -118,7 +118,7 @@ $data = json_decode($content, true);
                                         <!-- <a href="#AddNPPBKC<?= $row['ID'] ?>" class="btn btn-sm btn-warning"
                                             data-toggle="modal" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i>
                                             NPPBKC</a> -->
-                                        <a href="ref_perusahaan_nppbkc.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>"
+                                        <a href="refPerusahaanNPPBKC.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>"
                                             class="btn btn-sm btn-warning" target="_blank" title="Tambah NPPBKC"><i
                                                 class="fas fa-plus-circle"></i>
                                             NPPBKC</a>
