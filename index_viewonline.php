@@ -248,13 +248,13 @@ $dataBC_41 = json_decode($contentBC_41, true);
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">AJU Terakhir: - | BC -</div>
+                                    <div class="stats-desc">AJU Terakhir: - <br> BC: -</div>
                                     <?php } else { ?>
                                     <div class="stats-number"><?= $resultdataBCPLB['total_bc']; ?> AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">AJU Terakhir: <?= $resultdataBCPLB['NOMOR_AJU']; ?> | BC
+                                    <div class="stats-desc">AJU Terakhir: <?= $resultdataBCPLB['NOMOR_AJU']; ?> <br> BC:
                                         <?= $resultdataBCPLB['KODE_DOKUMEN_PABEAN']; ?></div>
                                     <?php } ?>
                                 </div>
@@ -272,14 +272,14 @@ $dataBC_41 = json_decode($contentBC_41, true);
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">AJU Terakhir: - | BC -</div>
+                                    <div class="stats-desc">AJU Terakhir: - <br> BC: -</div>
                                     <?php } else { ?>
                                     <?php foreach ($dataBC['result'] as $row) { ?>
                                     <div class="stats-number"><?= $row['total_bc']; ?> AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?> | BC
+                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?> <br> BC:
                                         <?= $row['KODE_DOKUMEN_PABEAN']; ?></div>
                                     <?php } ?>
                                     <?php } ?>
