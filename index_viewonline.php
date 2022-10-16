@@ -58,7 +58,7 @@ include "include/cssDatatables.php";
                     <div class="row">
                         <!-- BC 2.3 -->
                         <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-teal">
+                            <div class="widget widget-stats bg-bc">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.3</div>
@@ -73,7 +73,7 @@ include "include/cssDatatables.php";
                         <!-- End BC 2.3 -->
                         <!-- BC 2.5 -->
                         <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-blue">
+                            <div class="widget widget-stats bg-bc">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.5</div>
@@ -88,7 +88,7 @@ include "include/cssDatatables.php";
                         <!-- End BC 2.5 -->
                         <!-- BC 2.6.1 -->
                         <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-indigo">
+                            <div class="widget widget-stats bg-bc">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.6.1</div>
@@ -103,7 +103,7 @@ include "include/cssDatatables.php";
                         <!-- End BC 2.6.1 -->
                         <!-- BC 2.7 -->
                         <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-teal">
+                            <div class="widget widget-stats bg-bc">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.7</div>
@@ -118,7 +118,7 @@ include "include/cssDatatables.php";
                         <!-- End BC 2.7 -->
                         <!-- BC 4.0 -->
                         <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-blue">
+                            <div class="widget widget-stats bg-bc">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.5</div>
@@ -133,7 +133,7 @@ include "include/cssDatatables.php";
                         <!-- End BC 4.0 -->
                         <!-- BC 4.1 -->
                         <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-indigo">
+                            <div class="widget widget-stats bg-bc">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.6.1</div>
@@ -148,7 +148,7 @@ include "include/cssDatatables.php";
                         <!-- End BC 4.1 -->
                         <!-- PLB -->
                         <div class="col-xl-6 col-md-6">
-                            <div class="widget widget-stats bg-gray-900">
+                            <div class="widget widget-stats bg-plb">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data PLB</div>
@@ -163,7 +163,7 @@ include "include/cssDatatables.php";
                         <!-- End PLB -->
                         <!-- TPB -->
                         <div class="col-xl-6 col-md-6">
-                            <div class="widget widget-stats bg-gray-900">
+                            <div class="widget widget-stats bg-tpb">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data TPB Module</div>
@@ -181,6 +181,7 @@ include "include/cssDatatables.php";
             </div>
         </div>
     </div>
+    <br>
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->

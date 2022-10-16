@@ -275,3 +275,15 @@
     padding: 10px;
     /*margin-left: -10px;*/
 }
+
+.bg-bc {
+    background: linear-gradient(226deg, #0ba5b0, #825cdb);
+}
+
+.bg-plb {
+    background: linear-gradient(226deg, #0ba5b0, #825cdb);
+}
+
+.bg-tpb {
+    background: linear-gradient(226deg, #0ba5b0, #825cdb);
+}
