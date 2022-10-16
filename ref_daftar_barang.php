@@ -58,7 +58,6 @@ if (isset($_GET['findOne']) != '') {
     $selectTwo = '';
     $selectThree = '';
 }
-
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -80,7 +79,6 @@ if (isset($_GET['findOne']) != '') {
         </div>
     </div>
     <div class="line-page"></div>
-
     <!-- begin row -->
     <div class="row">
         <div class="col-xl-12">
