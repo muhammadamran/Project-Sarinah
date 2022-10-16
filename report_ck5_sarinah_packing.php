@@ -244,14 +244,14 @@ div.table-responsive>div.dataTables_wrapper>div.row {
             // Header
             $contentHeader = get_content($resultAPI['url_api'] . 'reportCK5SarinahPackingList.php?function=get_Header&AJU=' . $_GET['AJU']);
             $dataHeader = json_decode($contentHeader, true);
-            var_dump($dataHeader);
-            exit;
             foreach ($dataHeader['result'] as $row) {
                 $inv = $row['ID'];
-
-                var_dump($inv);
-                exit;
             }
+
+
+
+            var_dump($inv);
+            exit;
 
             // $getdet = mysqli_query($dbcon, "SELECT * FROM tpb_header WHERE NOMOR_AJU = '$_GET[AJU]' ");
             // $inv = mysqli_fetch_array($getdet);
