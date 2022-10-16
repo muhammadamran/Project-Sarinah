@@ -76,8 +76,16 @@ $dataLogUpload = json_decode($contentLogUpload, true);
     <div class="line-page"></div>
     <!-- begin row -->
     <style>
-    #id-fr {
+    .panel {
+        margin-bottom: 12px;
         background: #fff;
+        border: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    #id-fr {
+        background: linear-gradient(45deg, #00acac, #8753de);
         border-radius: 5px;
         /* margin-right: -10px; */
         margin-bottom: 10px;
