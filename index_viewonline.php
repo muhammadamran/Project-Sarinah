@@ -46,7 +46,7 @@ include "include/cssDatatables.php";
     <div class="row">
         <div class="col-md-12">
             <div class="row"
-                style="display: flex;justify-content: center;align-items: center;background: #fff;border-radius: 5px;margin-left: 0px;margin-right: 0px;">
+                style="display: flex;justify-content: center;align-items: center;background: #fff;border-radius: 5px;margin-left: 0px;margin-right: 0px;padding: 15px 0px 0px 0px;">
                 <div class="col-md-3">
                     <div class="row-dinding">
                         <div class="svg-img-center">
@@ -56,12 +56,12 @@ include "include/cssDatatables.php";
                 </div>
                 <div class="col-md-9">
                     <div class="row">
-
-                        <div class="col-xl-3 col-md-6">
+                        <!-- BC 2.3 -->
+                        <div class="col-xl-4 col-md-6">
                             <div class="widget widget-stats bg-teal">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
                                 <div class="stats-content">
-                                    <div class="stats-title">TODAY'S VISITS</div>
+                                    <div class="stats-title">Total Data BC 2.3</div>
                                     <div class="stats-number">7,842,900</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 70.1%;"></div>
@@ -70,13 +70,13 @@ include "include/cssDatatables.php";
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="col-xl-3 col-md-6">
+                        <!-- End BC 2.3 -->
+                        <!-- BC 2.5 -->
+                        <div class="col-xl-4 col-md-6">
                             <div class="widget widget-stats bg-blue">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
                                 <div class="stats-content">
-                                    <div class="stats-title">TODAY'S PROFIT</div>
+                                    <div class="stats-title">Total Data BC 2.5</div>
                                     <div class="stats-number">180,200</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 40.5%;"></div>
@@ -85,13 +85,13 @@ include "include/cssDatatables.php";
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="col-xl-3 col-md-6">
+                        <!-- End BC 2.5 -->
+                        <!-- BC 2.6.1 -->
+                        <div class="col-xl-4 col-md-6">
                             <div class="widget widget-stats bg-indigo">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
                                 <div class="stats-content">
-                                    <div class="stats-title">NEW ORDERS</div>
+                                    <div class="stats-title">Total Data BC 2.6.1</div>
                                     <div class="stats-number">38,900</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 76.3%;"></div>
@@ -100,28 +100,58 @@ include "include/cssDatatables.php";
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="col-xl-3 col-md-6">
-                            <div class="widget widget-stats bg-gray-900">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
+                        <!-- End BC 2.6.1 -->
+                        <!-- BC 2.7 -->
+                        <div class="col-xl-4 col-md-6">
+                            <div class="widget widget-stats bg-teal">
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
                                 <div class="stats-content">
-                                    <div class="stats-title">NEW COMMENTS</div>
-                                    <div class="stats-number">3,988</div>
+                                    <div class="stats-title">Total Data BC 2.7</div>
+                                    <div class="stats-number">7,842,900</div>
                                     <div class="stats-progress progress">
-                                        <div class="progress-bar" style="width: 54.9%;"></div>
+                                        <div class="progress-bar" style="width: 70.1%;"></div>
                                     </div>
-                                    <div class="stats-desc">Better than last week (54.9%)</div>
+                                    <div class="stats-desc">Better than last week (70.1%)</div>
                                 </div>
                             </div>
                         </div>
-
+                        <!-- End BC 2.7 -->
+                        <!-- BC 4.0 -->
+                        <div class="col-xl-4 col-md-6">
+                            <div class="widget widget-stats bg-blue">
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
+                                <div class="stats-content">
+                                    <div class="stats-title">Total Data BC 2.5</div>
+                                    <div class="stats-number">180,200</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 40.5%;"></div>
+                                    </div>
+                                    <div class="stats-desc">Better than last week (40.5%)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End BC 4.0 -->
+                        <!-- BC 4.1 -->
+                        <div class="col-xl-4 col-md-6">
+                            <div class="widget widget-stats bg-indigo">
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
+                                <div class="stats-content">
+                                    <div class="stats-title">Total Data BC 2.6.1</div>
+                                    <div class="stats-number">38,900</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 76.3%;"></div>
+                                    </div>
+                                    <div class="stats-desc">Better than last week (76.3%)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End BC 4.1 -->
                         <!-- PLB -->
                         <div class="col-xl-6 col-md-6">
                             <div class="widget widget-stats bg-gray-900">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
                                 <div class="stats-content">
-                                    <div class="stats-title">NEW COMMENTS</div>
+                                    <div class="stats-title">Total Data PLB</div>
                                     <div class="stats-number">3,988</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 54.9%;"></div>
@@ -130,12 +160,13 @@ include "include/cssDatatables.php";
                                 </div>
                             </div>
                         </div>
+                        <!-- End PLB -->
                         <!-- TPB -->
                         <div class="col-xl-6 col-md-6">
                             <div class="widget widget-stats bg-gray-900">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
                                 <div class="stats-content">
-                                    <div class="stats-title">NEW COMMENTS</div>
+                                    <div class="stats-title">Total Data TPB Module</div>
                                     <div class="stats-number">3,988</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 54.9%;"></div>
@@ -144,7 +175,7 @@ include "include/cssDatatables.php";
                                 </div>
                             </div>
                         </div>
-
+                        <!-- End TPB -->
                     </div>
                 </div>
             </div>
