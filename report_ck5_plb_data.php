@@ -74,6 +74,53 @@ $dataLogUpload = json_decode($contentLogUpload, true);
         </div>
     </div>
     <div class="line-page"></div>
+    <!-- begin row -->
+    <style>
+    #id-fr {
+        background: #fff;
+        border-radius: 5px;
+        /* margin-right: -10px; */
+        margin-bottom: 10px;
+        padding: 15px;
+        font-size: 60px;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        color: #1d2226;
+    }
+
+    #id-fl {
+        background: #fff;
+        border-radius: 5px;
+        /* margin-left: -10px; */
+        margin-bottom: 10px;
+        padding: 15px;
+        font-size: 60px;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        color: #1d2226;
+    }
+    </style>
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
+                <a href="https://itinventory-sarinah.com/report_ck5_plb_data.php" id="id-fr">
+                    <i class="fa-solid fa-table"></i>
+                    <font style="font-size: 9px; margin-top: 9px">Data CK5 PLB</font>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
+                <a href="http://plb.itinventory-sarinah.com:8091/report_ck5_plb.php" id="id-fl">
+                    <i class="fa-solid fa-upload"></i>
+                    <font style="font-size: 8px; margin-top: 10px">Upload CK5 PLB</font>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
 
     <div class="row">
         <div class="col-xl-12">
@@ -84,8 +131,6 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <div style="display: flex;justify-content: end;margin-bottom: 10px;position: static;">
-                        <a href="#baca-panduan-ck5plb" class="btn btn-inverse" data-toggle="modal"><i
-                                class="fas fa-book"></i> Baca Panduan</a>
                         <a href="#baca-panduan-ck5plb" class="btn btn-inverse" data-toggle="modal"><i
                                 class="fas fa-book"></i> Baca Panduan</a>
                     </div>
