@@ -86,6 +86,8 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                     <div style="display: flex;justify-content: end;margin-bottom: 10px;position: static;">
                         <a href="#baca-panduan-ck5plb" class="btn btn-inverse" data-toggle="modal"><i
                                 class="fas fa-book"></i> Baca Panduan</a>
+                        <a href="#baca-panduan-ck5plb" class="btn btn-inverse" data-toggle="modal"><i
+                                class="fas fa-book"></i> Baca Panduan</a>
                     </div>
                     <?php include "panduan/panduan_ck5_plb.php"; ?>
                     <div class="line-page-table"></div>
