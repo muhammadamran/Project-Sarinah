@@ -24,7 +24,8 @@ include "include/cssDatatables.php";
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -48,7 +49,7 @@ include "include/cssDatatables.php";
                                     <th style="text-align:center">NO. AJU</th>
                                     <th style="text-align:center">BC.11</th>
                                     <th style="text-align:center">ID_PENERIMA</th>
-                                    <th style="text-align:center">NAMA_PENERIMA</th>                                    
+                                    <th style="text-align:center">NAMA_PENERIMA</th>
                                     <th style="text-align:center">PEMASOK</th>
                                     <th style="text-align:center">PEMILIK</th>
                                     <th style="text-align:center">PENGANGKUT</th>

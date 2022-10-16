@@ -32,7 +32,8 @@ if (isset($_GET['find'])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -153,9 +154,9 @@ if (isset($_GET['find'])) {
                                     <?php
                                     // For Limit
                                     if ($FindLimit == NULL) {
-                                    $forLimit = '';
+                                        $forLimit = '';
                                     } else {
-                                    $forLimit = 'LIMIT ' .$FindLimit;
+                                        $forLimit = 'LIMIT ' . $FindLimit;
                                     }
 
                                     $TableName = $_GET['TableName'];
@@ -171,10 +172,12 @@ if (isset($_GET['find'])) {
                                                 <?php
                                                 $columns = $dbcon->query("SELECT COLUMN_NAME FROM information_schema.columns WHERE TABLE_NAME='$TableName'");
                                                 foreach ($columns as $columns_name) {
-                                                ?>  
+                                                ?>
                                                     <?php if ($row_data[$columns_name['COLUMN_NAME']] == NULL || $row_data[$columns_name['COLUMN_NAME']] == '') { ?>
-                                                        <td class="text-nowrap" style="text-align: left;"><font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font></td>
-                                                    <?php } else { ?> 
+                                                        <td class="text-nowrap" style="text-align: left;">
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                        </td>
+                                                    <?php } else { ?>
                                                         <td class="text-nowrap"><?= $row_data[$columns_name['COLUMN_NAME']] ?></td>
                                                     <?php } ?>
                                                 <?php } ?>

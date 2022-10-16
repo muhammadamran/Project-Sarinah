@@ -242,7 +242,7 @@ if (isset($_POST["add_hak_akses"])) {
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
         $InputModul           = 'Administrator Tools/Hak Akses';
-        $InputDescription     = $me . " Insert Data: " .  $NameRole .", Simpan Data Sebagai Log Hak Akses";
+        $InputDescription     = $me . " Insert Data: " .  $NameRole . ", Simpan Data Sebagai Log Hak Akses";
         $InputAction          = 'Insert';
         $InputDate            = date('Y-m-d h:m:i');
 
@@ -526,7 +526,7 @@ if (isset($_POST["NUpdateData"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/Hal Akses';
-    $InputDescription     = $me . " Update Data: " .  $UpdateRole .", Simpan Data Sebagai Log Hal Akses";
+    $InputDescription     = $me . " Update Data: " .  $UpdateRole . ", Simpan Data Sebagai Log Hal Akses";
     $InputAction          = 'Update';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -562,7 +562,7 @@ if (isset($_POST["NDeleteData"])) {
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
         $InputModul           = 'Administrator Tools/Hak Akses';
-        $InputDescription     = $me . " Hapus Data: " .  $NameRole .", Simpan Data Sebagai Log Hak Akses";
+        $InputDescription     = $me . " Hapus Data: " .  $NameRole . ", Simpan Data Sebagai Log Hak Akses";
         $InputAction          = 'Hapus';
         $InputDate            = date('Y-m-d h:m:i');
 
@@ -599,7 +599,8 @@ if (isset($_POST["NDeleteData"])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -639,7 +640,7 @@ if (isset($_POST["NDeleteData"])) {
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
                                         $no++;
-                                        ?>
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;"><?= $row['role'] ?></td>
@@ -675,7 +676,7 @@ if (isset($_POST["NDeleteData"])) {
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="IdDescription">Deskripsi </label>
-                                                                            <textarea type="text" class="form-control" name="UpdateNameDescription" id="IdUpdateDescription" placeholder="Deskripsi ..." ><?= $row['description'] ?></textarea>
+                                                                            <textarea type="text" class="form-control" name="UpdateNameDescription" id="IdUpdateDescription" placeholder="Deskripsi ..."><?= $row['description'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <!-- Dashboard - Summary -->
@@ -1144,333 +1145,333 @@ if (isset($_POST["NDeleteData"])) {
     }
 
     function seDash() {
-        var refalla=document.getElementsByName('NameDashUsers');
-        var refallb=document.getElementsByName('NameDashReferensi');
+        var refalla = document.getElementsByName('NameDashUsers');
+        var refallb = document.getElementsByName('NameDashReferensi');
 
-        for (var i=0; i<refalla.length && refallb.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox')
-                refalla[i].checked=true;
-                refallb[i].checked=true;
-                
+        for (var i = 0; i < refalla.length && refallb.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox')
+                refalla[i].checked = true;
+            refallb[i].checked = true;
+
         }
     }
 
     function deDash() {
-        var refalla=document.getElementsByName('NameDashUsers');
-        var refallb=document.getElementsByName('NameDashReferensi');
+        var refalla = document.getElementsByName('NameDashUsers');
+        var refallb = document.getElementsByName('NameDashReferensi');
 
-        for (var i=0; i<refalla.length && refallb.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox')
-                refalla[i].checked=false;
-                refallb[i].checked=false;
-                
+        for (var i = 0; i < refalla.length && refallb.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox')
+                refalla[i].checked = false;
+            refallb[i].checked = false;
+
         }
     }
 
     function seBC() {
-        var refalla=document.getElementsByName('NameBC23MasterData');
+        var refalla = document.getElementsByName('NameBC23MasterData');
 
-        for (var i=0; i<refalla.length; i++) {
-            if (refalla[i].type=='checkbox')
-                refalla[i].checked=true;
-                
+        for (var i = 0; i < refalla.length; i++) {
+            if (refalla[i].type == 'checkbox')
+                refalla[i].checked = true;
+
         }
     }
 
     function deBC() {
-        var refalla=document.getElementsByName('NameBC23MasterData');
+        var refalla = document.getElementsByName('NameBC23MasterData');
 
-        for (var i=0; i<refalla.length; i++) {
-            if (refalla[i].type=='checkbox')
-                refalla[i].checked=false;
-                
+        for (var i = 0; i < refalla.length; i++) {
+            if (refalla[i].type == 'checkbox')
+                refalla[i].checked = false;
+
         }
     }
 
     function seData() {
-        var refalla=document.getElementsByName('NameCountTabelTPB');
-        var refallb=document.getElementsByName('NameFilterTableTPB');
+        var refalla = document.getElementsByName('NameCountTabelTPB');
+        var refallb = document.getElementsByName('NameFilterTableTPB');
 
-        for (var i=0; i<refalla.length && refallb.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox')
-                refalla[i].checked=true;
-                refallb[i].checked=true;
-                
+        for (var i = 0; i < refalla.length && refallb.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox')
+                refalla[i].checked = true;
+            refallb[i].checked = true;
+
         }
     }
 
     function deData() {
-        var refalla=document.getElementsByName('NameCountTabelTPB');
-        var refallb=document.getElementsByName('NameFilterTableTPB');
+        var refalla = document.getElementsByName('NameCountTabelTPB');
+        var refallb = document.getElementsByName('NameFilterTableTPB');
 
-        for (var i=0; i<refalla.length && refallb.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox')
-                refalla[i].checked=false;
-                refallb[i].checked=false;
-                
+        for (var i = 0; i < refalla.length && refallb.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox')
+                refalla[i].checked = false;
+            refallb[i].checked = false;
+
         }
     }
 
     // Checked All Referensi
     function seRefAll() {
-        var refalla=document.getElementsByName('NameDaftarBarang');
-        var refallb=document.getElementsByName('NameTarifHS');
-        var refallc=document.getElementsByName('NamePemasok');
-        var refalld=document.getElementsByName('NamePerusahaan');
-        var refalle=document.getElementsByName('NameAlatAngkut');
-        var refallf=document.getElementsByName('NameTempatPenimbunan');
-        var refallg=document.getElementsByName('NameKantorBeaCukai');
+        var refalla = document.getElementsByName('NameDaftarBarang');
+        var refallb = document.getElementsByName('NameTarifHS');
+        var refallc = document.getElementsByName('NamePemasok');
+        var refalld = document.getElementsByName('NamePerusahaan');
+        var refalle = document.getElementsByName('NameAlatAngkut');
+        var refallf = document.getElementsByName('NameTempatPenimbunan');
+        var refallg = document.getElementsByName('NameKantorBeaCukai');
         // Eddifact
-        var edialla=document.getElementsByName('NameNegara');
-        var ediallb=document.getElementsByName('NamePelabuhanDalamNegeri');
-        var ediallc=document.getElementsByName('NamePelabuhanLuarNegeri');
-        var edialld=document.getElementsByName('NameMataUang');
-        var edialle=document.getElementsByName('NameSatuan');
-        var ediallf=document.getElementsByName('NameKemasan');
+        var edialla = document.getElementsByName('NameNegara');
+        var ediallb = document.getElementsByName('NamePelabuhanDalamNegeri');
+        var ediallc = document.getElementsByName('NamePelabuhanLuarNegeri');
+        var edialld = document.getElementsByName('NameMataUang');
+        var edialle = document.getElementsByName('NameSatuan');
+        var ediallf = document.getElementsByName('NameKemasan');
 
-        for (var i=0; i<refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && edialla.length && ediallb.length && ediallc.length && edialld.length && edialle.length && ediallf.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox' && refallc[i].type=='checkbox' && refalld[i].type=='checkbox' && refalle[i].type=='checkbox' && refallf[i].type=='checkbox' && refallg[i].type=='checkbox' &&
-               edialla[i].type=='checkbox' && ediallb[i].type=='checkbox' && ediallc[i].type=='checkbox' && edialld[i].type=='checkbox' && edialle[i].type=='checkbox' && ediallf[i].type=='checkbox')
-                refalla[i].checked=true;
-                refallb[i].checked=true;
-                refallc[i].checked=true;
-                refalld[i].checked=true;
-                refalle[i].checked=true;
-                refallf[i].checked=true;
-                refallg[i].checked=true;
-                // Eddifact
-                edialla[i].checked=true;
-                ediallb[i].checked=true;
-                ediallc[i].checked=true;
-                edialld[i].checked=true;
-                edialle[i].checked=true;
-                ediallf[i].checked=true;
-                
+        for (var i = 0; i < refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && edialla.length && ediallb.length && ediallc.length && edialld.length && edialle.length && ediallf.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox' && refallc[i].type == 'checkbox' && refalld[i].type == 'checkbox' && refalle[i].type == 'checkbox' && refallf[i].type == 'checkbox' && refallg[i].type == 'checkbox' &&
+                edialla[i].type == 'checkbox' && ediallb[i].type == 'checkbox' && ediallc[i].type == 'checkbox' && edialld[i].type == 'checkbox' && edialle[i].type == 'checkbox' && ediallf[i].type == 'checkbox')
+                refalla[i].checked = true;
+            refallb[i].checked = true;
+            refallc[i].checked = true;
+            refalld[i].checked = true;
+            refalle[i].checked = true;
+            refallf[i].checked = true;
+            refallg[i].checked = true;
+            // Eddifact
+            edialla[i].checked = true;
+            ediallb[i].checked = true;
+            ediallc[i].checked = true;
+            edialld[i].checked = true;
+            edialle[i].checked = true;
+            ediallf[i].checked = true;
+
         }
     }
 
     // Unchecked All Referensi
     function deRefAll() {
-        var refalla=document.getElementsByName('NameDaftarBarang');
-        var refallb=document.getElementsByName('NameTarifHS');
-        var refallc=document.getElementsByName('NamePemasok');
-        var refalld=document.getElementsByName('NamePerusahaan');
-        var refalle=document.getElementsByName('NameAlatAngkut');
-        var refallf=document.getElementsByName('NameTempatPenimbunan');
-        var refallg=document.getElementsByName('NameKantorBeaCukai');
+        var refalla = document.getElementsByName('NameDaftarBarang');
+        var refallb = document.getElementsByName('NameTarifHS');
+        var refallc = document.getElementsByName('NamePemasok');
+        var refalld = document.getElementsByName('NamePerusahaan');
+        var refalle = document.getElementsByName('NameAlatAngkut');
+        var refallf = document.getElementsByName('NameTempatPenimbunan');
+        var refallg = document.getElementsByName('NameKantorBeaCukai');
         // Eddifact
-        var edialla=document.getElementsByName('NameNegara');
-        var ediallb=document.getElementsByName('NamePelabuhanDalamNegeri');
-        var ediallc=document.getElementsByName('NamePelabuhanLuarNegeri');
-        var edialld=document.getElementsByName('NameMataUang');
-        var edialle=document.getElementsByName('NameSatuan');
-        var ediallf=document.getElementsByName('NameKemasan');
+        var edialla = document.getElementsByName('NameNegara');
+        var ediallb = document.getElementsByName('NamePelabuhanDalamNegeri');
+        var ediallc = document.getElementsByName('NamePelabuhanLuarNegeri');
+        var edialld = document.getElementsByName('NameMataUang');
+        var edialle = document.getElementsByName('NameSatuan');
+        var ediallf = document.getElementsByName('NameKemasan');
 
-        for (var i=0; i<refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && edialla.length && ediallb.length && ediallc.length && edialld.length && edialle.length && ediallf.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox' && refallc[i].type=='checkbox' && refalld[i].type=='checkbox' && refalle[i].type=='checkbox' && refallf[i].type=='checkbox' && refallg[i].type=='checkbox' && edialla[i].type=='checkbox' && ediallb[i].type=='checkbox' && ediallc[i].type=='checkbox' && edialld[i].type=='checkbox' && edialle[i].type=='checkbox' && ediallf[i].type=='checkbox')
-                refalla[i].checked=false;
-                refallb[i].checked=false;
-                refallc[i].checked=false;
-                refalld[i].checked=false;
-                refalle[i].checked=false;
-                refallf[i].checked=false;
-                refallg[i].checked=false;
-                // Eddifact
-                edialla[i].checked=false;
-                ediallb[i].checked=false;
-                ediallc[i].checked=false;
-                edialld[i].checked=false;
-                edialle[i].checked=false;
-                ediallf[i].checked=false;
-                
+        for (var i = 0; i < refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && edialla.length && ediallb.length && ediallc.length && edialld.length && edialle.length && ediallf.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox' && refallc[i].type == 'checkbox' && refalld[i].type == 'checkbox' && refalle[i].type == 'checkbox' && refallf[i].type == 'checkbox' && refallg[i].type == 'checkbox' && edialla[i].type == 'checkbox' && ediallb[i].type == 'checkbox' && ediallc[i].type == 'checkbox' && edialld[i].type == 'checkbox' && edialle[i].type == 'checkbox' && ediallf[i].type == 'checkbox')
+                refalla[i].checked = false;
+            refallb[i].checked = false;
+            refallc[i].checked = false;
+            refalld[i].checked = false;
+            refalle[i].checked = false;
+            refallf[i].checked = false;
+            refallg[i].checked = false;
+            // Eddifact
+            edialla[i].checked = false;
+            ediallb[i].checked = false;
+            ediallc[i].checked = false;
+            edialld[i].checked = false;
+            edialle[i].checked = false;
+            ediallf[i].checked = false;
+
         }
     }
 
     // `Checked All 1. Referensi
     function seRef() {
-        var refa=document.getElementsByName('NameDaftarBarang');
-        var refb=document.getElementsByName('NameTarifHS');
-        var refc=document.getElementsByName('NamePemasok');
-        var refd=document.getElementsByName('NamePerusahaan');
-        var refe=document.getElementsByName('NameAlatAngkut');
-        var reff=document.getElementsByName('NameTempatPenimbunan');
-        var refg=document.getElementsByName('NameKantorBeaCukai');
+        var refa = document.getElementsByName('NameDaftarBarang');
+        var refb = document.getElementsByName('NameTarifHS');
+        var refc = document.getElementsByName('NamePemasok');
+        var refd = document.getElementsByName('NamePerusahaan');
+        var refe = document.getElementsByName('NameAlatAngkut');
+        var reff = document.getElementsByName('NameTempatPenimbunan');
+        var refg = document.getElementsByName('NameKantorBeaCukai');
 
-        for (var i=0; i<refa.length && refb.length && refc.length && refd.length && refe.length && reff.length && refg.length; i++) {
-            if (refa[i].type=='checkbox' && refb[i].type=='checkbox' && refc[i].type=='checkbox' && refd[i].type=='checkbox' && refe[i].type=='checkbox' && reff[i].type=='checkbox' && refg[i].type=='checkbox')
-                refa[i].checked=true;
-                refb[i].checked=true;
-                refc[i].checked=true;
-                refd[i].checked=true;
-                refe[i].checked=true;
-                reff[i].checked=true;
-                refg[i].checked=true;
+        for (var i = 0; i < refa.length && refb.length && refc.length && refd.length && refe.length && reff.length && refg.length; i++) {
+            if (refa[i].type == 'checkbox' && refb[i].type == 'checkbox' && refc[i].type == 'checkbox' && refd[i].type == 'checkbox' && refe[i].type == 'checkbox' && reff[i].type == 'checkbox' && refg[i].type == 'checkbox')
+                refa[i].checked = true;
+            refb[i].checked = true;
+            refc[i].checked = true;
+            refd[i].checked = true;
+            refe[i].checked = true;
+            reff[i].checked = true;
+            refg[i].checked = true;
         }
     }
 
     // Unchecked All 1. Referensi
     function deRef() {
-        var refa=document.getElementsByName('NameDaftarBarang');
-        var refb=document.getElementsByName('NameTarifHS');
-        var refc=document.getElementsByName('NamePemasok');
-        var refd=document.getElementsByName('NamePerusahaan');
-        var refe=document.getElementsByName('NameAlatAngkut');
-        var reff=document.getElementsByName('NameTempatPenimbunan');
-        var refg=document.getElementsByName('NameKantorBeaCukai');
+        var refa = document.getElementsByName('NameDaftarBarang');
+        var refb = document.getElementsByName('NameTarifHS');
+        var refc = document.getElementsByName('NamePemasok');
+        var refd = document.getElementsByName('NamePerusahaan');
+        var refe = document.getElementsByName('NameAlatAngkut');
+        var reff = document.getElementsByName('NameTempatPenimbunan');
+        var refg = document.getElementsByName('NameKantorBeaCukai');
 
-        for (var i=0; i<refa.length && refb.length && refc.length && refd.length && refe.length && reff.length && refg.length; i++) {
-            if (refa[i].type=='checkbox' && refb[i].type=='checkbox' && refc[i].type=='checkbox' && refd[i].type=='checkbox' && refe[i].type=='checkbox' && reff[i].type=='checkbox' && refg[i].type=='checkbox')
-                refa[i].checked=false;
-                refb[i].checked=false;
-                refc[i].checked=false;
-                refd[i].checked=false;
-                refe[i].checked=false;
-                reff[i].checked=false;
-                refg[i].checked=false;
+        for (var i = 0; i < refa.length && refb.length && refc.length && refd.length && refe.length && reff.length && refg.length; i++) {
+            if (refa[i].type == 'checkbox' && refb[i].type == 'checkbox' && refc[i].type == 'checkbox' && refd[i].type == 'checkbox' && refe[i].type == 'checkbox' && reff[i].type == 'checkbox' && refg[i].type == 'checkbox')
+                refa[i].checked = false;
+            refb[i].checked = false;
+            refc[i].checked = false;
+            refd[i].checked = false;
+            refe[i].checked = false;
+            reff[i].checked = false;
+            refg[i].checked = false;
         }
     }
 
     // `Checked All 1. Edifact
     function seEdi() {
-        var edia=document.getElementsByName('NameNegara');
-        var edib=document.getElementsByName('NamePelabuhanDalamNegeri');
-        var edic=document.getElementsByName('NamePelabuhanLuarNegeri');
-        var edid=document.getElementsByName('NameMataUang');
-        var edie=document.getElementsByName('NameSatuan');
-        var edif=document.getElementsByName('NameKemasan');
+        var edia = document.getElementsByName('NameNegara');
+        var edib = document.getElementsByName('NamePelabuhanDalamNegeri');
+        var edic = document.getElementsByName('NamePelabuhanLuarNegeri');
+        var edid = document.getElementsByName('NameMataUang');
+        var edie = document.getElementsByName('NameSatuan');
+        var edif = document.getElementsByName('NameKemasan');
 
-        for (var i=0; i<edia.length && edib.length && edic.length && edid.length && edie.length && edif.length; i++) {
-            if (edia[i].type=='checkbox' && edib[i].type=='checkbox' && edic[i].type=='checkbox' && edid[i].type=='checkbox' && edie[i].type=='checkbox' && edif[i].type=='checkbox')
-                edia[i].checked=true;
-                edib[i].checked=true;
-                edic[i].checked=true;
-                edid[i].checked=true;
-                edie[i].checked=true;
-                edif[i].checked=true;
+        for (var i = 0; i < edia.length && edib.length && edic.length && edid.length && edie.length && edif.length; i++) {
+            if (edia[i].type == 'checkbox' && edib[i].type == 'checkbox' && edic[i].type == 'checkbox' && edid[i].type == 'checkbox' && edie[i].type == 'checkbox' && edif[i].type == 'checkbox')
+                edia[i].checked = true;
+            edib[i].checked = true;
+            edic[i].checked = true;
+            edid[i].checked = true;
+            edie[i].checked = true;
+            edif[i].checked = true;
         }
     }
 
     // Unchecked All 1. Edifact
     function deEdi() {
-        var edia=document.getElementsByName('NameNegara');
-        var edib=document.getElementsByName('NamePelabuhanDalamNegeri');
-        var edic=document.getElementsByName('NamePelabuhanLuarNegeri');
-        var edid=document.getElementsByName('NameMataUang');
-        var edie=document.getElementsByName('NameSatuan');
-        var edif=document.getElementsByName('NameKemasan');
+        var edia = document.getElementsByName('NameNegara');
+        var edib = document.getElementsByName('NamePelabuhanDalamNegeri');
+        var edic = document.getElementsByName('NamePelabuhanLuarNegeri');
+        var edid = document.getElementsByName('NameMataUang');
+        var edie = document.getElementsByName('NameSatuan');
+        var edif = document.getElementsByName('NameKemasan');
 
-        for (var i=0; i<edia.length && edib.length && edic.length && edid.length && edie.length && edif.length; i++) {
-            if (edia[i].type=='checkbox' && edib[i].type=='checkbox' && edic[i].type=='checkbox' && edid[i].type=='checkbox' && edie[i].type=='checkbox' && edif[i].type=='checkbox')
-                edia[i].checked=false;
-                edib[i].checked=false;
-                edic[i].checked=false;
-                edid[i].checked=false;
-                edie[i].checked=false;
-                edif[i].checked=false;
+        for (var i = 0; i < edia.length && edib.length && edic.length && edid.length && edie.length && edif.length; i++) {
+            if (edia[i].type == 'checkbox' && edib[i].type == 'checkbox' && edic[i].type == 'checkbox' && edid[i].type == 'checkbox' && edie[i].type == 'checkbox' && edif[i].type == 'checkbox')
+                edia[i].checked = false;
+            edib[i].checked = false;
+            edic[i].checked = false;
+            edid[i].checked = false;
+            edie[i].checked = false;
+            edif[i].checked = false;
         }
     }
 
     function seAdm() {
-        var refalla=document.getElementsByName('NameDepartemen');
-        var refallb=document.getElementsByName('NameHakAkses');
-        var refallc=document.getElementsByName('NameJabatan');
-        var refalld=document.getElementsByName('NameKuotaMitra');
-        var refalle=document.getElementsByName('NamePengaturanAppTPB');
-        var refallf=document.getElementsByName('NamePengaturanRealTimeReload');
-        var refallg=document.getElementsByName('NamePengaturanInformasi');
-        var refallh=document.getElementsByName('NameUserManajemenWeb');
+        var refalla = document.getElementsByName('NameDepartemen');
+        var refallb = document.getElementsByName('NameHakAkses');
+        var refallc = document.getElementsByName('NameJabatan');
+        var refalld = document.getElementsByName('NameKuotaMitra');
+        var refalle = document.getElementsByName('NamePengaturanAppTPB');
+        var refallf = document.getElementsByName('NamePengaturanRealTimeReload');
+        var refallg = document.getElementsByName('NamePengaturanInformasi');
+        var refallh = document.getElementsByName('NameUserManajemenWeb');
 
-        for (var i=0; i<refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && refallh.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox' && refallc[i].type=='checkbox' && refalld[i].type=='checkbox' && refalle[i].type=='checkbox' && refallf[i].type=='checkbox' && refallg[i].type=='checkbox' &&
-               refallh[i].type=='checkbox')
-                refalla[i].checked=true;
-                refallb[i].checked=true;
-                refallc[i].checked=true;
-                refalld[i].checked=true;
-                refalle[i].checked=true;
-                refallf[i].checked=true;
-                refallg[i].checked=true;
-                refallh[i].checked=true;
-                
+        for (var i = 0; i < refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && refallh.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox' && refallc[i].type == 'checkbox' && refalld[i].type == 'checkbox' && refalle[i].type == 'checkbox' && refallf[i].type == 'checkbox' && refallg[i].type == 'checkbox' &&
+                refallh[i].type == 'checkbox')
+                refalla[i].checked = true;
+            refallb[i].checked = true;
+            refallc[i].checked = true;
+            refalld[i].checked = true;
+            refalle[i].checked = true;
+            refallf[i].checked = true;
+            refallg[i].checked = true;
+            refallh[i].checked = true;
+
         }
     }
 
     function deAdm() {
-        var refalla=document.getElementsByName('NameDepartemen');
-        var refallb=document.getElementsByName('NameHakAkses');
-        var refallc=document.getElementsByName('NameJabatan');
-        var refalld=document.getElementsByName('NameKuotaMitra');
-        var refalle=document.getElementsByName('NamePengaturanAppTPB');
-        var refallf=document.getElementsByName('NamePengaturanRealTimeReload');
-        var refallg=document.getElementsByName('NamePengaturanInformasi');
-        var refallh=document.getElementsByName('NameUserManajemenWeb');
+        var refalla = document.getElementsByName('NameDepartemen');
+        var refallb = document.getElementsByName('NameHakAkses');
+        var refallc = document.getElementsByName('NameJabatan');
+        var refalld = document.getElementsByName('NameKuotaMitra');
+        var refalle = document.getElementsByName('NamePengaturanAppTPB');
+        var refallf = document.getElementsByName('NamePengaturanRealTimeReload');
+        var refallg = document.getElementsByName('NamePengaturanInformasi');
+        var refallh = document.getElementsByName('NameUserManajemenWeb');
 
-        for (var i=0; i<refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && refallh.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox' && refallc[i].type=='checkbox' && refalld[i].type=='checkbox' && refalle[i].type=='checkbox' && refallf[i].type=='checkbox' && refallg[i].type=='checkbox' &&
-               refallh[i].type=='checkbox')
-                refalla[i].checked=false;
-                refallb[i].checked=false;
-                refallc[i].checked=false;
-                refalld[i].checked=false;
-                refalle[i].checked=false;
-                refallf[i].checked=false;
-                refallg[i].checked=false;
-                refallh[i].checked=false;
-                
+        for (var i = 0; i < refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && refallh.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox' && refallc[i].type == 'checkbox' && refalld[i].type == 'checkbox' && refalle[i].type == 'checkbox' && refallf[i].type == 'checkbox' && refallg[i].type == 'checkbox' &&
+                refallh[i].type == 'checkbox')
+                refalla[i].checked = false;
+            refallb[i].checked = false;
+            refallc[i].checked = false;
+            refalld[i].checked = false;
+            refalle[i].checked = false;
+            refallf[i].checked = false;
+            refallg[i].checked = false;
+            refallh[i].checked = false;
+
         }
     }
 
     function seLap() {
-        var refalla=document.getElementsByName('NameLapMasukBarang');
-        var refallb=document.getElementsByName('NameLapKeluarBarang');
-        var refallc=document.getElementsByName('NameLapMutasiBarang');
-        var refalld=document.getElementsByName('NameLapPosisiBarang');
-        var refalle=document.getElementsByName('NameLapRealisasi');
-        var refallf=document.getElementsByName('NameLapDataTPB');
-        var refallg=document.getElementsByName('NamePLBReportCK5');
-        var refallh=document.getElementsByName('NameGBSarinahReportCK5');
-        var refalli=document.getElementsByName('NameLapLogSystem');
+        var refalla = document.getElementsByName('NameLapMasukBarang');
+        var refallb = document.getElementsByName('NameLapKeluarBarang');
+        var refallc = document.getElementsByName('NameLapMutasiBarang');
+        var refalld = document.getElementsByName('NameLapPosisiBarang');
+        var refalle = document.getElementsByName('NameLapRealisasi');
+        var refallf = document.getElementsByName('NameLapDataTPB');
+        var refallg = document.getElementsByName('NamePLBReportCK5');
+        var refallh = document.getElementsByName('NameGBSarinahReportCK5');
+        var refalli = document.getElementsByName('NameLapLogSystem');
 
-        for (var i=0; i<refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && refallh.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox' && refallc[i].type=='checkbox' && refalld[i].type=='checkbox' && refalle[i].type=='checkbox' && refallf[i].type=='checkbox' && refallg[i].type=='checkbox' &&
-               refallh[i].type=='checkbox')
-                refalla[i].checked=true;
-                refallb[i].checked=true;
-                refallc[i].checked=true;
-                refalld[i].checked=true;
-                refalle[i].checked=true;
-                refallf[i].checked=true;
-                refallg[i].checked=true;
-                refallh[i].checked=true;
-                refalli[i].checked=true;
-                
+        for (var i = 0; i < refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && refallh.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox' && refallc[i].type == 'checkbox' && refalld[i].type == 'checkbox' && refalle[i].type == 'checkbox' && refallf[i].type == 'checkbox' && refallg[i].type == 'checkbox' &&
+                refallh[i].type == 'checkbox')
+                refalla[i].checked = true;
+            refallb[i].checked = true;
+            refallc[i].checked = true;
+            refalld[i].checked = true;
+            refalle[i].checked = true;
+            refallf[i].checked = true;
+            refallg[i].checked = true;
+            refallh[i].checked = true;
+            refalli[i].checked = true;
+
         }
     }
 
     function deLap() {
-        var refalla=document.getElementsByName('NameLapMasukBarang');
-        var refallb=document.getElementsByName('NameLapKeluarBarang');
-        var refallc=document.getElementsByName('NameLapMutasiBarang');
-        var refalld=document.getElementsByName('NameLapPosisiBarang');
-        var refalle=document.getElementsByName('NameLapRealisasi');
-        var refallf=document.getElementsByName('NameLapDataTPB');
-        var refallg=document.getElementsByName('NamePLBReportCK5');
-        var refallh=document.getElementsByName('NameGBSarinahReportCK5');
-        var refalli=document.getElementsByName('NameLapLogSystem');
+        var refalla = document.getElementsByName('NameLapMasukBarang');
+        var refallb = document.getElementsByName('NameLapKeluarBarang');
+        var refallc = document.getElementsByName('NameLapMutasiBarang');
+        var refalld = document.getElementsByName('NameLapPosisiBarang');
+        var refalle = document.getElementsByName('NameLapRealisasi');
+        var refallf = document.getElementsByName('NameLapDataTPB');
+        var refallg = document.getElementsByName('NamePLBReportCK5');
+        var refallh = document.getElementsByName('NameGBSarinahReportCK5');
+        var refalli = document.getElementsByName('NameLapLogSystem');
 
-        for (var i=0; i<refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && refallh.length && refalli.length; i++) {
-            if (refalla[i].type=='checkbox' && refallb[i].type=='checkbox' && refallc[i].type=='checkbox' && refalld[i].type=='checkbox' && refalle[i].type=='checkbox' && refallf[i].type=='checkbox' && refallg[i].type=='checkbox' &&
-               refallh[i].type=='checkbox' && refalli[i].type=='checkbox')
-                refalla[i].checked=false;
-                refallb[i].checked=false;
-                refallc[i].checked=false;
-                refalld[i].checked=false;
-                refalle[i].checked=false;
-                refallf[i].checked=false;
-                refallg[i].checked=false;
-                refallh[i].checked=false;
-                refalli[i].checked=false;
-                
+        for (var i = 0; i < refalla.length && refallb.length && refallc.length && refalld.length && refalle.length && refallf.length && refallg.length && refallh.length && refalli.length; i++) {
+            if (refalla[i].type == 'checkbox' && refallb[i].type == 'checkbox' && refallc[i].type == 'checkbox' && refalld[i].type == 'checkbox' && refalle[i].type == 'checkbox' && refallf[i].type == 'checkbox' && refallg[i].type == 'checkbox' &&
+                refallh[i].type == 'checkbox' && refalli[i].type == 'checkbox')
+                refalla[i].checked = false;
+            refallb[i].checked = false;
+            refallc[i].checked = false;
+            refalld[i].checked = false;
+            refalle[i].checked = false;
+            refallf[i].checked = false;
+            refallg[i].checked = false;
+            refallh[i].checked = false;
+            refalli[i].checked = false;
+
         }
     }
 </script>

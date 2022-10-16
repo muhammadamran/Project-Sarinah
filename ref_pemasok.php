@@ -6,26 +6,10 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
-
-if (isset($_POST["update"])) {
-
-    $NAMA    = $_POST['NAMA'];
-    $ID      = $_POST['ID'];
-
-    $cek = mysqli_query($dbcon, "SELECT * FROM referensi_pemasok WHERE ID ='$ID'");
-    $num = mysqli_num_rows($cek);
-    if ($num == 1) {
-        $query = mysqli_query($dbcon, "UPDATE referensi_pemasok set NAMA  ='$NAMA' where ID='$ID'");
-        if ($query) {
-            header("Location: ./ref_pemasok.php?xtc=02x2201");
-        } else {
-            echo "Updated Failed - Please contact your administrator";
-        }
-    } else {
-        echo "Records cannot be found!! Please contact your System Administrator";
-    }
-}
-
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'refPemasok.php');
+$data = json_decode($content, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -42,7 +26,8 @@ if (isset($_POST["update"])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -83,7 +68,7 @@ if (isset($_POST["update"])) {
                                     // <a href='#' data-toggle='modal' data-target='#del$row2[ID]' title='Delete' class='btn btn-danger' title='View the Report'><i class='fas fa-trash-alt'></i> Delete</a>
                                     // </td>";
                                     echo "</tr>";
-                                    ?>
+                            ?>
                                     <div class="modal fade" id="myModal<?php echo $row2['ID']; ?>" role="dialog">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -134,7 +119,7 @@ if (isset($_POST["update"])) {
                                             </div>
                                         </div>
                                     </div>
-                                    <?php
+                            <?php
                                 }
                             }
                             mysqli_close($dbcon);

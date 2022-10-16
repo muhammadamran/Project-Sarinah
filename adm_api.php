@@ -103,7 +103,8 @@ if (isset($_POST["EditAPInDB"])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -121,107 +122,93 @@ if (isset($_POST["EditAPInDB"])) {
                     $row = mysqli_fetch_array($data);
                     ?>
                     <?php if ($row['id'] == NULL) { ?>
-                    <form action="" method="POST">
-                        <fieldset>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">URL API</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="url_api"
-                                        value="<?= $row['url_api'] ?>" placeholder="URL API ...">
-                                    <input type="hidden" class="form-control" name="ID" value="<?= $row['id'] ?>">
+                        <form action="" method="POST">
+                            <fieldset>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">URL API</label>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" name="url_api" value="<?= $row['url_api'] ?>" placeholder="URL API ...">
+                                        <input type="hidden" class="form-control" name="ID" value="<?= $row['id'] ?>">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">User API</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="user_api"
-                                        value="<?= $row['user_api'] ?>" placeholder="User API ...">
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">User API</label>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" name="user_api" value="<?= $row['user_api'] ?>" placeholder="User API ...">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Pass API</label>
-                                <div class="col-md-7">
-                                    <input type="password" class="form-control" name="pass_api"
-                                        value="<?= $row['pass_api'] ?>" placeholder="Pass API ...">
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">Pass API</label>
+                                    <div class="col-md-7">
+                                        <input type="password" class="form-control" name="pass_api" value="<?= $row['pass_api'] ?>" placeholder="Pass API ...">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Port API</label>
-                                <div class="col-md-7">
-                                    <input type="number" class="form-control" name="port_api"
-                                        value="<?= $row['port_api'] ?>" placeholder="Port API ...">
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">Port API</label>
+                                    <div class="col-md-7">
+                                        <input type="number" class="form-control" name="port_api" value="<?= $row['port_api'] ?>" placeholder="Port API ...">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Database</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="database_module"
-                                        value="<?= $row['database_module'] ?>" placeholder="Database ...">
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">Database</label>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" name="database_module" value="<?= $row['database_module'] ?>" placeholder="Database ...">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-7 offset-md-3">
-                                    <?php if ($resultForPrivileges['INSERT_DATA'] == 'Y') { ?>
-                                    <button type="submit" class="btn btn-primary m-r-5" name="EditAPInDB"><i
-                                            class="fa fa-save"></i> Simpan</button>
-                                    <?php } ?>
-                                    <button type="submit" class="btn btn-success m-r-5" name="TestConnect"><i
-                                            class="fa-solid fa-satellite-dish"></i> Test</button>
+                                <div class="form-group row">
+                                    <div class="col-md-7 offset-md-3">
+                                        <?php if ($resultForPrivileges['INSERT_DATA'] == 'Y') { ?>
+                                            <button type="submit" class="btn btn-primary m-r-5" name="EditAPInDB"><i class="fa fa-save"></i> Simpan</button>
+                                        <?php } ?>
+                                        <button type="submit" class="btn btn-success m-r-5" name="TestConnect"><i class="fa-solid fa-satellite-dish"></i> Test</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                    </form>
+                            </fieldset>
+                        </form>
                     <?php } else { ?>
-                    <form action="" method="POST">
-                        <fieldset>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">URL API</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="url_api"
-                                        value="<?= $row['url_api'] ?>" placeholder="URL API ...">
-                                    <input type="hidden" class="form-control" name="ID" value="<?= $row['id'] ?>">
+                        <form action="" method="POST">
+                            <fieldset>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">URL API</label>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" name="url_api" value="<?= $row['url_api'] ?>" placeholder="URL API ...">
+                                        <input type="hidden" class="form-control" name="ID" value="<?= $row['id'] ?>">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">User API</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="user_api"
-                                        value="<?= $row['user_api'] ?>" placeholder="User API ...">
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">User API</label>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" name="user_api" value="<?= $row['user_api'] ?>" placeholder="User API ...">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Pass API</label>
-                                <div class="col-md-7">
-                                    <input type="password" class="form-control" name="pass_api"
-                                        value="<?= $row['pass_api'] ?>" placeholder="Pass API ...">
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">Pass API</label>
+                                    <div class="col-md-7">
+                                        <input type="password" class="form-control" name="pass_api" value="<?= $row['pass_api'] ?>" placeholder="Pass API ...">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Port API</label>
-                                <div class="col-md-7">
-                                    <input type="number" class="form-control" name="port_api"
-                                        value="<?= $row['port_api'] ?>" placeholder="Port API ...">
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">Port API</label>
+                                    <div class="col-md-7">
+                                        <input type="number" class="form-control" name="port_api" value="<?= $row['port_api'] ?>" placeholder="Port API ...">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Database</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="database_module"
-                                        value="<?= $row['database_module'] ?>" placeholder="Database ...">
+                                <div class="form-group row m-b-15">
+                                    <label class="col-md-3 col-form-label">Database</label>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" name="database_module" value="<?= $row['database_module'] ?>" placeholder="Database ...">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-7 offset-md-3">
-                                    <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
-                                    <button type="submit" class="btn btn-warning m-r-5" name="SaveAPInDB"><i
-                                            class="fa fa-edit"></i> Update</button>
-                                    <?php } ?>
-                                    <button type="submit" class="btn btn-success m-r-5" name="TestConnect"><i
-                                            class="fa-solid fa-satellite-dish"></i> Test</button>
+                                <div class="form-group row">
+                                    <div class="col-md-7 offset-md-3">
+                                        <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
+                                            <button type="submit" class="btn btn-warning m-r-5" name="SaveAPInDB"><i class="fa fa-edit"></i> Update</button>
+                                        <?php } ?>
+                                        <button type="submit" class="btn btn-success m-r-5" name="TestConnect"><i class="fa-solid fa-satellite-dish"></i> Test</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                    </form>
+                            </fieldset>
+                        </form>
                     <?php } ?>
                 </div>
             </div>
@@ -234,41 +221,41 @@ if (isset($_POST["EditAPInDB"])) {
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <script type="text/javascript">
-// SAVED SUCCESS
-if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
-    Swal.fire({
-        title: 'Data berhasil disimpan!',
-        icon: 'success',
-        text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './adm_api.php');
-}
-// SAVED FAILED
-if (window?.location?.href?.indexOf('SaveFailed') > -1) {
-    Swal.fire({
-        title: 'Data gagal disimpan!',
-        icon: 'error',
-        text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './adm_api.php');
-}
+    // SAVED SUCCESS
+    if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
+        Swal.fire({
+            title: 'Data berhasil disimpan!',
+            icon: 'success',
+            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './adm_api.php');
+    }
+    // SAVED FAILED
+    if (window?.location?.href?.indexOf('SaveFailed') > -1) {
+        Swal.fire({
+            title: 'Data gagal disimpan!',
+            icon: 'error',
+            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './adm_api.php');
+    }
 
-// UPDATE SUCCESS
-if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
-    Swal.fire({
-        title: 'Data berhasil diupdate!',
-        icon: 'success',
-        text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './adm_api.php');
-}
-// UPDATE FAILED
-if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
-    Swal.fire({
-        title: 'Data gagal diupdate!',
-        icon: 'error',
-        text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './adm_api.php');
-}
+    // UPDATE SUCCESS
+    if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
+        Swal.fire({
+            title: 'Data berhasil diupdate!',
+            icon: 'success',
+            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './adm_api.php');
+    }
+    // UPDATE FAILED
+    if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
+        Swal.fire({
+            title: 'Data gagal diupdate!',
+            icon: 'error',
+            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './adm_api.php');
+    }
 </script>

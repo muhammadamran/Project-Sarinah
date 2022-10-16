@@ -21,7 +21,8 @@ include "include/sidebar.php";
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -30,12 +31,13 @@ include "include/sidebar.php";
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">BC 2.3 / Record Details / ID_HEADER: <?php echo $_GET['idhead'];?></h4>
+                    <h4 class="panel-title">BC 2.3 / Record Details / ID_HEADER: <?php echo $_GET['idhead']; ?></h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
                     <!-- <center>
- -->                        <ul class="nav nav-tabs">
+ -->
+                    <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a href="#default-tab-1" data-toggle="tab" class="nav-link active">
                                 <span class="d-sm-none">Tab 1</span>
@@ -63,15 +65,15 @@ include "include/sidebar.php";
                         include 'include/part/master_view_tab3.php';
 
                         ?>
-                        
+
                     </div>
-                <!-- </center> -->
+                    <!-- </center> -->
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- end row -->
-<?php include "include/creator.php"; ?>
+    <!-- end row -->
+    <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
 <?php include "include/panel.php"; ?>

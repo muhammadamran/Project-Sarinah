@@ -6,6 +6,10 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'refTempatPenimbunan.php');
+$data = json_decode($content, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -22,7 +26,8 @@ include "include/cssDatatables.php";
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -53,26 +58,29 @@ include "include/cssDatatables.php";
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
                                         $no++;
-                                        ?>
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['KD_KANTOR'] == NULL || $row['KD_KANTOR'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['KD_KANTOR'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['KODE_TPS'] == NULL || $row['KODE_TPS'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['KODE_TPS'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['URAIAN_TPS'] == NULL || $row['URAIAN_TPS'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['URAIAN_TPS'] ?>
                                                 <?php } ?>

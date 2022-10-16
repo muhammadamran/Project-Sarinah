@@ -26,7 +26,8 @@ $data = json_decode($content, true);
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -40,8 +41,7 @@ $data = json_decode($content, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <div class="table-responsive">
-                        <table id="data-table-buttons"
-                            class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">#</th>
@@ -60,30 +60,30 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php if ($data['status'] == 404) { ?>
-                                <tr>
-                                    <td colspan="8">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="8">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
                                 <?php } else { ?>
-                                <?php $no = 0; ?>
-                                <?php foreach ($data['result'] as $row) { ?>
-                                <?php $no++ ?>
-                                <tr>
-                                    <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                    <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
-                                    <td style="text-align: center;"><?= $row['NAMA_PEMASOK'] ?></td>
-                                    <td style="text-align: center;"><?= $row['NAMA_PENGANGKUT'] ?></td>
-                                    <td style="text-align: center;"><?= $row['JUMLAH_BARANG'] ?></td>
-                                    <td style="text-align: center;"><?= $row['JUMLAH_KONTAINER'] ?></td>
-                                    <td style="text-align: center;"><?= $row['JUMLAH_KEMASAN'] ?></td>
-                                    <td style="text-align: center;"><?= $row['URAIAN_STATUS'] ?></td>
-                                </tr>
-                                <?php } ?>
+                                    <?php $no = 0; ?>
+                                    <?php foreach ($data['result'] as $row) { ?>
+                                        <?php $no++ ?>
+                                        <tr>
+                                            <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                            <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
+                                            <td style="text-align: center;"><?= $row['NAMA_PEMASOK'] ?></td>
+                                            <td style="text-align: center;"><?= $row['NAMA_PENGANGKUT'] ?></td>
+                                            <td style="text-align: center;"><?= $row['JUMLAH_BARANG'] ?></td>
+                                            <td style="text-align: center;"><?= $row['JUMLAH_KONTAINER'] ?></td>
+                                            <td style="text-align: center;"><?= $row['JUMLAH_KEMASAN'] ?></td>
+                                            <td style="text-align: center;"><?= $row['URAIAN_STATUS'] ?></td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>

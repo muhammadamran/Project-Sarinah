@@ -33,7 +33,7 @@ if (isset($_POST["add_jabatan"])) {
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
         $InputModul           = 'Administrator Tools/Jabatan';
-        $InputDescription     = $me . " Insert Data: " .  $NameJabatan .", Simpan Data Sebagai Log Jabatan";
+        $InputDescription     = $me . " Insert Data: " .  $NameJabatan . ", Simpan Data Sebagai Log Jabatan";
         $InputAction          = 'Insert';
         $InputDate            = date('Y-m-d h:m:i');
 
@@ -69,7 +69,7 @@ if (isset($_POST["NUpdateData"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/Jabatan';
-    $InputDescription     = $me . " Update Data: " .  $UpdateNameJabatan .", Simpan Data Sebagai Log Jabatan";
+    $InputDescription     = $me . " Update Data: " .  $UpdateNameJabatan . ", Simpan Data Sebagai Log Jabatan";
     $InputAction          = 'Update';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -100,7 +100,7 @@ if (isset($_POST["NDeleteData"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/Jabatan';
-    $InputDescription     = $me . " Hapus Data: " .  $NameJabatan .", Simpan Data Sebagai Log Jabatan";
+    $InputDescription     = $me . " Hapus Data: " .  $NameJabatan . ", Simpan Data Sebagai Log Jabatan";
     $InputAction          = 'Hapus';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -134,7 +134,8 @@ if (isset($_POST["NDeleteData"])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -174,7 +175,7 @@ if (isset($_POST["NDeleteData"])) {
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
                                         $no++;
-                                        ?>
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;"><?= $row['jabatan'] ?></td>
@@ -210,7 +211,7 @@ if (isset($_POST["NDeleteData"])) {
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="IdDescription">Deskripsi </label>
-                                                                            <textarea type="text" class="form-control" name="UpdateNameDescription" id="IdDescription" placeholder="Deskripsi ..." ><?= $row['description'] ?></textarea>
+                                                                            <textarea type="text" class="form-control" name="UpdateNameDescription" id="IdDescription" placeholder="Deskripsi ..."><?= $row['description'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>

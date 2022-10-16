@@ -22,7 +22,7 @@ if (isset($_POST["SaveReload"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/Pengatuan RealTime Reload';
-    $InputDescription     = $me . " Update Data RealTime Reload: " .  $query .", Simpan Data Sebagai Log Pengaturan RealTime Reload";
+    $InputDescription     = $me . " Update Data RealTime Reload: " .  $query . ", Simpan Data Sebagai Log Pengaturan RealTime Reload";
     $InputAction          = 'Update';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -54,7 +54,7 @@ if (isset($_POST["EditReload"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/Pengatuan RealTime Reload';
-    $InputDescription     = $me . " Insert Data RealTime Reload: " .  $reload .", Simpan Data Sebagai Log Pengaturan RealTime Reload";
+    $InputDescription     = $me . " Insert Data RealTime Reload: " .  $reload . ", Simpan Data Sebagai Log Pengaturan RealTime Reload";
     $InputAction          = 'Insert';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -85,7 +85,8 @@ if (isset($_POST["EditReload"])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>

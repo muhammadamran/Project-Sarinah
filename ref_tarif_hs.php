@@ -6,6 +6,10 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'refTarifHS.php');
+$data = json_decode($content, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -22,7 +26,8 @@ include "include/cssDatatables.php";
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -221,7 +226,7 @@ include "include/cssDatatables.php";
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
                                         $no++;
-                                        ?>
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;">
@@ -229,49 +234,56 @@ include "include/cssDatatables.php";
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_BM'] == NULL || $row['TARIF_BM'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_BM'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['KD_SATUAN_BM'] == NULL || $row['KD_SATUAN_BM'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['KD_SATUAN_BM'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_CUKAI'] == NULL || $row['TARIF_CUKAI'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_CUKAI'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['KD_SATUAN_CUKAI'] == NULL || $row['KD_SATUAN_CUKAI'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['KD_SATUAN_CUKAI'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_PPN'] == NULL || $row['TARIF_PPN'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_PPN'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_PPNBM'] == NULL || $row['TARIF_PPNBM'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_PPNBM'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_PPH'] == NULL || $row['TARIF_PPH'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_PPH'] ?>
                                                 <?php } ?>
@@ -287,7 +299,8 @@ include "include/cssDatatables.php";
                                                 <div class="modal-content">
                                                     <form action="" method="POST">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Update Data] Tarif HS - <?= $row['ID'] ?></h4>
+                                                            <h4 class="modal-title">[Update Data] Tarif HS - <?= $row['ID'] ?>
+                                                            </h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -295,7 +308,8 @@ include "include/cssDatatables.php";
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div style="margin-bottom: 10px;">
-                                                                            <font style="font-size: 20px;font-weight: 700;"><i class="fas fa-user-check"></i> Sign In Detail</font>
+                                                                            <font style="font-size: 20px;font-weight: 700;"><i class="fas fa-user-check"></i> Sign In
+                                                                                Detail</font>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -313,20 +327,23 @@ include "include/cssDatatables.php";
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <div style="margin-bottom: 10px;">
-                                                                            <font style="font-size: 20px;font-weight: 700;"><i class="fas fa-user-cog"></i> Hak Akses</font>
+                                                                            <font style="font-size: 20px;font-weight: 700;"><i class="fas fa-user-cog"></i> Hak Akses
+                                                                            </font>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="IDRole">Hak Akses</label>
                                                                             <select type="text" class="form-control" name="HakAkses" id="IDRole" required>
-                                                                                <option value="<?= $row['role'] ?>"><?= $row['role'] ?></option>
+                                                                                <option value="<?= $row['role'] ?>">
+                                                                                    <?= $row['role'] ?></option>
                                                                                 <option value="">-- Pilih Hak Akses --</option>
                                                                                 <?php
                                                                                 $resultHakAkses = $dbcon->query("SELECT role FROM tbl_role ORDER BY role ASC");
                                                                                 foreach ($resultHakAkses as $rowHakAkses) {
-                                                                                    ?>
-                                                                                    <option value="<?= $rowHakAkses['role'] ?>"><?= $rowHakAkses['role'] ?></option>
+                                                                                ?>
+                                                                                    <option value="<?= $rowHakAkses['role'] ?>">
+                                                                                        <?= $rowHakAkses['role'] ?></option>
                                                                                 <?php } ?>
                                                                             </select>
                                                                         </div>
@@ -342,7 +359,8 @@ include "include/cssDatatables.php";
                                                                                     <?php $insert_checked = ''; ?>
                                                                                 <?php } ?>
                                                                                 <input type="checkbox" name="able_add" value="Y" id="checkbox-inline-c-1" class="form-check-input" <?= $insert_checked; ?> />
-                                                                                <label class="form-check-label" for="checkbox-inline-c-1">Insert Data</label>
+                                                                                <label class="form-check-label" for="checkbox-inline-c-1">Insert
+                                                                                    Data</label>
                                                                             </div>
                                                                             <div class="form-check form-check-inline">
                                                                                 <?php if ($row['UPDATE_DATA'] == 'Y') { ?>
@@ -351,7 +369,8 @@ include "include/cssDatatables.php";
                                                                                     <?php $update_checked = ''; ?>
                                                                                 <?php } ?>
                                                                                 <input type="checkbox" name="able_edit" value="Y" id="checkbox-inline-c-2" class="form-check-input" <?= $update_checked; ?> />
-                                                                                <label class="form-check-label" for="checkbox-inline-c-2">Update Data</label>
+                                                                                <label class="form-check-label" for="checkbox-inline-c-2">Update
+                                                                                    Data</label>
                                                                             </div>
                                                                             <div class="form-check form-check-inline">
                                                                                 <?php if ($row['DELETE_DATA'] == 'Y') { ?>
@@ -381,7 +400,9 @@ include "include/cssDatatables.php";
                                                                                 <?php $pass_checked = ''; ?>
                                                                             <?php } ?>
                                                                             <input type="checkbox" id="nf_checkbox_css_c_1" name="able_password" value="Y" <?= $pass_checked; ?> />
-                                                                            <label for="nf_checkbox_css_c_1">Klik jika User dapat melakukan update password secara mandiri.</label>
+                                                                            <label for="nf_checkbox_css_c_1">Klik jika User
+                                                                                dapat melakukan update password secara
+                                                                                mandiri.</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -403,18 +424,24 @@ include "include/cssDatatables.php";
                                                 <div class="modal-content">
                                                     <form action="" method="POST">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Hapus Data] Tarif HS - <?= $row['ID'] ?></h4>
+                                                            <h4 class="modal-title">[Hapus Data] Tarif HS - <?= $row['ID'] ?>
+                                                            </h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="alert alert-danger m-b-0">
-                                                                <h5><i class="fa fa-info-circle"></i> Anda yakin akan menghapus data ini?</h5>
-                                                                <p>Anda tidak akan melihat data ini lagi, data akan di hapus secara permanen pada sistem informasi TPB!<br><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penghapusan data."</i></p>
+                                                                <h5><i class="fa fa-info-circle"></i> Anda yakin akan menghapus
+                                                                    data ini?</h5>
+                                                                <p>Anda tidak akan melihat data ini lagi, data akan di hapus
+                                                                    secara permanen pada sistem informasi TPB!<br><i>"Silahkan
+                                                                        klik <b>Ya</b> untuk melanjutkan proses penghapusan
+                                                                        data."</i></p>
                                                                 <input type="hidden" name="IDUNIQ" value="<?= $row['ID'] ?>">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tidak</button>
+                                                            <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fas fa-times-circle"></i>
+                                                                Tidak</button>
                                                             <button type="submit" class="btn btn-danger" name="NDeleteData"><i class="fas fa-check-circle"></i> Ya</button>
                                                         </div>
                                                     </form>
@@ -483,12 +510,12 @@ include "include/cssDatatables.php";
     $(function() {
         $("#idBeaLabel").autocomplete({
             source: 'libraries/autocomplete/auto_referensi_satuan.php'
-         });
+        });
     });
 
     $(function() {
         $("#idCukaiLabel").autocomplete({
             source: 'libraries/autocomplete/auto_referensi_satuan.php'
-         });
+        });
     });
 </script>

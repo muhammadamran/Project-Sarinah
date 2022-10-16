@@ -22,7 +22,8 @@ include "include/cssDatatables.php";
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -66,7 +67,7 @@ include "include/cssDatatables.php";
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
                                         $no++;
-                                        ?>
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;"><?= $row['quota_year'] ?></td>
@@ -122,9 +123,9 @@ include "include/cssDatatables.php";
                                                                                 <option value="<?= $row['quota_year'] ?>"><?= $row['quota_year'] ?></option>
                                                                                 <option value="">-- Pilih Tahun --</option>
                                                                                 <?php
-                                                                                for($i=date('Y'); $i>=date('Y')-32; $i-=1) {
+                                                                                for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
                                                                                     echo "<option value='$i'> $i </option>";
-                                                                                    }
+                                                                                }
                                                                                 ?>
                                                                             </select>
                                                                         </div>

@@ -6,6 +6,10 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'refPerusahaan.php');
+$data = json_decode($content, true);
 
 // UPDATE NPPBKC
 if (isset($_POST["add_nppbkc"])) {
@@ -60,7 +64,8 @@ if (isset($_POST["add_nppbkc"])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -107,28 +112,33 @@ if (isset($_POST["add_nppbkc"])) {
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['NPWP'] == NULL || $row['NPWP'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['NPWP'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['NAMA'] == NULL || $row['NAMA'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['NAMA'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['ALAMAT'] == NULL || $row['ALAMAT'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
-                                                    <a href="#AlamatMitra<?= $row['ID'] ?>" class="btn btn-sm btn-info" data-toggle="modal" title="Alamat Mitra"><i class="fas fa-map"></i> Detail Alamat</a>
+                                                    <a href="#AlamatMitra<?= $row['ID'] ?>" class="btn btn-sm btn-info" data-toggle="modal" title="Alamat Mitra"><i class="fas fa-map"></i> Detail
+                                                        Alamat</a>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['NOMOR_SKEP'] == NULL || $row['NOMOR_SKEP'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['NOMOR_SKEP'] ?>
                                                 <?php } ?>
@@ -136,24 +146,28 @@ if (isset($_POST["add_nppbkc"])) {
                                             <td style="text-align: center;">
                                                 <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
                                                     <?php if ($row['NPPBKC'] == NULL || $row['NPPBKC'] == '') { ?>
-                                                        <a href="#AddNPPBKC<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i> NPPBKC</a>
+                                                        <a href="#AddNPPBKC<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i>
+                                                            NPPBKC</a>
                                                     <?php } else { ?>
                                                         <?= $row['NPPBKC'] ?>
                                                     <?php } ?>
                                                 <?php } else { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak ada akses!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak ada akses!</i>
+                                                    </font>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['STATUS_IMPORTIR'] == NULL || $row['STATUS_IMPORTIR'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['STATUS_IMPORTIR'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['URAIAN_STATUS_PENGUSAHA'] == NULL || $row['URAIAN_STATUS_PENGUSAHA'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
                                                 <?php } else { ?>
                                                     <?= $row['URAIAN_STATUS_PENGUSAHA'] ?>
                                                 <?php } ?>

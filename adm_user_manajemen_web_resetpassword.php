@@ -34,7 +34,7 @@ if (isset($_POST["ResetPassword"])) {
     $IDUNIQ               = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/User Manajemen Web';
-    $InputDescription     = $me . " Reset Password User: " .  $result['username'] .", Simpan Data Sebagai Log User Manajemen Web";
+    $InputDescription     = $me . " Reset Password User: " .  $result['username'] . ", Simpan Data Sebagai Log User Manajemen Web";
     $InputAction          = 'Reset Password';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -66,7 +66,8 @@ if (isset($_POST["ResetPassword"])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>

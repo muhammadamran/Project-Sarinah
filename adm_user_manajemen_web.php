@@ -84,7 +84,7 @@ if (isset($_POST["add_manajemen_user_web"])) {
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
         $InputModul           = 'Administrator Tools/User Manajemen Web';
-        $InputDescription     = $me . " Insert Data User: " .  $username .", Simpan Data Sebagai Log User Manajemen Web";
+        $InputDescription     = $me . " Insert Data User: " .  $username . ", Simpan Data Sebagai Log User Manajemen Web";
         $InputAction          = 'Insert';
         $InputDate            = date('Y-m-d h:m:i');
 
@@ -165,7 +165,7 @@ if (isset($_POST["NUpdateData"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/User Manajemen Web';
-    $InputDescription     = $me . " Update Data User: " .  $resultusr['username'] .", Simpan Data Sebagai Log User Manajemen Web";
+    $InputDescription     = $me . " Update Data User: " .  $resultusr['username'] . ", Simpan Data Sebagai Log User Manajemen Web";
     $InputAction          = 'Update';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -198,7 +198,7 @@ if (isset($_POST["NDeleteData"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $_SESSION['username'];
     $InputModul           = 'Administrator Tools/User Manajemen Web';
-    $InputDescription     = $me . " Hapus Data User: " .  $resultusr['username'] .", Simpan Data Sebagai Log User Manajemen Web";
+    $InputDescription     = $me . " Hapus Data User: " .  $resultusr['username'] . ", Simpan Data Sebagai Log User Manajemen Web";
     $InputAction          = 'Hapus';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -239,7 +239,7 @@ if (isset($_POST["NEnabledData"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $_SESSION['username'];
     $InputModul           = 'Administrator Tools/User Manajemen Web';
-    $InputDescription     = $me . " Aktifkan Status User: " .  $resultusr['username'] .", Simpan Data Sebagai Log User Manajemen Web";
+    $InputDescription     = $me . " Aktifkan Status User: " .  $resultusr['username'] . ", Simpan Data Sebagai Log User Manajemen Web";
     $InputAction          = 'Aktifkan';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -277,7 +277,7 @@ if (isset($_POST["NDisabledData"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $_SESSION['username'];
     $InputModul           = 'Administrator Tools/User Manajemen Web';
-    $InputDescription     = $me . " Non-Aktifkan Status User: " .  $resultusr['username'] .", Simpan Data Sebagai Log User Manajemen Web";
+    $InputDescription     = $me . " Non-Aktifkan Status User: " .  $resultusr['username'] . ", Simpan Data Sebagai Log User Manajemen Web";
     $InputAction          = 'Non-Aktifkan';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -316,7 +316,7 @@ if (isset($_POST["NResignData"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $_SESSION['username'];
     $InputModul           = 'Administrator Tools/User Manajemen Web';
-    $InputDescription     = $me . " Update Status User: " .  $resultusr['username'] ." Resign, Simpan Data Sebagai Log User Manajemen Web";
+    $InputDescription     = $me . " Update Status User: " .  $resultusr['username'] . " Resign, Simpan Data Sebagai Log User Manajemen Web";
     $InputAction          = 'Resign';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -402,7 +402,8 @@ if (isset($_GET['findOne']) != '') {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -749,24 +750,28 @@ if (isset($_GET['findOne']) != '') {
                                                             <div class="row" id="pvlg">
                                                                 <div class="col-md-3">
                                                                     <div style="margin-bottom: 10px;">
-                                                                        <span class="btn btn-primary"><i class="fas fa-save"></i></span> <font style="font-weight: 500;">Insert Data</font>
+                                                                        <span class="btn btn-primary"><i class="fas fa-save"></i></span>
+                                                                        <font style="font-weight: 500;">Insert Data</font>
                                                                     </div>
                                                                     <div style="margin-bottom: 10px;">
-                                                                        <span class="btn btn-warning"><i class="fas fa-edit"></i></span> <font style="font-weight: 500;">Update Data</font>
+                                                                        <span class="btn btn-warning"><i class="fas fa-edit"></i></span>
+                                                                        <font style="font-weight: 500;">Update Data</font>
                                                                     </div>
                                                                     <div style="margin-bottom: 10px;">
-                                                                        <span class="btn btn-danger"><i class="fas fa-trash"></i></span> <font style="font-weight: 500;">Hapus Data</font>
-                                                                    </div>      
+                                                                        <span class="btn btn-danger"><i class="fas fa-trash"></i></span>
+                                                                        <font style="font-weight: 500;">Hapus Data</font>
+                                                                    </div>
                                                                     <!-- <div style="margin-bottom: 10px;">
                                                                         <span class="btn btn-secondary"><i class="fas fa-paper-plane"></i></span> <font style="font-weight: 500;">Kirim Data</font>
                                                                     </div>        -->
                                                                     <div style="margin-bottom: 10px;">
-                                                                        <span class="btn btn-info"><i class="fas fa-lock"></i></span> <font style="font-weight: 500;">Ganti Password</font>
-                                                                    </div>                                                     
+                                                                        <span class="btn btn-info"><i class="fas fa-lock"></i></span>
+                                                                        <font style="font-weight: 500;">Ganti Password</font>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <div style="margin-bottom: 10px;">
-                                                                        <span class="btn btn-secondary">=</span> 
+                                                                        <span class="btn btn-secondary">=</span>
                                                                         <?php if ($row['INSERT_DATA'] == 'Y') { ?>
                                                                             <font style="font-weight: 500; color: green;"><i class="fas fa-check-circle"></i> Insert Data</font>
                                                                         <?php } else { ?>
@@ -779,7 +784,7 @@ if (isset($_GET['findOne']) != '') {
                                                                             <font style="font-weight: 500; color: green;"><i class="fas fa-check-circle"></i> Update Data</font>
                                                                         <?php } else { ?>
                                                                             <font style="font-weight: 500; color: red;"><i class="fas fa-ban"></i> Update Data</font>
-                                                                        <?php } ?> 
+                                                                        <?php } ?>
                                                                     </div>
                                                                     <div style="margin-bottom: 10px;">
                                                                         <span class="btn btn-secondary">=</span>
@@ -788,7 +793,7 @@ if (isset($_GET['findOne']) != '') {
                                                                         <?php } else { ?>
                                                                             <font style="font-weight: 500; color: red;"><i class="fas fa-ban"></i> Hapus Data</font>
                                                                         <?php } ?>
-                                                                    </div>      
+                                                                    </div>
                                                                     <!-- <div style="margin-bottom: 10px;">
                                                                         <span class="btn btn-secondary">=</span>
                                                                         <?php if ($row['KIRIM_DATA'] == 'Y') { ?>
@@ -796,7 +801,7 @@ if (isset($_GET['findOne']) != '') {
                                                                         <?php } else { ?>
                                                                             <font style="font-weight: 500; color: red;"><i class="fas fa-ban"></i> Kirim Data</font>
                                                                         <?php } ?>
-                                                                    </div>       --> 
+                                                                    </div>       -->
                                                                     <div style="margin-bottom: 10px;">
                                                                         <span class="btn btn-secondary">=</span>
                                                                         <?php if ($row['UPDATE_PASSWORD'] == 'Y') { ?>
@@ -804,7 +809,7 @@ if (isset($_GET['findOne']) != '') {
                                                                         <?php } else { ?>
                                                                             <font style="font-weight: 500; color: red;"><i class="fas fa-ban"></i> Ganti Password</font>
                                                                         <?php } ?>
-                                                                    </div>                                                     
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

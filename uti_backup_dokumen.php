@@ -35,7 +35,8 @@ include "include/cssDatatables.php";
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -54,7 +55,7 @@ include "include/cssDatatables.php";
                             <div class="form-group row m-b-15">
                                 <label class="col-md-3 col-form-label">Jenis Dokumen</label>
                                 <div class="col-md-8">
-                                   <select class="form-control" name="fJenisDokumen">
+                                    <select class="form-control" name="fJenisDokumen">
                                         <?php if ($fJenisDokumen == '') { ?>
                                             <option value="">-- Pilih Jenis Dokumen --</option>
                                         <?php } else { ?>
@@ -136,7 +137,7 @@ include "include/cssDatatables.php";
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
                                         $no++;
-                                        ?>
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;">

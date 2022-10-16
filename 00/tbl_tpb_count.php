@@ -22,7 +22,8 @@ include "include/cssForm.php";
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -51,7 +52,7 @@ include "include/cssForm.php";
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("data-count-tables-up").innerHTML =
-                this.responseText;
+                    this.responseText;
             }
         };
         xhttp.open("GET", "realtime/count_tables_up.php", true);
@@ -69,7 +70,7 @@ include "include/cssForm.php";
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("data-count-tables-up-local").innerHTML =
-                this.responseText;
+                    this.responseText;
             }
         };
         xhttp.open("GET", "realtime/count_tables_up_local.php", true);
@@ -87,7 +88,7 @@ include "include/cssForm.php";
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("data-count-tables-local").innerHTML =
-                this.responseText;
+                    this.responseText;
             }
         };
         xhttp.open("GET", "realtime/count_tables_local.php", true);

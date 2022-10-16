@@ -48,7 +48,7 @@ if (isset($_POST["add_kuota"])) {
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
         $InputModul           = 'Administrator Tools/Kuota Mitra';
-        $InputDescription     = $me . " Insert Data: " .  $NameMitra ."-" .  $NameTahun ." ,Simpan Data Sebagai Log Kuota Mitra";
+        $InputDescription     = $me . " Insert Data: " .  $NameMitra . "-" .  $NameTahun . " ,Simpan Data Sebagai Log Kuota Mitra";
         $InputAction          = 'Insert';
         $InputDate            = date('Y-m-d h:m:i');
 
@@ -79,23 +79,23 @@ if (isset($_POST["NUpdateData"])) {
     // if ($HasilCekValidasi != NULL) {
     //     echo "<script>window.location.href='adm_kuota.php?DataAlready=true';</script>";
     // } else {
-        $IDUNIQ                   = $_POST['IDUNIQ'];
-        $UpdateMitra              = $_POST['UpdateMitra'];
-        $UpdateTahun              = $_POST['UpdateTahun'];
-        // Golongan A
-        // $UpdateGol_A              = $_POST['UpdateGol_A'];
-        $UpdateKuotaCARTON_A      = $_POST['UpdateKuotaCARTON_A'];
-        $UpdateKuotaLITER_A       = $_POST['UpdateKuotaLITER_A'];
-        // Golongan B
-        // $UpdateGol_B              = $_POST['UpdateGol_B'];
-        $UpdateKuotaCARTON_B      = $_POST['UpdateKuotaCARTON_B'];
-        $UpdateKuotaLITER_B       = $_POST['UpdateKuotaLITER_B'];
-        // Golongan C
-        // $UpdateGol_C              = $_POST['UpdateGol_C'];
-        $UpdateKuotaCARTON_C      = $_POST['UpdateKuotaCARTON_C'];
-        $UpdateKuotaLITER_C       = $_POST['UpdateKuotaLITER_C'];
+    $IDUNIQ                   = $_POST['IDUNIQ'];
+    $UpdateMitra              = $_POST['UpdateMitra'];
+    $UpdateTahun              = $_POST['UpdateTahun'];
+    // Golongan A
+    // $UpdateGol_A              = $_POST['UpdateGol_A'];
+    $UpdateKuotaCARTON_A      = $_POST['UpdateKuotaCARTON_A'];
+    $UpdateKuotaLITER_A       = $_POST['UpdateKuotaLITER_A'];
+    // Golongan B
+    // $UpdateGol_B              = $_POST['UpdateGol_B'];
+    $UpdateKuotaCARTON_B      = $_POST['UpdateKuotaCARTON_B'];
+    $UpdateKuotaLITER_B       = $_POST['UpdateKuotaLITER_B'];
+    // Golongan C
+    // $UpdateGol_C              = $_POST['UpdateGol_C'];
+    $UpdateKuotaCARTON_C      = $_POST['UpdateKuotaCARTON_C'];
+    $UpdateKuotaLITER_C       = $_POST['UpdateKuotaLITER_C'];
 
-        $query = $dbcon->query("UPDATE tbl_cust_quota SET tbb_nama='$UpdateMitra',
+    $query = $dbcon->query("UPDATE tbl_cust_quota SET tbb_nama='$UpdateMitra',
                                                           gol_a_car='$UpdateKuotaCARTON_A',
                                                           gol_a_ltr='$UpdateKuotaLITER_A',
                                                           gol_b_car='$UpdateKuotaCARTON_B',
@@ -105,28 +105,28 @@ if (isset($_POST["NUpdateData"])) {
                                                           quota_year='$UpdateTahun'
                                                        WHERE quota_id='$IDUNIQ'");
 
-        // FOR AKTIFITAS
-        $me = $_SESSION['username'];
-        $datame = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
-        $resultme = mysqli_fetch_array($datame);
+    // FOR AKTIFITAS
+    $me = $_SESSION['username'];
+    $datame = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+    $resultme = mysqli_fetch_array($datame);
 
-        $IDUNIQme             = $resultme['USRIDUNIQ'];
-        $InputUsername        = $me;
-        $InputModul           = 'Administrator Tools/Kuota Mitra';
-        $InputDescription     = $me . " Update Data: " .  $UpdateMitra ."-" .  $UpdateTahun .", Simpan Data Sebagai Log Kuota Mitra";
-        $InputAction          = 'Update';
-        $InputDate            = date('Y-m-d h:m:i');
+    $IDUNIQme             = $resultme['USRIDUNIQ'];
+    $InputUsername        = $me;
+    $InputModul           = 'Administrator Tools/Kuota Mitra';
+    $InputDescription     = $me . " Update Data: " .  $UpdateMitra . "-" .  $UpdateTahun . ", Simpan Data Sebagai Log Kuota Mitra";
+    $InputAction          = 'Update';
+    $InputDate            = date('Y-m-d h:m:i');
 
-        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+    $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                                (id,IDUNIQ,username,modul,description,action,date_created)
                                VALUES
                                ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
-        if ($query) {
-            echo "<script>window.location.href='adm_kuota.php?UpdateSuccess=true';</script>";
-        } else {
-            echo "<script>window.location.href='adm_kuota.php?UpdateFailed=true';</script>";
-        }
+    if ($query) {
+        echo "<script>window.location.href='adm_kuota.php?UpdateSuccess=true';</script>";
+    } else {
+        echo "<script>window.location.href='adm_kuota.php?UpdateFailed=true';</script>";
+    }
     // }
 }
 // END UPDATE KUOTA MITRA
@@ -146,7 +146,7 @@ if (isset($_POST["NDeleteData"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Administrator Tools/Kuota Mitra';
-    $InputDescription     = $me . " Hapus Data: " .  $DeleteMitra ."-" .  $DeleteTahun .", Simpan Data Sebagai Log Kuota Mitra";
+    $InputDescription     = $me . " Hapus Data: " .  $DeleteMitra . "-" .  $DeleteTahun . ", Simpan Data Sebagai Log Kuota Mitra";
     $InputAction          = 'Hapus';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -180,7 +180,8 @@ if (isset($_POST["NDeleteData"])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -201,7 +202,7 @@ if (isset($_POST["NDeleteData"])) {
                         <div class="css-button">
                             <?php include "modal/m_adm_kuota.php"; ?>
                         </div>
-                        <?php } ?>
+                    <?php } ?>
                     <!-- end css-button -->
                     <div class="table-responsive">
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
@@ -234,7 +235,7 @@ if (isset($_POST["NDeleteData"])) {
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
                                         $no++;
-                                        ?>
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;"><?= $row['quota_year'] ?></td>
@@ -290,9 +291,9 @@ if (isset($_POST["NDeleteData"])) {
                                                                                 <option value="<?= $row['quota_year'] ?>"><?= $row['quota_year'] ?></option>
                                                                                 <option value="">-- Pilih Tahun --</option>
                                                                                 <?php
-                                                                                for($i=date('Y'); $i>=date('Y')-32; $i-=1) {
+                                                                                for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
                                                                                     echo "<option value='$i'> $i </option>";
-                                                                                    }
+                                                                                }
                                                                                 ?>
                                                                             </select>
                                                                         </div>
