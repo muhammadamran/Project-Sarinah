@@ -42,59 +42,51 @@ $data = json_decode($content, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <div class="table-responsive">
-                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="data-table-buttons"
+                            class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">#</th>
                                     <th class="text-nowrap" style="text-align: center;">Kode Satuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Uraian Satuan</th>
-                                    <!-- <th class="text-nowrap">Aksi</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $dataTable = $dbcon->query("SELECT * FROM referensi_satuan ORDER BY ID ASC");
-                                if (mysqli_num_rows($dataTable) > 0) {
-                                    $no = 0;
-                                    while ($row = mysqli_fetch_array($dataTable)) {
-                                        $no++;
-                                ?>
-                                        <tr class="odd gradeX">
-                                            <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                            <td style="text-align: center;">
-                                                <?php if ($row['KODE_SATUAN'] == NULL || $row['KODE_SATUAN'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['KODE_SATUAN'] ?>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: left;">
-                                                <?php if ($row['URAIAN_SATUAN'] == NULL || $row['URAIAN_SATUAN'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['URAIAN_SATUAN'] ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- <td>
-                                                <a href="#updateData<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i></a>
-                                                <a href="#deleteData<?= $row['ID'] ?>" class="btn btn-sm btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i></a>
-                                            </td> -->
-                                        </tr>
-                                    <?php } ?>
+                                <?php if ($data['status'] == 404) { ?>
+                                <tr>
+                                    <td colspan="3">
+                                        <center>
+                                            <div style="display: grid;">
+                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
                                 <?php } else { ?>
-                                    <tr>
-                                        <td colspan="10">
-                                            <center>
-                                                <div style="display: grid;">
-                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php }
-                                mysqli_close($dbcon); ?>
+                                <?php $no = 0; ?>
+                                <?php foreach ($data['result'] as $row) { ?>
+                                <?php $no++ ?>
+                                <tr class="odd gradeX">
+                                    <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['KODE_SATUAN'] == NULL || $row['KODE_SATUAN'] == '') { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['KODE_SATUAN'] ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <?php if ($row['URAIAN_SATUAN'] == NULL || $row['URAIAN_SATUAN'] == '') { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['URAIAN_SATUAN'] ?>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

@@ -104,7 +104,6 @@ $data = json_decode($content, true);
                                     <th class="text-nowrap" style="text-align: center;">Tipe</th>
                                     <th class="text-nowrap" style="text-align: center;">Spesifikasi Lain</th>
                                     <th class="text-nowrap" style="text-align: center;">Kode Barang</th>
-                                    <!-- <th class="text-nowrap">Aksi</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -182,10 +181,6 @@ $data = json_decode($content, true);
                                         <?= $row['KODE_BARANG'] ?>
                                         <?php } ?>
                                     </td>
-                                    <!-- <td>
-                                                <a href="#updateData<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i></a>
-                                                <a href="#deleteData<?= $row['ID'] ?>" class="btn btn-sm btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i></a>
-                                            </td> -->
                                 </tr>
                                 <?php } ?>
                                 <?php } ?>

@@ -49,17 +49,23 @@ $data = json_decode($content, true);
                                     <th width="1%">#</th>
                                     <th class="text-nowrap" style="text-align: center;">Nama Kapal</th>
                                     <th class="text-nowrap" style="text-align: center;">Bendera</th>
-                                    <!-- <th class="text-nowrap">Aksi</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $dataTable = $dbcon->query("SELECT * FROM referensi_kapal ORDER BY ID DESC");
-                                if (mysqli_num_rows($dataTable) > 0) {
-                                    $no = 0;
-                                    while ($row = mysqli_fetch_array($dataTable)) {
-                                        $no++;
-                                ?>
+                                <?php if ($data['status'] == 404) { ?>
+                                <tr>
+                                    <td colspan="3">
+                                        <center>
+                                            <div style="display: grid;">
+                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
+                                <?php } else { ?>
+                                <?php $no = 0; ?>
+                                <?php foreach ($data['result'] as $row) { ?>
+                                <?php $no++ ?>
                                 <tr class="odd gradeX">
                                     <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                     <td style="text-align: left;">
@@ -78,24 +84,9 @@ $data = json_decode($content, true);
                                         <?= $row['KODE_BENDERA'] ?>
                                         <?php } ?>
                                     </td>
-                                    <!-- <td>
-                                                <a href="#updateData<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i></a>
-                                                <a href="#deleteData<?= $row['ID'] ?>" class="btn btn-sm btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i></a>
-                                            </td> -->
                                 </tr>
                                 <?php } ?>
-                                <?php } else { ?>
-                                <tr>
-                                    <td colspan="10">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
-                                <?php }
-                                mysqli_close($dbcon); ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

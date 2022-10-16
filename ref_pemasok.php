@@ -47,83 +47,31 @@ $data = json_decode($content, true);
                                 <th style="text-align:center">Nama</th>
                                 <th style="text-align:center">Alamat</th>
                                 <th style="text-align:center">Negara</th>
-                                <!-- <th>Action</th> -->
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            $result2 = mysqli_query($dbcon, "SELECT * FROM referensi_pemasok AS a
-                                                             JOIN referensi_negara AS b ON a.KODE_NEGARA=b.KODE_NEGARA ");
-                            if (mysqli_num_rows($result2) > 0) {
-                                $no = 0;
-                                while ($row2 = mysqli_fetch_array($result2)) {
-                                    $no++;
-                                    echo "<tr>";
-                                    echo "<td>" . $no . ".</td>";
-                                    echo "<td>" . $row2['NAMA'] . "</td>";
-                                    echo "<td>" . $row2['ALAMAT'] . "</td>";
-                                    echo "<td>" . $row2['URAIAN_NEGARA'] . "</td>";
-                                    // echo "<td align= ''>
-                                    // <a href='#' data-toggle='modal' data-target='#myModal$row2[ID]' title='Edit' class='btn btn-success' title='View the Report'><i class='mdi mdi-table-edit'></i> Edit</a>
-                                    // <a href='#' data-toggle='modal' data-target='#del$row2[ID]' title='Delete' class='btn btn-danger' title='View the Report'><i class='fas fa-trash-alt'></i> Delete</a>
-                                    // </td>";
-                                    echo "</tr>";
-                            ?>
-                                    <div class="modal fade" id="myModal<?php echo $row2['ID']; ?>" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title"><b>[Users] </b> Update Record</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form method="post" action=" ">
-                                                        <div class="form-group">
-                                                            <label>NAMA</label>
-                                                            <input type="text" name="NAMA" value="<?php echo $row2['NAMA']; ?>" class="form-control" required>
-                                                            <input type="text" name="ID" value="<?php echo $row2['ID']; ?>" class="form-control" readonly>
-                                                        </div>
-                                                        <button type="submit" name="update" value="update" class="btn btn-primary">Update</button>
-                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-
-                                                </div>
-                                            </div>
+                            <?php if ($data['status'] == 404) { ?>
+                            <tr>
+                                <td colspan="4">
+                                    <center>
+                                        <div style="display: grid;">
+                                            <i class="far fa-times-circle no-data"></i> Tidak ada data
                                         </div>
-                                    </div>
-
-                                    <div class="modal fade" id="del<?php echo $row2['ID']; ?>" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title"><b>[Records] </b> Delete Record</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form method="post" action=" ">
-                                                        <div class="form-group">
-                                                            <label>Are you sure delete this record?</label>
-                                                            <h6>Record ID : <?php echo $row2['client_name']; ?></h6>
-
-                                                            <input type="hidden" value="<?php echo $_SESSION['username']; ?>" name="user_name" class="form-control" required>
-                                                            <input type="hidden" value="<?php echo $row2['ID']; ?>" name="ID" class="form-control" required>
-                                                            <input type="hidden" value="<?php echo $row2['client_name']; ?>" name="client_name" class="form-control" required>
-
-                                                        </div>
-                                                        <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                            <?php
-                                }
-                            }
-                            mysqli_close($dbcon);
-                            ?>
+                                    </center>
+                                </td>
+                            </tr>
+                            <?php } else { ?>
+                            <?php $no = 0; ?>
+                            <?php foreach ($data['result'] as $row) { ?>
+                            <?php $no++ ?>
+                            <tr>
+                                <td><?= $no ?>.</td>
+                                <td><?= $row['NAMA']; ?></td>
+                                <td><?= $row['ALAMAT']; ?></td>
+                                <td><?= $row['URAIAN_NEGARA']; ?></td>
+                            </tr>
+                            <?php } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
