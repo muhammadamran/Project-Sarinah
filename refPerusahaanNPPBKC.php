@@ -77,10 +77,18 @@ if (isset($_POST["add_nppbkc"])) {
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
+                    <?php if ($data['status'] == 404) { ?>
+                    <center>
+                        <div style="display: grid;">
+                            <i class="far fa-times-circle no-data"></i> Tidak ada data
+                        </div>
+                    </center>
+                    <?php } else { ?>
+                    <?php foreach ($data['result'] as $row) { ?>
                     <form action="" method="POST">
                         <div class="modal-header">
                             <h4 class="modal-title">[NPPBKC] Mitra - <?= $row['NAMA'] ?></h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-text="true">×</button>
                         </div>
                         <div class="modal-body">
                             <fieldset>
@@ -103,11 +111,11 @@ if (isset($_POST["add_nppbkc"])) {
                                             <label for="IdLITER">NPPBKC <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="NameNPPBKC" id="IDNPPBKC"
                                                 placeholder="NPPBKC" required>
-                                            <input type="hidden" class="form-control" name="UNIQID"
+                                            <input type="text" class="form-control" name="UNIQID"
                                                 value="<?= $_GET['id'] ?>">
-                                            <input type="hidden" class="form-control" name="UNIQNWPW"
+                                            <input type="text" class="form-control" name="UNIQNWPW"
                                                 value="<?= $_GET['NPWP'] ?>">
-                                            <input type="hidden" class="form-control" name="UNIQNAMA"
+                                            <input type="text" class="form-control" name="UNIQNAMA"
                                                 value="<?= $row['NAMA'] ?>">
                                         </div>
                                     </div>
@@ -124,6 +132,9 @@ if (isset($_POST["add_nppbkc"])) {
                                     class="fas fa-plus-circle"></i> NPPBKC</button>
                         </div>
                     </form>
+                    <?php } ?>
+                    <?php } ?>
+
                 </div>
             </div>
         </div>

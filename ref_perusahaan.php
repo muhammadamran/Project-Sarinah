@@ -141,7 +141,6 @@ $data = json_decode($content, true);
                                     <td style="text-align: left;">
                                         <?php if ($row['URAIAN_STATUS_PENGUSAHA'] == NULL || $row['URAIAN_STATUS_PENGUSAHA'] == '') { ?>
                                         <center>
-
                                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                                             </font>
                                         </center>
