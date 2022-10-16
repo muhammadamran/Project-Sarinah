@@ -115,6 +115,35 @@ include "include/cssDatatables.php";
                             </div>
                         </div>
 
+                        <!-- PLB -->
+                        <div class="col-xl-6 col-md-6">
+                            <div class="widget widget-stats bg-gray-900">
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
+                                <div class="stats-content">
+                                    <div class="stats-title">NEW COMMENTS</div>
+                                    <div class="stats-number">3,988</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 54.9%;"></div>
+                                    </div>
+                                    <div class="stats-desc">Better than last week (54.9%)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- TPB -->
+                        <div class="col-xl-6 col-md-6">
+                            <div class="widget widget-stats bg-gray-900">
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
+                                <div class="stats-content">
+                                    <div class="stats-title">NEW COMMENTS</div>
+                                    <div class="stats-number">3,988</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 54.9%;"></div>
+                                    </div>
+                                    <div class="stats-desc">Better than last week (54.9%)</div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
