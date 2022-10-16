@@ -47,6 +47,9 @@ function date_indo($date, $print_day = false)
     return $tgl_indo;
 }
 
+var_dump($_POST['StartTanggal']);
+exit;
+
 // API - 
 include "../include/api.php";
 $content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $_POST['StartTanggal'] . '&EndTanggal=' . $_POST['EndTanggal']);
