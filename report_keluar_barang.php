@@ -21,6 +21,10 @@ if (isset($_POST['filter_date'])) {
     }
 }
 
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal);
+$data = json_decode($content, true);
 ?>
 
 <!-- begin #content -->
@@ -209,28 +213,20 @@ if (isset($_POST['filter_date'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                if (isset($_POST["filter_date"])) {
-                                    $dataTable = $dbcon->query("SELECT plb.NOMOR_BC11 AS PLB_NOMOR_BC11,plb.TANGGAL_BC11 AS PLB_TANGGAL_BC11,hdr.NOMOR_BC11,hdr.TANGGAL_BC11,hdr.NAMA_PEMASOK,
-                                                                brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF,hdr.ID_PENERIMA_BARANG
-                                                                FROM tpb_header AS hdr
-                                                                LEFT JOIN plb_header AS plb ON hdr.NOMOR_DAFTAR=plb.NOMOR_DAFTAR
-                                                                LEFT OUTER JOIN tpb_barang AS brg ON hdr.ID=brg.ID_HEADER
-                                                                WHERE hdr.TANGGAL_BC11 BETWEEN '$StartTanggal' AND '$EndTanggal'
-                                                                ORDER BY hdr.TANGGAL_BC11,brg.KODE_BARANG,brg.URAIAN ASC");
-                                } else {
-                                    $dataTable = $dbcon->query("SELECT plb.NOMOR_BC11 AS PLB_NOMOR_BC11,plb.TANGGAL_BC11 AS PLB_TANGGAL_BC11,hdr.NOMOR_BC11,hdr.TANGGAL_BC11,hdr.NAMA_PEMASOK,
-                                                                        brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF,hdr.ID_PENERIMA_BARANG
-                                                                FROM tpb_header AS hdr
-                                                                LEFT JOIN plb_header AS plb ON hdr.NOMOR_DAFTAR=plb.NOMOR_DAFTAR
-                                                                LEFT OUTER JOIN tpb_barang AS brg ON hdr.ID=brg.ID_HEADER
-                                                                ORDER BY hdr.TANGGAL_BC11 ASC LIMIT 0");
-                                }
-                                if (mysqli_num_rows($dataTable) > 0) {
-                                    $no = 0;
-                                    while ($row = mysqli_fetch_array($dataTable)) {
-                                        $no++;
-                                ?>
+                                <?php if ($data['status'] == 404) { ?>
+                                <tr>
+                                    <td colspan="12">
+                                        <center>
+                                            <div style="display: flex;justify-content: center; align-items: center">
+                                                <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
+                                <?php } else { ?>
+                                <?php $no = 0; ?>
+                                <?php foreach ($data['result'] as $row) { ?>
+                                <?php $no++ ?>
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
@@ -256,18 +252,7 @@ if (isset($_POST['filter_date'])) {
                                     </td>
                                 </tr>
                                 <?php } ?>
-                                <?php } else { ?>
-                                <tr>
-                                    <td colspan="12">
-                                        <center>
-                                            <div style="display: flex;justify-content: center; align-items: center">
-                                                <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
-                                <?php }
-                                mysqli_close($dbcon); ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
