@@ -474,26 +474,22 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <?php $no = 0; ?>
                             <?php foreach ($dataBarang['result'] as $row) { ?>
                             <?php $no++ ?>
-                            echo "<tr>";
+                            <tr>
                                 <td><?= $no ?>.</td>
-                                echo "<td>" . $row['URAIAN'] . "</td>";
-                                echo "<td>" . $row['KODE_BARANG'] . "</td>";
-                                echo "<td>" . $row['UKURAN'] . "</td>";
-                                echo "<td>" . $row['JUMLAH_SATUAN'] . "</td>";
-                                $bottleqty = $row['UKURAN'] * $row['JUMLAH_SATUAN'];
-                                echo "<td>" . $bottleqty . "</td>";
-                                /* GET LITRE DATA FROM tb_barang_tarif - start */
+                                <td><?= $row['URAIAN']; ?></td>
+                                <td><?= $row['KODE_BARANG']; ?></td>
+                                <td><?= $row['UKURAN']; ?></td>
+                                <td><?= $row['JUMLAH_SATUAN']; ?></td>
+                                <?php $bottleqty = $row['UKURAN'] * $row['JUMLAH_SATUAN']; ?>
+                                <td><?= $bottleqty; ?></td>
+
                                 $getlitre = mysqli_query($dbcon, "SELECT JUMLAH_SATUAN FROM tpb_barang_tarif WHERE
                                 ID_BARANG = '$row[ID]' AND JENIS_TARIF = 'CUKAI' ");
                                 $lit = mysqli_fetch_array($getlitre);
 
-                                echo "<td>" . $lit['JUMLAH_SATUAN'] . "</td>";
-
-                                /* GET LITRE DATA FROM tb_barang_tarif - end */
-
-                                echo "
-                            </tr>";
-                            }
+                                <td>" . $lit['JUMLAH_SATUAN'] . "</td>
+                            </tr>
+                            <?php } ?>
 
                             /* calculate total QTY */
                             $result2 = mysqli_query($dbcon, "SELECT sum(JUMLAH_SATUAN) as TotalQty FROM tpb_barang WHERE
@@ -520,7 +516,6 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 echo "<td>" . "<b>" . $row3['TotalBottle'] . "</b>" . "</td>";
                                 echo "<td>" . "<b>" . $row5['TotalLitre'] . "</b>" . "</td>";
                                 echo "</tr>";
-                            <?php } ?>
                             <?php } ?>
                         </tbody>
                     </table>
