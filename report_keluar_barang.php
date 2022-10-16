@@ -81,7 +81,8 @@ $data = json_decode($content, true);
                                         <div class="modal-content">
                                             <form action="" method="POST">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">[Laporan Keluar Barang] Filter Tanggal</h4>
+                                                    <h4 class="modal-title">[Laporan Keluar Barang] Filter Tanggal AJU
+                                                    </h4>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-hidden="true">×</button>
                                                 </div>
@@ -232,12 +233,48 @@ $data = json_decode($content, true);
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
-                                    <td><?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
-                                    <td><?= $row['PLB_NOMOR_BC11']; ?></td>
-                                    <td><?= $row['PLB_TANGGAL_BC11']; ?></td>
+                                    <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                                    <?php if ($row['NOMOR_AJU'] == NULL) { ?>
+                                    <td style="text-align: center">
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                    </td>
+                                    <?php } else { ?>
+                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <?php } ?>
+                                    <?php if ($row['NOMOR_AJU'] == NULL) { ?>
+                                    <td style="text-align: center">
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                    </td>
+                                    <?php } else { ?>
+                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <?php } ?>
+                                    <td><?= $row['TGL_AJU']; ?></td>
+                                    <?php if ($row['NOMOR_BC11'] == NULL) { ?>
+                                    <td style="text-align: center">
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                    </td>
+                                    <?php } else { ?>
                                     <td><?= $row['NOMOR_BC11']; ?></td>
+                                    <?php } ?>
+                                    <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
+                                    <td style="text-align: center">
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                    </td>
+                                    <?php } else { ?>
                                     <td><?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?></td>
+                                    <?php } ?>
+                                    <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
+                                    <td style="text-align: center">
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                    </td>
+                                    <?php } else { ?>
                                     <td><?= $row['NAMA_PEMASOK']; ?></td>
+                                    <?php } ?>
                                     <td><?= $row['KODE_BARANG']; ?></td>
                                     <td><?= $row['URAIAN']; ?></td>
                                     <td>
