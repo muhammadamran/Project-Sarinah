@@ -213,7 +213,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
             <div class="invoice-company">
                 <div class="row">
                     <div class="col-sm-12" style="justify-content: end;">
-                        <span class="pull-right hidden-print">
+                        <span class="pull-right hidden-print" style="margin-bottom: -17px;">
                             <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
                                 <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export
                                 Excel
@@ -257,7 +257,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
             foreach ($dataHeader['result'] as $row) {
                 $ID_HDR = $row['ID'];
                 $TGL_AJU = $row['TGL_AJU'];
-                $KODE_DOKUMEN_PABEAN = $row['KODE_$KODE_DOKUMEN_PABEAN'];
+                $KODE_DOKUMEN_PABEAN = $row['KODE_DOKUMEN_PABEAN'];
                 $NAMA_PENERIMA_BARANG = $row['NAMA_PENERIMA_BARANG'];
                 $NOMOR_IJIN_TPB_PENERIMA = $row['NOMOR_IJIN_TPB_PENERIMA'];
                 $ID_PENERIMA_BARANG = $row['ID_PENERIMA_BARANG'];
@@ -325,7 +325,8 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 </b></td>
                         </tr>
                         <tr>
-                            <td colspan=4 height="27" align="left" bgcolor="#FFFFFF">Duty Free Name</td>
+                            <td colspan=4 height="27" align="left" bgcolor="#FFFFFF" style="font-weight: 800;">Duty Free
+                                Name</td>
                             <td align="left" bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan="2" align="left" valign=middle bgcolor="#FFFFFF">
                                 <?= $NAMA_PENERIMA_BARANG; ?></td>
@@ -334,7 +335,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
 
-                            <td align="left" bgcolor="#FFFFFF">Number</td>
+                            <td align="left" bgcolor="#FFFFFF" style="font-weight: 800;">Number</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan="2" align="left" valign=middle bgcolor="#FFFFFF">
                                 <?= $NOMOR_IJIN_TPB_PENERIMA; ?></td>
@@ -344,7 +345,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" valign=middle bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"></td>
                         </tr>
                         <tr>
-                            <td colspan=4 height="27" align="left" bgcolor="#FFFFFF">NPWP</td>
+                            <td colspan=4 height="27" align="left" bgcolor="#FFFFFF" style="font-weight: 800;">NPWP</td>
                             <td align="left" bgcolor="#FFFFFF"><b>:</b></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF"><?= $ID_PENERIMA_BARANG; ?>
                             </td>
@@ -353,7 +354,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
-                            <td align="left" bgcolor="#FFFFFF">Ex Bill Of Lading</td>
+                            <td align="left" bgcolor="#FFFFFF" style="font-weight: 800;">Ex Bill Of Lading</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
                             <td align="left" valign=middle><?= $NOMOR_KONTAINER; ?></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF"><br></td>
@@ -362,7 +363,8 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" valign=middle bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"></td>
                         </tr>
                         <tr>
-                            <td colspan=4 height="27" align="left" bgcolor="#FFFFFF">Street Address</td>
+                            <td colspan=4 height="27" align="left" bgcolor="#FFFFFF" style="font-weight: 800;">Street
+                                Address</td>
                             <td align="left" bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan="1" align="left" valign=middle bgcolor="#FFFFFF">
                                 <?= $ALAMAT_PENERIMA_BARANG; ?></td>
@@ -371,7 +373,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
-                            <td align="left" bgcolor="#FFFFFF">No. Dokumen</td>
+                            <td align="left" bgcolor="#FFFFFF" style="font-weight: 800;">No. Dokumen</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan=3 align="left" valign=middle bgcolor="#FFFFFF">
                                 <?= $NOMOR_DOKUMEN; ?></td>
@@ -390,7 +392,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
-                            <td align="left" bgcolor="#FFFFFF">Original</td>
+                            <td align="left" bgcolor="#FFFFFF" style="font-weight: 800;">Original</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
                             <td align="left" bgcolor="#FFFFFF"><?= $KODE_NEGARA_PEMASOK; ?>
                             </td>
@@ -411,7 +413,8 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" bgcolor="#FFFFFF"><br></td>
-                            <td align="left" bgcolor="#FFFFFF">BC <?= $KODE_DOKUMEN_PABEAN; ?> Number</td>
+                            <td align="left" bgcolor="#FFFFFF" style="font-weight: 800;">BC <?= $KODE_DOKUMEN_PABEAN; ?>
+                                Number</td>
                             <td align="right" bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan=2 align="left" bgcolor="#FFFFFF"><?= $NOMOR_AJU; ?>
                             </td>
@@ -472,7 +475,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <?php foreach ($dataBarang['result'] as $row) { ?>
                             <?php $no++ ?>
                             echo "<tr>";
-                                echo "<td>" . $row['ID'] . "</td>";
+                                <td><?= $no ?>.</td>
                                 echo "<td>" . $row['URAIAN'] . "</td>";
                                 echo "<td>" . $row['KODE_BARANG'] . "</td>";
                                 echo "<td>" . $row['UKURAN'] . "</td>";
@@ -488,7 +491,8 @@ div.table-responsive>div.dataTables_wrapper>div.row {
 
                                 /* GET LITRE DATA FROM tb_barang_tarif - end */
 
-                                echo "</tr>";
+                                echo "
+                            </tr>";
                             }
 
                             /* calculate total QTY */
