@@ -87,10 +87,18 @@ $dataLog = json_decode($contentLog, true);
                     <?php include "panduan/panduan_ck5_plb.php"; ?>
                     <div class="line-page-table"></div>
                     <!-- Alert -->
-                    <?php
-                    $dataLogUpload = $dbcon->query("SELECT * FROM plb_log ORDER BY ID DESC LIMIT 1");
-                    $rowLogUpload = mysqli_fetch_array($dataLogUpload);
-                    ?>
+                    <?php if ($dataLog['status'] == 404) { ?>
+                    <tr>
+                        <td colspan="8">
+                            <center>
+                                <div style="display: grid;">
+                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                </div>
+                            </center>
+                        </td>
+                    </tr>
+                    <?php } else { ?>
+                    <?php foreach ($dataLog['result'] as $rowLogUpload) { ?>
                     <?php if ($rowLogUpload['username'] != NULL) { ?>
                     <div class="note note-default">
                         <div class="note-icon"><i class="fas fa-history"></i></div>
@@ -106,6 +114,8 @@ $dataLog = json_decode($contentLog, true);
                             </p>
                         </div>
                     </div>
+                    <?php } ?>
+                    <?php } ?>
                     <?php } ?>
                     <!-- End Alert -->
 
