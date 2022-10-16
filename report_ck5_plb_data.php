@@ -94,7 +94,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
         display: grid;
         justify-content: center;
         align-content: center;
-        color: #1d2226;
+        color: #fff;
     }
 
     #id-fl {
