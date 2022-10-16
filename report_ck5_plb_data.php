@@ -49,6 +49,9 @@ $dataStatus = json_decode($contentStatus, true);
 // LOG
 $contentLog = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_Log');
 $dataLog = json_decode($contentLog, true);
+// LOG UPLOAD
+$contentLogUpload = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_LogUpload');
+$dataLogUpload = json_decode($contentLogUpload, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
@@ -87,7 +90,7 @@ $dataLog = json_decode($contentLog, true);
                     <?php include "panduan/panduan_ck5_plb.php"; ?>
                     <div class="line-page-table"></div>
                     <!-- Alert -->
-                    <?php if ($dataLog['status'] == 404) { ?>
+                    <?php if ($dataLogUpload['status'] == 404) { ?>
                     <tr>
                         <td colspan="8">
                             <center>
@@ -98,7 +101,7 @@ $dataLog = json_decode($contentLog, true);
                         </td>
                     </tr>
                     <?php } else { ?>
-                    <?php foreach ($dataLog['result'] as $rowLogUpload) { ?>
+                    <?php foreach ($dataLogUpload['result'] as $rowLogUpload) { ?>
                     <?php if ($rowLogUpload['username'] != NULL) { ?>
                     <div class="note note-default">
                         <div class="note-icon"><i class="fas fa-history"></i></div>
