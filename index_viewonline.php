@@ -48,23 +48,23 @@ include "include/cssDatatables.php";
             <div class="row"
                 style="display: flex;justify-content: center;align-items: center;background: #fff;border-radius: 5px;margin-left: 0px;margin-right: 0px;padding: 15px 0px 0px 0px;">
                 <div class="col-md-3">
-                    <div class="row-dinding">
-                        <div class="svg-img-center">
-                            <img src="assets/img/svg/data-extraction-animate.svg" class="images-svg">
-                        </div>
+                    <!-- <div class="row-dinding"> -->
+                    <div class="svg-img-center">
+                        <img src="assets/img/svg/data-extraction-animate.svg" class="images-svg">
                     </div>
+                    <!-- </div> -->
                 </div>
                 <div class="col-md-9">
                     <div class="row">
                         <!-- BC 2.3 -->
                         <div class="col-xl-4 col-md-6">
                             <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.3</div>
                                     <div class="stats-number">7,842,900</div>
                                     <div class="stats-progress progress">
-                                        <div class="progress-bar" style="width: 70.1%;"></div>
+                                        <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">Better than last week (70.1%)</div>
                                 </div>
@@ -74,12 +74,12 @@ include "include/cssDatatables.php";
                         <!-- BC 2.5 -->
                         <div class="col-xl-4 col-md-6">
                             <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.5</div>
                                     <div class="stats-number">180,200</div>
                                     <div class="stats-progress progress">
-                                        <div class="progress-bar" style="width: 40.5%;"></div>
+                                        <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">Better than last week (40.5%)</div>
                                 </div>
@@ -89,12 +89,12 @@ include "include/cssDatatables.php";
                         <!-- BC 2.6.1 -->
                         <div class="col-xl-4 col-md-6">
                             <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.6.1</div>
                                     <div class="stats-number">38,900</div>
                                     <div class="stats-progress progress">
-                                        <div class="progress-bar" style="width: 76.3%;"></div>
+                                        <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">Better than last week (76.3%)</div>
                                 </div>
@@ -104,12 +104,12 @@ include "include/cssDatatables.php";
                         <!-- BC 2.7 -->
                         <div class="col-xl-4 col-md-6">
                             <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.7</div>
                                     <div class="stats-number">7,842,900</div>
                                     <div class="stats-progress progress">
-                                        <div class="progress-bar" style="width: 70.1%;"></div>
+                                        <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">Better than last week (70.1%)</div>
                                 </div>
@@ -119,12 +119,12 @@ include "include/cssDatatables.php";
                         <!-- BC 4.0 -->
                         <div class="col-xl-4 col-md-6">
                             <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.5</div>
                                     <div class="stats-number">180,200</div>
                                     <div class="stats-progress progress">
-                                        <div class="progress-bar" style="width: 40.5%;"></div>
+                                        <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">Better than last week (40.5%)</div>
                                 </div>
@@ -134,12 +134,12 @@ include "include/cssDatatables.php";
                         <!-- BC 4.1 -->
                         <div class="col-xl-4 col-md-6">
                             <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.6.1</div>
                                     <div class="stats-number">38,900</div>
                                     <div class="stats-progress progress">
-                                        <div class="progress-bar" style="width: 76.3%;"></div>
+                                        <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">Better than last week (76.3%)</div>
                                 </div>
@@ -149,12 +149,12 @@ include "include/cssDatatables.php";
                         <!-- PLB -->
                         <div class="col-xl-6 col-md-6">
                             <div class="widget widget-stats bg-plb">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-circle-down fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data PLB</div>
                                     <div class="stats-number">3,988</div>
                                     <div class="stats-progress progress">
-                                        <div class="progress-bar" style="width: 54.9%;"></div>
+                                        <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">Better than last week (54.9%)</div>
                                 </div>
@@ -164,12 +164,12 @@ include "include/cssDatatables.php";
                         <!-- TPB -->
                         <div class="col-xl-6 col-md-6">
                             <div class="widget widget-stats bg-tpb">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
+                                <div class="stats-icon stats-icon-lg"><i class="fa fa-circle-up fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data TPB Module</div>
                                     <div class="stats-number">3,988</div>
                                     <div class="stats-progress progress">
-                                        <div class="progress-bar" style="width: 54.9%;"></div>
+                                        <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">Better than last week (54.9%)</div>
                                 </div>
