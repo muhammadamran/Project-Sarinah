@@ -268,7 +268,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                     <table cellspacing="0" border="0">
                         <tr>
                             <td align="left" valign=middle><br></td>
-                            <td align="left" valign=bottom>
+                            <td align="left">
                                 <font face="Arial Black" size=6 color="#404040">PACKING LIST</font>
                             </td>
                             <td align="left" valign=middle><br></td>
@@ -290,45 +290,45 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 </b></td>
                         </tr>
                         <tr>
-                            <td style="border-top: 1px solid #969696" colspan=11 height="10" align="left" valign=bottom>
+                            <td style="border-top: 1px solid #969696" colspan=11 height="10" align="left">
                                 <b>
                                     <font color="#0070C0"><br></font>
                                 </b>
                             </td>
-                            <td style="border-top: 1px solid #969696" colspan=7 align="left" valign=bottom><b>
+                            <td style="border-top: 1px solid #969696" colspan=7 align="left"><b>
                                     <font color="#0070C0"><br></font>
                                 </b></td>
                         </tr>
                         <tr>
-                            <td colspan=4 height="27" align="left" valign=bottom bgcolor="#FFFFFF">Duty Free Name</td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><b>:</b></td>
+                            <td colspan=4 height="27" align="left" bgcolor="#FFFFFF">Duty Free Name</td>
+                            <td align="left" bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan="2" align="left" valign=middle bgcolor="#FFFFFF">
                                 <?= $NAMA_PENERIMA_BARANG; ?></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><b><br></b></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><b><br></b></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
 
-                            <td align="left" valign=bottom bgcolor="#FFFFFF">Number</td>
+                            <td align="left" bgcolor="#FFFFFF">Number</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan="2" align="left" valign=middle bgcolor="#FFFFFF">
                                 <?= $NOMOR_IJIN_TPB_PENERIMA; ?></td>
 
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="center" valign=middle bgcolor="#FFFFFF" sdval="3" sdnum="1033;"></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"></td>
                         </tr>
                         <tr>
-                            <td colspan=4 height="27" align="left" valign=bottom bgcolor="#FFFFFF">NPWP</td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><b>:</b></td>
+                            <td colspan=4 height="27" align="left" bgcolor="#FFFFFF">NPWP</td>
+                            <td align="left" bgcolor="#FFFFFF"><b>:</b></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF"><?= $ID_PENERIMA_BARANG; ?>
                             </td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF">Ex Bill Of Lading</td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF">Ex Bill Of Lading</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
                             <td align="left" valign=middle><?= $NOMOR_KONTAINER; ?></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF"><br></td>
@@ -337,15 +337,15 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" valign=middle bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"></td>
                         </tr>
                         <tr>
-                            <td colspan=4 height="27" align="left" valign=bottom bgcolor="#FFFFFF">Street Address</td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><b>:</b></td>
+                            <td colspan=4 height="27" align="left" bgcolor="#FFFFFF">Street Address</td>
+                            <td align="left" bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan="2" align="left" valign=middle bgcolor="#FFFFFF">
                                 <?= $ALAMAT_PENERIMA_BARANG; ?></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF">No. Dokumen</td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF">No. Dokumen</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
                             <td colspan=3 align="left" valign=middle bgcolor="#FFFFFF">
                                 <?= $NOMOR_DOKUMEN; ?></td>
@@ -353,64 +353,64 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                             <td align="left" valign=middle bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"></td>
                         </tr>
                         <tr>
-                            <td height="25" align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><b></b></td>
+                            <td height="25" align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><b></b></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF"></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF">Original</td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF">Original</td>
                             <td align="right" valign=middle bgcolor="#FFFFFF"><b>:</b></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><?= $KODE_NEGARA_PEMASOK; ?>
+                            <td align="left" bgcolor="#FFFFFF"><?= $KODE_NEGARA_PEMASOK; ?>
                             </td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"><br></td>
                         </tr>
                         <tr>
-                            <td height="27" align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
+                            <td height="27" align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
                             <td align="left" valign=middle bgcolor="#FFFFFF"></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF">BC 2.7 Number</td>
-                            <td align="right" valign=bottom bgcolor="#FFFFFF"><b>:</b></td>
-                            <td colspan=2 align="left" valign=bottom bgcolor="#FFFFFF"><?= $NOMOR_AJU; ?>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF">BC 2.7 Number</td>
+                            <td align="right" bgcolor="#FFFFFF"><b>:</b></td>
+                            <td colspan=2 align="left" bgcolor="#FFFFFF"><?= $NOMOR_AJU; ?>
                             </td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF">
+                            <td align="left" bgcolor="#FFFFFF">
                                 <?= "(" . $TANGGAL_AJU . ")"; ?></td>
                         </tr>
                         <tr>
-                            <td height="17" align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF"><br></td>
-                            <td align="left" valign=bottom bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"><br></td>
+                            <td height="17" align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF"><br></td>
+                            <td align="left" bgcolor="#FFFFFF" sdnum="1033;1057;DD MMMM YYYY;@"><br></td>
                         </tr>
                     </table>
                     <table id="example" class="table table-striped table-bordered first" style="width:100%">
