@@ -235,11 +235,20 @@ $dataBC_41 = json_decode($contentBC_41, true);
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-circle-down fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data PLB</div>
-                                    <div class="stats-number">3,988</div>
+                                    <?php
+									$dataBCPLB = $dbcon->query("SELECT NOMOR_AJU,KODE_DOKUMEN_PABEAN,
+																(SELECT COUNT(*) AS total_bc FROM plb_header WHERE KODE_DOKUMEN_PABEAN=23) AS total_bc
+																FROM plb_header
+																WHERE KODE_DOKUMEN_PABEAN=23
+																ORDER BY ID DESC LIMIT 1");
+									$resultdataBCPLB = mysqli_fetch_array($dataBCPLB);
+									?>
+                                    <div class="stats-number"><?= $resultdataBCPLB['total_bc']; ?> AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">Better than last week (54.9%)</div>
+                                    <div class="stats-desc">AJU Terakhir: <?= $resultdataBCPLB['NOMOR_AJU']; ?> | BC
+                                        <?= $resultdataBCPLB['KODE_DOKUMEN_PABEAN']; ?></div>
                                 </div>
                             </div>
                         </div>
