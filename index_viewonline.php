@@ -7,6 +7,27 @@ include "include/top-header.php";
 // include "include/top-sidebar.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
+// API - 
+include "include/api.php";
+
+// BC 2.3
+$contentBC_23 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc23');
+$dataBC_23 = json_decode($contentBC_23, true);
+// BC 2.5
+$contentBC_25 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc25');
+$dataBC_25 = json_decode($contentBC_25, true);
+// BC 2.6.1
+$contentBC_261 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc261');
+$dataBC_261 = json_decode($contentBC_261, true);
+// BC 2.7
+$contentBC_27 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc27');
+$dataBC_27 = json_decode($contentBC_27, true);
+// BC 4.0
+$contentBC_40 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc40');
+$dataBC_40 = json_decode($contentBC_40, true);
+// BC 4.1
+$contentBC_41 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc41');
+$dataBC_41 = json_decode($contentBC_41, true);
 ?>
 <style type="text/css">
 .row-dinding {
@@ -62,11 +83,21 @@ include "include/cssDatatables.php";
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.3</div>
-                                    <div class="stats-number">7,842,900</div>
+                                    <?php if ($dataBC_23['status'] == 404) { ?>
+                                    <div class="stats-number">- AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">Better than last week (70.1%)</div>
+                                    <div class="stats-desc">AJU Terakhir: -</div>
+                                    <?php } else { ?>
+                                    <?php foreach ($dataBC_23['result'] as $row) { ?>
+                                    <div class="stats-number"><?= $row['total_bc23']; ?> AJU</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
+                                    <?php } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -77,11 +108,21 @@ include "include/cssDatatables.php";
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.5</div>
-                                    <div class="stats-number">180,200</div>
+                                    <?php if ($dataBC_25['status'] == 404) { ?>
+                                    <div class="stats-number">- AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">Better than last week (40.5%)</div>
+                                    <div class="stats-desc">AJU Terakhir: -</div>
+                                    <?php } else { ?>
+                                    <?php foreach ($dataBC_25['result'] as $row) { ?>
+                                    <div class="stats-number"><?= $row['total_bc25']; ?> AJU</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
+                                    <?php } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -92,11 +133,21 @@ include "include/cssDatatables.php";
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.6.1</div>
-                                    <div class="stats-number">38,900</div>
+                                    <?php if ($dataBC_261['status'] == 404) { ?>
+                                    <div class="stats-number">- AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">Better than last week (76.3%)</div>
+                                    <div class="stats-desc">AJU Terakhir: -</div>
+                                    <?php } else { ?>
+                                    <?php foreach ($dataBC_261['result'] as $row) { ?>
+                                    <div class="stats-number"><?= $row['total_bc261']; ?> AJU</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
+                                    <?php } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -107,11 +158,21 @@ include "include/cssDatatables.php";
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data BC 2.7</div>
-                                    <div class="stats-number">7,842,900</div>
+                                    <?php if ($dataBC_27['status'] == 404) { ?>
+                                    <div class="stats-number">- AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">Better than last week (70.1%)</div>
+                                    <div class="stats-desc">AJU Terakhir: -</div>
+                                    <?php } else { ?>
+                                    <?php foreach ($dataBC_27['result'] as $row) { ?>
+                                    <div class="stats-number"><?= $row['total_bc27']; ?> AJU</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
+                                    <?php } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -121,12 +182,22 @@ include "include/cssDatatables.php";
                             <div class="widget widget-stats bg-bc">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
-                                    <div class="stats-title">Total Data BC 2.5</div>
-                                    <div class="stats-number">180,200</div>
+                                    <div class="stats-title">Total Data BC 4.0</div>
+                                    <?php if ($dataBC_40['status'] == 404) { ?>
+                                    <div class="stats-number">- AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">Better than last week (40.5%)</div>
+                                    <div class="stats-desc">AJU Terakhir: -</div>
+                                    <?php } else { ?>
+                                    <?php foreach ($dataBC_40['result'] as $row) { ?>
+                                    <div class="stats-number"><?= $row['total_bc40']; ?> AJU</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
+                                    <?php } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -136,12 +207,22 @@ include "include/cssDatatables.php";
                             <div class="widget widget-stats bg-bc">
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
                                 <div class="stats-content">
-                                    <div class="stats-title">Total Data BC 2.6.1</div>
-                                    <div class="stats-number">38,900</div>
+                                    <div class="stats-title">Total Data BC 4.1</div>
+                                    <?php if ($dataBC_41['status'] == 404) { ?>
+                                    <div class="stats-number">- AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">Better than last week (76.3%)</div>
+                                    <div class="stats-desc">AJU Terakhir: -</div>
+                                    <?php } else { ?>
+                                    <?php foreach ($dataBC_41['result'] as $row) { ?>
+                                    <div class="stats-number"><?= $row['total_bc41']; ?> AJU</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
+                                    <?php } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
