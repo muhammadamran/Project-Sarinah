@@ -244,6 +244,8 @@ div.table-responsive>div.dataTables_wrapper>div.row {
             // Header
             $contentHeader = get_content($resultAPI['url_api'] . 'reportCK5Sarinah PackingList.php?function=get_Header&AJU=' . $_GET['AJU']);
             $dataHeader = json_decode($contentHeader, true);
+            var_dump($dataHeader);
+            exit;
             foreach ($dataHeader['result'] as $row) {
                 $inv = $row['ID'];
 
