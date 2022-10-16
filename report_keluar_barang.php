@@ -135,7 +135,9 @@ $data = json_decode($content, true);
                                 <form action="./export/excel_report_keluar_barang.php" target="_blank" method="POST"
                                     style="display: inline-block;">
                                     <input type="text" name="StartTanggal" value="<?= $rStartTanggal; ?>">
+                                    <input type="text" name="StartTanggalS" value="<?= $StartTanggal; ?>">
                                     <input type="text" name="EndTanggal" value="<?= $rEndTanggal; ?>">
+                                    <input type="text" name="EndTanggalS" value="<?= $EndTanggal; ?>">
                                     <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
                                         <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"
                                             data-toggle="popover" data-trigger="hover" data-title="Export File Excel"

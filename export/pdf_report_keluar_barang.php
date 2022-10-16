@@ -4,18 +4,10 @@ include "../include/connection.php";
 $dataHeadSettting = $dbcon->query("SELECT * FROM tbl_setting");
 $resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
 
-if (isset($_POST["find_"])) {
-    $rStartTanggal  = str_replace("-", "", $_POST['StartTanggal']);
-
-    $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
-}
-
 // API - 
 include "../include/api.php";
-$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $rStartTanggal . '&EndTanggal=' . $rEndTanggal);
+$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $_POST['StartTanggal'] . '&EndTanggal=' . $_POST['EndTanggal']);
 $data = json_decode($content, true);
-var_dump($data);
-exit;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +19,7 @@ exit;
     <?php } else { ?>
         <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
     <?php } ?> -->
-    <title>Laporan Keluar Barang - Tanggal: <?= $StartTanggal ?> s.d <?= $EndTanggal ?></title>
+    <title>Laporan Keluar Barang - Tanggal: <?= $_POST['StartTanggalS'] ?> s.d <?= $_POST['EndTanggalS'] ?></title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -128,8 +120,8 @@ function date_indo($date, $print_day = false)
                         <font style="font-size: 24px;font-weight: 800;">LAPORAN PENGELUARAN BARANG PER DOKUMEN PABEAN
                         </font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
-                        <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $StartTanggal ?> S.D
-                            <?= $EndTanggal ?></font>
+                        <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $_POST['StartTanggalS'] ?> S.D
+                            <?= $_POST['EndTanggalS'] ?></font>
                         <div class="line-page-table"></div>
                         <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
                     </div>
