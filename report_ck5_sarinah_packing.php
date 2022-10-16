@@ -200,116 +200,6 @@ div.table-responsive>div.dataTables_wrapper>div.row {
         <div class="invoice">
             <div class="invoice-company">
                 <span class="pull-right hidden-print">
-                    <!-- For Detail Mutasi Barang -->
-
-                    <a href="#" class="btn btn-sm btn-blue m-b-10" data-toggle="modal" title="Detail Mutasi Barang"
-                        style="padding: 7px;">
-                        <div style="display: flex;justify-content: space-between;align-items: end;">
-                            &nbsp; Filename : Packing List - GB Sarinah
-                        </div>
-                    </a>
-                    <a href="#detail-mutasi-barang" class="btn btn-sm btn-white m-b-10" data-toggle="modal"
-                        title="Detail Mutasi Barang" style="padding: 7px;">
-                        <div style="display: flex;justify-content: space-between;align-items: end;">
-                            <i class="fas fa-clipboard-list" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Detail
-                            Mutasi Barang
-                        </div>
-                    </a>
-                    <div class="modal fade" id="detail-mutasi-barang">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="adm_hak_akses.php" method="POST">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">[Detail Mutasi Barang] Berdasarkan Nomor AJU:
-                                            <?php echo $_GET['AJU']; ?></h4>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">×</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            <p style="display: flex;justify-content: center;">Pemberitahuan Mutasi
-                                                Barang Kena Cukai (PMBKC)</p>
-                                        </div>
-                                        <div class="line-page-table"></div>
-                                        <div class="table-responsive">
-                                            <table id="data-table-buttons"
-                                                class="table table-striped table-bordered table-td-valign-middle"
-                                                style="width: 100%;font-size: 12px;font-weight: 400;">
-                                                <thead>
-                                                    <tr>
-                                                        <th width="1%">#</th>
-                                                        <th class="text-nowrap" style="text-align: center;">Rincian
-                                                            Jumlah, Jenis Merk & Nomor</th>
-                                                        <th class="text-nowrap" style="text-align: center;">Uraian jenis
-                                                            barang secara lengkap</th>
-                                                        <th class="text-nowrap" style="text-align: center;">Jumlah dan
-                                                            jenis satuan barang</th>
-                                                        <th class="text-nowrap" style="text-align: center;">HJE / HJP*)
-                                                            (Rp)</th>
-                                                        <th class="text-nowrap" style="text-align: center;">Tarif Cukai
-                                                        </th>
-                                                        <th class="text-nowrap" style="text-align: center;">Jumlah Cukai
-                                                            (Rp)</th>
-                                                        <th class="text-nowrap" style="text-align: center;">Jumlah
-                                                            Devisa (USD)</th>
-                                                        <th class="text-nowrap" style="text-align: center;">Keterangan
-                                                        </th>
-                                                        <!-- <th class="text-nowrap">Aksi</th> -->
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <!--  <?php
-                                                            $dataTable = $dbcon->query("SELECT * FROM referensi_pengusaha AS a
-                                                                                LEFT JOIN referensi_status_pengusaha AS b ON a.KODE_ID=b.KODE_STATUS_PENGUSAHA ORDER BY a.ID DESC");
-                                                            if (mysqli_num_rows($dataTable) > 0) {
-                                                                $no = 0;
-                                                                while ($row = mysqli_fetch_array($dataTable)) {
-                                                                    $no++;
-                                                            ?> -->
-                                                    <tr class="odd gradeX">
-                                                        <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                                        <td style="text-align: left;">
-                                                        </td>
-                                                        <td style="text-align: left;">
-                                                        </td>
-                                                        <td style="text-align: left;">
-                                                        </td>
-                                                        <td style="text-align: left;">
-                                                        </td>
-                                                        <td style="text-align: left;">
-                                                        </td>
-                                                        <td style="text-align: left;">
-                                                        </td>
-                                                        <td style="text-align: left;">
-                                                        </td>
-                                                        <td style="text-align: left;">
-                                                        </td>
-                                                    </tr>
-                                                    <!-- <?php } ?>
-                                                    <?php } else { ?>
-                                                        <tr>
-                                                            <td colspan="9">
-                                                                <center>
-                                                                    <div style="display: grid;">
-                                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                                    </div>
-                                                                </center>
-                                                            </td>
-                                                        </tr>
-                                                        <?php } ?> -->
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i
-                                                class="fas fa-times-circle"></i> Tutup</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- For Detail Mutasi Barang -->
                     <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
                         <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
                     </a>
@@ -325,6 +215,27 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                 <?= $resultHeadSetting['company'] ?>
             </div>
             <div class="line-page-table"></div>
+            <div class="row" style="display: flex;align-items: center;margin-bottom: -5px;">
+                <div class="col-md-3">
+                    <div style="display: flex;justify-content: center;">
+                        <?php if ($resultHeadSetting['logo'] == NULL) { ?>
+                        <img src="assets/images/logo/logo-default.png" width="30%">
+                        <?php } else { ?>
+                        <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div style="display: grid;justify-content: left;">
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 Sarinah - Halaman 1</font>
+                        <font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
+                        <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
+                        <div class="line-page-table"></div>
+                        <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
+                    </div>
+                </div>
+            </div>
+            <br>
             <!-- get invoice information / start -->
 
             <?php
