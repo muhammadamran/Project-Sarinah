@@ -108,8 +108,8 @@ $data = json_decode($content, true);
                                     </td>
                                     <td><?= $row['NOMOR_AJU']; ?></td>
                                     <td><?= $row['NOMOR_BC11']; ?></td>
-                                    <td><?= $row['ID_PENERIMA']; ?></td>
-                                    <td><?= $row['NAMA_PENERIMA']; ?></td>
+                                    <td><?= $row['ID_PENERIMA_BARANG']; ?></td>
+                                    <td><?= $row['NAMA_PENERIMA_BARANG']; ?></td>
                                     <td><?= $row['NAMA_PEMASOK']; ?></td>
                                     <td><?= $row['NAMA_PEMILIK']; ?></td>
                                     <td><?= $row['NAMA_PENGANGKUT']; ?></td>
