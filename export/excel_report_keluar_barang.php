@@ -176,7 +176,7 @@ $data = json_decode($content, true);
                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                     </font>
                     <?php } else { ?>
-                    <?= $row['NOMOR_AJU']; ?>
+                    '<?= $row['NOMOR_AJU']; ?>
                     <?php } ?>
                 </td>
                 <!-- TGL AJU (FILTER) -->
