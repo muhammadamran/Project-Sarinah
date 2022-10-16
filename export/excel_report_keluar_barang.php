@@ -47,7 +47,6 @@ function date_indo($date, $print_day = false)
     return $tgl_indo;
 }
 
-
 // API - 
 include "../include/api.php";
 $content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $_POST['StartTanggal'] . '&EndTanggal=' . $_POST['EndTanggal']);
@@ -148,33 +147,82 @@ $data = json_decode($content, true);
             </tr>
         </thead>
         <tbody>
-            <?php
-            if (isset($_POST["find_"])) {
-                $StartTanggal = $_POST['StartTanggal'];
-                $EndTanggal   = $_POST['EndTanggal'];
-                $dataTable = $dbcon->query("SELECT plb.NOMOR_BC11 AS PLB_NOMOR_BC11,plb.TANGGAL_BC11 AS PLB_TANGGAL_BC11,hdr.NOMOR_BC11,hdr.TANGGAL_BC11,hdr.NAMA_PEMASOK,
-                                                    brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF,hdr.ID_PENERIMA_BARANG
-                                            FROM tpb_header AS hdr
-                                            LEFT JOIN plb_header AS plb ON hdr.NOMOR_DAFTAR=plb.NOMOR_DAFTAR
-                                            LEFT OUTER JOIN tpb_barang AS brg ON hdr.ID=brg.ID_HEADER
-                                            WHERE hdr.TANGGAL_BC11 BETWEEN '$StartTanggal' AND '$EndTanggal'
-                                            ORDER BY hdr.TANGGAL_BC11 ASC");
-            }
-            if (mysqli_num_rows($dataTable) > 0) {
-                $no = 0;
-                while ($row = mysqli_fetch_array($dataTable)) {
-                    $no++;
-            ?>
+            <?php if ($data['status'] == 404) { ?>
+            <tr>
+                <td colspan="12">
+                    <center>
+                        <div style="display: flex;justify-content: center; align-items: center">
+                            <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
+                        </div>
+                    </center>
+                </td>
+            </tr>
+            <?php } else { ?>
+            <?php $no = 0; ?>
+            <?php foreach ($data['result'] as $row) { ?>
+            <?php $no++ ?>
             <tr>
                 <!-- 9 -->
+                <!-- NO -->
                 <td><?= $no ?>.</td>
-                <td>BC2.7</td>
-                <td><?= $row['PLB_NOMOR_BC11']; ?></td>
-                <td><?= $row['PLB_TANGGAL_BC11']; ?></td>
-                <td><?= $row['NOMOR_BC11']; ?></td>
-                <td><?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?></td>
-                <td><?= $row['NAMA_PEMASOK']; ?></td>
-                <td><?= $row['KODE_BARANG']; ?></td>
+                <!-- BC -->
+                <td>BC<?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                <!-- AJU -->
+                <td style="text-align: center">
+                    <?php if ($row['NOMOR_AJU'] == NULL) { ?>
+                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                    </font>
+                    <?php } else { ?>
+                    <?= $row['NOMOR_AJU']; ?>
+                    <?php } ?>
+                </td>
+                <!-- TGL AJU (FILTER) -->
+                <?php
+                        $dataTGLAJU = $row['TGL_AJU'];
+                        $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
+                        $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
+                        $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
+
+                        $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
+                        ?>
+                <td><?= $datTGLAJU; ?></td>
+                <!-- NOMOR BC 11 -->
+                <td style="text-align: center">
+                    <?php if ($row['NOMOR_BC11'] == NULL) { ?>
+                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                    </font>
+                    <?php } else { ?>
+                    <?= $row['NOMOR_BC11']; ?>
+                    <?php } ?>
+                </td>
+                <!-- TGL BC 11 -->
+                <td style="text-align: center">
+                    <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
+                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                    </font>
+                    <?php } else { ?>
+                    <?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?>
+                    <?php } ?>
+                </td>
+                <!-- NAMA PEMASOK -->
+                <td style="text-align: center">
+                    <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
+                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                    </font>
+                    <?php } else { ?>
+                    <?= $row['NAMA_PEMASOK']; ?>
+                    <?php } ?>
+                </td>
+                <!-- HS -->
+                <td style="text-align: center">
+                    <?php if ($row['POS_TARIF'] == NULL) { ?>
+                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                    </font>
+                    <?php } else { ?>
+                    <?= $row['POS_TARIF']; ?>
+                    <?php } ?>
+                </td>
+                <!-- BARANG -->
                 <td><?= $row['URAIAN']; ?></td>
                 <td>
                     <div style="display: flex;justify-content: space-between;align-items: center">
@@ -190,18 +238,7 @@ $data = json_decode($content, true);
                 </td>
             </tr>
             <?php } ?>
-            <?php } else { ?>
-            <tr>
-                <td colspan="5">
-                    <center>
-                        <div style="display: grid;">
-                            <i class="far fa-times-circle no-data"></i> Tidak ada data
-                        </div>
-                    </center>
-                </td>
-            </tr>
-            <?php }
-            mysqli_close($dbcon); ?>
+            <?php } ?>
         </tbody>
     </table>
 </body>
