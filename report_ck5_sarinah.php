@@ -76,10 +76,6 @@ $data = json_decode($content, true);
                                 <?php $no++ ?>
                                 <tr>
                                     <td><?= $no ?>.</td>
-                                    <td>
-                                        <a href="dp_bc2_3_view.php?idhead=<?= $row['ID']; ?>" class="btn btn-success"
-                                            title='CK5 Sarinah'><?= $row['ID']; ?></a>
-                                    </td>
                                     <td style="text-align: center;">
                                         <a href="report_ck5_sarinah_detail.php?AJU=<?= $row['NOMOR_AJU']; ?>"
                                             target="_blank" class="btn btn-primary">
