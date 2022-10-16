@@ -1,19 +1,18 @@
 <?php
+// API
+function get_content($URL)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL, $URL);
+    // curl_setopt($ch, CURLOPT_PORT, 8091);
+    $data = curl_exec($ch);
+    curl_close($ch);
+    return $data;
+}
+// API - 
+$content = get_content('http://182.23.104.212:8091/tpbbackend/api/dataBC23.php');
+$data = json_decode($content, true);
 
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-    CURLOPT_URL => 'http://182.23.104.212:8091/tpbbackend/api/dataBC23.php',
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => '',
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 0,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => 'GET',
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-echo $response;
+var_dump($$data['status']);
+exit;
