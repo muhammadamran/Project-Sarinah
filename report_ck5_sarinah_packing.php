@@ -212,7 +212,6 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                     <!-- <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a> -->
                     <!-- <a href="report_ck5_plb_detail_print.php" class="btn btn-sm btn-white m-b-10"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a> -->
                 </span>
-                <?= $resultHeadSetting['company'] ?>
             </div>
             <div class="line-page-table"></div>
             <div class="row" style="display: flex;align-items: center;margin-bottom: -5px;">
@@ -227,7 +226,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                 </div>
                 <div class="col-md-9">
                     <div style="display: grid;justify-content: left;">
-                        <font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 Sarinah - Halaman 1</font>
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 Sarinah - Packing List</font>
                         <font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <div class="line-page-table"></div>
@@ -240,8 +239,20 @@ div.table-responsive>div.dataTables_wrapper>div.row {
 
             <?php
 
-            $getdet = mysqli_query($dbcon, "SELECT * FROM tpb_header WHERE NOMOR_AJU = '$_GET[AJU]' ");
-            $inv = mysqli_fetch_array($getdet);
+            // API - 
+            include "include/api.php";
+            // Header
+            $contentHeader = get_content($resultAPI['url_api'] . 'reportCK5Sarinah PackingList.php?function=get_Header&AJU=' . $_GET['AJU']);
+            $dataHeader = json_decode($contentHeader, true);
+            foreach ($dataHeader['result'] as $row) {
+                $inv = $row['ID'];
+            }
+
+            var_dump($inv);
+            exit;
+
+            // $getdet = mysqli_query($dbcon, "SELECT * FROM tpb_header WHERE NOMOR_AJU = '$_GET[AJU]' ");
+            // $inv = mysqli_fetch_array($getdet);
 
             /* kontainer info */
             $getdet2 = mysqli_query($dbcon, "SELECT * FROM tpb_kontainer WHERE ID_HEADER = '$inv[ID]' ");
