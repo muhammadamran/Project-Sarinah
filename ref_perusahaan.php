@@ -19,9 +19,9 @@ if (isset($_POST["add_nppbkc"])) {
     $IDNAMA                   = $_POST['UNIQNAMA'];
     $NameNPPBKC               = $_POST['NameNPPBKC'];
 
-    $query = get_content($resultAPI['url_api'] . 'refPerusahaan.php?function=get_nppbkc=' . $NameNPPBKC . '&NPWP=' . $IDNPWP);
+    // $query = get_content($resultAPI['url_api'] . 'refPerusahaan.php?function=get_nppbkc=' . $NameNPPBKC . '&NPWP=' . $IDNPWP);
 
-    var_dump($query);
+    var_dump($NameNPPBKC);
     exit;
 
     // FOR AKTIFITAS
