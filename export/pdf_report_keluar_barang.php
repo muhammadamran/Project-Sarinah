@@ -6,7 +6,7 @@ $resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
 // var_dump($_POST['StartTanggal']);
 // exit;
 // API - 
-include "api.php";
+include "../include/api.php";
 $content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $_POST['StartTanggal'] . '&EndTanggal=' . $_POST['EndTanggal']);
 $data = json_decode($content, true);
 ?>
