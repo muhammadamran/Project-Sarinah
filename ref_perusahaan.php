@@ -112,16 +112,20 @@ if (isset($_POST["add_nppbkc"])) {
                                     <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                     <td style="text-align: left;">
                                         <?php if ($row['NPWP'] == NULL || $row['NPWP'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
+                                        <center>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            </font>
+                                        </center>
                                         <?php } else { ?>
                                         <?= $row['NPWP'] ?>
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: left;">
                                         <?php if ($row['NAMA'] == NULL || $row['NAMA'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
+                                        <center>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            </font>
+                                        </center>
                                         <?php } else { ?>
                                         <?= $row['NAMA'] ?>
                                         <?php } ?>
@@ -138,8 +142,10 @@ if (isset($_POST["add_nppbkc"])) {
                                     </td>
                                     <td style="text-align: left;">
                                         <?php if ($row['NOMOR_SKEP'] == NULL || $row['NOMOR_SKEP'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
+                                        <center>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            </font>
+                                        </center>
                                         <?php } else { ?>
                                         <?= $row['NOMOR_SKEP'] ?>
                                         <?php } ?>
@@ -168,8 +174,11 @@ if (isset($_POST["add_nppbkc"])) {
                                     </td>
                                     <td style="text-align: left;">
                                         <?php if ($row['URAIAN_STATUS_PENGUSAHA'] == NULL || $row['URAIAN_STATUS_PENGUSAHA'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
+                                        <center>
+
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            </font>
+                                        </center>
                                         <?php } else { ?>
                                         <?= $row['URAIAN_STATUS_PENGUSAHA'] ?>
                                         <?php } ?>

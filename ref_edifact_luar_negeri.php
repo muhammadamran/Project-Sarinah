@@ -41,6 +41,17 @@ $data = json_decode($content, true);
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
+                    <form action="" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="LIMIT">Limit</label>
+                                    <input type="number" name="LimitRow" value="<?= $_GET['LimitRow']; ?>"
+                                        placeholder="Limit Baris">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <div class="table-responsive">
                         <table id="data-table-buttons"
                             class="table table-striped table-bordered table-td-valign-middle">
