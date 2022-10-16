@@ -168,9 +168,9 @@ $resultLoginSetting = mysqli_fetch_array($dataLoginSettting);
                         <?= $resultLoginSetting['text_signin_two'] ?></h4>
                     <?php } ?>
                     <?php if ($resultLoginSetting['text_signin_detail'] == NULL) { ?>
-                    <p>...</p>
+                    <p>&copy 2022 - <?= date('Y'); ?> ...</p>
                     <?php } else { ?>
-                    &copy 2022 - <?= date('Y'); ?> <p><?= $resultLoginSetting['text_signin_detail'] ?></p>
+                    <p>&copy 2022 - <?= date('Y'); ?> <?= $resultLoginSetting['text_signin_detail'] ?></p>
                     <?php } ?>
                 </div>
             </div>
