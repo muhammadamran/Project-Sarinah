@@ -9,7 +9,9 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API - 
 include "include/api.php";
-
+// BC
+$contentBC = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bcTPB');
+$dataBC = json_decode($contentBC, true);
 // BC 2.3
 $contentBC_23 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc23');
 $dataBC_23 = json_decode($contentBC_23, true);
@@ -248,11 +250,22 @@ $dataBC_41 = json_decode($contentBC_41, true);
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-circle-up fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data TPB Module</div>
-                                    <div class="stats-number">3,988</div>
+                                    <?php if ($dataBC['status'] == 404) { ?>
+                                    <div class="stats-number">- AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">Better than last week (54.9%)</div>
+                                    <div class="stats-desc">AJU Terakhir: -</div>
+                                    <?php } else { ?>
+                                    <?php foreach ($dataBC['result'] as $row) { ?>
+                                    <div class="stats-number"><?= $row['total_bc']; ?> AJU</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?> | BC
+                                        <?= $row['KODE_DOKUMEN_PABEAN']; ?></div>
+                                    <?php } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
