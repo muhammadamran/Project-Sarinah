@@ -233,23 +233,15 @@ $data = json_decode($content, true);
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
-                                    <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
-                                    <?php if ($row['NOMOR_AJU'] == NULL) { ?>
+                                    <td>BC<?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
                                     <td style="text-align: center">
+                                        <?php if ($row['NOMOR_AJU'] == NULL) { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                                         </font>
+                                        <?php } else { ?>
+                                        <?= $row['NOMOR_AJU']; ?>
+                                        <?php } ?>
                                     </td>
-                                    <?php } else { ?>
-                                    <td><?= $row['NOMOR_AJU']; ?></td>
-                                    <?php } ?>
-                                    <?php if ($row['NOMOR_AJU'] == NULL) { ?>
-                                    <td style="text-align: center">
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                    </td>
-                                    <?php } else { ?>
-                                    <td><?= $row['NOMOR_AJU']; ?></td>
-                                    <?php } ?>
                                     <td><?= $row['TGL_AJU']; ?></td>
                                     <?php if ($row['NOMOR_BC11'] == NULL) { ?>
                                     <td style="text-align: center">
