@@ -10,7 +10,7 @@
 // $dbname='k8794920_tpb';
 // $dbcon = new mysqli($dbhost, $dbusername, $dbpassword, $dbname) or die(mysqli_connect_errno());
 
-$dbhost = "api2.itinventory-sarinah.com";
+$dbhost = "api.itinventory-sarinah.com";
 $dbusername = "beacukai";
 $dbpassword = "beacukai";
 $dbname = "tpbdb";
