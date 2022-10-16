@@ -107,7 +107,7 @@ $data = json_decode($content, true);
                                         </a>
                                     </td>
                                     <td><?= $row['NOMOR_AJU']; ?></td>
-                                    <td><?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                                    <td style="text-align: center;"><?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
                                     <td><?= $row['ID_PENERIMA_BARANG']; ?></td>
                                     <td><?= $row['NAMA_PENERIMA_BARANG']; ?></td>
                                     <td style="text-align: center;">
