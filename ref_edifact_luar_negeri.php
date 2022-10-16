@@ -50,8 +50,10 @@ $data = json_decode($content, true);
                                         value="<?= $_GET['LimitRow']; ?>" placeholder="Limit Baris" required>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
-                                <button type="submit" class="btn btn-sm btn-primary" name="SetLimit">Set</button>
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm btn-primary" name="SetLimit">Set</button>
+                                </div>
                             </div>
                         </div>
                     </form>
