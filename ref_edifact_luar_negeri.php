@@ -52,7 +52,7 @@ $data = json_decode($content, true);
                             </div>
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-sm btn-primary" name="SetLimit">Set</button>
+                                    <button type="submit" class="btn btn-primary" name="SetLimit">Set Limit!</button>
                                 </div>
                             </div>
                         </div>
