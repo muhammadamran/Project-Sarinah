@@ -237,18 +237,26 @@ $dataBC_41 = json_decode($contentBC_41, true);
                                     <div class="stats-title">Total Data PLB</div>
                                     <?php
 									$dataBCPLB = $dbcon->query("SELECT NOMOR_AJU,KODE_DOKUMEN_PABEAN,
-																(SELECT COUNT(*) AS total_bc FROM plb_header WHERE KODE_DOKUMEN_PABEAN=23) AS total_bc
+																(SELECT COUNT(*) AS total_bc FROM plb_header WHERE KODE_DOKUMEN_PABEAN IS NOT NULL) AS total_bc
 																FROM plb_header
-																WHERE KODE_DOKUMEN_PABEAN=23
+																WHERE KODE_DOKUMEN_PABEAN IS NOT NULL
 																ORDER BY ID DESC LIMIT 1");
 									$resultdataBCPLB = mysqli_fetch_array($dataBCPLB);
 									?>
+                                    <?php if ($resultdataBCPLB['total_bc'] == NULL || $resultdataBCPLB['total_bc'] == '') { ?>
+                                    <div class="stats-number">- AJU</div>
+                                    <div class="stats-progress progress">
+                                        <div class="progress-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="stats-desc">AJU Terakhir: - | BC -</div>
+                                    <?php } else { ?>
                                     <div class="stats-number"><?= $resultdataBCPLB['total_bc']; ?> AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">AJU Terakhir: <?= $resultdataBCPLB['NOMOR_AJU']; ?> | BC
                                         <?= $resultdataBCPLB['KODE_DOKUMEN_PABEAN']; ?></div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -264,7 +272,7 @@ $dataBC_41 = json_decode($contentBC_41, true);
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">AJU Terakhir: -</div>
+                                    <div class="stats-desc">AJU Terakhir: - | BC -</div>
                                     <?php } else { ?>
                                     <?php foreach ($dataBC['result'] as $row) { ?>
                                     <div class="stats-number"><?= $row['total_bc']; ?> AJU</div>
