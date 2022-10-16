@@ -246,7 +246,15 @@ $data = json_decode($content, true);
                                         <?php } ?>
                                     </td>
                                     <!-- TGL AJU (FILTER) -->
-                                    <td><?= $row['TGL_AJU']; ?></td>
+                                    <?php
+                                            $dataTGLAJU = $row['TGL_AJU'];
+                                            $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
+                                            $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
+                                            $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
+
+                                            $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
+                                            ?>
+                                    <td><?= $datTGLAJU; ?></td>
                                     <!-- NOMOR BC 11 -->
                                     <td style="text-align: center">
                                         <?php if ($row['NOMOR_BC11'] == NULL) { ?>
