@@ -7,6 +7,10 @@ include "include/top-header.php";
 include "include/top-sidebar.php";
 // include "include/sidebar.php";
 include "include/cssDatatables.php";
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'reportCK5Sarinah.php');
+$data = json_decode($content, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
@@ -42,22 +46,82 @@ include "include/cssDatatables.php";
                         <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th style="text-align:center">#ID</th>
+                                    <th style="text-align:center">#</th>
                                     <th style="text-align:center">Detail</th>
-                                    <th style="text-align:center">PackingList</th>
+                                    <th style="text-align:center">Packing List</th>
                                     <th style="text-align:center">Invoice</th>
-                                    <th style="text-align:center">NO. AJU</th>
+                                    <th style="text-align:center">Nomor Pengajuan</th>
                                     <th style="text-align:center">BC.11</th>
-                                    <th style="text-align:center">ID_PENERIMA</th>
-                                    <th style="text-align:center">NAMA_PENERIMA</th>
-                                    <th style="text-align:center">PEMASOK</th>
-                                    <th style="text-align:center">PEMILIK</th>
-                                    <th style="text-align:center">PENGANGKUT</th>
-
-                                    <!-- <th>Action</th> -->
+                                    <th style="text-align:center">ID Penerima</th>
+                                    <th style="text-align:center">Nama Penerima</th>
+                                    <th style="text-align:center">Pemasok</th>
+                                    <th style="text-align:center">Pemilik</th>
+                                    <th style="text-align:center">Pengangkut</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php if ($data['status'] == 404) { ?>
+                                <tr>
+                                    <td colspan="11">
+                                        <center>
+                                            <div style="display: grid;">
+                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
+                                <?php } else { ?>
+                                <?php $no = 0; ?>
+                                <?php foreach ($data['result'] as $row) { ?>
+                                <?php $no++ ?>
+                                <tr>
+                                    <td><?= $no ?>.</td>
+                                    <td>
+                                        <a href="dp_bc2_3_view.php?idhead=<?= $row['ID']; ?>" class="btn btn-success"
+                                            title='CK5 Sarinah'><?= $row['ID']; ?></a>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <a href="report_ck5_sarinah_detail.php?AJU=<?= $row['NOMOR_AJU']; ?>"
+                                            target="_blank" class="btn btn-primary">
+                                            <i class="fas fa-eye"></i><br>
+                                            <font
+                                                style="font-size: 8px;display: flex;width: 55px;justify-content: center;">
+                                                Lihat Detail
+                                            </font>
+                                        </a>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <a href="report_ck5_sarinah_packing.php?AJU=<?= $row['NOMOR_AJU']; ?>"
+                                            target="_blank" class="btn btn-primary">
+                                            <i class="fas fa-eye"></i><br>
+                                            <font
+                                                style="font-size: 8px;display: flex;width: 55px;justify-content: center;">
+                                                Packing List
+                                            </font>
+                                        </a>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <a href="report_ck5_sarinah_invoice.php?AJU=<?= $row['NOMOR_AJU']; ?>"
+                                            target="_blank" class="btn btn-primary">
+                                            <i class="fas fa-eye"></i><br>
+                                            <i class="fas fa-eye"></i><br>
+                                            <font
+                                                style="font-size: 8px;display: flex;width: 55px;justify-content: center;">
+                                                Invoice
+                                            </font>
+                                        </a>
+                                    </td>
+                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <td><?= $row['NOMOR_BC11']; ?></td>
+                                    <td><?= $row['ID_PENERIMA']; ?></td>
+                                    <td><?= $row['NAMA_PENERIMA']; ?></td>
+                                    <td><?= $row['NAMA_PEMASOK']; ?></td>
+                                    <td><?= $row['NAMA_PEMILIK']; ?></td>
+                                    <td><?= $row['NAMA_PENGANGKUT']; ?></td>
+                                </tr>
+                                <?php } ?>
+                                <?php } ?>
+
                                 <?php
                                 $result2 = mysqli_query($dbcon, "SELECT * FROM tpb_header ORDER BY ID ASC ");
                                 if (mysqli_num_rows($result2) > 0) {
@@ -99,56 +163,69 @@ include "include/cssDatatables.php";
                                         echo "<td>" . $row2['NAMA_PENGANGKUT'] . "</td>";
                                         echo "</tr>";
                                 ?>
-                                        <div class="modal fade" id="myModal<?php echo $row2['ID']; ?>" role="dialog">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title"><b>[Users] </b> Update Record</h4>
+                                <div class="modal fade" id="myModal<?php echo $row2['ID']; ?>" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="btn btn-danger"
+                                                    data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><b>[Users] </b> Update Record</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" action=" ">
+                                                    <div class="form-group">
+                                                        <label>NAMA</label>
+                                                        <input type="text" name="NAMA"
+                                                            value="<?php echo $row2['NAMA']; ?>" class="form-control"
+                                                            required>
+                                                        <input type="text" name="ID" value="<?php echo $row2['ID']; ?>"
+                                                            class="form-control" readonly>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <form method="post" action=" ">
-                                                            <div class="form-group">
-                                                                <label>NAMA</label>
-                                                                <input type="text" name="NAMA" value="<?php echo $row2['NAMA']; ?>" class="form-control" required>
-                                                                <input type="text" name="ID" value="<?php echo $row2['ID']; ?>" class="form-control" readonly>
-                                                            </div>
-                                                            <button type="submit" name="update" value="update" class="btn btn-primary">Update</button>
-                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
+                                                    <button type="submit" name="update" value="update"
+                                                        class="btn btn-primary">Update</button>
+                                                    <button type="button" class="btn btn-warning"
+                                                        data-dismiss="modal">Cancel</button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
 
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <div class="modal fade" id="del<?php echo $row2['ID']; ?>" role="dialog">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title"><b>[Records] </b> Delete Record</h4>
+                                <div class="modal fade" id="del<?php echo $row2['ID']; ?>" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="btn btn-danger"
+                                                    data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><b>[Records] </b> Delete Record</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" action=" ">
+                                                    <div class="form-group">
+                                                        <label>Are you sure delete this record?</label>
+                                                        <h6>Record ID : <?php echo $row2['client_name']; ?></h6>
+
+                                                        <input type="hidden"
+                                                            value="<?php echo $_SESSION['username']; ?>"
+                                                            name="user_name" class="form-control" required>
+                                                        <input type="hidden" value="<?php echo $row2['ID']; ?>"
+                                                            name="ID" class="form-control" required>
+                                                        <input type="hidden" value="<?php echo $row2['client_name']; ?>"
+                                                            name="client_name" class="form-control" required>
+
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <form method="post" action=" ">
-                                                            <div class="form-group">
-                                                                <label>Are you sure delete this record?</label>
-                                                                <h6>Record ID : <?php echo $row2['client_name']; ?></h6>
-
-                                                                <input type="hidden" value="<?php echo $_SESSION['username']; ?>" name="user_name" class="form-control" required>
-                                                                <input type="hidden" value="<?php echo $row2['ID']; ?>" name="ID" class="form-control" required>
-                                                                <input type="hidden" value="<?php echo $row2['client_name']; ?>" name="client_name" class="form-control" required>
-
-                                                            </div>
-                                                            <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
+                                                    <button type="submit" name="delete"
+                                                        class="btn btn-danger">Delete</button>
+                                                    <button type="button" class="btn btn-default"
+                                                        data-dismiss="modal">No</button>
+                                                </form>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
                                 <?php
                                     }
                                 }
@@ -170,35 +247,35 @@ include "include/cssDatatables.php";
 <?php include "include/jsDatatables.php"; ?>
 
 <script type="text/javascript">
-    // UPDATE SUCCESS
-    if (window?.location?.href?.indexOf('UploadSuccess') > -1) {
-        Swal.fire({
-            title: 'Data berhasil diupload!',
-            icon: 'success',
-            text: 'Data berhasil diupload didalam <?= $alertAppName ?>!'
-        })
-        history.replaceState({}, '', './report_ck5_plb.php');
-    }
-    // UPDATE FAILED
-    if (window?.location?.href?.indexOf('UploadFailed') > -1) {
-        Swal.fire({
-            title: 'Data gagal diupload!',
-            icon: 'error',
-            text: 'Data gagal diupload didalam <?= $alertAppName ?>!'
-        })
-        history.replaceState({}, '', './report_ck5_plb.php');
-    }
+// UPDATE SUCCESS
+if (window?.location?.href?.indexOf('UploadSuccess') > -1) {
+    Swal.fire({
+        title: 'Data berhasil diupload!',
+        icon: 'success',
+        text: 'Data berhasil diupload didalam <?= $alertAppName ?>!'
+    })
+    history.replaceState({}, '', './report_ck5_plb.php');
+}
+// UPDATE FAILED
+if (window?.location?.href?.indexOf('UploadFailed') > -1) {
+    Swal.fire({
+        title: 'Data gagal diupload!',
+        icon: 'error',
+        text: 'Data gagal diupload didalam <?= $alertAppName ?>!'
+    })
+    history.replaceState({}, '', './report_ck5_plb.php');
+}
 
-    // TableData
-    $(document).ready(function() {
-        $('#TableData').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
-        });
+// TableData
+$(document).ready(function() {
+    $('#TableData').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
     });
+});
 </script>
