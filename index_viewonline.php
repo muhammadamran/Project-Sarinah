@@ -9,6 +9,9 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API - 
 include "include/api.php";
+// PLB
+$contentPLB = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_PLB');
+$dataPLB = json_decode($contentPLB, true);
 // BC
 $contentBC = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bcTPB');
 $dataBC = json_decode($contentBC, true);
@@ -235,27 +238,21 @@ $dataBC_41 = json_decode($contentBC_41, true);
                                 <div class="stats-icon stats-icon-lg"><i class="fa fa-circle-down fa-fw"></i></div>
                                 <div class="stats-content">
                                     <div class="stats-title">Total Data PLB</div>
-                                    <?php
-									$dataBCPLB = $dbcon->query("SELECT NOMOR_AJU,KODE_DOKUMEN_PABEAN,
-																(SELECT COUNT(*) AS total_bc FROM plb_header WHERE KODE_DOKUMEN_PABEAN IS NOT NULL) AS total_bc
-																FROM plb_header
-																WHERE KODE_DOKUMEN_PABEAN IS NOT NULL
-																ORDER BY ID DESC LIMIT 1");
-									$resultdataBCPLB = mysqli_fetch_array($dataBCPLB);
-									?>
-                                    <?php if ($resultdataBCPLB['total_bc'] == NULL || $resultdataBCPLB['total_bc'] == '') { ?>
+                                    <?php if ($dataPLB['status'] == 404) { ?>
                                     <div class="stats-number">- AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
                                     <div class="stats-desc">AJU Terakhir: - <br> BC: -</div>
                                     <?php } else { ?>
-                                    <div class="stats-number"><?= $resultdataBCPLB['total_bc']; ?> AJU</div>
+                                    <?php foreach ($dataPLB['result'] as $row) { ?>
+                                    <div class="stats-number"><?= $row['total_bc']; ?> AJU</div>
                                     <div class="stats-progress progress">
                                         <div class="progress-bar" style="width: 100%;"></div>
                                     </div>
-                                    <div class="stats-desc">AJU Terakhir: <?= $resultdataBCPLB['NOMOR_AJU']; ?> <br> BC:
-                                        <?= $resultdataBCPLB['KODE_DOKUMEN_PABEAN']; ?></div>
+                                    <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?> <br> BC:
+                                        <?= $row['KODE_DOKUMEN_PABEAN']; ?></div>
+                                    <?php } ?>
                                     <?php } ?>
                                 </div>
                             </div>
