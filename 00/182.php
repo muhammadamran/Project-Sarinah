@@ -15,5 +15,5 @@ function get_content($URL)
 $content = get_content('http://182.23.104.212:8091/tpbbackend/api/dataBC23.php');
 $data = json_decode($content, true);
 
-var_dump($content);
+var_dump($data['status']);
 exit;
