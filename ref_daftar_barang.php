@@ -134,40 +134,50 @@ $data = json_decode($content, true);
                                     </td>
                                     <td style="text-align: left;">
                                         <?php if ($row['URAIAN_BARANG'] == NULL || $row['URAIAN_BARANG'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
+                                        <center>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            </font>
+                                        </center>
                                         <?php } else { ?>
                                         <?= $row['URAIAN_BARANG'] ?>
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: left;">
                                         <?php if ($row['MERK'] == NULL || $row['MERK'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
+                                        <center>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            </font>
+                                        </center>
                                         <?php } else { ?>
                                         <?= $row['MERK'] ?>
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: left;">
                                         <?php if ($row['TIPE'] == NULL || $row['TIPE'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
+                                        <center>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            </font>
+                                        </center>
                                         <?php } else { ?>
                                         <?= $row['TIPE'] ?>
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: left;">
                                         <?php if ($row['SPESIFIKASI_LAIN'] == NULL || $row['SPESIFIKASI_LAIN'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
+                                        <center>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            </font>
+                                        </center>
                                         <?php } else { ?>
                                         <?= $row['SPESIFIKASI_LAIN'] ?>
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: center;">
                                         <?php if ($row['KODE_BARANG'] == NULL || $row['KODE_BARANG'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
+                                        <center>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            </font>
+                                        </center>
                                         <?php } else { ?>
                                         <?= $row['KODE_BARANG'] ?>
                                         <?php } ?>
