@@ -45,7 +45,8 @@ include "include/cssDatatables.php";
     <div class="line-page"></div>
     <div class="row">
         <div class="col-md-12">
-            <div class="row">
+            <div class="row"
+                style="display: flex;justify-content: center;align-items: center;background: #fff;border-radius: 5px;margin-left: 0px;margin-right: 0px;">
                 <div class="col-md-3">
                     <div class="row-dinding">
                         <div class="svg-img-center">
