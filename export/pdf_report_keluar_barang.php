@@ -20,6 +20,8 @@ if (isset($_POST["find_"])) {
 include "../include/api.php";
 $content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $rStartTanggal . '&EndTanggal=' . $rEndTanggal);
 $data = json_decode($content, true);
+var_dump($data);
+exit;
 ?>
 <!DOCTYPE html>
 <html lang="en">
