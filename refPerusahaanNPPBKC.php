@@ -18,10 +18,7 @@ if (isset($_POST["add_nppbkc"])) {
     $IDNPWP                   = $_POST['UNIQNWPW'];
     $NameNPPBKC               = $_POST['NameNPPBKC'];
 
-    $query = get_content($resultAPI['url_api'] . 'refPerusahaanNPPBKC.php?function=get_nppbkc=' . $NameNPPBKC . '&NPWP=' . $IDNPWP);
-
-    var_dump($query);
-    exit;
+    $query = get_content($resultAPI['url_api'] . 'refPerusahaanNPPBKC_add.php?id=' . $IDUNIQ . '&NPWP=' . $IDNPWP . '&NPPBKC=' . $NameNPPBKC);
 
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
@@ -111,11 +108,11 @@ if (isset($_POST["add_nppbkc"])) {
                                             <label for="IdLITER">NPPBKC <font style="color: red;">*</font></label>
                                             <input type="text" class="form-control" name="NameNPPBKC" id="IDNPPBKC"
                                                 placeholder="NPPBKC" required>
-                                            <input type="text" class="form-control" name="UNIQID"
+                                            <input type="hidden" class="form-control" name="UNIQID"
                                                 value="<?= $_GET['id'] ?>">
-                                            <input type="text" class="form-control" name="UNIQNWPW"
+                                            <input type="hidden" class="form-control" name="UNIQNWPW"
                                                 value="<?= $_GET['NPWP'] ?>">
-                                            <input type="text" class="form-control" name="UNIQNAMA"
+                                            <input type="hidden" class="form-control" name="UNIQNAMA"
                                                 value="<?= $row['NAMA'] ?>">
                                         </div>
                                     </div>
