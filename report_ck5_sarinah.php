@@ -51,7 +51,7 @@ $data = json_decode($content, true);
                                     <th style="text-align:center">Packing List</th>
                                     <th style="text-align:center">Invoice</th>
                                     <th style="text-align:center">Nomor Pengajuan</th>
-                                    <th style="text-align:center">BC.11</th>
+                                    <th style="text-align:center">BC</th>
                                     <th style="text-align:center">ID Penerima</th>
                                     <th style="text-align:center">Nama Penerima</th>
                                     <th style="text-align:center">Pemasok</th>
@@ -107,11 +107,25 @@ $data = json_decode($content, true);
                                         </a>
                                     </td>
                                     <td><?= $row['NOMOR_AJU']; ?></td>
-                                    <td><?= $row['NOMOR_BC11']; ?></td>
+                                    <td><?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
                                     <td><?= $row['ID_PENERIMA_BARANG']; ?></td>
                                     <td><?= $row['NAMA_PENERIMA_BARANG']; ?></td>
-                                    <td><?= $row['NAMA_PEMASOK']; ?></td>
-                                    <td><?= $row['NAMA_PEMILIK']; ?></td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['NAMA_PEMASOK'] == NULL || $row['NAMA_PEMASOK'] == '') { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['NAMA_PEMASOK'] ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['NAMA_PEMILIK'] == NULL || $row['NAMA_PEMILIK'] == '') { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['NAMA_PEMILIK'] ?>
+                                        <?php } ?>
+                                    </td>
                                     <td><?= $row['NAMA_PENGANGKUT']; ?></td>
                                 </tr>
                                 <?php } ?>
