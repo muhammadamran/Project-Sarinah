@@ -232,8 +232,11 @@ $data = json_decode($content, true);
                                 <?php $no++ ?>
                                 <tr>
                                     <!-- 9 -->
+                                    <!-- NO -->
                                     <td><?= $no ?>.</td>
+                                    <!-- BC -->
                                     <td>BC<?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                                    <!-- AJU -->
                                     <td style="text-align: center">
                                         <?php if ($row['NOMOR_AJU'] == NULL) { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
@@ -242,31 +245,44 @@ $data = json_decode($content, true);
                                         <?= $row['NOMOR_AJU']; ?>
                                         <?php } ?>
                                     </td>
+                                    <!-- TGL AJU (FILTER) -->
                                     <td><?= $row['TGL_AJU']; ?></td>
-                                    <?php if ($row['NOMOR_BC11'] == NULL) { ?>
+                                    <!-- NOMOR BC 11 -->
                                     <td style="text-align: center">
+                                        <?php if ($row['NOMOR_BC11'] == NULL) { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                                         </font>
+                                        <?php } else { ?>
+                                        <?= $row['NOMOR_BC11']; ?>
+                                        <?php } ?>
                                     </td>
-                                    <?php } else { ?>
-                                    <td><?= $row['NOMOR_BC11']; ?></td>
-                                    <?php } ?>
-                                    <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
+                                    <!-- TGL BC 11 -->
                                     <td style="text-align: center">
+                                        <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                                         </font>
+                                        <?php } else { ?>
+                                        <?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?>
+                                        <?php } ?>
                                     </td>
-                                    <?php } else { ?>
-                                    <td><?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?></td>
-                                    <?php } ?>
-                                    <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
+                                    <!-- NAMA PEMASOK -->
                                     <td style="text-align: center">
+                                        <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                                         </font>
+                                        <?php } else { ?>
+                                        <?= $row['NAMA_PEMASOK']; ?>
+                                        <?php } ?>
                                     </td>
-                                    <?php } else { ?>
-                                    <td><?= $row['NAMA_PEMASOK']; ?></td>
-                                    <?php } ?>
+                                    <!-- HS -->
+                                    <td style="text-align: center">
+                                        <?php if ($row['POS_TARIF'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['POS_TARIF']; ?>
+                                        <?php } ?>
+                                    </td>
                                     <td><?= $row['KODE_BARANG']; ?></td>
                                     <td><?= $row['URAIAN']; ?></td>
                                     <td>
