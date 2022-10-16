@@ -8,7 +8,7 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API - 
 include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'refPerusahaan.php');
+$content = get_content($resultAPI['url_api'] . 'refPerusahaanNPPBKC.php?id=' . $_GET['id'] . '&NPWP=' . $_GET['NPWP']);
 $data = json_decode($content, true);
 
 // UPDATE NPPBKC
@@ -16,12 +16,11 @@ if (isset($_POST["add_nppbkc"])) {
 
     $IDUNIQ                   = $_POST['UNIQID'];
     $IDNPWP                   = $_POST['UNIQNWPW'];
-    $IDNAMA                   = $_POST['UNIQNAMA'];
     $NameNPPBKC               = $_POST['NameNPPBKC'];
 
-    // $query = get_content($resultAPI['url_api'] . 'refPerusahaan.php?function=get_nppbkc=' . $NameNPPBKC . '&NPWP=' . $IDNPWP);
+    $query = get_content($resultAPI['url_api'] . 'refPerusahaanNPPBKC.php?function=get_nppbkc=' . $NameNPPBKC . '&NPWP=' . $IDNPWP);
 
-    var_dump($NameNPPBKC);
+    var_dump($query);
     exit;
 
     // FOR AKTIFITAS
@@ -105,9 +104,9 @@ if (isset($_POST["add_nppbkc"])) {
                                             <input type="text" class="form-control" name="NameNPPBKC" id="IDNPPBKC"
                                                 placeholder="NPPBKC" required>
                                             <input type="hidden" class="form-control" name="UNIQID"
-                                                value="<?= $row['ID'] ?>">
+                                                value="<?= $_GET['id'] ?>">
                                             <input type="hidden" class="form-control" name="UNIQNWPW"
-                                                value="<?= $row['NPWP'] ?>">
+                                                value="<?= $_GET['NPWP'] ?>">
                                             <input type="hidden" class="form-control" name="UNIQNAMA"
                                                 value="<?= $row['NAMA'] ?>">
                                         </div>

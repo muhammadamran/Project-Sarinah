@@ -10,44 +10,6 @@ include "include/cssDatatables.php";
 include "include/api.php";
 $content = get_content($resultAPI['url_api'] . 'refPerusahaan.php');
 $data = json_decode($content, true);
-
-// UPDATE NPPBKC
-if (isset($_POST["add_nppbkc"])) {
-
-    $IDUNIQ                   = $_POST['UNIQID'];
-    $IDNPWP                   = $_POST['UNIQNWPW'];
-    $IDNAMA                   = $_POST['UNIQNAMA'];
-    $NameNPPBKC               = $_POST['NameNPPBKC'];
-
-    // $query = get_content($resultAPI['url_api'] . 'refPerusahaan.php?function=get_nppbkc=' . $NameNPPBKC . '&NPWP=' . $IDNPWP);
-
-    var_dump($NameNPPBKC);
-    exit;
-
-    // FOR AKTIFITAS
-    $me = $_SESSION['username'];
-    $datame = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
-    $resultme = mysqli_fetch_array($datame);
-
-    $IDUNIQme             = $resultme['USRIDUNIQ'];
-    $InputUsername        = $me;
-    $InputModul           = 'Referensi/Perusahaan';
-    $InputDescription     = $me . " Update Data: " .  $UpdateNameDepartment . ", Simpan Data Sebagai Log Referensi Perusahaan";
-    $InputAction          = 'Update';
-    $InputDate            = date('Y-m-d h:m:i');
-
-    $query .= $dbcon->query("INSERT INTO tbl_aktifitas
-                           (id,IDUNIQ,username,modul,description,action,date_created)
-                           VALUES
-                           ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
-
-    if ($query) {
-        echo "<script>window.location.href='ref_perusahaan.php?UpdateSuccess=true';</script>";
-    } else {
-        echo "<script>window.location.href='ref_perusahaan.php?UpdateFailed=true';</script>";
-    }
-}
-// END UPDATE NPPBKC
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -156,7 +118,7 @@ if (isset($_POST["add_nppbkc"])) {
                                         <!-- <a href="#AddNPPBKC<?= $row['ID'] ?>" class="btn btn-sm btn-warning"
                                             data-toggle="modal" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i>
                                             NPPBKC</a> -->
-                                        <a href="ref_perusahaan_nppbkc.php?id=<?= $row['ID'] ?>&NPWP?<?= $row['NPWP']; ?>"
+                                        <a href="ref_perusahaan_nppbkc.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>"
                                             class="btn btn-sm btn-warning" target="_blank" title="Tambah NPPBKC"><i
                                                 class="fas fa-plus-circle"></i>
                                             NPPBKC</a>
