@@ -336,5 +336,6 @@ $query .= $dbcon->query("INSERT INTO plb_status
                        VALUES
                        ('','$inputNoAJU','$inputKDRespon','$inputNoRespon','$inputck5_plb_submit')");
 
+var_dump($query);exit;
+
 mysqli_close($dbcon);
-?>
