@@ -184,12 +184,13 @@ if (isset($_POST["add_nppbkc"])) {
                                         <?php } ?>
                                     </td>
                                 </tr>
+                                <?php } ?>
 
                                 <!-- Tambah NPPBKC -->
                                 <div class="modal fade" id="AddNPPBKC<?= $row['ID'] ?>">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form action="" method="GET">
+                                            <form action="" method="POST">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">[NPPBKC] Mitra - <?= $row['NAMA'] ?></h4>
                                                     <button type="button" class="close" data-dismiss="modal"
@@ -270,7 +271,6 @@ if (isset($_POST["add_nppbkc"])) {
                                     </div>
                                 </div>
                                 <!-- End Alamat -->
-                                <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>
