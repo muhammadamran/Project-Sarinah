@@ -18,13 +18,13 @@ if ($resultRoleModules['v_cttpb'] == 'none' && $resultRoleModules['v_filterttpb'
         </div>
     </div>
 </li>
-<li class="<?= $uriSegments[1] == 'tbl_tpb_count.php' ? 'active' : '' ?>"
+<!-- <li class="<?= $uriSegments[1] == 'tbl_tpb_count.php' ? 'active' : '' ?>"
     style="display: <?= $resultRoleModules['v_cttpb']; ?>">
     <a href="tbl_tpb_count.php">
         <i class="fab fa-contao"></i>
         <span>Count Tabel TPB</span>
     </a>
-</li>
+</li> -->
 <li class="<?= $uriSegments[1] == 'tbl_tpb.php' ? 'active' : '' ?>"
     style="display: <?= $resultRoleModules['v_filterttpb']; ?>">
     <a href="tbl_tpb.php">
