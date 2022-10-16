@@ -1330,7 +1330,7 @@ if (window?.location?.href?.indexOf('UploadSuccess') > -1) {
         icon: 'success',
         text: 'Data berhasil diupload didalam <?= $alertAppName ?>!'
     })
-    history.replaceState({}, '', './report_ck5_plb.php');
+    history.replaceState({}, '', './report_ck5_plb_data.php');
 }
 // UPDATE FAILED
 if (window?.location?.href?.indexOf('UploadFailed') > -1) {
@@ -1339,7 +1339,7 @@ if (window?.location?.href?.indexOf('UploadFailed') > -1) {
         icon: 'error',
         text: 'Data gagal diupload didalam <?= $alertAppName ?>!'
     })
-    history.replaceState({}, '', './report_ck5_plb.php');
+    history.replaceState({}, '', './report_ck5_plb_data.php');
 }
 
 
