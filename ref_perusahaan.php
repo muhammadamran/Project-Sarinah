@@ -19,10 +19,10 @@ if (isset($_POST["add_nppbkc"])) {
     $IDNAMA                   = $_POST['UNIQNAMA'];
     $NameNPPBKC               = $_POST['NameNPPBKC'];
 
-    $query = $dbcon->query("INSERT INTO tbl_ref_pengusaha
-                               (ID,NPWP,NAMA,NPPBKC)
-                               VALUES
-                               ('','$IDNPWP','$IDNAMA','$NameNPPBKC')");
+    $query = get_content($resultAPI['url_api'] . 'refPerusahaan.php?function=get_nppbkc=' . $NameNPPBKC . '&NPWP=' . $IDNPWP);
+
+    var_dump($query);
+    exit;
 
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
