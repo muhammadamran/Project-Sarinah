@@ -8,6 +8,47 @@ include "include/top-sidebar.php";
 // include "include/sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
+// API - 
+include "include/api.php";
+// HEADER
+$contentHeader = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_Header');
+$dataHeader = json_decode($contentHeader, true);
+// BAHAN BAKU
+$contentBahanBaku = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_BahanBaku');
+$dataBahanBaku = json_decode($contentBahanBaku, true);
+// BAHAN BAKU TARIF
+$contentBahanBakuTarif = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_BahanBakuTarif');
+$dataBahanBakuTarif = json_decode($contentBahanBakuTarif, true);
+// BAHAN BAKU DOKUMEN
+$contentBahanBakuDokumen = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_BahanBakuDokumen');
+$dataBahanBakuDokumen = json_decode($contentBahanBakuDokumen, true);
+// BARANG
+$contentBarang = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_Barang');
+$dataBarang = json_decode($contentBarang, true);
+// BARANG TARIF
+$contentBarangTarif = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_BarangTarif');
+$dataBarangTarif = json_decode($contentBarangTarif, true);
+// BARANG DOKUMEN
+$contentBarangDokumen = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_BarangDokumen');
+$dataBarangDokumen = json_decode($contentBarangDokumen, true);
+// DOKUMEN
+$contentDokumen = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_Dokumen');
+$dataDokumen = json_decode($contentDokumen, true);
+// KEMASAN
+$contentKemasan = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_Kemasan');
+$dataKemasan = json_decode($contentKemasan, true);
+// KONTAINER
+$contentKontainer = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_Kontainer');
+$dataKontainer = json_decode($contentKontainer, true);
+// RESPON
+$contentRespon = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_Respon');
+$dataRespon = json_decode($contentRespon, true);
+// STATUS
+$contentStatus = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_Status');
+$dataStatus = json_decode($contentStatus, true);
+// LOG
+$contentLog = get_content($resultAPI['url_api'] . 'reportCK5PLB.php?function=get_Log');
+$dataLog = json_decode($contentLog, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
@@ -311,13 +352,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_header ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noHeader = 0;
-                                            while ($rowHeader = mysqli_fetch_array($dataTable)) {
-                                                $noHeader++;
-                                        ?>
+                                        <?php if ($dataHeader['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="149">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noHeader = 0; ?>
+                                        <?php foreach ($dataHeader['result'] as $rowHeader) { ?>
+                                        <?php $noHeader++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noHeader ?>. </td>
                                             <td style="text-align: center;">
@@ -480,16 +528,6 @@ include "include/cssForm.php";
                                             <td><?= $rowHeader['KODE_GUDANG_TUJUAN']; ?></td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="149">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -537,13 +575,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_bahanbaku ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noBahanBaku = 0;
-                                            while ($rowBahanBaku = mysqli_fetch_array($dataTable)) {
-                                                $noBahanBaku++;
-                                        ?>
+                                        <?php if ($dataBahanBaku['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="30">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noBahanBaku = 0; ?>
+                                        <?php foreach ($dataBahanBaku['result'] as $rowBahanBaku) { ?>
+                                        <?php $noBahanBaku++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noBahanBaku ?>. </td>
                                             <td><?= $rowBahanBaku['NOMOR_AJU']; ?></td>
@@ -578,16 +623,6 @@ include "include/cssForm.php";
                                             <td><?= $rowBahanBaku['SERI_IJIN']; ?></td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="30">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -620,13 +655,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_bahanbakutarif ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noBahanBakuTarif = 0;
-                                            while ($rowBahanBakuTarif = mysqli_fetch_array($dataTable)) {
-                                                $noBahanBakuTarif++;
-                                        ?>
+                                        <?php if ($dataBahanBakuTarif['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="16">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noBahanBakuTarif = 0; ?>
+                                        <?php foreach ($dataBahanBakuTarif['result'] as $rowBahanBakuTarif) { ?>
+                                        <?php $noBahanBakuTarif++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noBahanBakuTarif ?>. </td>
                                             <td><?= $rowBahanBakuTarif['NOMOR_AJU']; ?></td>
@@ -646,16 +688,6 @@ include "include/cssForm.php";
                                             <td><?= $rowBahanBakuTarif['TARIF_FASILITAS']; ?></td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="16">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -678,23 +710,7 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_bahanbakudokumen ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noBahanBakuDokumen = 0;
-                                            while ($rowBahanBakuDokumen = mysqli_fetch_array($dataTable)) {
-                                                $noBahanBakuDokumen++;
-                                        ?>
-                                        <tr class="odd gradeX">
-                                            <td><?= $noBahanBakuDokumen ?>. </td>
-                                            <td><?= $rowBahanBakuDokumen['NOMOR_AJU']; ?></td>
-                                            <td><?= $rowBahanBakuDokumen['SERI_BARANG']; ?></td>
-                                            <td><?= $rowBahanBakuDokumen['SERI_BAHAN_BAKU']; ?></td>
-                                            <td><?= $rowBahanBakuDokumen['SERI_DOKUMEN']; ?></td>
-                                            <td><?= $rowBahanBakuDokumen['KODE_ASAL_BAHAN_BAKU']; ?></td>
-                                        </tr>
-                                        <?php } ?>
-                                        <?php } else { ?>
+                                        <?php if ($dataBahanBakuDokumen['status'] == 404) { ?>
                                         <tr>
                                             <td colspan="6">
                                                 <center>
@@ -704,6 +720,19 @@ include "include/cssForm.php";
                                                 </center>
                                             </td>
                                         </tr>
+                                        <?php } else { ?>
+                                        <?php $noBahanBakuDokumen = 0; ?>
+                                        <?php foreach ($dataBahanBakuDokumen['result'] as $rowBahanBakuDokumen) { ?>
+                                        <?php $noBahanBakuDokumen++ ?>
+                                        <tr class="odd gradeX">
+                                            <td><?= $noBahanBakuDokumen ?>. </td>
+                                            <td><?= $rowBahanBakuDokumen['NOMOR_AJU']; ?></td>
+                                            <td><?= $rowBahanBakuDokumen['SERI_BARANG']; ?></td>
+                                            <td><?= $rowBahanBakuDokumen['SERI_BAHAN_BAKU']; ?></td>
+                                            <td><?= $rowBahanBakuDokumen['SERI_DOKUMEN']; ?></td>
+                                            <td><?= $rowBahanBakuDokumen['KODE_ASAL_BAHAN_BAKU']; ?></td>
+                                        </tr>
+                                        <?php } ?>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -771,13 +800,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_barang ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noBarang = 0;
-                                            while ($rowBarang = mysqli_fetch_array($dataTable)) {
-                                                $noBarang++;
-                                        ?>
+                                        <?php if ($dataBarang['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="51">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noBarang = 0; ?>
+                                        <?php foreach ($dataBarang['result'] as $rowBarang) { ?>
+                                        <?php $noBarang++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noBarang ?>. </td>
                                             <td><?= $rowBarang['NOMOR_AJU']; ?></td>
@@ -832,16 +868,6 @@ include "include/cssForm.php";
                                             <td><?= $rowBarang['SERI_BARANG_DOK_ASAL']; ?></td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="51">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -872,13 +898,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_barangtarif ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noBarangTarif = 0;
-                                            while ($rowBarangTarif = mysqli_fetch_array($dataTable)) {
-                                                $noBarangTarif++;
-                                        ?>
+                                        <?php if ($dataBarangTarif['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="14">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noBarangTarif = 0; ?>
+                                        <?php foreach ($dataBarangTarif['result'] as $rowBarangTarif) { ?>
+                                        <?php $noBarangTarif++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noBarangTarif ?>. </td>
                                             <td><?= $rowBarangTarif['NOMOR_AJU']; ?></td>
@@ -896,16 +929,6 @@ include "include/cssForm.php";
                                             <td><?= $rowBarangTarif['TARIF_FASILITAS']; ?></td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="14">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -926,21 +949,7 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_barangdokumen ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noBarangDokumen = 0;
-                                            while ($rowBarangDokumen = mysqli_fetch_array($dataTable)) {
-                                                $noBarangDokumen++;
-                                        ?>
-                                        <tr class="odd gradeX">
-                                            <td><?= $noBarangDokumen ?>. </td>
-                                            <td><?= $rowBarangDokumen['NOMOR_AJU']; ?></td>
-                                            <td><?= $rowBarangDokumen['SERI_BARANG']; ?></td>
-                                            <td><?= $rowBarangDokumen['SERI_DOKUMEN']; ?></td>
-                                        </tr>
-                                        <?php } ?>
-                                        <?php } else { ?>
+                                        <?php if ($dataBarangDokumen['status'] == 404) { ?>
                                         <tr>
                                             <td colspan="4">
                                                 <center>
@@ -950,6 +959,17 @@ include "include/cssForm.php";
                                                 </center>
                                             </td>
                                         </tr>
+                                        <?php } else { ?>
+                                        <?php $noBarangDokumen = 0; ?>
+                                        <?php foreach ($dataBarangDokumen['result'] as $rowBarangDokumen) { ?>
+                                        <?php $noBarangDokumen++ ?>
+                                        <tr class="odd gradeX">
+                                            <td><?= $noBarangDokumen ?>. </td>
+                                            <td><?= $rowBarangDokumen['NOMOR_AJU']; ?></td>
+                                            <td><?= $rowBarangDokumen['SERI_BARANG']; ?></td>
+                                            <td><?= $rowBarangDokumen['SERI_DOKUMEN']; ?></td>
+                                        </tr>
+                                        <?php } ?>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -975,13 +995,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_dokumen ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noDokumen = 0;
-                                            while ($rowDokumen = mysqli_fetch_array($dataTable)) {
-                                                $noDokumen++;
-                                        ?>
+                                        <?php if ($dataDokumen['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="9">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noDokumen = 0; ?>
+                                        <?php foreach ($dataDokumen['result'] as $rowDokumen) { ?>
+                                        <?php $noDokumen++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noDokumen ?>. </td>
                                             <td><?= $rowDokumen['NOMOR_AJU']; ?></td>
@@ -994,16 +1021,6 @@ include "include/cssForm.php";
                                             <td><?= $rowDokumen['URL_DOKUMEN']; ?></td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="9">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -1034,13 +1051,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_kemasan ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noKemasan = 0;
-                                            while ($rowKemasan = mysqli_fetch_array($dataTable)) {
-                                                $noKemasan++;
-                                        ?>
+                                        <?php if ($dataKemasan['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="14">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noKemasan = 0; ?>
+                                        <?php foreach ($dataKemasan['result'] as $rowKemasan) { ?>
+                                        <?php $noKemasan++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noKemasan ?>. </td>
                                             <td><?= $rowKemasan['NOMOR_AJU']; ?></td>
@@ -1058,16 +1082,6 @@ include "include/cssForm.php";
                                             <td><?= $rowKemasan['WAKTU_GATE_OUT']; ?></td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="14">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -1099,13 +1113,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_kontainer ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noKontainer = 0;
-                                            while ($rowKontainer = mysqli_fetch_array($dataTable)) {
-                                                $noKontainer++;
-                                        ?>
+                                        <?php if ($dataKontainer['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="15">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noKontainer = 0; ?>
+                                        <?php foreach ($dataKontainer['result'] as $rowKontainer) { ?>
+                                        <?php $noKontainer++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noKontainer ?>. </td>
                                             <td><?= $rowKontainer['NOMOR_AJU']; ?></td>
@@ -1124,16 +1145,6 @@ include "include/cssForm.php";
                                             <td><?= $rowKontainer['WAKTU_GATE_OUT']; ?></td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="15">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -1157,13 +1168,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_respon ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noRespon = 0;
-                                            while ($rowRespon = mysqli_fetch_array($dataTable)) {
-                                                $noRespon++;
-                                        ?>
+                                        <?php if ($dataRespon['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="7">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noRespon = 0; ?>
+                                        <?php foreach ($dataRespon['result'] as $rowRespon) { ?>
+                                        <?php $noRespon++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noRespon ?>. </td>
                                             <td><?= $rowRespon['NOMOR_AJU']; ?></td>
@@ -1174,16 +1192,6 @@ include "include/cssForm.php";
                                             <td><?= $rowRespon['BYTE_STRAM_PDF']; ?></td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="7">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -1208,13 +1216,20 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_status ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noStatus = 0;
-                                            while ($rowStatus = mysqli_fetch_array($dataTable)) {
-                                                $noStatus++;
-                                        ?>
+                                        <?php if ($dataStatus['status'] == 404) { ?>
+                                        <tr>
+                                            <td colspan="4">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        <?php } else { ?>
+                                        <?php $noStatus = 0; ?>
+                                        <?php foreach ($dataStatus['result'] as $rowStatus) { ?>
+                                        <?php $noStatus++ ?>
                                         <tr class="odd gradeX">
                                             <td><?= $noStatus ?>. </td>
                                             <td><?= $rowStatus['NOMOR_AJU']; ?></td>
@@ -1244,16 +1259,6 @@ include "include/cssForm.php";
                                             </td>
                                         </tr>
                                         <?php } ?>
-                                        <?php } else { ?>
-                                        <tr>
-                                            <td colspan="4">
-                                                <center>
-                                                    <div style="display: grid;">
-                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                    </div>
-                                                </center>
-                                            </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -1275,23 +1280,7 @@ include "include/cssForm.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_log ORDER BY ID DESC");
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noLog = 0;
-                                            while ($rowLog = mysqli_fetch_array($dataTable)) {
-                                                $noLog++;
-                                        ?>
-                                        <tr class="odd gradeX">
-                                            <td><?= $noLog ?>. </td>
-                                            <td><?= $rowLog['username']; ?></td>
-                                            <td><?= $rowLog['filename']; ?></td>
-                                            <td><?= $rowLog['totalupload']; ?></td>
-                                            <td><?= $rowLog['dateupload']; ?></td>
-                                            <td><?= $rowLog['status']; ?></td>
-                                        </tr>
-                                        <?php } ?>
-                                        <?php } else { ?>
+                                        <?php if ($dataLog['status'] == 404) { ?>
                                         <tr>
                                             <td colspan="6">
                                                 <center>
@@ -1301,6 +1290,19 @@ include "include/cssForm.php";
                                                 </center>
                                             </td>
                                         </tr>
+                                        <?php } else { ?>
+                                        <?php $noLog = 0; ?>
+                                        <?php foreach ($dataLog['result'] as $rowLog) { ?>
+                                        <?php $noLog++ ?>
+                                        <tr class="odd gradeX">
+                                            <td><?= $noLog ?>. </td>
+                                            <td><?= $rowLog['username']; ?></td>
+                                            <td><?= $rowLog['filename']; ?></td>
+                                            <td><?= $rowLog['totalupload']; ?></td>
+                                            <td><?= $rowLog['dateupload']; ?></td>
+                                            <td><?= $rowLog['status']; ?></td>
+                                        </tr>
+                                        <?php } ?>
                                         <?php } ?>
                                     </tbody>
                                 </table>
