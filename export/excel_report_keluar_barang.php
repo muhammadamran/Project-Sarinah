@@ -4,11 +4,11 @@ include "../include/connection.php";
 $dataHeadSettting = $dbcon->query("SELECT * FROM tbl_setting");
 $resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
 
-header("Content-type: application/vnd-ms-excel");
-date_default_timezone_set("Asia/Bangkok");
-$datenow = date('d-m-Y h-i-s');
+// header("Content-type: application/vnd-ms-excel");
+// date_default_timezone_set("Asia/Bangkok");
+// $datenow = date('d-m-Y h-i-s');
 
-header("Content-Disposition: attachment; filename=Laporan Keluar Barang$datenow.xls");
+// header("Content-Disposition: attachment; filename=Laporan Keluar Barang$datenow.xls");
 
 function date_indo($date, $print_day = false)
 {
