@@ -41,3 +41,6 @@ $dbcon = new mysqli($dbhost, $dbusername, $dbpassword, $dbname) or die(mysqli_co
 //   die("Connection failed: " . $dbcon->connect_error);
 // }
 // echo "Connected successfully";
+
+$dataAPI = $dbcon->query("SELECT * FROM api ORDER BY id ASC LIMIT 1");
+$resultAPI = mysqli_fetch_array($dataAPI);
