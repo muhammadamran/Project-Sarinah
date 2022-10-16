@@ -193,23 +193,40 @@ div.table-responsive>div.dataTables_wrapper>div.row {
     margin: 0;
     font-size: 12px;
 }
+
+.line-page-table {
+    height: 2.5px;
+    margin: 0px 0px 15px 0px;
+    background: #1d2226;
+}
+
+.line-page-table-n {
+    height: 0.5px;
+    margin: 0px 0px 15px 0px;
+    background: #1d2226;
+}
 </style>
 
 <body>
     <div id="content" class="nav-top-content">
         <div class="invoice">
             <div class="invoice-company">
-                <span class="pull-right hidden-print">
-                    <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
-                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
-                    </a>
-                    <a href="report_ck5_sarinah_invoice_print.php?AJU=<?= $_GET['AJU']; ?>"
-                        class="btn btn-sm btn-white m-b-10">
-                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print
-                    </a>
-                </span>
+                <div class="row">
+                    <div class="col-sm-12" style="justify-content: end;">
+                        <span class="pull-right hidden-print">
+                            <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
+                                <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export
+                                Excel
+                            </a>
+                            <a href="report_ck5_sarinah_invoice_print.php?AJU=<?= $_GET['AJU']; ?>"
+                                class="btn btn-sm btn-white m-b-10">
+                                <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print
+                            </a>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="line-page-table"></div>
+            <div class="line-page-table-n"></div>
             <div class="row" style="display: flex;align-items: center;margin-bottom: -5px;">
                 <div class="col-md-3">
                     <div style="display: flex;justify-content: center;">
