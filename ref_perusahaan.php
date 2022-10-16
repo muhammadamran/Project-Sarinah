@@ -157,7 +157,7 @@ if (isset($_POST["add_nppbkc"])) {
                                             data-toggle="modal" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i>
                                             NPPBKC</a> -->
                                         <a href="ref_perusahaan_nppbkc.php?id=<?= $row['ID'] ?>&NPWP?<?= $row['NPWP']; ?>"
-                                            class="btn btn-sm btn-warning" data-toggle="modal" title="Tambah NPPBKC"><i
+                                            class="btn btn-sm btn-warning" target="_blank" title="Tambah NPPBKC"><i
                                                 class="fas fa-plus-circle"></i>
                                             NPPBKC</a>
                                         <?php } else { ?>
