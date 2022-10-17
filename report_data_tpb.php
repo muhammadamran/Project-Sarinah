@@ -442,7 +442,7 @@ if (isset($_POST["findOne"])) {
                                                                  LEFT OUTER JOIN referensi_pengusaha AS peng ON tpb.NAMA_PENERIMA_BARANG=peng.NAMA
                                                                  LEFT OUTER JOIN tpb_kontainer AS kon ON tpb.ID=kon.ID_HEADER
                                                                  GROUP BY kon.ID_HEADER
-                                                                 ORDER BY plb.NOMOR_AJU ASC LIMIT 0");
+                                                                 ORDER BY plb.NOMOR_AJU ASC LIMIT 10");
                                 }
                                 if (mysqli_num_rows($result2) > 0) {
                                     while ($row2 = mysqli_fetch_array($result2)) {
