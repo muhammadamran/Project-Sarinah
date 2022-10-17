@@ -237,7 +237,7 @@ $data = json_decode($content, true);
                                     <!-- NO -->
                                     <td><?= $no ?>.</td>
                                     <!-- BC -->
-                                    <td>BC<?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                                    <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
                                     <!-- AJU -->
                                     <td style="text-align: center">
                                         <?php if ($row['NOMOR_AJU'] == NULL) { ?>
