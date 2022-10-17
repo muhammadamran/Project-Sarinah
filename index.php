@@ -89,7 +89,7 @@ include "include/top-header.php";
         width: 100%;
     }
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 800px) {
         .class-utama {
             padding: 10px;
             width: 30%;
