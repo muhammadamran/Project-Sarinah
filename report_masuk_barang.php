@@ -13,11 +13,13 @@ $EndTanggal = '';
 
 if (isset($_POST['filter_date'])) {
     if ($_POST["StartTanggal"] != '') {
-        $StartTanggal = $_POST['StartTanggal'];
+        $StartTanggal   = $_POST['StartTanggal'];
+        // $rStartTanggal  = str_replace("-", "", $_POST['StartTanggal']);
     }
 
     if ($_POST["EndTanggal"] != '') {
-        $EndTanggal = $_POST['EndTanggal'];
+        $EndTanggal     = $_POST['EndTanggal'];
+        // $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
     }
 }
 
