@@ -58,7 +58,7 @@ include "include/cssDatatables.php";
         <!-- begin col-3 -->
         <div class="for-class-report" style="display: <?= $resultRoleModules['re_masuk_barang']; ?>">
             <div class="widget widget-stats bg-grey">
-                <div class="stats-icon"><i class="fa fa-desktop"></i></div>
+                <div class="stats-icon"><i class="fa-solid fa-circle-down"></i></div>
                 <div class="stats-info">
                     <h4>Laporan </h4>
                     <p>Masuk Barang</p>
@@ -71,7 +71,7 @@ include "include/cssDatatables.php";
 
         <div class="for-class-report" style="display: <?= $resultRoleModules['re_keluar_barang']; ?>">
             <div class="widget widget-stats bg-grey">
-                <div class="stats-icon"><i class="fa fa-desktop"></i></div>
+                <div class="stats-icon"><i class="fa-solid fa-circle-up"></i></div>
                 <div class="stats-info">
                     <h4>Laporan </h4>
                     <p>Keluar Barang</p>
@@ -84,7 +84,7 @@ include "include/cssDatatables.php";
 
         <div class="for-class-report" style="display: <?= $resultRoleModules['re_mutasi_barang']; ?>">
             <div class="widget widget-stats bg-grey">
-                <div class="stats-icon"><i class="fa fa-desktop"></i></div>
+                <div class="stats-icon"><i class="fa-solid fa-building-circle-exclamation"></i></div>
                 <div class="stats-info">
                     <h4>Laporan </h4>
                     <p>Mutasi Barang</p>
@@ -99,7 +99,7 @@ include "include/cssDatatables.php";
     <div class="class-report">
         <div class="for-class-report" style="display: <?= $resultRoleModules['re_posisi_barang']; ?>">
             <div class="widget widget-stats bg-grey">
-                <div class="stats-icon"><i class="fa fa-desktop"></i></div>
+                <div class="stats-icon"><i class="fa-solid fa-map-location"></i></div>
                 <div class="stats-info">
                     <h4>Laporan </h4>
                     <p>Posisi Barang</p>
@@ -112,7 +112,7 @@ include "include/cssDatatables.php";
 
         <div class="for-class-report" style="display: <?= $resultRoleModules['re_realisasi']; ?>">
             <div class="widget widget-stats bg-grey">
-                <div class="stats-icon"><i class="fa fa-desktop"></i></div>
+                <div class="stats-icon"><i class="fa-solid fa-check-to-slot"></i></div>
                 <div class="stats-info">
                     <h4>Laporan </h4>
                     <p>Realisasi</p>
@@ -125,7 +125,7 @@ include "include/cssDatatables.php";
 
         <div class="for-class-report" style="display: <?= $resultRoleModules['re_data_tpb']; ?>">
             <div class="widget widget-stats bg-grey">
-                <div class="stats-icon"><i class="fa fa-desktop"></i></div>
+                <div class="stats-icon"><i class="fa-solid fa-building-flag"></i></div>
                 <div class="stats-info">
                     <h4>Laporan </h4>
                     <p>Data TPB</p>
@@ -140,7 +140,7 @@ include "include/cssDatatables.php";
     <div class="class-report">
         <div class="for-class-report" style="display: <?= $resultRoleModules['re_ck_plb']; ?>">
             <div class="widget widget-stats bg-grey">
-                <div class="stats-icon"><i class="fa fa-desktop"></i></div>
+                <div class="stats-icon"><i class="fa-solid fa-arrow-right-to-city"></i></div>
                 <div class="stats-info">
                     <h4>PLB Report </h4>
                     <p>CK5</p>
@@ -153,7 +153,7 @@ include "include/cssDatatables.php";
 
         <div class="for-class-report" style="display: <?= $resultRoleModules['re_ck_sarinah']; ?>">
             <div class="widget widget-stats bg-grey">
-                <div class="stats-icon"><i class="fa fa-desktop"></i></div>
+                <div class="stats-icon"><i class="fa-solid fa-school-lock"></i></div>
                 <div class="stats-info">
                     <h4>GB - Sarinah Report </h4>
                     <p>CK5</p>
@@ -166,7 +166,7 @@ include "include/cssDatatables.php";
 
         <div class="for-class-report" style="display: <?= $resultRoleModules['re_log']; ?>">
             <div class="widget widget-stats bg-grey">
-                <div class="stats-icon"><i class="fa fa-desktop"></i></div>
+                <div class="stats-icon"><i class="fa-solid fa-clipboard-question"></i></div>
                 <div class="stats-info">
                     <h4>Laporan </h4>
                     <p>Log System</p>
