@@ -253,7 +253,14 @@ $data = json_decode($content, true);
                                         <?= $row['NOMOR_AJU']; ?>
                                         <?php } ?>
                                     </td>
-                                    <td><?= $row['TANGGAL_BC11']; ?></td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['TANGGAL_BC11']; ?>
+                                        <?php } ?>
+                                    </td>
                                     <td><?= $row['POS_TARIF']; ?></td>
                                     <td><?= $row['SERI_BARANG']; ?></td>
                                     <td><?= $row['URAIAN']; ?></td>
