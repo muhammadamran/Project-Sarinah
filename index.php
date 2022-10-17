@@ -84,7 +84,7 @@ include "include/top-header.php";
         justify-content: center;
     }
 
-    @media (max-width:554px) {
+    @media (row-width:554px) {
         .class-utama {
             padding: 10px;
             width: 50%;
