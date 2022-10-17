@@ -29,12 +29,12 @@ if (isset($_POST['filter_date'])) {
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-desktop icon-page"></i>
-                <font class="text-page">Laporan Keluar Barang</font>
+                <font class="text-page">Laporan Posisi Barang</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Index</a></li>
                 <li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
-                <li class="breadcrumb-item active">Laporan Keluar Barang</li>
+                <li class="breadcrumb-item active">Laporan Posisi Barang</li>
             </ol>
         </div>
         <div>
@@ -52,7 +52,7 @@ if (isset($_POST['filter_date'])) {
                         <div class="report-button-filter">
                             <span class="pull-right hidden-print">
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                    <a href="./report_keluar_barang.php" class="btn btn-yellow m-b-10" title="Reset" style="padding: 7px;">
+                                    <a href="./report_posisi_barang.php" class="btn btn-yellow m-b-10" title="Reset" style="padding: 7px;">
                                         <div style="display: flex;justify-content: space-between;align-items: end;">
                                             <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
                                         </div>
@@ -69,7 +69,7 @@ if (isset($_POST['filter_date'])) {
                                         <div class="modal-content">
                                             <form action="" method="POST">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">[Laporan Keluar Barang] Filter Tanggal</h4>
+                                                    <h4 class="modal-title">[Laporan Posisi Barang] Filter Tanggal</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                 </div>
                                                 <div class="modal-body">
@@ -107,17 +107,20 @@ if (isset($_POST['filter_date'])) {
                                 </div>
                                 <!-- End For Filter Tanggal -->
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                    <form action="./export/excel_report_keluar_barang.php" target="_blank" method="POST" style="display: inline-block;">
+                                    <form action="./export/excel_report_posisi_barang.php" target="_blank" method="POST" style="display: inline-block;">
                                         <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
                                         <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
                                         <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
                                             <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel" data-toggle="popover" data-trigger="hover" data-title="Export File Excel" data-placement="top" data-content="Klik untuk mengexport data dalam file Excel"> Export Excel
                                         </button>
                                     </form>
-                                   <!--  <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
+                                    <!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
                                         <img src="assets/img/favicon/pdf.png" class="icon-primary-pdf" alt="PDF" data-toggle="popover" data-trigger="hover" data-title="Export File PDF" data-placement="top" data-content="Klik untuk mengexport data dalam file PDF"> Export PDF
+                                    </a>
+                                    <a href="report_ck5_plb_detail_print.php" class="btn btn-sm btn-white m-b-10">
+                                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print" data-toggle="popover" data-trigger="hover" data-title="Print File" data-placement="top" data-content="Klik untuk Print File"> Print
                                     </a> -->
-                                    <form action="./export/pdf_report_keluar_barang.php" target="_blank" method="POST" style="display: inline-block;">
+                                    <form action="./export/pdf_report_posisi_barang.php" target="_blank" method="POST" style="display: inline-block;">
                                         <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
                                         <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
                                         <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
@@ -143,10 +146,10 @@ if (isset($_POST['filter_date'])) {
                         </div>
                         <div class="col-md-9">
                             <div style="display: grid;justify-content: left;">
-                                <font style="font-size: 24px;font-weight: 800;">LAPORAN PENGELUARAN BARANG PER DOKUMEN PABEAN</font>
+                                <font style="font-size: 24px;font-weight: 800;">LAPORAN POSISI BARANG PER DOKUMEN PABEAN</font>
                                 <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                    <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $StartTanggal ?> S.D <?= $EndTanggal ?></font>
+                                    <font style="font-size: 14px;font-weight: 800;">Tanggal Masuk: <?= $StartTanggal ?> S.D <?= $EndTanggal ?></font>
                                 <?php } ?>
                                 <div class="line-page-table"></div>
                                 <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
@@ -157,42 +160,53 @@ if (isset($_POST['filter_date'])) {
                 <div class="panel-body text-inverse">
                     <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
                     <div class="table-responsive">
-                        <table id="table-keluar-barang" class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="table-posisi-barang" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">#</th>
-                                    <th colspan="3" style="text-align: center;">Dokumen Pabean</th>
-                                    <th colspan="2" style="text-align: center;">Bukti Pengeluaran</th>
-                                    <th rowspan="2" style="text-align: center;">Pembeli / Penerima</th>
+                                    <th colspan="3" style="text-align: center;">Dokumen Pabean Masuk</th>
+                                    <th rowspan="2" style="text-align: center;">Tanggal Masuk</th>
                                     <th rowspan="2" style="text-align: center;">Kode Barang (No. HS)</th>
+                                    <th rowspan="2" style="text-align: center;">Seri Barang</th>
                                     <th rowspan="2" style="text-align: center;">Barang</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah</th>
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
+                                    <th colspan="3" style="text-align: center;">Dokumen Pabean Keluar</th>
+                                    <th rowspan="2" style="text-align: center;">Tanggal Keluar</th>
+                                    <th rowspan="2" style="text-align: center;">Kode Barang (No. HS)</th>
+                                    <th rowspan="2" style="text-align: center;">Seri Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Jumlah</th>
+                                    <th rowspan="2" style="text-align: center;">Nilai Barang</th>
+                                    <th colspan="2" style="text-align: center;">Saldo Barang</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">Jenis</th>
                                     <th style="text-align: center;">No.</th>
                                     <th style="text-align: center;">Tanggal</th>
+                                    <th style="text-align: center;">Jenis</th>
                                     <th style="text-align: center;">No.</th>
                                     <th style="text-align: center;">Tanggal</th>
+                                    <th style="text-align: center;">Jumlah</th>
+                                    <th style="text-align: center;">Nilai</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 if (isset($_POST["filter_date"])) {
-                                    $dataTable = $dbcon->query("SELECT plb.NOMOR_BC11 AS PLB_NOMOR_BC11,plb.TANGGAL_BC11 AS PLB_TANGGAL_BC11,hdr.NOMOR_BC11,hdr.TANGGAL_BC11,hdr.NAMA_PEMASOK,
-                                                                       brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF,hdr.ID_PENERIMA_BARANG
-                                                                FROM tpb_header AS hdr
-                                                                LEFT JOIN plb_header AS plb ON hdr.NOMOR_DAFTAR=plb.NOMOR_DAFTAR
-                                                                LEFT OUTER JOIN tpb_barang AS brg ON hdr.ID=brg.ID_HEADER
+                                    $dataTable = $dbcon->query("SELECT hdr.NOMOR_BC11 AS PLB_NOMOR_BC11,hdr.TANGGAL_BC11 AS PLB_TANGGAL_BC11,hdr.PEMASOK,tpb.NOMOR_BC11 AS TPB_NOMOR_BC11,tpb.TANGGAL_BC11 AS TPB_TANGGAL_BC11,
+                                                                       brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF,brg.SERI_BARANG
+                                                                FROM plb_header AS hdr
+                                                                LEFT OUTER JOIN tpb_header AS tpb ON hdr.NOMOR_DAFTAR=tpb.NOMOR_DAFTAR
+                                                                LEFT OUTER JOIN plb_barang AS brg ON hdr.NOMOR_AJU=brg.NOMOR_AJU
                                                                 WHERE hdr.TANGGAL_BC11 BETWEEN '$StartTanggal' AND '$EndTanggal'
-                                                                ORDER BY hdr.TANGGAL_BC11,brg.KODE_BARANG,brg.URAIAN ASC");
+                                                                ORDER BY hdr.TANGGAL_BC11 ASC");
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT plb.NOMOR_BC11 AS PLB_NOMOR_BC11,plb.TANGGAL_BC11 AS PLB_TANGGAL_BC11,hdr.NOMOR_BC11,hdr.TANGGAL_BC11,hdr.NAMA_PEMASOK,
-                                                                        brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF,hdr.ID_PENERIMA_BARANG
-                                                                FROM tpb_header AS hdr
-                                                                LEFT JOIN plb_header AS plb ON hdr.NOMOR_DAFTAR=plb.NOMOR_DAFTAR
-                                                                LEFT OUTER JOIN tpb_barang AS brg ON hdr.ID=brg.ID_HEADER
+                                    $dataTable = $dbcon->query("SELECT hdr.NOMOR_BC11 AS PLB_NOMOR_BC11,hdr.TANGGAL_BC11 AS PLB_TANGGAL_BC11,hdr.PEMASOK,tpb.NOMOR_BC11 AS TPB_NOMOR_BC11,tpb.TANGGAL_BC11 AS TPB_TANGGAL_BC11,
+                                                                        brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF,brg.SERI_BARANG
+                                                                FROM plb_header AS hdr
+                                                                LEFT OUTER JOIN tpb_header AS tpb ON hdr.NOMOR_DAFTAR=tpb.NOMOR_DAFTAR
+                                                                LEFT OUTER JOIN plb_barang AS brg ON hdr.NOMOR_AJU=brg.NOMOR_AJU
                                                                 ORDER BY hdr.TANGGAL_BC11 ASC LIMIT 0");
                                 }
                                 if (mysqli_num_rows($dataTable) > 0) {
@@ -203,13 +217,12 @@ if (isset($_POST['filter_date'])) {
                                         <tr>
                                             <!-- 9 -->
                                             <td><?= $no ?>.</td>
-                                            <td>BC2.7</td>
+                                            <td>BC2.3</td>
                                             <td><?= $row['PLB_NOMOR_BC11']; ?></td>
                                             <td><?= $row['PLB_TANGGAL_BC11']; ?></td>
-                                            <td><?= $row['NOMOR_BC11']; ?></td>
-                                            <td><?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?></td>
-                                            <td><?= $row['NAMA_PEMASOK']; ?></td>
+                                            <td><?= $row['PLB_TANGGAL_BC11']; ?></td>
                                             <td><?= $row['KODE_BARANG']; ?></td>
+                                            <td><?= $row['SERI_BARANG']; ?></td>
                                             <td><?= $row['URAIAN']; ?></td>
                                             <td>
                                                 <div style="display: flex;justify-content: space-between;align-items: center">
@@ -223,11 +236,32 @@ if (isset($_POST['filter_date'])) {
                                                     <font><?= $row['CIF']; ?></font>
                                                 </div>
                                             </td>
+                                            <td>BC2.7</td>
+                                            <td><?= $row['TPB_NOMOR_BC11']; ?></td>
+                                            <td><?= $row['TPB_TANGGAL_BC11']; ?></td>
+                                            <td><?= $row['TPB_TANGGAL_BC11']; ?></td>
+                                            <td><?= $row['KODE_BARANG']; ?></td>
+                                            <td><?= $row['SERI_BARANG']; ?></td>
+                                            <td><?= $row['URAIAN']; ?></td>
+                                            <td>
+                                                <div style="display: flex;justify-content: space-between;align-items: center">
+                                                    <font><?= $row['KODE_SATUAN']; ?></font>
+                                                    <font><?= $row['JUMLAH_SATUAN']; ?></font>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="display: flex;justify-content: space-between;align-items: center">
+                                                    <font><?= $row['KODE_VALUTA']; ?></font>
+                                                    <font><?= $row['CIF']; ?></font>
+                                                </div>
+                                            </td>
+                                            <td>-</td>
+                                            <td>-</td>
                                         </tr>
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="12">
+                                        <td colspan="21">
                                             <center>
                                                 <div style="display: flex;justify-content: center; align-items: center">
                                                     <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
@@ -243,7 +277,7 @@ if (isset($_POST['filter_date'])) {
                     <hr>
                     <div class="invoice-footer">
                         <p class="text-center m-b-5 f-w-600">
-                            Laporan Keluar Barang | IT Inventory <?= $resultHeadSetting['company'] ?>
+                            Laporan Masuk Barang | IT Inventory <?= $resultHeadSetting['company'] ?>
                         </p>
                         <p class="text-center">
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
@@ -267,7 +301,7 @@ include "include/jsDatatables.php";
 <script type="text/javascript">
     // TableBarangTarif
     $(document).ready(function() {
-        $('#table-keluar-barang').DataTable({
+        $('#table-posisi-barang').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5',

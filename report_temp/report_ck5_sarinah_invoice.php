@@ -1,7 +1,7 @@
 <!-- QUERY -->
 <?php
 include "include/connection.php";
-include "include/restrict.php";
+// include "include/restrict.php";
 
 $dataHeadSettting = $dbcon->query("SELECT * FROM tbl_setting");
 $resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
@@ -15,13 +15,70 @@ $CheckForPrivileges = $_SESSION['username'];
 $dataForPrivileges = $dbcon->query("SELECT INSERT_DATA,UPDATE_DATA,DELETE_DATA,KIRIM_DATA,UPDATE_PASSWORD FROM view_privileges WHERE USER_NAME='$CheckForPrivileges'");
 $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 
+$dataGETAJU = $_GET['AJU'];
+$DataCK5PLB = $dbcon->query("SELECT * FROM tpb_header WHERE NOMOR_AJU='$dataGETAJU'");
+$resultDataCK5PLB = mysqli_fetch_array($DataCK5PLB);
+
+// Cari Nama Kantor Pemasok
+$forNamaKantor = $resultDataCK5PLB['KPPBC'];
+$DataNamaKantor = $dbcon->query("SELECT URAIAN_KANTOR FROM referensi_kantor_pabean WHERE KODE_KANTOR='$forNamaKantor'");
+$resultDataNamaKantor = mysqli_fetch_array($DataNamaKantor);
+
+// Cari Nama Kantor Tujuan
+$forNamaKantorTujuan = $resultDataCK5PLB['KODE_KANTOR_TUJUAN'];
+$DataNamaKantorTujuan = $dbcon->query("SELECT URAIAN_KANTOR FROM referensi_kantor_pabean WHERE KODE_KANTOR='$forNamaKantorTujuan'");
+$resultDataNamaKantorTujuan = mysqli_fetch_array($DataNamaKantorTujuan);
+
+// Cari Tanggal SKEP
+$forTanggalSKEP = $resultDataCK5PLB['NOMOR_IJIN_TPB'];
+$DataTanggalSKEP = $dbcon->query("SELECT *, SUBSTR(TANGGAL_SKEP,1,10) AS for_tgl_skep FROM referensi_pengusaha WHERE NOMOR_SKEP='$forTanggalSKEP'");
+$resultDataTanggalSKEP = mysqli_fetch_array($DataTanggalSKEP);
+
+
+// DATE
+function date_indo($date, $print_day = false)
+{
+    $day = array(
+        1 =>
+        'Senin',
+        'Selasa',
+        'Rabu',
+        'Kamis',
+        'Jumat',
+        'Sabtu',
+        'Minggu'
+    );
+    $month = array(
+        1 =>
+        'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Augustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $split    = explode('-', $date);
+    $tgl_indo = $split[2] . ' ' . $month[(int)$split[1]] . ' ' . $split[0];
+
+    if ($print_day) {
+        $num = date('N', strtotime($date));
+        return $day[$num] . ', ' . $tgl_indo;
+    }
+    return $tgl_indo;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-		<title>TPBERP | PT. Sarinah</title>
+		<title>TPBERP | PT. Sarinah </title>
 	<?php } else { ?>
 		<title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
 	<?php } ?>
@@ -46,6 +103,20 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 	<link href="assets/css/default/app.min.css" rel="stylesheet" />
 	<link href="assets/css/default/invoice-print.min.css" rel="stylesheet" />
 	<link href="assets/css/ck5plb.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <link href="assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
+    <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+    <link href="assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="assets/plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL STYLE ================== -->
 </head>
 <style type="text/css">
 	.nav-top-content {
@@ -59,45 +130,180 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 			margin-top: 0px;
 		}
 	}
+
+    .for-area-one {
+        border: transparent;
+        height: 90px;
+        width: 325px;
+    }
+
+    .for-area-one-oke {
+        /*border: transparent;*/
+        height: 90px;
+        width: 325px;
+    }
+
+    .for-area-two {
+        border: transparent;
+        height: 90px;
+        width: 400px;
+    }
+
+    @media (max-width: 1366.5px) {
+        .for-area-one {
+            border: transparent;
+            height: 110px;
+            width: 260px;
+        }
+
+        .for-area-one-oke {
+            /*border: transparent;*/
+            height: 110px;
+            width: 260px;
+        }
+
+        .for-area-two {
+            border: transparent;
+            height: 110px;
+            width: 310px;
+        }
+    }
+
+    .area-big {
+        border: transparent;
+        width: 130px;
+    }
+
+    @media (max-width: 1156.5px) {
+        .area-big {
+            border: transparent;
+            width: 88px;
+        }
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    div.table-responsive>div.dataTables_wrapper>div.row {
+        margin: 0;
+        font-size: 12px;
+    }
 </style>
-<body onload="window.print();">
-	<!-- begin #page-container -->
+<body>
 	<div id="content" class="nav-top-content">
 		<div class="invoice">
 			<div class="invoice-company">
-				<?= $resultHeadSetting['company'] ?>
-			</div>
-			<!-- <div class="invoice-header">
-				<div class="invoice-from">
-					<small>from</small>
-					<address class="m-t-5 m-b-5">
-						<strong class="text-inverse">Twitter, Inc.</strong><br />
-						Street Address<br />
-						City, Zip Code<br />
-						Phone: (123) 456-7890<br />
-						Fax: (123) 456-7890
-					</address>
-				</div>
-				<div class="invoice-to">
-					<small>to</small>
-					<address class="m-t-5 m-b-5">
-						<strong class="text-inverse">Company Name</strong><br />
-						Street Address<br />
-						City, Zip Code<br />
-						Phone: (123) 456-7890<br />
-						Fax: (123) 456-7890
-					</address>
-				</div>
-				<div class="invoice-date">
-					<small>Invoice / July period</small>
-					<div class="date text-inverse m-t-5">August 3,2012</div>
-					<div class="invoice-detail">
-						#0000123DSS<br />
-						Services Product
-					</div>
-				</div>
-			</div> -->
-             <!-- get invoice information / start -->
+				<span class="pull-right hidden-print">
+                    <!-- For Detail Mutasi Barang -->
+
+                    <a href="#" class="btn btn-sm btn-blue m-b-10" data-toggle="modal" title="Detail Mutasi Barang" style="padding: 7px;">
+                        <div style="display: flex;justify-content: space-between;align-items: end;">
+                            &nbsp; Filename : Invoice - GB Sarinah
+                        </div>
+                    </a>
+                    <a href="#detail-mutasi-barang" class="btn btn-sm btn-white m-b-10" data-toggle="modal" title="Detail Mutasi Barang" style="padding: 7px;">
+                        <div style="display: flex;justify-content: space-between;align-items: end;">
+                            <i class="fas fa-clipboard-list" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Detail Mutasi Barang
+                        </div>
+                    </a>
+                    <div class="modal fade" id="detail-mutasi-barang">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="adm_hak_akses.php" method="POST">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">[Detail Mutasi Barang] Berdasarkan Nomor AJU: <?= $_GET['AJU']; ?></h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <p style="display: flex;justify-content: center;">Pemberitahuan Mutasi Barang Kena Cukai (PMBKC)</p>
+                                        </div>
+                                        <div class="line-page-table"></div>
+                                        <div class="table-responsive">
+                                            <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle" style="width: 100%;font-size: 12px;font-weight: 400;">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="1%">#</th>
+                                                        <th class="text-nowrap" style="text-align: center;">Rincian Jumlah, Jenis Merk & Nomor</th>
+                                                        <th class="text-nowrap" style="text-align: center;">Uraian jenis barang secara lengkap</th>
+                                                        <th class="text-nowrap" style="text-align: center;">Jumlah dan jenis satuan barang</th>
+                                                        <th class="text-nowrap" style="text-align: center;">HJE / HJP*) (Rp)</th>
+                                                        <th class="text-nowrap" style="text-align: center;">Tarif Cukai</th>
+                                                        <th class="text-nowrap" style="text-align: center;">Jumlah Cukai (Rp)</th>
+                                                        <th class="text-nowrap" style="text-align: center;">Jumlah Devisa (USD)</th>
+                                                        <th class="text-nowrap" style="text-align: center;">Keterangan</th>
+                                                        <!-- <th class="text-nowrap">Aksi</th> -->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <!--  <?php
+                                                    $dataTable = $dbcon->query("SELECT * FROM referensi_pengusaha AS a
+                                                                                LEFT JOIN referensi_status_pengusaha AS b ON a.KODE_ID=b.KODE_STATUS_PENGUSAHA ORDER BY a.ID DESC");
+                                                    if (mysqli_num_rows($dataTable) > 0) {
+                                                        $no = 0;
+                                                        while ($row = mysqli_fetch_array($dataTable)) {
+                                                            $no++;
+                                                            ?> -->
+                                                            <tr class="odd gradeX">
+                                                                <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                                                <td style="text-align: left;">
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                </td>
+                                                            </tr>
+                                                        <!-- <?php } ?>
+                                                    <?php } else { ?>
+                                                        <tr>
+                                                            <td colspan="9">
+                                                                <center>
+                                                                    <div style="display: grid;">
+                                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                                    </div>
+                                                                </center>
+                                                            </td>
+                                                        </tr>
+                                                        <?php } ?> -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- For Detail Mutasi Barang -->
+                        <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
+                            <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel">  Export Excel
+                        </a>
+                        <a href="report_ck5_sarinah_invoice_print.php?AJU=<?php echo $_GET[AJU] ;?>" class="btn btn-sm btn-white m-b-10">
+                            <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print">  Print
+                        </a>
+
+                        <!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10"><i class="fa fa-file-excel t-plus-1 text-success fa-fw fa-lg"></i> Export as xls</a> -->
+                        <!-- <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a> -->
+                        <!-- <a href="report_ck5_plb_detail_print.php" class="btn btn-sm btn-white m-b-10"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a> -->
+                    </span>
+                    <?= $resultHeadSetting['company'] ?>
+                </div>
+                <div class="line-page-table"></div>
+
+                <!-- get invoice information / start -->
 
                 <?php 
 
@@ -114,10 +320,10 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 
                 ?>
                 <!-- get invoice information / end -->
-			<div class="invoice-content">
-				<!-- <div style="display: flex;justify-content: center;"> -->
-					<!-- <div style="margin-left: 80px;"> -->
-						<table cellspacing="0" border="0">
+
+                <div class="invoice-content">
+                    <div class="table-responsive">
+                        <table cellspacing="0" border="0">
                             <colgroup width="31"></colgroup>
                             <colgroup width="29"></colgroup>
                             <colgroup width="10"></colgroup>
@@ -180,7 +386,7 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
                             </tr>
                             <tr>
                                 <td align="left" valign=middle><br></td>
-                                <td align="left" valign=bottom><font face="Arial Black" size=6 color="#404040">PACKING LIST</font></td>
+                                <td align="left" valign=bottom><font face="Arial Black" size=6 color="#404040">INVOICE</font></td>
                                 <td align="left" valign=middle><br></td>
                                 <td align="left" valign=middle><br></td>
                                 <td align="left" valign=middle><br></td>
@@ -313,9 +519,7 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
                               <th>SKU</th>
                               <th>Details</th>
                               <th>Quantity</th>
-                              <th>Pric (USD)</th>                     
-                              <th>Pack(s)</th>
-                              <th>Can(s)</th>                 
+                              <th>Price (USD)</th>                                     
                               <th>Bottle</th>
                               <th>Litre(s)</th>
                           </tr>
@@ -334,66 +538,180 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
                             echo "<td>" . $row['UKURAN'] . "</td>";
                             echo "<td>" . $row['JUMLAH_SATUAN'] . "</td>";
                             echo "<td>" . $row['CIF'] . "</td>";
-                            echo "<td>" . $row[''] . "</td>";
-                            echo "<td>" . $row[''] . "</td>"; 
-                            echo "<td>" . $row[''] . "</td>";                                        
-                            echo "<td>" . $row[''] . "</td>"; 
+
+                            $bottleqty = $row['UKURAN'] * $row['JUMLAH_SATUAN'];
+                            echo "<td>" . $bottleqty . "</td>";                                        
+                            
+                            /* GET LITRE DATA FROM tb_barang_tarif - start */
+                            $getlitre = mysqli_query($dbcon,"SELECT JUMLAH_SATUAN FROM tpb_barang_tarif WHERE ID_BARANG = '$row[ID]' AND JENIS_TARIF = 'CUKAI' ");
+                            $lit = mysqli_fetch_array($getlitre);
+
+                            echo "<td>" . $lit['JUMLAH_SATUAN'] . "</td>"; 
+
+                            /* GET LITRE DATA FROM tb_barang_tarif - end */
 
                             echo "</tr>"; 
+                            }
+
+                            /* calculate total QTY */
+                            $result2 = mysqli_query($dbcon,"SELECT sum(JUMLAH_SATUAN) as TotalQty FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $rowx = mysqli_fetch_array($result2);
+
+                            /* calculate total BOTTLE */
+                            $result3 = mysqli_query($dbcon,"SELECT sum(UKURAN*JUMLAH_SATUAN) as TotalBottle FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $row3 = mysqli_fetch_array($result3);
+
+                            /* calculate total PRICE */
+                            $result4 = mysqli_query($dbcon,"SELECT sum(CIF) as TotalCif FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $row4 = mysqli_fetch_array($result4);
+
+                            /* calculate total PRICE */
+                            $result5 = mysqli_query($dbcon,"SELECT sum(JUMLAH_SATUAN) as TotalLitre FROM tpb_barang_tarif WHERE ID_HEADER = '$inv[ID]' AND JENIS_TARIF = 'CUKAI'");
+                            $row5 = mysqli_fetch_array($result5);
 
 
-                        }
-                    } 
-                    mysqli_close($con);
-                    ?>
+                            echo "<tr>";
+                            echo "<td>" . "-" . "</td>";
+                            echo "<td>" . "-" . "</td>";
+                            echo "<td>" . "-" . "</td>";
+                            echo "<td>" . "TOTAL" . "</td>";
+                            echo "<td>" . "<b>" . $rowx['TotalQty'] . "</b>". "</td>";
+                            echo "<td>" . "<b>" . $row4['TotalCif'] . "</b>". "</td>";
+                            echo "<td>" . "<b>" . $row3['TotalBottle'] . "</b>". "</td>";
+                            echo "<td>" . "<b>" . $row5['TotalLitre'] . "</b>". "</td>";
+                            echo "</tr>"; 
+                        } 
+                        mysqli_close($con);
+                        ?>
                 </tbody>
             </table>
-					<!-- </div> -->
-				<!-- </div> -->
-				<!-- <div class="invoice-price">
-					<div class="invoice-price-left">
-						<div class="invoice-price-row">
-							<div class="sub-price">
-								<small>SUBTOTAL</small>
-								<span class="text-inverse">$4,500.00</span>
-							</div>
-							<div class="sub-price">
-								<i class="fa fa-plus text-muted"></i>
-							</div>
-							<div class="sub-price">
-								<small>PAYPAL FEE (5.4%)</small>
-								<span class="text-inverse">$108.00</span>
-							</div>
-						</div>
-					</div>
-					<div class="invoice-price-right">
-						<small>TOTAL</small> <span class="f-w-600">$4508.00</span>
-					</div>
-				</div> -->
-			</div>
-			<!-- <div class="invoice-note">
-				* Make all cheques payable to [Your Company Name]<br />
-				* Payment is due within 30 days<br />
-				* If you have any questions concerning this invoice, contact  [Name, Phone Number, Email]
-			</div> -->
-			<div class="invoice-footer">
-				<p class="text-center m-b-5 f-w-600">
-					Export CK5 Sarinah | IT Inventory <?= $resultHeadSetting['company'] ?>
-				</p>
-				<p class="text-center">
-					<span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
-					<span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:<?= $resultHeadSetting['telp'] ?></span>
-					<span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> <?= $resultHeadSetting['email'] ?></span>
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<?php 
+        </div>
+    </div>
+    <div class="invoice-footer">
+        <p class="text-center m-b-5 f-w-600">
+         Export CK5 Sarinah | IT Inventory <?= $resultHeadSetting['company'] ?>
+     </p>
+     <p class="text-center">
+         <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
+         <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:<?= $resultHeadSetting['telp'] ?></span>
+         <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> <?= $resultHeadSetting['email'] ?></span>
+     </p>
+ </div>
+</div>
+</div>
+<?php 
 		// include "include/panel.php"; 
-	?>
-	<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
-	<script src="assets/js/app.min.js"></script>
-	<script src="assets/js/theme/default.min.js"></script>
+?>
+<?php include "include/panel.php"; ?>
+<?php include "include/footer.php"; ?>
+<?php include "include/jsDatatables.php"; ?>
+<script>
+        // Show and Hidden
+        $(function() {
+            $("#IDJenisBarangKenaCukai").change(function() {
+                if ($(this).val() == 4) {
+                    $("#OthersJenisBarangKenaCukai").show();
+                } else {
+                    $("#OthersJenisBarangKenaCukai").hide();
+                }
+            });
+        });
+        $(function() {
+            $("#IDJenisPemberitahuan").change(function() {
+                if ($(this).val() == 4) {
+                    $("#OthersJenisPemberitahuan").show();
+                } else {
+                    $("#OthersJenisPemberitahuan").hide();
+                }
+            });
+        });
+        // IDNamaKodeNegaraTujuan
+        $(function() {
+            $("#IDNamaKodeNegaraTujuan").change(function() {
+                if ($(this).val() == 'NPPBKC') {
+                    $("#IdentitasTwoNPPBKC").show();
+                    $("#IdentitasTwoNPP").hide();
+                } else if ($(this).val() == 'NPP') {
+                    $("#IdentitasTwoNPPBKC").hide();
+                    $("#IdentitasTwoNPP").show();
+                } else {
+                    $("#IdentitasTwoNPPBKC").hide();
+                    $("#IdentitasTwoNPP").hide();
+                }
+            });
+        });
+        // show-address-identitas-two
+        function showAddress(c_str) {
+          if (c_str == "") {
+            document.getElementById("show-address-identitas-two").innerHTML = "";
+            return;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("show-address-identitas-two").innerHTML = this.responseText;
+          }
+      }
+      xmlhttp.open("GET", "function/function_get.php/get_c_client?c_id=" + c_str, true);
+      xmlhttp.send();
+  }
+
+        // showKodeOne
+        function showKodeOne(kode_one) {
+          if (kode_one == "") {
+            document.getElementById("InputshowKodeOne").innerHTML = "";
+            return;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("InputshowKodeOne").innerHTML = this.responseText;
+          }
+      }
+      xmlhttp.open("GET", "function/function_get.php/get_kode_one?c_kode_one=" + kode_one, true);
+      xmlhttp.send();
+  }
+        // showKodeTwo
+        function showKodeTwo(kode_two) {
+          if (kode_two == "") {
+            document.getElementById("InputshowKodeTwo").innerHTML = "";
+            return;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("InputshowKodeTwo").innerHTML = this.responseText;
+          }
+      }
+      xmlhttp.open("GET", "function/function_get.php/get_kode_two?c_kode_two=" + kode_two, true);
+      xmlhttp.send();
+  }
+        // showKodeThree
+        function showKodeThree(kode_three) {
+          if (kode_three == "") {
+            document.getElementById("InputshowKodeThree").innerHTML = "";
+            return;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("InputshowKodeThree").innerHTML = this.responseText;
+          }
+      }
+      xmlhttp.open("GET", "function/function_get.php/get_kode_three?c_kode_three=" + kode_three, true);
+      xmlhttp.send();
+  }
+        // Show and Hide
+        $(function() {
+            $("#IDJaminan").change(function() {
+                if ($(this).val() == 4) {
+                    $("#OthersJaminan").show();
+                } else {
+                    $("#OthersJaminan").hide();
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>

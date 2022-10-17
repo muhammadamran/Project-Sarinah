@@ -2,14 +2,6 @@
 <?php
 include "include/connection.php";
 // include "include/restrict.php";
-session_start();
-// jika session username belum dibuat, atau session username kosong
-if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
-    // redirect ke halaman sign-in
-    header("location:./sign-in.php?NoAccess=true");
-    // header("location:../tpb/sign-in.php");
-}
-$user = $_SESSION['username'];
 
 $dataHeadSettting = $dbcon->query("SELECT * FROM tbl_setting");
 $resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
@@ -24,27 +16,23 @@ $dataForPrivileges = $dbcon->query("SELECT INSERT_DATA,UPDATE_DATA,DELETE_DATA,K
 $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 
 $dataGETAJU = $_GET['AJU'];
-$DataCK5PLB = $dbcon->query("SELECT * FROM tpb_header WHERE NOMOR_AJU='$dataGETAJU'");
+$DataCK5PLB = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='$dataGETAJU'");
 $resultDataCK5PLB = mysqli_fetch_array($DataCK5PLB);
-$dataGETAJUID = $resultDataCK5PLB['ID'];
-
-// var_dump($dataGETAJUID);exit;
 
 // KEMASAN 
 $DataCK5PLBKemasan = $dbcon->query("SELECT * 
-                                    FROM tpb_kemasan AS a
-                                    LEFT OUTER JOIN referensi_kemasan AS b ON a.KODE_JENIS_KEMASAN=b.KODE_KEMASAN
-                                    WHERE a.ID_HEADER='$dataGETAJUID'");
+	FROM plb_kemasan AS a
+	LEFT OUTER JOIN referensi_kemasan AS b ON a.KODE_JENIS_KEMASAN=b.KODE_KEMASAN
+	WHERE a.NOMOR_AJU='$dataGETAJU'");
 $resultDataCK5PLBKemasan = mysqli_fetch_array($DataCK5PLBKemasan);
 
 // Cari Nama Kantor Pemasok
-$forNamaKantor = $resultDataCK5PLB['KODE_KANTOR'];
-// var_dump($query);exit;
+$forNamaKantor = $resultDataCK5PLB['KPPBC'];
 $DataNamaKantor = $dbcon->query("SELECT URAIAN_KANTOR FROM referensi_kantor_pabean WHERE KODE_KANTOR='$forNamaKantor'");
 $resultDataNamaKantor = mysqli_fetch_array($DataNamaKantor);
 
 // NPPBKC PEMASOK
-$forNPPBKCPemasok = $resultDataCK5PLB['NAMA_PENGUSAHA'];
+$forNPPBKCPemasok = $resultDataCK5PLB['PERUSAHAAN'];
 $DataNPPBKCPemasok = $dbcon->query("SELECT NPPBKC FROM tbl_ref_pengusaha WHERE NAMA='$forNPPBKCPemasok' ORDER BY NAMA DESC LIMIT 1");
 $resultDataNPPBKCPemasok = mysqli_fetch_array($DataNPPBKCPemasok);
 
@@ -68,10 +56,6 @@ $MMAJU = SUBSTR($_GET['AJU'], 16, 2);
 $DDAJU = SUBSTR($_GET['AJU'], 18, 2);
 
 $DEKLARYYMMDD = $YYAJU . '-' . $MMAJU . '-' . $DDAJU;
-
-// tpb_barang_tarif
-$DataCK5PLB = $dbcon->query("SELECT * FROM tpb_barang_tarif WHERE ID_HEADER='$dataGETAJUID' GROUP BY ID_HEADER");
-$resultBahanBakuTarif = mysqli_fetch_array($DataCK5PLB);
 // DATE
 function date_indo($date, $print_day = false)
 {
@@ -133,7 +117,7 @@ function NPWP($value)
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Laporan CK5 Sarinah - Halaman Detail Barang</title>
+	<title>Laporan CK5 PLB - Halaman Detail Barang</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -175,38 +159,38 @@ function NPWP($value)
 		<div class="invoice-company">
 			<div style="display: flex;justify-content: space-between;margin-bottom: -18px;">
 				<div>
-					<a href="./report_ck5_sarinah_detail.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
+					<a href="./report_ck5_plb_hal_1.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
 						<div style="display: flex;justify-content: space-between;align-items: end;">
 							<i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1
 						</div>
 					</a>
-					<a href="./report_ck5_sarinah_detailA.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
+					<a href="./report_ck5_plb_hal_1A.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
 						<div style="display: flex;justify-content: space-between;align-items: end;">
 							<i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1A
 						</div>
 					</a>
-					<a href="./report_ck5_sarinah_hal_detail_barang.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-primary m-b-10" title="Update CK5PLB" style="padding: 7px;">
+					<a href="./report_ck5_plb_hal_detail_barang.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-primary m-b-10" title="Update CK5PLB" style="padding: 7px;">
 						<div style="display: flex;justify-content: space-between;align-items: end;">
 							<i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal Detail Barang
 						</div>
 					</a>
 				</div>
 				<div>
-					<!-- <a href="./report_ck5_sarinah_detail_edit.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-warning m-b-10" title="Update CK5PLB" style="padding: 7px;">
+					<!-- <a href="./report_ck5_plb_detail_edit.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-warning m-b-10" title="Update CK5PLB" style="padding: 7px;">
 						<div style="display: flex;justify-content: space-between;align-items: end;">
-							<i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update CK5 Sarinah
+							<i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update CK5 PLB
 						</div>
 					</a> -->
 					<!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
 						<img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
 					</a> -->
-					<a href="report_ck5_sarinah_hal_detail_barang_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
+					<a href="report_ck5_plb_hal_detail_barang_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
 						<img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel Hal. Detail Barang
 					</a>
-					<a href="report_ck5_sarinah_hal_detail_barang_print.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
+					<a href="report_ck5_plb_hal_detail_barang_print.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
 						<img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print Hal. Detail Barang
 					</a>
-					<!-- <a href="report_ck5_sarinah_hal_1A_print.php" class="btn btn-sm btn-white m-b-10">
+					<!-- <a href="report_ck5_plb_hal_1A_print.php" class="btn btn-sm btn-white m-b-10">
 						<img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print Semua
 					</a> -->
 				</div>
@@ -225,7 +209,7 @@ function NPWP($value)
 			</div>
 			<div class="col-md-9">
 				<div style="display: grid;justify-content: left;">
-					<font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 Sarinah - Halaman Detail Barang</font>
+					<font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 PLB - Halaman Detail Barang</font>
 					<font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
 					<font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
 					<div class="line-page-table"></div>
@@ -245,7 +229,7 @@ function NPWP($value)
 							<td width="271"><?= $resultDataNamaKantor['URAIAN_KANTOR']; ?></td>
 							<td width="59" style="font-weight: 800;">Kode&nbsp;&nbsp;</td>
 							<td width="12">:</td>
-							<td colspan="5" width="372">&nbsp;<?= $resultDataCK5PLB['KODE_KANTOR']; ?>&nbsp;</td>
+							<td colspan="5" width="372">&nbsp;<?= $resultDataCK5PLB['KPPBC']; ?>&nbsp;</td>
 						</tr>
 						<tr>
 							<td colspan="5" style="font-weight: 800;">Nomor Pengajuan</td>
@@ -284,11 +268,11 @@ function NPWP($value)
 					<tbody>
 						<?php
 						$dataTable = $dbcon->query("SELECT * 
-							FROM tpb_barang AS a 
+							FROM plb_barang AS a 
 							LEFT OUTER JOIN referensi_satuan AS b ON a.KODE_SATUAN=b.KODE_SATUAN
-							LEFT OUTER JOIN view_tpb_barang_tarif AS c ON a.SERI_BARANG=c.SERI_BARANG
-							WHERE a.ID_HEADER='$dataGETAJUID'
-							-- AND a.ID_HEADER='$dataGETAJUID'
+							LEFT OUTER JOIN view_plb_barangtarif AS c ON a.SERI_BARANG=c.SERI_BARANG
+							WHERE a.NOMOR_AJU='$dataGETAJU'
+							-- AND a.NOMOR_AJU='$dataGETAJU'
 							GROUP BY a.SERI_BARANG
 							");
 						if (mysqli_num_rows($dataTable) > 0) {
@@ -319,13 +303,13 @@ function NPWP($value)
 						</tbody>
 						<?php
 						$DataFooter = $dbcon->query("SELECT b.URAIAN_SATUAN,a.UKURAN,c.TARIF,
-					                                (SELECT SUM(JUMLAH_SATUAN) FROM view_tpb_barang_tarif WHERE ID_HEADER='$dataGETAJUID') AS jml_RJJM,
-					                                (SELECT SUM(JUMLAH_SATUAN * UKURAN) FROM tpb_barang_tarif WHERE ID_HEADER='$dataGETAJUID') AS jml_JJSB
-													FROM tpb_barang AS a 
+					                                (SELECT SUM(JUMLAH_SATUAN) FROM view_plb_barangtarif WHERE NOMOR_AJU='$dataGETAJU') AS jml_RJJM,
+					                                (SELECT SUM(JUMLAH_SATUAN * UKURAN) FROM plb_barangtarif WHERE NOMOR_AJU='$dataGETAJU') AS jml_JJSB
+													FROM plb_barang AS a 
 													LEFT OUTER JOIN referensi_satuan AS b ON a.KODE_SATUAN=b.KODE_SATUAN
-													LEFT OUTER JOIN view_tpb_barang_tarif AS c ON a.SERI_BARANG=c.SERI_BARANG
-													WHERE a.ID_HEADER='$dataGETAJUID'
-													-- AND a.ID_HEADER='$dataGETAJUID'
+													LEFT OUTER JOIN view_plb_barangtarif AS c ON a.SERI_BARANG=c.SERI_BARANG
+													WHERE a.NOMOR_AJU='$dataGETAJU'
+													-- AND a.NOMOR_AJU='$dataGETAJU'
 													-- GROUP BY a.SERI_BARANG
 													");
 						$resultDataFooter = mysqli_fetch_array($DataFooter);
@@ -360,7 +344,7 @@ function NPWP($value)
 		</div>
 		<div class="invoice-footer">
 			<p class="text-center m-b-5 f-w-600">
-				Export CK5 Sarinah | IT Inventory <?= $resultHeadSetting['company'] ?>
+				Export CK5 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
 			</p>
 			<p class="text-center">
 				<span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>

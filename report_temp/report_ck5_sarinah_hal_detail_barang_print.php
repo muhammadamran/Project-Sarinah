@@ -172,47 +172,6 @@ function NPWP($value)
 </head>
 <body>
 	<div class="invoice">
-		<div class="invoice-company">
-			<div style="display: flex;justify-content: space-between;margin-bottom: -18px;">
-				<div>
-					<a href="./report_ck5_sarinah_detail.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
-						<div style="display: flex;justify-content: space-between;align-items: end;">
-							<i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1
-						</div>
-					</a>
-					<a href="./report_ck5_sarinah_detailA.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
-						<div style="display: flex;justify-content: space-between;align-items: end;">
-							<i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1A
-						</div>
-					</a>
-					<a href="./report_ck5_sarinah_hal_detail_barang.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-primary m-b-10" title="Update CK5PLB" style="padding: 7px;">
-						<div style="display: flex;justify-content: space-between;align-items: end;">
-							<i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal Detail Barang
-						</div>
-					</a>
-				</div>
-				<div>
-					<!-- <a href="./report_ck5_sarinah_detail_edit.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-warning m-b-10" title="Update CK5PLB" style="padding: 7px;">
-						<div style="display: flex;justify-content: space-between;align-items: end;">
-							<i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update CK5 Sarinah
-						</div>
-					</a> -->
-					<!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
-						<img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
-					</a> -->
-					<a href="report_ck5_sarinah_hal_detail_barang_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
-						<img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel Hal. Detail Barang
-					</a>
-					<a href="report_ck5_sarinah_hal_detail_barang_print.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
-						<img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print Hal. Detail Barang
-					</a>
-					<!-- <a href="report_ck5_sarinah_hal_1A_print.php" class="btn btn-sm btn-white m-b-10">
-						<img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print Semua
-					</a> -->
-				</div>
-			</div>
-		</div>
-		<div class="line-page-table"></div>
 		<div class="row" style="display: flex;align-items: center;margin-bottom: -5px;">
 			<div class="col-md-3">
 				<div style="display: flex;justify-content: center;">
@@ -236,7 +195,6 @@ function NPWP($value)
 		<br>
 		<div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
 		<div class="invoice-content">
-			<div class="table-responsive">
 				<table id="data-table-buttons-one" class="table table-striped table-bordered table-td-valign-middle" style="width: 100%;font-size: 12px;font-weight: 400;">
 					<tbody>
 						<tr>
@@ -265,8 +223,6 @@ function NPWP($value)
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class="table-responsive">
 				<table id="data-table-buttons-two" class="table table-striped table-bordered table-td-valign-middle" style="width: 100%;font-size: 12px;font-weight: 400;">
 					<thead>
 						<tr>
@@ -356,7 +312,6 @@ function NPWP($value)
 							<?php } ?>
 						</tfoot>
 				</table>
-			</div>
 		</div>
 		<div class="invoice-footer">
 			<p class="text-center m-b-5 f-w-600">
@@ -423,6 +378,9 @@ function NPWP($value)
 				]
 			});
 		});
+	</script>
+	<script type="text/javascript">
+		window.print();
 	</script>
 </body>
 </html>

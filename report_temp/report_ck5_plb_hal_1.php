@@ -24,27 +24,23 @@ $dataForPrivileges = $dbcon->query("SELECT INSERT_DATA,UPDATE_DATA,DELETE_DATA,K
 $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 
 $dataGETAJU = $_GET['AJU'];
-$DataCK5PLB = $dbcon->query("SELECT * FROM tpb_header WHERE NOMOR_AJU='$dataGETAJU'");
+$DataCK5PLB = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='$dataGETAJU'");
 $resultDataCK5PLB = mysqli_fetch_array($DataCK5PLB);
-$dataGETAJUID = $resultDataCK5PLB['ID'];
-
-// var_dump($dataGETAJUID);exit;
 
 // KEMASAN 
 $DataCK5PLBKemasan = $dbcon->query("SELECT * 
-                                    FROM tpb_kemasan AS a
+                                    FROM plb_kemasan AS a
                                     LEFT OUTER JOIN referensi_kemasan AS b ON a.KODE_JENIS_KEMASAN=b.KODE_KEMASAN
-                                    WHERE a.ID_HEADER='$dataGETAJUID'");
+                                    WHERE a.NOMOR_AJU='$dataGETAJU'");
 $resultDataCK5PLBKemasan = mysqli_fetch_array($DataCK5PLBKemasan);
 
 // Cari Nama Kantor Pemasok
-$forNamaKantor = $resultDataCK5PLB['KODE_KANTOR'];
-// var_dump($query);exit;
+$forNamaKantor = $resultDataCK5PLB['KPPBC'];
 $DataNamaKantor = $dbcon->query("SELECT URAIAN_KANTOR FROM referensi_kantor_pabean WHERE KODE_KANTOR='$forNamaKantor'");
 $resultDataNamaKantor = mysqli_fetch_array($DataNamaKantor);
 
 // NPPBKC PEMASOK
-$forNPPBKCPemasok = $resultDataCK5PLB['NAMA_PENGUSAHA'];
+$forNPPBKCPemasok = $resultDataCK5PLB['PERUSAHAAN'];
 $DataNPPBKCPemasok = $dbcon->query("SELECT NPPBKC FROM tbl_ref_pengusaha WHERE NAMA='$forNPPBKCPemasok' ORDER BY NAMA DESC LIMIT 1");
 $resultDataNPPBKCPemasok = mysqli_fetch_array($DataNPPBKCPemasok);
 
@@ -69,8 +65,8 @@ $DDAJU = SUBSTR($_GET['AJU'], 18, 2);
 
 $DEKLARYYMMDD = $YYAJU . '-' . $MMAJU . '-' . $DDAJU;
 
-// tpb_barang_tarif
-$DataCK5PLB = $dbcon->query("SELECT * FROM tpb_barang_tarif WHERE ID_HEADER='$dataGETAJUID' GROUP BY ID_HEADER");
+// plb_barangtarif
+$DataCK5PLB = $dbcon->query("SELECT * FROM plb_barangtarif WHERE NOMOR_AJU='$dataGETAJU' GROUP BY NOMOR_AJU");
 $resultBahanBakuTarif = mysqli_fetch_array($DataCK5PLB);
 
 // DATE
@@ -111,27 +107,26 @@ function date_indo($date, $print_day = false)
     return $tgl_indo;
 }
 
-if (isset($_POST["update_ck5tpb_oke"])) {
+if (isset($_POST["update_ck5plb_oke"])) {
 
     $ID = $_POST['AJUDATA'];
-    $IDHEADER = $_POST['AJUDATAID'];
 
     $DataCheckPemasok              = $_POST['DataCheckPemasok'];
     if ($DataCheckPemasok == 1) {
         // TEMPAT ASAL PEMASOK
-        // ID_PENGUSAHA // tpb_header
+        // ID_PENGUSAHA // plb_header
         $NameNPWPUpdatePemasok              = $_POST['NameNPWPUpdatePemasok'];
-        // PENGUSAHA // tpb_header
+        // PENGUSAHA // plb_header
         $InputNamaTempatAsalPemasok         = $_POST['InputNamaTempatAsalPemasok'];
-        // ALAMAT_PENGUSAHA // tpb_header
+        // ALAMAT_PENGUSAHA // plb_header
         $NameAlamatUpdatePemasok            = $_POST['NameAlamatUpdatePemasok'];
     } else {
         // TEMPAT ASAL PEMASOK
-        // ID_PENGUSAHA // tpb_header
+        // ID_PENGUSAHA // plb_header
         $NameNPWPUpdatePemasok              = $_POST['OnePemasok'];
-        // PENGUSAHA // tpb_header
+        // PENGUSAHA // plb_header
         $InputNamaTempatAsalPemasok         = $_POST['TwoPemasok'];
-        // ALAMAT_PENGUSAHA // tpb_header
+        // ALAMAT_PENGUSAHA // plb_header
         $NameAlamatUpdatePemasok            = $_POST['ThreePemasok'];
     }
 
@@ -157,8 +152,8 @@ if (isset($_POST["update_ck5tpb_oke"])) {
     // var_dump($NameAlamatUpdatePemasok);exit;
 
 
-    // KODE_KOMODITI_CUKAI // tpb_bahanbakutarif
-    // KODE_KOMODITI_CUKAI_LAINNYA // tpb_bahanbakutarif
+    // KODE_KOMODITI_CUKAI // plb_bahanbakutarif
+    // KODE_KOMODITI_CUKAI_LAINNYA // plb_bahanbakutarif
     $InputJenisBarangKenaCukai          = $_POST['InputJenisBarangKenaCukai'];
     if ($InputJenisBarangKenaCukai == 4) {
        $InputJenisBarangKenaCukaiLainnya = $_POST['InputJenisBarangKenaCukaiLainnya'];
@@ -166,13 +161,13 @@ if (isset($_POST["update_ck5tpb_oke"])) {
        $InputJenisBarangKenaCukaiLainnya = NULL;
     }
  
-    // KODE_CARA_BAYAR // tpb_header
+    // KODE_CARA_BAYAR // plb_header
     $InputCaraPelunasan                 = $_POST['InputCaraPelunasan'];
-    // KODE_FASILITAS // tpb_header
+    // KODE_FASILITAS // plb_header
     $InputStatusCukai                   = $_POST['InputStatusCukai'];
 
-    // KODE_JENIS_PEMBERITAHUAN // tpb_header
-    // KODE_JENIS_PEMBERITAHUAN_LAINNYA // tpb_header
+    // KODE_JENIS_PEMBERITAHUAN // plb_header
+    // KODE_JENIS_PEMBERITAHUAN_LAINNYA // plb_header
     $InputJenisPemberitahuan            = $_POST['InputJenisPemberitahuan'];
     if ($_POST['InputJenisPemberitahuan'] == 4) {
        $InputJenisPemberitahuanLainnya   = $_POST['InputJenisPemberitahuanLainnya'];
@@ -182,21 +177,21 @@ if (isset($_POST["update_ck5tpb_oke"])) {
 
     // var_dump($InputJenisPemberitahuanLainnya);exit;
 
-    // KODE_KANTOR // tpb_header
+    // KPPBC // plb_header
     $InputNamaKodeOne                   = $_POST['InputNamaKodeOne'];
 
-    // KODE_KANTOR_TUJUAN // tpb_header
+    // KODE_KANTOR_TUJUAN // plb_header
     $InputNamaKodeTwo                   = $_POST['InputNamaKodeTwo'];
 
-    // KODE_CARA_ANGKUT // tpb_header
+    // KODE_CARA_ANGKUT // plb_header
     $InputCaraPengangkutan              = $_POST['InputCaraPengangkutan'];
 
     // UNTUK PEMBAYARAN / JAMINAN
-    // KODE_PEMBAYAR // tpb_header
+    // KODE_PEMBAYAR // plb_header
     $InputPembayaran                    = $_POST['InputPembayaran'];
 
-    // KODE_JAMINAN // tpb_header
-    // KODE_JAMINAN_LAINNYA // tpb_header
+    // KODE_JAMINAN // plb_header
+    // KODE_JAMINAN_LAINNYA // plb_header
     $InputJaminan                       = $_POST['InputJaminan'];
     if ($InputJaminan == 4) {
        $InputJaminanLainnya             = $_POST['InputJaminanLainnya'];
@@ -208,19 +203,19 @@ if (isset($_POST["update_ck5tpb_oke"])) {
     $InputNamaPIC                       = $_POST['InputNamaPIC'];
     $InputJabatanPIC                    = $_POST['InputJabatanPIC'];
 
-    $query = $dbcon->query("UPDATE tpb_barang_tarif SET KODE_KOMODITI_CUKAI='$InputJenisBarangKenaCukai',
-                                                        KODE_KOMODITI_CUKAI_LAINNYA='$InputJenisBarangKenaCukaiLainnya'  
-                                                      WHERE ID_HEADER='$IDHEADER'");
+    $query = $dbcon->query("UPDATE plb_barangtarif SET KODE_KOMODITI_CUKAI='$InputJenisBarangKenaCukai',
+                                                       KODE_KOMODITI_CUKAI_LAINNYA='$InputJenisBarangKenaCukaiLainnya'  
+                                                      WHERE NOMOR_AJU='$ID'");
 
 
-    $query .= $dbcon->query("UPDATE tpb_header SET KODE_CARA_BAYAR='$InputCaraPelunasan',
+    $query .= $dbcon->query("UPDATE plb_header SET KODE_CARA_BAYAR='$InputCaraPelunasan',
                                                    KODE_FASILITAS='$InputStatusCukai',
                                                    KODE_JENIS_PEMBERITAHUAN='$InputJenisPemberitahuan',
                                                    KODE_JENIS_PEMBERITAHUAN_LAINNYA='$InputJenisPemberitahuanLainnya',
                                                    ID_PENGUSAHA='$NameNPWPUpdatePemasok',
-                                                   NAMA_PENGUSAHA='$InputNamaTempatAsalPemasok',
+                                                   PERUSAHAAN='$InputNamaTempatAsalPemasok',
                                                    ALAMAT_PENGUSAHA='$NameAlamatUpdatePemasok',
-                                                   KODE_KANTOR='$InputNamaKodeOne',
+                                                   KPPBC='$InputNamaKodeOne',
                                                    ID_PENERIMA_BARANG='$NameNPWPUpdateTempatTujuan',
                                                    NAMA_PENERIMA_BARANG='$InputNamaTempatTujuan',
                                                    ALAMAT_PENERIMA_BARANG='$NameAlamatUpdateTempatTujuan',
@@ -244,8 +239,8 @@ if (isset($_POST["update_ck5tpb_oke"])) {
 
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
-    $InputModul           = 'LAPORAN CK5 Sarinah - Halaman 1';
-    $InputDescription     = $me . " Update Data: " .  $NameDepartment .", Simpan Data Sebagai Log LAPORAN CK5 Sarinah - Halaman 1";
+    $InputModul           = 'LAPORAN CK5 PLB - Halaman 1';
+    $InputDescription     = $me . " Update Data: " .  $NameDepartment .", Simpan Data Sebagai Log LAPORAN CK5 PLB - Halaman 1";
     $InputAction          = 'Update';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -255,11 +250,11 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                            ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
     if ($query) {
-        // echo "<script>window.location.href='report_ck5_sarinah_detail.php?UpdateSuccess=true';</script>";
-        echo "<script>window.location.href='report_ck5_sarinah_detail.php?AJU=$ID';</script>";
+        // echo "<script>window.location.href='report_ck5_plb_hal_1.php?UpdateSuccess=true';</script>";
+        echo "<script>window.location.href='report_ck5_plb_hal_1.php?AJU=$ID';</script>";
     } else {
-        // echo "<script>window.location.href='report_ck5_sarinah_detail.php?UpdateFailed=true';</script>";
-        echo "<script>window.location.href='report_ck5_sarinah_detail.php?AJU=$ID';</script>";
+        // echo "<script>window.location.href='report_ck5_plb_hal_1.php?UpdateFailed=true';</script>";
+        echo "<script>window.location.href='report_ck5_plb_hal_1.php?AJU=$ID';</script>";
     }
 }
 ?>
@@ -272,7 +267,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
     <?php } else { ?>
         <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
     <?php } ?> -->
-    <title>Laporan CK5 Sarinah - Halaman 1</title>
+    <title>Laporan CK5 PLB - Halaman 1</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -419,17 +414,17 @@ if (isset($_POST["update_ck5tpb_oke"])) {
     <div class="invoice-company">
         <div style="display: flex;justify-content: space-between;margin-bottom: -18px;">
             <div>
-                <a href="./report_ck5_sarinah_detail.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-primary m-b-10" title="Halaman 1 CK5PLB" style="padding: 7px;">
+                <a href="./report_ck5_plb_hal_1.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-primary m-b-10" title="Halaman 1 CK5PLB" style="padding: 7px;">
                     <div style="display: flex;justify-content: space-between;align-items: end;">
                         <i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1
                     </div>
                 </a>
-                <a href="./report_ck5_sarinah_detailA.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Halaman 1A CK5PLB" style="padding: 7px;">
+                <a href="./report_ck5_plb_hal_1A.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Halaman 1A CK5PLB" style="padding: 7px;">
                     <div style="display: flex;justify-content: space-between;align-items: end;">
                         <i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1A
                     </div>
                 </a>
-                <a href="./report_ck5_sarinah_hal_detail_barang.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Halaman Detail Barang CK5PLB" style="padding: 7px;">
+                <a href="./report_ck5_plb_hal_detail_barang.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Halaman Detail Barang CK5PLB" style="padding: 7px;">
                     <div style="display: flex;justify-content: space-between;align-items: end;">
                         <i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal Detail Barang
                     </div>
@@ -439,28 +434,29 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                 <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
                     <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
                 </a>
-                <a href="report_ck5_tpb_detail_print.php" class="btn btn-sm btn-white m-b-10">
+                <a href="report_ck5_plb_detail_print.php" class="btn btn-sm btn-white m-b-10">
                     <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print
                 </a>
             </div> -->
             <div>
-                <a href="./report_ck5_sarinah.php" class="btn btn-sm btn-white m-b-10" title="Update CK5PLB" style="padding: 7px;">
+                <a href="./report_ck5_plb.php" class="btn btn-sm btn-white m-b-10" title="Update CK5PLB" style="padding: 7px;">
                     <div style="display: flex;justify-content: space-between;align-items: end;">
                         <i class="far fa-arrow-alt-circle-left" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Kembali
                     </div>
                 </a>
-                <!-- Update CK5 Sarinah -->
-                <!-- <a href="#modal-updateck5plb" class="btn btn-sm btn-warning m-b-10" data-toggle="modal" title="Update CK5PLB" style="padding: 7px;">
+                <!-- Update CK5 PLB -->
+                <a href="#modal-updateck5plb" class="btn btn-sm btn-warning m-b-10" data-toggle="modal" title="Update CK5PLB" style="padding: 7px;">
+                <!-- <a href="./report_ck5_plb_hal_1_edit.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-warning m-b-10" title="Update CK5PLB" style="padding: 7px;"> -->
                     <div style="display: flex;justify-content: space-between;align-items: end;">
-                        <i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update CK5 Sarinah
+                        <i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update CK5 PLB
                     </div>
-                </a> -->
+                </a>
                 <div class="modal fade" id="modal-updateck5plb">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form action="report_ck5_sarinah_detail.php" method="POST">
+                            <form action="report_ck5_plb_hal_1.php" method="POST">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">[Update CK5 Sarinah] AJU <?= $dataGETAJU ?></h4>
+                                    <h4 class="modal-title">[Update CK5 PLB] AJU <?= $dataGETAJU ?></h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body">
@@ -613,7 +609,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                                                         <div class="form-group" id="text" style="display:none;background-color: yellow">
                                                             <label for="IdNamaTempatAsalPemasok">Nama</label>
                                                             <input type="hidden" name="OnePemasok" value="<?= $resultDataCK5PLB['ID_PENGUSAHA'] ?>">
-                                                            <input type="hidden" name="TwoPemasok" value="<?= $resultDataCK5PLB['NAMA_PENGUSAHA'] ?>">
+                                                            <input type="hidden" name="TwoPemasok" value="<?= $resultDataCK5PLB['PERUSAHAAN'] ?>">
                                                             <input type="hidden" name="ThreePemasok" value="<?= $resultDataCK5PLB['ALAMAT_PENGUSAHA'] ?>">
                                                             <select class="form-control" name="InputNamaTempatAsalPemasok" id="IdNamaTempatAsalPemasok" onchange="showTempatAsalPemasok(this.value)" style="background: yellow;">
                                                                 <option>-- Nama Pengusaha --</option>
@@ -630,10 +626,10 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                                                             <label for="IdNamaKodeOne">Nama, Kode Kantor</label>
                                                             <div class="input-group bootstrap-NULL bootstrap-touchspin-injected">
                                                                 <select class="form-control" name="InputNamaKodeOne" id="IdNamaKodeOne" onchange="showKodeOne(this.value)">
-                                                                    <?php if ($resultDataCK5PLB['KODE_KANTOR'] == NULL || $resultDataCK5PLB['KODE_KANTOR'] == '') { ?>
+                                                                    <?php if ($resultDataCK5PLB['KPPBC'] == NULL || $resultDataCK5PLB['KPPBC'] == '') { ?>
                                                                         <option>-- Kantor Pabean --</option>
                                                                     <?php } else { ?>
-                                                                        <option value="<?= $resultDataCK5PLB['KODE_KANTOR']; ?>"><?= $resultDataNamaKantor['URAIAN_KANTOR']; ?> - <?= $resultDataCK5PLB['KODE_KANTOR']; ?></option>
+                                                                        <option value="<?= $resultDataCK5PLB['KPPBC']; ?>"><?= $resultDataNamaKantor['URAIAN_KANTOR']; ?> - <?= $resultDataCK5PLB['KPPBC']; ?></option>
                                                                         <option>-- Kantor Pabean --</option>
                                                                     <?php } ?>
                                                                     <?php
@@ -818,18 +814,17 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                                 <div class="modal-footer">
                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
                                     <input type="hidden" name="AJUDATA" value="<?= $_GET['AJU']; ?>">
-                                    <input type="hidden" name="AJUDATAID" value="<?= $dataGETAJUID; ?>">
-                                    <button type="submit" name="update_ck5tpb_oke" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                    <button type="submit" name="update_ck5plb_oke" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <!-- Update CK5 Sarinah -->
-                <a href="report_ck5_sarinah_detail_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
+                <!-- Update CK5 PLB -->
+                <a href="report_ck5_plb_hal_1_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
                     <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel Hal. 1
                 </a>
-                <a href="report_ck5_sarinah_detail_print.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
+                <a href="report_ck5_plb_hal_1_print.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
                     <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print Hal. 1
                 </a>
             </div>
@@ -848,7 +843,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
         </div>
         <div class="col-md-9">
             <div style="display: grid;justify-content: left;">
-                <font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 Sarinah - Halaman 1</font>
+                <font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 PLB - Halaman 1</font>
                 <font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
                 <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                 <div class="line-page-table"></div>
@@ -929,7 +924,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                     <td class=xl7111096>&nbsp;</td>
                     <td class=xl7111096>&nbsp;</td>
                     <td class=xl7111096 colspan=2>Kode<span style='mso-spacerun:yes'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
-                    <td colspan=2 class=xl14411096 style='border-right:.5pt solid black'><?= $resultDataCK5PLB['KODE_KANTOR']; ?></td>
+                    <td colspan=2 class=xl14411096 style='border-right:.5pt solid black'><?= $resultDataCK5PLB['KPPBC']; ?></td>
                     <td class=xl7211096>&nbsp;</td>
                     <td class=xl7211096>&nbsp;</td>
                     <td class=xl7111096>&nbsp;</td>
@@ -1443,7 +1438,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                     <td height=21 class=xl8611096 style='height:15.75pt'>3.</td>
                     <td class=xl8711096>Nama Alamat</td>
                     <td class=xl8811096 width=17 style='width:13pt'>:</td>
-                    <td colspan=10 class=xl8911096 width=260 style='border-right:.5pt solid black;width:197pt'><?= $resultDataCK5PLB['NAMA_PENGUSAHA']; ?></td>
+                    <td colspan=10 class=xl8911096 width=260 style='border-right:.5pt solid black;width:197pt'><?= $resultDataCK5PLB['PERUSAHAAN']; ?></td>
                     <td class=xl8611096 style='border-left:none'>13.</td>
                     <td class=xl6911096 colspan=3>Nama Alamat</td>
                     <td class=xl6911096></td>
@@ -1533,7 +1528,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                     <td class=xl8111096>&nbsp;</td>
                     <td class=xl8111096>&nbsp;</td>
                     <td class=xl8111096>&nbsp;</td>
-                    <td colspan=3 class=xl14411096 style='border-right:.5pt solid black'><?= $resultDataCK5PLB['KODE_KANTOR']; ?></td>
+                    <td colspan=3 class=xl14411096 style='border-right:.5pt solid black'><?= $resultDataCK5PLB['KPPBC']; ?></td>
                     <td class=xl8011096 style='border-left:none'>&nbsp;</td>
                     <td class=xl8111096>&nbsp;</td>
                     <td class=xl8111096>&nbsp;</td>
@@ -1581,7 +1576,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                     <td class=xl6911096 colspan=8 style="background: transparent">
                         <div style="display: grid;">
                             <?php
-                            $dataNISJ = $dbcon->query("SELECT NOMOR_AJU, NOMOR_DOKUMEN, TANGGAL_DOKUMEN FROM tpb_dokumen WHERE NOMOR_AJU='$dataGETAJU'");
+                            $dataNISJ = $dbcon->query("SELECT NOMOR_AJU, NOMOR_DOKUMEN, TANGGAL_DOKUMEN FROM plb_dokumen WHERE NOMOR_AJU='$dataGETAJU'");
                                 if (mysqli_num_rows($dataNISJ) > 0) {
                                     while ($rowdataNISJ = mysqli_fetch_array($dataNISJ)) {
                             ?>
@@ -1609,7 +1604,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                     <td class=xl12711096 colspan=4 style="background: transparent;">
                         <div style="display: grid;">
                             <?php
-                            $dataNISJTanggal = $dbcon->query("SELECT NOMOR_AJU, NOMOR_DOKUMEN, TANGGAL_DOKUMEN FROM tpb_dokumen WHERE NOMOR_AJU='$dataGETAJU'");
+                            $dataNISJTanggal = $dbcon->query("SELECT NOMOR_AJU, NOMOR_DOKUMEN, TANGGAL_DOKUMEN FROM plb_dokumen WHERE NOMOR_AJU='$dataGETAJU'");
                                 if (mysqli_num_rows($dataNISJTanggal) > 0) {
                                     while ($rowdataNISJTanggal = mysqli_fetch_array($dataNISJTanggal)) {
                             ?>
@@ -1801,7 +1796,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                     <td class=xl6911096>Jumlah Jenis Kemasan</td>
                     <td class=xl6911096></td>
                     <td class=xl7611096>:</td>
-                    <td class=xl14111096 colspan=5 style="text-align: justify;background: transparent;"><?= $resultDataCK5PLBKemasan['JUMLAH_KEMASAN'] ?> <?= $resultDataCK5PLBKemasan['URAIAN_KEMASAN'] ?> = <?= $resultDataCK5PLBKemasan['MERK_KEMASAN'] ?></td>
+                    <td class=xl14111096 colspan=5 style="text-align: justify;background: transparent;"><?= $resultDataCK5PLBKemasan['JUMLAH_KEMASAN'] ?> <?= $resultDataCK5PLBKemasan['URAIAN_KEMASAN'] ?> = <?= $resultDataCK5PLBKemasan['MEREK_KEMASAN'] ?></td>
                     <td class=xl6911096></td>
                     <td colspan=2 class=xl6911096></td>
                     <td class=xl7711096>&nbsp;</td>
@@ -2115,7 +2110,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                     <td height=17 class=xl7811096 style='height:12.75pt'>&nbsp;</td>
                     <td class=xl6911096>Nama Alamat</td>
                     <td class=xl7611096>:</td>
-                    <td colspan=10 class=xl8911096 width=260 style='border-right:.5pt solid black;width:197pt'><?= $resultDataCK5PLB['NAMA_PENGUSAHA']; ?></td>
+                    <td colspan=10 class=xl8911096 width=260 style='border-right:.5pt solid black;width:197pt'><?= $resultDataCK5PLB['PERUSAHAAN']; ?></td>
                     <td class=xl7811096 style='border-left:none'>&nbsp;</td>
                     <td class=xl7611096></td>
                     <td class=xl6911096></td>
@@ -2214,7 +2209,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
                     <td height=17 class=xl7811096 style='height:12.75pt'>&nbsp;</td>
                     <td class=xl6911096></td>
                     <td class=xl6911096></td>
-                    <td colspan=10 class=xl7611096 style='border-right:.5pt solid black'><?= $resultDataCK5PLB['NAMA_PENGUSAHA']; ?></td>
+                    <td colspan=10 class=xl7611096 style='border-right:.5pt solid black'><?= $resultDataCK5PLB['PERUSAHAAN']; ?></td>
                     <td class=xl7811096 style='border-left:none'>&nbsp;</td>
                     <td class=xl6911096></td>
                     <td colspan=5 class=xl7511096>&nbsp;&nbsp;Pejabat Penerima</td>
@@ -2743,7 +2738,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
     </div>
     <div class="invoice-footer">
         <p class="text-center m-b-5 f-w-600">
-            Export CK5 Sarinah | IT Inventory <?= $resultHeadSetting['company'] ?>
+            Export CK5 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
         </p>
         <p class="text-center">
             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
@@ -2888,7 +2883,7 @@ include "include/jsForm.php";
             icon: 'success',
             text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './report_ck5_sarinah_detail.php?AJU=<?= $ID ?>');
+        history.replaceState({}, '', './report_ck5_plb_hal_1.php?AJU=<?= $ID ?>');
     }
     // UPDATE FAILEDú
     if (window?.location?.href?.indexOf('UpdateFailed<?= $ID ?>') > -1) {
@@ -2897,7 +2892,7 @@ include "include/jsForm.php";
             icon: 'error',
             text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './report_ck5_sarinah_detail.php?AJU=<?= $ID ?>');
+        history.replaceState({}, '', './report_ck5_plb_hal_1.php?AJU=<?= $ID ?>');
     }
 </script>
 </body>
