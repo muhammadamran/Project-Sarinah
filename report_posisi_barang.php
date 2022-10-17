@@ -244,10 +244,15 @@ $data = json_decode($content, true);
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
-                                    <td>BC2.3</td>
-                                    <td><?= $row['PLB_NOMOR_BC11']; ?></td>
-                                    <td><?= $row['PLB_NOMOR_BC11']; ?></td>
-                                    <td><?= $row['TANGGAL_BC11']; ?></td>
+                                    <td><?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['NOMOR_AJU'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['NOMOR_AJU']; ?>
+                                        <?php } ?>
+                                    </td>
                                     <td><?= $row['TANGGAL_BC11']; ?></td>
                                     <td><?= $row['POS_TARIF']; ?></td>
                                     <td><?= $row['SERI_BARANG']; ?></td>
