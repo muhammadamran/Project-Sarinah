@@ -49,6 +49,16 @@ $dataBC_41 = json_decode($contentBC_41, true);
 .images-svg {
     width: 635px;
 }
+
+.widget-stats,
+.widget.widget-stats {
+    position: relative;
+    color: #fff;
+    /* padding: 15px; */
+    padding: 13px;
+    -webkit-border-radius: 4px;
+    border-radius: 10px;
+}
 </style>
 <!-- begin #content -->
 <div id="content" class="content">
