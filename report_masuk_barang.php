@@ -226,11 +226,18 @@ $data = json_decode($content, true);
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
-                                    <td>BC2.7 PLB</td>
-                                    <td><?= $row['NOMOR_BC11']; ?></td>
-                                    <td><?= $row['TANGGAL_BC11']; ?></td>
-                                    <td><?= $row['PEMASOK']; ?></td>
-                                    <td><?= $row['KODE_BARANG']; ?></td>
+                                    <td><?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['TANGGAL_BC11']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td><?= $row['NAMA_PEMASOK']; ?></td>
+                                    <td><?= $row['POS_TARIF']; ?></td>
                                     <td><?= $row['URAIAN']; ?></td>
                                     <td>
                                         <div style="display: flex;justify-content: space-between;align-items: center">
