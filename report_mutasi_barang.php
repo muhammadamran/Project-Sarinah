@@ -297,11 +297,11 @@ $data = json_decode($content, true);
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: center;">
-                                        <?php if ($row['KODE_BARANG'] == NULL) { ?>
+                                        <?php if ($row['POS_TARIF'] == NULL) { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                                         </font>
                                         <?php } else { ?>
-                                        <?= $row['KODE_BARANG']; ?>
+                                        <?= $row['POS_TARIF']; ?>
                                         <?php } ?>
                                     </td>
                                     <td><?= $row['URAIAN']; ?></td>
