@@ -57,7 +57,7 @@ function date_indo($date, $print_day = false)
         'Mei',
         'Juni',
         'Juli',
-        'Agustus',
+        'Augustus',
         'September',
         'Oktober',
         'November',
@@ -519,9 +519,7 @@ function date_indo($date, $print_day = false)
                               <th>SKU</th>
                               <th>Details</th>
                               <th>Quantity</th>
-                              <th>Pric (USD)</th>                     
-                              <th>Pack(s)</th>
-                              <th>Can(s)</th>                 
+                              <th>Price (USD)</th>                                     
                               <th>Bottle</th>
                               <th>Litre(s)</th>
                           </tr>
@@ -540,32 +538,65 @@ function date_indo($date, $print_day = false)
                             echo "<td>" . $row['UKURAN'] . "</td>";
                             echo "<td>" . $row['JUMLAH_SATUAN'] . "</td>";
                             echo "<td>" . $row['CIF'] . "</td>";
-                            echo "<td>" . $row[''] . "</td>";
-                            echo "<td>" . $row[''] . "</td>"; 
-                            echo "<td>" . $row[''] . "</td>";                                        
-                            echo "<td>" . $row[''] . "</td>"; 
+
+                            $bottleqty = $row['UKURAN'] * $row['JUMLAH_SATUAN'];
+                            echo "<td>" . $bottleqty . "</td>";                                        
+                            
+                            /* GET LITRE DATA FROM tb_barang_tarif - start */
+                            $getlitre = mysqli_query($dbcon,"SELECT JUMLAH_SATUAN FROM tpb_barang_tarif WHERE ID_BARANG = '$row[ID]' AND JENIS_TARIF = 'CUKAI' ");
+                            $lit = mysqli_fetch_array($getlitre);
+
+                            echo "<td>" . $lit['JUMLAH_SATUAN'] . "</td>"; 
+
+                            /* GET LITRE DATA FROM tb_barang_tarif - end */
 
                             echo "</tr>"; 
+                            }
+
+                            /* calculate total QTY */
+                            $result2 = mysqli_query($dbcon,"SELECT sum(JUMLAH_SATUAN) as TotalQty FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $rowx = mysqli_fetch_array($result2);
+
+                            /* calculate total BOTTLE */
+                            $result3 = mysqli_query($dbcon,"SELECT sum(UKURAN*JUMLAH_SATUAN) as TotalBottle FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $row3 = mysqli_fetch_array($result3);
+
+                            /* calculate total PRICE */
+                            $result4 = mysqli_query($dbcon,"SELECT sum(CIF) as TotalCif FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $row4 = mysqli_fetch_array($result4);
+
+                            /* calculate total PRICE */
+                            $result5 = mysqli_query($dbcon,"SELECT sum(JUMLAH_SATUAN) as TotalLitre FROM tpb_barang_tarif WHERE ID_HEADER = '$inv[ID]' AND JENIS_TARIF = 'CUKAI'");
+                            $row5 = mysqli_fetch_array($result5);
 
 
-                        }
-                    } 
-                    mysqli_close($con);
-                    ?>
+                            echo "<tr>";
+                            echo "<td>" . "-" . "</td>";
+                            echo "<td>" . "-" . "</td>";
+                            echo "<td>" . "-" . "</td>";
+                            echo "<td>" . "TOTAL" . "</td>";
+                            echo "<td>" . "<b>" . $rowx['TotalQty'] . "</b>". "</td>";
+                            echo "<td>" . "<b>" . $row4['TotalCif'] . "</b>". "</td>";
+                            echo "<td>" . "<b>" . $row3['TotalBottle'] . "</b>". "</td>";
+                            echo "<td>" . "<b>" . $row5['TotalLitre'] . "</b>". "</td>";
+                            echo "</tr>"; 
+                        } 
+                        mysqli_close($con);
+                        ?>
                 </tbody>
             </table>
         </div>
     </div>
     <div class="invoice-footer">
         <p class="text-center m-b-5 f-w-600">
-           Export CK5 Sarinah | IT Inventory <?= $resultHeadSetting['company'] ?>
-       </p>
-       <p class="text-center">
-           <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
-           <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:<?= $resultHeadSetting['telp'] ?></span>
-           <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> <?= $resultHeadSetting['email'] ?></span>
-       </p>
-   </div>
+         Export CK5 Sarinah | IT Inventory <?= $resultHeadSetting['company'] ?>
+     </p>
+     <p class="text-center">
+         <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
+         <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:<?= $resultHeadSetting['telp'] ?></span>
+         <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> <?= $resultHeadSetting['email'] ?></span>
+     </p>
+ </div>
 </div>
 </div>
 <?php 

@@ -313,40 +313,71 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
                 <th>SKU</th>
                 <th>Details</th>
                 <th>Quantity</th>
-                <th>Pric (USD)</th>                     
-                <th>Pack(s)</th>
-                <th>Can(s)</th>                 
+                <th>Pric (USD)</th>                                     
                 <th>Bottle</th>
                 <th>Litre(s)</th>
               </tr>
             </thead>
             <tbody>
-              <?php
-              include 'include/connection.php';
-              $result = mysqli_query($dbcon,"SELECT * FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
-              if(mysqli_num_rows($result)>0){
-                while($row = mysqli_fetch_array($result))
-                {
-                  echo "<tr>";
-                  echo "<td>" . $row['ID'] . "</td>";
-                  echo "<td>" . $row['URAIAN'] . "</td>";
-                  echo "<td>" . $row['KODE_BARANG'] . "</td>";
-                  echo "<td>" . $row['UKURAN'] . "</td>";
-                  echo "<td>" . $row['JUMLAH_SATUAN'] . "</td>";
-                  echo "<td>" . $row['CIF'] . "</td>";
-                  echo "<td>" . $row[''] . "</td>";
-                  echo "<td>" . $row[''] . "</td>"; 
-                  echo "<td>" . $row[''] . "</td>";                                        
-                  echo "<td>" . $row[''] . "</td>"; 
+                        <?php
+                        include 'include/connection.php';
+                        $result = mysqli_query($dbcon,"SELECT * FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                        if(mysqli_num_rows($result)>0){
+                          while($row = mysqli_fetch_array($result))
+                          {
+                            echo "<tr>";
+                            echo "<td>" . $row['ID'] . "</td>";
+                            echo "<td>" . $row['URAIAN'] . "</td>";
+                            echo "<td>" . $row['KODE_BARANG'] . "</td>";
+                            echo "<td>" . $row['UKURAN'] . "</td>";
+                            echo "<td>" . $row['JUMLAH_SATUAN'] . "</td>";
+                            echo "<td>" . $row['CIF'] . "</td>";
 
-                  echo "</tr>"; 
+                            $bottleqty = $row['UKURAN'] * $row['JUMLAH_SATUAN'];
+                            echo "<td>" . $bottleqty . "</td>";                                        
+                            
+                            /* GET LITRE DATA FROM tb_barang_tarif - start */
+                            $getlitre = mysqli_query($dbcon,"SELECT JUMLAH_SATUAN FROM tpb_barang_tarif WHERE ID_BARANG = '$row[ID]' AND JENIS_TARIF = 'CUKAI' ");
+                            $lit = mysqli_fetch_array($getlitre);
+
+                            echo "<td>" . $lit['JUMLAH_SATUAN'] . "</td>"; 
+
+                            /* GET LITRE DATA FROM tb_barang_tarif - end */
+
+                            echo "</tr>"; 
+                            }
+
+                            /* calculate total QTY */
+                            $result2 = mysqli_query($dbcon,"SELECT sum(JUMLAH_SATUAN) as TotalQty FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $rowx = mysqli_fetch_array($result2);
+
+                            /* calculate total BOTTLE */
+                            $result3 = mysqli_query($dbcon,"SELECT sum(UKURAN*JUMLAH_SATUAN) as TotalBottle FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $row3 = mysqli_fetch_array($result3);
+
+                            /* calculate total PRICE */
+                            $result4 = mysqli_query($dbcon,"SELECT sum(CIF) as TotalCif FROM tpb_barang WHERE ID_HEADER = '$inv[ID]' ORDER BY ID ASC");
+                            $row4 = mysqli_fetch_array($result4);
+
+                            /* calculate total PRICE */
+                            $result5 = mysqli_query($dbcon,"SELECT sum(JUMLAH_SATUAN) as TotalLitre FROM tpb_barang_tarif WHERE ID_HEADER = '$inv[ID]' AND JENIS_TARIF = 'CUKAI'");
+                            $row5 = mysqli_fetch_array($result5);
 
 
-                }
-              } 
-              mysqli_close($con);
-              ?>
-            </tbody>
+                            echo "<tr>";
+                            echo "<td>" . "-" . "</td>";
+                            echo "<td>" . "-" . "</td>";
+                            echo "<td>" . "-" . "</td>";
+                            echo "<td>" . "TOTAL" . "</td>";
+                            echo "<td>" . "<b>" . $rowx['TotalQty'] . "</b>". "</td>";
+                            echo "<td>" . "<b>" . $row4['TotalCif'] . "</b>". "</td>";
+                            echo "<td>" . "<b>" . $row3['TotalBottle'] . "</b>". "</td>";
+                            echo "<td>" . "<b>" . $row5['TotalLitre'] . "</b>". "</td>";
+                            echo "</tr>"; 
+                        } 
+                        mysqli_close($con);
+                        ?>
+                </tbody>
           </table>
           <!-- </div> -->
           <!-- </div> -->

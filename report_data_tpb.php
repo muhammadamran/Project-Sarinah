@@ -109,7 +109,8 @@ if (isset($_POST["findOne"])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -442,7 +443,7 @@ if (isset($_POST["findOne"])) {
                                                                  LEFT OUTER JOIN referensi_pengusaha AS peng ON tpb.NAMA_PENERIMA_BARANG=peng.NAMA
                                                                  LEFT OUTER JOIN tpb_kontainer AS kon ON tpb.ID=kon.ID_HEADER
                                                                  GROUP BY kon.ID_HEADER
-                                                                 ORDER BY plb.NOMOR_AJU ASC LIMIT 10");
+                                                                 ORDER BY plb.NOMOR_AJU ASC LIMIT 0");
                                 }
                                 if (mysqli_num_rows($result2) > 0) {
                                     while ($row2 = mysqli_fetch_array($result2)) {

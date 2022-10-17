@@ -13,14 +13,20 @@ $EndTanggal = '';
 
 if (isset($_POST['filter_date'])) {
     if ($_POST["StartTanggal"] != '') {
-        $StartTanggal = $_POST['StartTanggal'];
+        $StartTanggal   = $_POST['StartTanggal'];
+        // $rStartTanggal  = str_replace("-", "", $_POST['StartTanggal']);
     }
 
     if ($_POST["EndTanggal"] != '') {
-        $EndTanggal = $_POST['EndTanggal'];
+        $EndTanggal     = $_POST['EndTanggal'];
+        // $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
     }
 }
 
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'reportMasukBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal);
+$data = json_decode($content, true);
 ?>
 
 <!-- begin #content -->
@@ -136,13 +142,6 @@ if (isset($_POST['filter_date'])) {
                                             data-content="Klik untuk mengexport data dalam file Excel"> Export Excel
                                     </button>
                                 </form>
-                                <!-- <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST" style="display: inline-block;">
-                                        <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                                        <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                                        <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
-                                            <img src="assets/img/favicon/pdf.png" class="icon-primary-pdf" alt="PDF" data-toggle="popover" data-trigger="hover" data-title="Export File PDF" data-placement="top" data-content="Klik untuk mengexport data dalam file PDF"> Export PDF
-                                        </button>
-                                    </form> -->
                                 <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST"
                                     style="display: inline-block;">
                                     <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
@@ -210,24 +209,20 @@ if (isset($_POST['filter_date'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                if (isset($_POST["filter_date"])) {
-                                    $dataTable = $dbcon->query("SELECT hdr.NOMOR_BC11,hdr.TANGGAL_BC11,hdr.PEMASOK,
-                                                                       brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF
-                                                                FROM tpb_header AS hdr
-                                                                LEFT OUTER JOIN tpb_barang AS brg ON hdr.NOMOR_AJU=brg.NOMOR_AJU
-                                                                WHERE hdr.TANGGAL_BC11 BETWEEN '$StartTanggal' AND '$EndTanggal'
-                                                                ORDER BY hdr.TANGGAL_BC11,brg.KODE_BARANG,brg.URAIAN ASC");
-                                } else {
-                                    $dataTable = $dbcon->query("SELECT * FROM tpb_header AS hdr
-                                                                LEFT OUTER JOIN tpb_barang AS brg ON hdr.ID=brg.ID_HEADER
-                                                                ORDER BY hdr.TANGGAL_BC11 ASC LIMIT 50");
-                                }
-                                if (mysqli_num_rows($dataTable) > 0) {
-                                    $no = 0;
-                                    while ($row = mysqli_fetch_array($dataTable)) {
-                                        $no++;
-                                ?>
+                                <?php if ($data['status'] == 404) { ?>
+                                <tr>
+                                    <td colspan="9">
+                                        <center>
+                                            <div style="display: flex;justify-content: center; align-items: center">
+                                                <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
+                                <?php } else { ?>
+                                <?php $no = 0; ?>
+                                <?php foreach ($data['result'] as $row) { ?>
+                                <?php $no++ ?>
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
@@ -251,18 +246,7 @@ if (isset($_POST['filter_date'])) {
                                     </td>
                                 </tr>
                                 <?php } ?>
-                                <?php } else { ?>
-                                <tr>
-                                    <td colspan="9">
-                                        <center>
-                                            <div style="display: flex;justify-content: center; align-items: center">
-                                                <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
-                                <?php }
-                                mysqli_close($dbcon); ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
