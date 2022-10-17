@@ -246,6 +246,7 @@ $data = json_decode($content, true);
                                     <td><?= $no ?>.</td>
                                     <td>BC2.3</td>
                                     <td><?= $row['PLB_NOMOR_BC11']; ?></td>
+                                    <td><?= $row['PLB_NOMOR_BC11']; ?></td>
                                     <td><?= $row['TANGGAL_BC11']; ?></td>
                                     <td><?= $row['TANGGAL_BC11']; ?></td>
                                     <td><?= $row['POS_TARIF']; ?></td>
@@ -263,11 +264,10 @@ $data = json_decode($content, true);
                                             <font><?= $row['CIF']; ?></font>
                                         </div>
                                     </td>
-                                    <td>BC2.7</td>
-                                    <td><?= $row['TPB_NOMOR_BC11']; ?></td>
+                                    <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
                                     <td><?= $row['TPB_TANGGAL_BC11']; ?></td>
                                     <td><?= $row['TPB_TANGGAL_BC11']; ?></td>
-                                    <td><?= $row['KODE_BARANG']; ?></td>
+                                    <td><?= $row['POS_TARIF']; ?></td>
                                     <td><?= $row['SERI_BARANG']; ?></td>
                                     <td><?= $row['URAIAN']; ?></td>
                                     <td>
