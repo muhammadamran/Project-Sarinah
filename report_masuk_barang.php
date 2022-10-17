@@ -214,15 +214,13 @@ if (isset($_POST['filter_date'])) {
                                 if (isset($_POST["filter_date"])) {
                                     $dataTable = $dbcon->query("SELECT hdr.NOMOR_BC11,hdr.TANGGAL_BC11,hdr.PEMASOK,
                                                                        brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF
-                                                                FROM plb_header AS hdr
-                                                                LEFT OUTER JOIN plb_barang AS brg ON hdr.NOMOR_AJU=brg.NOMOR_AJU
+                                                                FROM tpb_header AS hdr
+                                                                LEFT OUTER JOIN tpb_barang AS brg ON hdr.NOMOR_AJU=brg.NOMOR_AJU
                                                                 WHERE hdr.TANGGAL_BC11 BETWEEN '$StartTanggal' AND '$EndTanggal'
                                                                 ORDER BY hdr.TANGGAL_BC11,brg.KODE_BARANG,brg.URAIAN ASC");
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT hdr.NOMOR_BC11,hdr.TANGGAL_BC11,hdr.PEMASOK,
-                                                                        brg.KODE_BARANG,brg.URAIAN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,hdr.KODE_VALUTA,brg.CIF
-                                                                FROM plb_header AS hdr
-                                                                LEFT OUTER JOIN plb_barang AS brg ON hdr.NOMOR_AJU=brg.NOMOR_AJU
+                                    $dataTable = $dbcon->query("SELECT * FROM tpb_header AS hdr
+                                                                LEFT OUTER JOIN tpb_barang AS brg ON hdr.ID=brg.ID_HEADER
                                                                 ORDER BY hdr.TANGGAL_BC11 ASC LIMIT 50");
                                 }
                                 if (mysqli_num_rows($dataTable) > 0) {
