@@ -75,7 +75,7 @@ $SetTime = $resultSetRealTime['reload'];
 
     gtag('config', 'G-Q66YLEFFZ2');
     </script>
-
+    <link rel="stylesheet" href="assets/new.css">
 </head>
 
 <script type="text/javascript">
