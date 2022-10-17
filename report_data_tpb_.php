@@ -92,6 +92,10 @@ if (isset($_POST["findOne"])) {
     }
 }
 
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?where=' . $_where);
+$data = json_decode($content, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
@@ -370,7 +374,7 @@ if (isset($_POST["findOne"])) {
                                         $_where = where_add($_where, ' ngr.URAIAN_NEGARA LIKE ' . "'%$NamaNegara%'" . '');
                                     }
                                     if ($Party == true) {
-                                        $_where = where_add($_where, ' TPB_kem.JUMLAH_KEMASAN LIKE ' . "'%$Party%'" . '');
+                                        $_where = where_add($_where, ' kem.JUMLAH_KEMASAN LIKE ' . "'%$Party%'" . '');
                                     }
                                     if ($NoContainer == true) {
                                         $_where = where_add($_where, ' kon.NOMOR_KONTAINER LIKE ' . "'%$NoContainer%'" . '');
@@ -387,17 +391,16 @@ if (isset($_POST["findOne"])) {
 
                                     // echo $_where;
                                     $result2 = mysqli_query($dbcon, "SELECT *
-                                                                 FROM tpb_header AS tpb
-                                                                 LEFT OUTER JOIN tpb_kemasan AS TPB_kem ON tpb.NOMOR_AJU=TPB_kem.NOMOR_AJU
-                                                                 LEFT OUTER JOIN referensi_kemasan AS ref_kem ON TPB_kem.KODE_JENIS_KEMASAN=ref_kem.KODE_KEMASAN
-                                                                 LEFT OUTER JOIN tpb_header AS tpb ON tpb.NOMOR_DAFTAR=tpb.NOMOR_DAFTAR
+                                                                  FROM tpb_header AS tpb
+                                                                 LEFT OUTER JOIN tpb_kemasan AS kem ON tpb.ID=kem.ID_HEADER
+                                                                 LEFT OUTER JOIN referensi_kemasan AS ref_kem ON kem.KODE_JENIS_KEMASAN=ref_kem.KODE_KEMASAN
                                                                  LEFT OUTER JOIN referensi_negara AS ngr ON tpb.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
                                                                  LEFT OUTER JOIN referensi_pengusaha AS peng ON tpb.NAMA_PENERIMA_BARANG=peng.NAMA
                                                                  LEFT OUTER JOIN tpb_kontainer AS kon ON tpb.ID=kon.ID_HEADER
                                                                  $_where
                                                                 --  WHERE tpb.TANGGAL_BC11 BETWEEN '2018-05-18' AND '2022-08-08'
                                                                  GROUP BY kon.ID_HEADER
-                                                                 ORDER BY ID.NOMOR_AJU ASC");
+                                                                 ORDER BY tpb.NOMOR_AJU ASC");
                                 } else {
                                     $result2 = mysqli_query($dbcon, "SELECT *
                                                                  FROM tpb_header AS tpb
@@ -407,10 +410,23 @@ if (isset($_POST["findOne"])) {
                                                                  LEFT OUTER JOIN referensi_pengusaha AS peng ON tpb.NAMA_PENERIMA_BARANG=peng.NAMA
                                                                  LEFT OUTER JOIN tpb_kontainer AS kon ON tpb.ID=kon.ID_HEADER
                                                                  GROUP BY kon.ID_HEADER
-                                                                 ORDER BY tpb.NOMOR_AJU");
+                                                                 ORDER BY tpb.NOMOR_AJU ASC");
                                 }
-                                if (mysqli_num_rows($result2) > 0) {
-                                    while ($row2 = mysqli_fetch_array($result2)) {
+                                ?>
+                                <?php if ($data['status'] == 404) { ?>
+                                <tr>
+                                    <td colspan="20">
+                                        <center>
+                                            <div style="display: flex;justify-content: center; align-items: center">
+                                                <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
+                                <?php } else { ?>
+                                <?php $no = 0; ?>
+                                <?php foreach ($data['result'] as $row) { ?>
+                                <?php $no++;
                                         // FOR TANGGAL INPUT PLB
                                         $TPB_YYMMDD = SUBSTR($row2['TPB_NOMOR_AJU'], 12, 8);
                                         $TPB_YY = SUBSTR($TPB_YYMMDD, 0, 4);
@@ -449,7 +465,7 @@ if (isset($_POST["findOne"])) {
                                         } else {
                                             echo "<td>" . SUBSTR($row2['TPB_TANGGAL_BC11'], 0, 10) . "</td>";
                                         }
-                                ?>
+                                        ?>
                                 <td>
                                     <a href="#kontainer<?= $row2['TPB_ID'] ?>" class="btn btn-primary"
                                         data-toggle="modal" title="Cont. Details"><i class="fas fa-box"></i> Cont.
@@ -531,22 +547,8 @@ if (isset($_POST["findOne"])) {
                                     </div>
                                 </div>
                                 <!-- End Cont. Details -->
-                                <?php }
-                                } else {
-                                    ?>
-                                <tr>
-                                    <td colspan="20">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
-                                <?php
-                                }
-                                mysqli_close($dbcon);
-                                ?>
+                                <?php } ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
