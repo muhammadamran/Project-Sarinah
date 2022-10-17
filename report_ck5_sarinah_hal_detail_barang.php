@@ -5,9 +5,9 @@ include "include/connection.php";
 session_start();
 // jika session username belum dibuat, atau session username kosong
 if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
-    // redirect ke halaman sign-in
-    header("location:./sign-in.php?NoAccess=true");
-    // header("location:../tpb/sign-in.php");
+	// redirect ke halaman sign-in
+	header("location:./sign-in.php?NoAccess=true");
+	// header("location:../tpb/sign-in.php");
 }
 $user = $_SESSION['username'];
 
@@ -116,173 +116,191 @@ function Rupiah($angka)
 	return $hasil;
 }
 
-function decimal($number) {
-    $hasil = number_format($number, 0, ",", ",");
-    return $hasil;
+function decimal($number)
+{
+	$hasil = number_format($number, 0, ",", ",");
+	return $hasil;
 }
 
 // NPWP
 function NPWP($value)
-{	
+{
 	// 12.345.678.9-012.345
-	$hasil = number_format($value, 0, ',','.' );
+	$hasil = number_format($value, 0, ',', '.');
 	return $hasil;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Laporan CK5 Sarinah - Halaman Detail Barang</title>
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
-	<?php if ($resultHeadSetting['icon'] == NULL) { ?>
-		<link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/icon-default.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/icon-default.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/icon-default.png">
-	<?php } else { ?>
-		<link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-		<link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-		<link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-	<?php } ?>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-	<link href="assets/css/default/app.min.css" rel="stylesheet" />
-	<link href="assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
-	<link href="assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-	<link href="assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" />
-	<link href="assets/plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" />
-	<link href="assets/css/ck5plb.css" rel="stylesheet" />
-	<link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
-	<link href="assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
-	<link href="assets/css/tpb.css" rel="stylesheet" />
-	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
 
-		gtag('config', 'G-Q66YLEFFZ2');
-	</script>
+<head>
+    <meta charset="utf-8" />
+    <title>Laporan CK5 Sarinah - Halaman Detail Barang</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <?php if ($resultHeadSetting['icon'] == NULL) { ?>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/icon-default.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/icon-default.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/icon-default.png">
+    <?php } else { ?>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+    <?php } ?>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="assets/css/default/app.min.css" rel="stylesheet" />
+    <link href="assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+    <link href="assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="assets/plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="assets/css/ck5plb.css" rel="stylesheet" />
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <link href="assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+    <link href="assets/css/tpb.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css"
+        integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css"
+        integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q66YLEFFZ2');
+    </script>
 </head>
+
 <body>
-	<div class="invoice">
-		<div class="invoice-company">
-			<div style="display: flex;justify-content: space-between;margin-bottom: -18px;">
-				<div>
-					<a href="./report_ck5_sarinah_detail.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
-						<div style="display: flex;justify-content: space-between;align-items: end;">
-							<i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1
-						</div>
-					</a>
-					<a href="./report_ck5_sarinah_detailA.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
-						<div style="display: flex;justify-content: space-between;align-items: end;">
-							<i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1A
-						</div>
-					</a>
-					<a href="./report_ck5_sarinah_hal_detail_barang.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-primary m-b-10" title="Update CK5PLB" style="padding: 7px;">
-						<div style="display: flex;justify-content: space-between;align-items: end;">
-							<i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal Detail Barang
-						</div>
-					</a>
-				</div>
-				<div>
-					<!-- <a href="./report_ck5_sarinah_detail_edit.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-warning m-b-10" title="Update CK5PLB" style="padding: 7px;">
+    <div class="invoice">
+        <div class="invoice-company">
+            <div style="display: flex;justify-content: space-between;margin-bottom: -18px;">
+                <div>
+                    <a href="./report_ck5_sarinah_detail.php?AJU=<?= $_GET['AJU']; ?>"
+                        class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
+                        <div style="display: flex;justify-content: space-between;align-items: end;">
+                            <i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1
+                        </div>
+                    </a>
+                    <a href="./report_ck5_sarinah_detailA.php?AJU=<?= $_GET['AJU']; ?>"
+                        class="btn btn-sm btn-default m-b-10" title="Update CK5PLB" style="padding: 7px;">
+                        <div style="display: flex;justify-content: space-between;align-items: end;">
+                            <i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1A
+                        </div>
+                    </a>
+                    <a href="./report_ck5_sarinah_hal_detail_barang.php?AJU=<?= $_GET['AJU']; ?>"
+                        class="btn btn-sm btn-primary m-b-10" title="Update CK5PLB" style="padding: 7px;">
+                        <div style="display: flex;justify-content: space-between;align-items: end;">
+                            <i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal Detail
+                            Barang
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <!-- <a href="./report_ck5_sarinah_detail_edit.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-warning m-b-10" title="Update CK5PLB" style="padding: 7px;">
 						<div style="display: flex;justify-content: space-between;align-items: end;">
 							<i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update CK5 Sarinah
 						</div>
 					</a> -->
-					<!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
+                    <!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
 						<img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
 					</a> -->
-					<a href="report_ck5_sarinah_hal_detail_barang_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
-						<img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel Hal. Detail Barang
-					</a>
-					<a href="report_ck5_sarinah_hal_detail_barang_print.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
-						<img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print Hal. Detail Barang
-					</a>
-					<!-- <a href="report_ck5_sarinah_hal_1A_print.php" class="btn btn-sm btn-white m-b-10">
+                    <a href="report_ck5_sarinah_hal_detail_barang_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank"
+                        class="btn btn-sm btn-white m-b-10">
+                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
+                        Hal. Detail Barang
+                    </a>
+                    <a href="report_ck5_sarinah_hal_detail_barang_print.php?AJU=<?= $_GET['AJU']; ?>" target="_blank"
+                        class="btn btn-sm btn-white m-b-10">
+                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print Hal.
+                        Detail Barang
+                    </a>
+                    <!-- <a href="report_ck5_sarinah_hal_1A_print.php" class="btn btn-sm btn-white m-b-10">
 						<img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print Semua
 					</a> -->
-				</div>
-			</div>
-		</div>
-		<div class="line-page-table"></div>
-		<div class="row" style="display: flex;align-items: center;margin-bottom: -5px;">
-			<div class="col-md-3">
-				<div style="display: flex;justify-content: center;">
-					<?php if ($resultHeadSetting['logo'] == NULL) { ?>
-						<img src="assets/images/logo/logo-default.png" width="30%">
-					<?php } else { ?>
-						<img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
-					<?php } ?>
-				</div>
-			</div>
-			<div class="col-md-9">
-				<div style="display: grid;justify-content: left;">
-					<font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 Sarinah - Halaman Detail Barang</font>
-					<font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
-					<font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
-					<div class="line-page-table"></div>
-					<font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
-				</div>
-			</div>
-		</div>
-		<br>
-		<div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
-		<div class="invoice-content">
-			<div class="table-responsive">
-				<table id="data-table-buttons-one" class="table table-striped table-bordered table-td-valign-middle" style="width: 100%;font-size: 12px;font-weight: 400;">
-					<tbody>
-						<tr>
-							<td colspan="5" width="158" style="font-weight: 800;">Kantor</td>
-							<td width="15">&nbsp;:</td>
-							<td width="271"><?= $resultDataNamaKantor['URAIAN_KANTOR']; ?></td>
-							<td width="59" style="font-weight: 800;">Kode&nbsp;&nbsp;</td>
-							<td width="12">:</td>
-							<td colspan="5" width="372">&nbsp;<?= $resultDataCK5PLB['KODE_KANTOR']; ?>&nbsp;</td>
-						</tr>
-						<tr>
-							<td colspan="5" style="font-weight: 800;">Nomor Pengajuan</td>
-							<td>&nbsp;:</td>
-							<td><?= $dataGETAJU ?></td>
-							<td style="font-weight: 800;">Tanggal</td>
-							<td>:</td>
-							<td colspan="5"><?= date_indo($DEKLARYYMMDD); ?></td>
-						</tr>
-						<tr>
-							<td colspan="5" style="font-weight: 800;">Nomor Pendaftaran</td>
-							<td>&nbsp;:</td>
-							<td><?= $resultDataCK5PLB['NOMOR_DAFTAR']; ?></td>
-							<td style="font-weight: 800;">Tanggal</td>
-							<td>:</td>
-							<td colspan="5"><?= $resultDataCK5PLB['TANGGAL_DAFTAR']; ?></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="table-responsive">
-				<table id="data-table-buttons-two" class="table table-striped table-bordered table-td-valign-middle" style="width: 100%;font-size: 12px;font-weight: 400;">
-					<thead>
-						<tr>
-							<th width="1%">No. Urut</th>
-							<th class="text-nowrap" style="text-align: center;">Rincian Jumlah, Jenis Merk</th>
-							<th class="text-nowrap" style="text-align: center;">Uraian jenis barang secara lengkap</th>
-							<th class="text-nowrap" style="text-align: center;">Jumlah dan jenis satuan barang</th>
-							<th class="text-nowrap" style="text-align: center;">HJE / HJP*) (Rp)</th>
-							<th class="text-nowrap" style="text-align: center;">Tarif Cukai</th>
-							<th class="text-nowrap" style="text-align: center;">Jumlah Cukai (Rp)</th>
-							<th class="text-nowrap" style="text-align: center;">Jumlah Devisa (USD)</th>
-							<th class="text-nowrap" style="text-align: center;">Keterangan</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
+                </div>
+            </div>
+        </div>
+        <div class="line-page-table"></div>
+        <div class="row" style="display: flex;align-items: center;margin-bottom: -5px;">
+            <div class="col-md-3">
+                <div style="display: flex;justify-content: center;">
+                    <?php if ($resultHeadSetting['logo'] == NULL) { ?>
+                    <img src="assets/images/logo/logo-default.png" width="30%">
+                    <?php } else { ?>
+                    <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div style="display: grid;justify-content: left;">
+                    <font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 Sarinah - Halaman Detail Barang</font>
+                    <font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
+                    <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
+                    <div class="line-page-table"></div>
+                    <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
+        <div class="invoice-content">
+            <div class="table-responsive">
+                <table id="data-table-buttons-one" class="table table-striped table-bordered table-td-valign-middle"
+                    style="width: 100%;font-size: 12px;font-weight: 400;">
+                    <tbody>
+                        <tr>
+                            <td colspan="5" width="158" style="font-weight: 800;">Kantor</td>
+                            <td width="15">&nbsp;:</td>
+                            <td width="271"><?= $resultDataNamaKantor['URAIAN_KANTOR']; ?></td>
+                            <td width="59" style="font-weight: 800;">Kode&nbsp;&nbsp;</td>
+                            <td width="12">:</td>
+                            <td colspan="5" width="372">&nbsp;<?= $resultDataCK5PLB['KODE_KANTOR']; ?>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="font-weight: 800;">Nomor Pengajuan</td>
+                            <td>&nbsp;:</td>
+                            <td><?= $dataGETAJU ?></td>
+                            <td style="font-weight: 800;">Tanggal</td>
+                            <td>:</td>
+                            <td colspan="5"><?= date_indo($DEKLARYYMMDD); ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="font-weight: 800;">Nomor Pendaftaran</td>
+                            <td>&nbsp;:</td>
+                            <td><?= $resultDataCK5PLB['NOMOR_DAFTAR']; ?></td>
+                            <td style="font-weight: 800;">Tanggal</td>
+                            <td>:</td>
+                            <td colspan="5"><?= $resultDataCK5PLB['TANGGAL_DAFTAR']; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table id="data-table-buttons-two" class="table table-striped table-bordered table-td-valign-middle"
+                    style="width: 100%;font-size: 12px;font-weight: 400;">
+                    <thead>
+                        <tr>
+                            <th width="1%">No. Urut</th>
+                            <th class="text-nowrap" style="text-align: center;">Rincian Jumlah, Jenis Merk</th>
+                            <th class="text-nowrap" style="text-align: center;">Uraian jenis barang secara lengkap</th>
+                            <th class="text-nowrap" style="text-align: center;">Jumlah dan jenis satuan barang</th>
+                            <th class="text-nowrap" style="text-align: center;">HJE / HJP*) (Rp)</th>
+                            <th class="text-nowrap" style="text-align: center;">Tarif Cukai</th>
+                            <th class="text-nowrap" style="text-align: center;">Jumlah Cukai (Rp)</th>
+                            <th class="text-nowrap" style="text-align: center;">Jumlah Devisa (USD)</th>
+                            <th class="text-nowrap" style="text-align: center;">Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 						$dataTable = $dbcon->query("SELECT * 
 							FROM tpb_barang AS a 
 							LEFT OUTER JOIN referensi_satuan AS b ON a.KODE_SATUAN=b.KODE_SATUAN
@@ -303,22 +321,23 @@ function NPWP($value)
 								$cJCA = array($cJC);
 								$cJCSUM = array_sum($cJCA);
 								// $JumlahRJJM = SUM($row['JUMLAH_SATUAN']);
-								?>
-								<tr class="odd gradeX">
-									<td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-									<td style="text-align: left;"><?= $row['JUMLAH_SATUAN'] ?> <?= $row['URAIAN_SATUAN'] ?> <?= $row['MEREK_SATUAN'] ?></td>
-									<td style="text-align: left;"><?= $row['URAIAN'] ?><br><?= $row['UKURAN'] ?></td>
-									<td style="text-align: right;"><?= $cHasil ?> <?= $row['URAIAN_SATUAN'] ?></td>
-									<td style="text-align: center;">-</td>
-									<td style="text-align: center;"><?= $row['TARIF'];?></td>
-									<td style="text-align: center;"><?= Rupiah($cJC) ?></td>
-									<td style="text-align: center;">-</td>
-									<td style="text-align: center;"><?= $cJCSUM ?></td>
-								</tr>
-							<?php } ?>
-						</tbody>
-						<?php
-						$DataFooter = $dbcon->query("SELECT b.URAIAN_SATUAN,a.UKURAN,c.TARIF,
+						?>
+                        <tr class="odd gradeX">
+                            <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                            <td style="text-align: left;"><?= $row['JUMLAH_SATUAN'] ?> <?= $row['URAIAN_SATUAN'] ?>
+                                <?= $row['MEREK_SATUAN'] ?></td>
+                            <td style="text-align: left;"><?= $row['URAIAN'] ?><br><?= $row['UKURAN'] ?></td>
+                            <td style="text-align: right;"><?= $cHasil ?> <?= $row['URAIAN_SATUAN'] ?></td>
+                            <td style="text-align: center;">-</td>
+                            <td style="text-align: center;"><?= $row['TARIF']; ?></td>
+                            <td style="text-align: center;"><?= Rupiah($cJC) ?></td>
+                            <td style="text-align: center;">-</td>
+                            <td style="text-align: center;"><?= $cJCSUM ?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                    <?php
+							$DataFooter = $dbcon->query("SELECT b.URAIAN_SATUAN,a.UKURAN,c.TARIF,
 					                                (SELECT SUM(JUMLAH_SATUAN) FROM view_tpb_barang_tarif WHERE ID_HEADER='$dataGETAJUID') AS jml_RJJM,
 					                                (SELECT SUM(JUMLAH_SATUAN * UKURAN) FROM tpb_barang_tarif WHERE ID_HEADER='$dataGETAJUID') AS jml_JJSB
 													FROM tpb_barang AS a 
@@ -328,101 +347,106 @@ function NPWP($value)
 													-- AND a.ID_HEADER='$dataGETAJUID'
 													-- GROUP BY a.SERI_BARANG
 													");
-						$resultDataFooter = mysqli_fetch_array($DataFooter);
-						$Totalall = $resultDataFooter['jml_JJSB'] * $resultDataFooter['TARIF'];
-						?>
-						<tfoot>
-							<tr>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"><b> <?= decimal(round($resultDataFooter['jml_RJJM']))?> <?= $resultDataFooter['URAIAN_SATUAN']?></b></td>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"><b><?= decimal(round($resultDataFooter['jml_JJSB']))?> <?= $resultDataFooter['URAIAN_SATUAN']?></b></td>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"><b> <?= Rupiah($Totalall)?></b></td>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"></td>
-							</tr>
-							<?php } else { ?>
-								<tr>
-									<td colspan="9">
-										<center>
-											<div style="display: grid;">
-												<i class="far fa-times-circle no-data"></i> Tidak ada data
-											</div>
-										</center>
-									</td>
-								</tr>
-							<?php } ?>
-						</tfoot>
-				</table>
-			</div>
-		</div>
-		<div class="invoice-footer">
-			<p class="text-center m-b-5 f-w-600">
-				Export CK5 Sarinah | IT Inventory <?= $resultHeadSetting['company'] ?>
-			</p>
-			<p class="text-center">
-				<span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
-				<span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:<?= $resultHeadSetting['telp'] ?></span>
-				<span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> <?= $resultHeadSetting['email'] ?></span>
-			</p>
-		</div>
-	</div>
-	<script src="assets/js/theme/default.min.js"></script>
-	<script src="assets/plugins/d3/d3.min.js"></script>
-	<script src="assets/plugins/nvd3/build/nv.d3.js"></script>
-	<script src="assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
-	<script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
-	<script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
-	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
-	<script src="assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-	<script src="assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-	<script src="assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-	<script src="assets/plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-	<script src="assets/plugins/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-	<script src="assets/plugins/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-	<script src="assets/plugins/datatables.net-buttons/js/buttons.flash.min.js"></script>
-	<script src="assets/plugins/datatables.net-buttons/js/buttons.html5.min.js"></script>
-	<script src="assets/plugins/datatables.net-buttons/js/buttons.print.min.js"></script>
-	<script src="assets/plugins/pdfmake/build/pdfmake.min.js"></script>
-	<script src="assets/plugins/pdfmake/build/vfs_fonts.js"></script>
-	<script src="assets/plugins/jszip/dist/jszip.min.js"></script>
-	<script src="assets/js/demo/table-manage-buttons.demo.js"></script>
-	<script src="assets/js/demo/table-manage-default.demo.js"></script>
-	<script src="assets/plugins/datatables.net-fixedcolumns/js/dataTables.fixedcolumns.min.js"></script>
-	<script src="assets/plugins/datatables.net-fixedcolumns-bs4/js/fixedcolumns.bootstrap4.min.js"></script>
-	<script src="assets/js/demo/table-manage-fixed-columns.demo.js"></script>
-	<script src="assets/plugins/datatables.net-fixedheader/js/dataTables.fixedheader.min.js"></script>
-	<script src="assets/plugins/datatables.net-fixedheader-bs4/js/fixedheader.bootstrap4.min.js"></script>
-	<script src="assets/js/demo/table-manage-fixed-header.demo.js"></script>
-	<!-- ================== END PAGE LEVEL JS ================== -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#data-table-buttons-one').DataTable({
-				dom: 'Bfrtip',
-				buttons: [
-				'copyHtml5',
-				'excelHtml5',
-				'csvHtml5',
-				'pdfHtml5'
-				]
-			});
-		});
+							$resultDataFooter = mysqli_fetch_array($DataFooter);
+							$Totalall = $resultDataFooter['jml_JJSB'] * $resultDataFooter['TARIF'];
+					?>
+                    <tfoot>
+                        <tr>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: right;"><b> <?= decimal(round($resultDataFooter['jml_RJJM'])) ?>
+                                    <?= $resultDataFooter['URAIAN_SATUAN'] ?></b></td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: right;"><b><?= decimal(round($resultDataFooter['jml_JJSB'])) ?>
+                                    <?= $resultDataFooter['URAIAN_SATUAN'] ?></b></td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: right;"><b> <?= Rupiah($Totalall) ?></b></td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: right;"></td>
+                        </tr>
+                        <?php } else { ?>
+                        <tr>
+                            <td colspan="9">
+                                <center>
+                                    <div style="display: grid;">
+                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                    </div>
+                                </center>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="invoice-footer">
+            <p class="text-center m-b-5 f-w-600">
+                Export CK5 Sarinah | IT Inventory <?= $resultHeadSetting['company'] ?>
+            </p>
+            <p class="text-center">
+                <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
+                <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i>
+                    T:<?= $resultHeadSetting['telp'] ?></span>
+                <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i>
+                    <?= $resultHeadSetting['email'] ?></span>
+            </p>
+        </div>
+    </div>
+    <script src="assets/js/theme/default.min.js"></script>
+    <script src="assets/plugins/d3/d3.min.js"></script>
+    <script src="assets/plugins/nvd3/build/nv.d3.js"></script>
+    <script src="assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+    <script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+    <script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
+    <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="assets/plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="assets/plugins/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="assets/plugins/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="assets/plugins/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="assets/plugins/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="assets/plugins/pdfmake/build/pdfmake.min.js"></script>
+    <script src="assets/plugins/pdfmake/build/vfs_fonts.js"></script>
+    <script src="assets/plugins/jszip/dist/jszip.min.js"></script>
+    <script src="assets/js/demo/table-manage-buttons.demo.js"></script>
+    <script src="assets/js/demo/table-manage-default.demo.js"></script>
+    <script src="assets/plugins/datatables.net-fixedcolumns/js/dataTables.fixedcolumns.min.js"></script>
+    <script src="assets/plugins/datatables.net-fixedcolumns-bs4/js/fixedcolumns.bootstrap4.min.js"></script>
+    <script src="assets/js/demo/table-manage-fixed-columns.demo.js"></script>
+    <script src="assets/plugins/datatables.net-fixedheader/js/dataTables.fixedheader.min.js"></script>
+    <script src="assets/plugins/datatables.net-fixedheader-bs4/js/fixedheader.bootstrap4.min.js"></script>
+    <script src="assets/js/demo/table-manage-fixed-header.demo.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#data-table-buttons-one').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
 
-		$(document).ready(function() {
-			$('#data-table-buttons-two').DataTable({
-				dom: 'Bfrtip',
-				buttons: [
-				'copyHtml5',
-				'excelHtml5',
-				'csvHtml5',
-				'pdfHtml5'
-				]
-			});
-		});
-	</script>
+    $(document).ready(function() {
+        $('#data-table-buttons-two').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+    </script>
 </body>
+
 </html>
