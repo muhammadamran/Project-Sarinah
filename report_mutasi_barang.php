@@ -21,7 +21,11 @@ if (isset($_POST['filter_date'])) {
         $Year = $_POST['Year'];
     }
 }
-
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'reportMutasiBarang.php?Month=' . $Month . '&Years=' . $Year);
+$data = json_decode($content, true);
+?>
 ?>
 
 <!-- begin #content -->
@@ -39,7 +43,9 @@ if (isset($_POST['filter_date'])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('h:m:i a') ?></font></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span
+                    id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;">
+                        <?= date('h:m:i a') ?></font></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -53,16 +59,20 @@ if (isset($_POST['filter_date'])) {
                         <div class="report-button-filter">
                             <span class="pull-right hidden-print">
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                    <a href="./report_mutasi_barang.php" class="btn btn-yellow m-b-10" title="Reset" style="padding: 7px;">
-                                        <div style="display: flex;justify-content: space-between;align-items: end;">
-                                            <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
-                                        </div>
-                                    </a>
+                                <a href="./report_mutasi_barang.php" class="btn btn-yellow m-b-10" title="Reset"
+                                    style="padding: 7px;">
+                                    <div style="display: flex;justify-content: space-between;align-items: end;">
+                                        <i class="fas fa-refresh"
+                                            style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
+                                    </div>
+                                </a>
                                 <?php } ?>
                                 <!-- For Filter Periode -->
-                                <a href="#modal-Filter-periode" class="btn btn-sm btn-default m-b-10" data-toggle="modal" title="Filter Periode" style="padding: 7px;">
+                                <a href="#modal-Filter-periode" class="btn btn-sm btn-default m-b-10"
+                                    data-toggle="modal" title="Filter Periode" style="padding: 7px;">
                                     <div style="display: flex;justify-content: space-between;align-items: end;">
-                                        <i class="fas fa-filter" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Filter Periode
+                                        <i class="fas fa-filter"
+                                            style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Filter Periode
                                     </div>
                                 </a>
                                 <div class="modal fade" id="modal-Filter-periode">
@@ -71,24 +81,30 @@ if (isset($_POST['filter_date'])) {
                                             <form action="" method="POST">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">[Laporan Mutasi Barang] Filter Periode</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">×</button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="row" style="display: grid;justify-content: center;align-items: center;">
-                                                        <div class="col-12" style="display: flex;justify-content: center;">
-                                                            <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
+                                                    <div class="row"
+                                                        style="display: grid;justify-content: center;align-items: center;">
+                                                        <div class="col-12"
+                                                            style="display: flex;justify-content: center;">
+                                                            <img src="assets/img/svg/realisasi_b.svg"
+                                                                alt="Laporan Realisasi Mitra Per Tahun" class="image"
+                                                                width="50%">
                                                         </div>
                                                     </div>
                                                     <hr>
                                                     <div class="row" style="display: flex;align-items: center;">
                                                         <div class="col-xl-5">
                                                             <div class="form-group">
-                                                                <select type="text" class="default-select2 form-control" name="Month" id="IDBulan">
+                                                                <select type="text" class="default-select2 form-control"
+                                                                    name="Month" id="IDBulan">
                                                                     <?php if ($Month != NULL) { ?>
-                                                                        <option value="<?= $Month ?>"><?= $Month ?></option>
-                                                                        <option value="">-- Pilih Bulan --</option>
+                                                                    <option value="<?= $Month ?>"><?= $Month ?></option>
+                                                                    <option value="">-- Pilih Bulan --</option>
                                                                     <?php } else { ?>
-                                                                        <option value="">-- Pilih Bulan --</option>
+                                                                    <option value="">-- Pilih Bulan --</option>
                                                                     <?php } ?>
                                                                     <!-- <option value="All">Semua Bulan</option> -->
                                                                     <option value="01">Januari</option>
@@ -106,19 +122,21 @@ if (isset($_POST['filter_date'])) {
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xl-2" style="display: flex;justify-content: center;">
+                                                        <div class="col-xl-2"
+                                                            style="display: flex;justify-content: center;">
                                                             <div class="form-group">
                                                                 s.d
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-5">
                                                             <div class="form-group">
-                                                                <select type="text" class="default-select2 form-control" name="Year" id="IDTahun">
+                                                                <select type="text" class="default-select2 form-control"
+                                                                    name="Year" id="IDTahun">
                                                                     <?php if ($Year != NULL) { ?>
-                                                                        <option value="<?= $Year ?>"><?= $Year ?></option>
-                                                                        <option value="">-- Pilih Tahun --</option>
+                                                                    <option value="<?= $Year ?>"><?= $Year ?></option>
+                                                                    <option value="">-- Pilih Tahun --</option>
                                                                     <?php } else { ?>
-                                                                        <option value="">-- Pilih Tahun --</option>
+                                                                    <option value="">-- Pilih Tahun --</option>
                                                                     <?php } ?>
                                                                     <?php
                                                                     for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
@@ -131,8 +149,10 @@ if (isset($_POST['filter_date'])) {
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                    <button type="submit" name="filter_date" class="btn btn-default"><i class="fas fa-filter"></i> Filter Periode</button>
+                                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i
+                                                            class="fas fa-times-circle"></i> Tutup</a>
+                                                    <button type="submit" name="filter_date" class="btn btn-default"><i
+                                                            class="fas fa-filter"></i> Filter Periode</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -140,23 +160,30 @@ if (isset($_POST['filter_date'])) {
                                 </div>
                                 <!-- End For Filter Periode -->
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                    <form action="./export/excel_report_mutasi_barang.php" target="_blank" method="POST" style="display: inline-block;">
-                                        <input type="hidden" name="Month" value="<?= $Month; ?>">
-                                        <input type="hidden" name="Year" value="<?= $Year; ?>">
-                                        <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
-                                            <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel" data-toggle="popover" data-trigger="hover" data-title="Export File Excel" data-placement="top" data-content="Klik untuk mengexport data dalam file Excel"> Export Excel
-                                        </button>
-                                    </form>
-                                    <!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
+                                <form action="./export/excel_report_mutasi_barang.php" target="_blank" method="POST"
+                                    style="display: inline-block;">
+                                    <input type="hidden" name="Month" value="<?= $Month; ?>">
+                                    <input type="hidden" name="Year" value="<?= $Year; ?>">
+                                    <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
+                                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"
+                                            data-toggle="popover" data-trigger="hover" data-title="Export File Excel"
+                                            data-placement="top"
+                                            data-content="Klik untuk mengexport data dalam file Excel"> Export Excel
+                                    </button>
+                                </form>
+                                <!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
                                         <img src="assets/img/favicon/pdf.png" class="icon-primary-pdf" alt="PDF" data-toggle="popover" data-trigger="hover" data-title="Export File PDF" data-placement="top" data-content="Klik untuk mengexport data dalam file PDF"> Export PDF
                                     </a> -->
-                                    <form action="./export/pdf_report_mutasi_barang.php" target="_blank" method="POST" style="display: inline-block;">
-                                        <input type="hidden" name="Month" value="<?= $Month; ?>">
-                                        <input type="hidden" name="Year" value="<?= $Year; ?>">
-                                        <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
-                                            <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print" data-toggle="popover" data-trigger="hover" data-title="Print File" data-placement="top" data-content="Klik untuk Print File"> Print
-                                        </button>
-                                    </form>
+                                <form action="./export/pdf_report_mutasi_barang.php" target="_blank" method="POST"
+                                    style="display: inline-block;">
+                                    <input type="hidden" name="Month" value="<?= $Month; ?>">
+                                    <input type="hidden" name="Year" value="<?= $Year; ?>">
+                                    <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
+                                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"
+                                            data-toggle="popover" data-trigger="hover" data-title="Print File"
+                                            data-placement="top" data-content="Klik untuk Print File"> Print
+                                    </button>
+                                </form>
                                 <?php } ?>
                             </span>
                         </div>
@@ -168,18 +195,20 @@ if (isset($_POST['filter_date'])) {
                         <div class="col-md-3">
                             <div style="display: flex;justify-content: center;">
                                 <?php if ($resultHeadSetting['logo'] == NULL) { ?>
-                                    <img src="assets/images/logo/logo-default.png" width="30%">
+                                <img src="assets/images/logo/logo-default.png" width="30%">
                                 <?php } else { ?>
-                                    <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
+                                <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
                                 <?php } ?>
                             </div>
                         </div>
                         <div class="col-md-9">
                             <div style="display: grid;justify-content: left;">
-                                <font style="font-size: 24px;font-weight: 800;">LAPORAN PERTANGGUNGJAWABAN MUTASI BARANG</font>
-                                <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
+                                <font style="font-size: 24px;font-weight: 800;">LAPORAN PERTANGGUNGJAWABAN MUTASI BARANG
+                                </font>
+                                <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?>
+                                </font>
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                    <?php
+                                <?php
                                     if ($Month == '01') {
                                         $DecMont = 'Januari';
                                     } else if ($Month == '02') {
@@ -206,18 +235,22 @@ if (isset($_POST['filter_date'])) {
                                         $DecMont = 'Desember';
                                     }
                                     ?>
-                                    <font style="font-size: 14px;font-weight: 800;">Periode: <?= $DecMont ?> / <?= $Year ?></font>
+                                <font style="font-size: 14px;font-weight: 800;">Periode: <?= $DecMont ?> / <?= $Year ?>
+                                </font>
                                 <?php } ?>
                                 <div class="line-page-table"></div>
-                                <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
+                                <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?>
+                                </font>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body text-inverse">
-                    <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
+                    <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
+                    </div>
                     <div class="table-responsive">
-                        <table id="table-mutasi-barang" class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="table-mutasi-barang"
+                            class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">#</th>
@@ -238,60 +271,40 @@ if (isset($_POST['filter_date'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                if (isset($_POST["filter_date"])) {
-                                    $dataTable = $dbcon->query("SELECT brg.KODE_BARANG,brg.URAIAN,brg.UKURAN,brg.SPESIFIKASI_LAIN,brg.KODE_SATUAN,
-                                                                        hdr.NOMOR_BC11,hdr.TANGGAL_BC11
-                                                                FROM plb_header AS hdr
-                                                                LEFT OUTER JOIN plb_barang AS brg ON hdr.NOMOR_AJU=brg.NOMOR_AJU
-                                                                WHERE SUBSTR(hdr.TANGGAL_BC11,6,2) LIKE '%$Month%'
-                                                                AND SUBSTR(hdr.TANGGAL_BC11,1,4) LIKE '%$Year%'
-                                                                ORDER BY hdr.TANGGAL_BC11 ASC");
-                                    // var_dump($dataTable);
-                                    // exit;
-                                } else {
-                                    $dataTable = $dbcon->query("SELECT brg.KODE_BARANG,brg.URAIAN,brg.UKURAN,brg.SPESIFIKASI_LAIN,brg.KODE_SATUAN,
-                                                                        hdr.NOMOR_BC11,hdr.TANGGAL_BC11
-                                                                FROM plb_header AS hdr
-                                                                LEFT OUTER JOIN plb_barang AS brg ON hdr.NOMOR_AJU=brg.NOMOR_AJU
-                                                                ORDER BY hdr.TANGGAL_BC11 ASC LIMIT 0");
-                                }
-                                if (mysqli_num_rows($dataTable) > 0) {
-                                    $no = 0;
-                                    while ($row = mysqli_fetch_array($dataTable)) {
-                                        $no++;
-                                ?>
-                                        <tr>
-                                            <!-- 9 -->
-                                            <td><?= $no ?>.</td>
-                                            <td><?= $row['TANGGAL_BC11']; ?></td>
-                                            <td><?= $row['KODE_BARANG']; ?></td>
-                                            <td><?= $row['URAIAN']; ?></td>
-                                            <td><?= $row['UKURAN']; ?></td>
-                                            <td><?= $row['SPESIFIKASI_LAIN']; ?></td>
-                                            <td><?= $row['KODE_SATUAN']; ?></td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                        </tr>
-                                    <?php } ?>
+                                <?php if ($data['status'] == 404) { ?>
+                                <tr>
+                                    <td colspan="14">
+                                        <center>
+                                            <div style="display: flex;justify-content: center; align-items: center">
+                                                <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
                                 <?php } else { ?>
-                                    <tr>
-                                        <td colspan="14">
-                                            <center>
-                                                <div style="display: flex;justify-content: center; align-items: center">
-                                                    <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
-                                                </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php }
-                                mysqli_close($dbcon); ?>
+                                <?php $no = 0; ?>
+                                <?php foreach ($data['result'] as $row) { ?>
+                                <?php $no++ ?>
+                                <tr>
+                                    <!-- 9 -->
+                                    <td><?= $no ?>.</td>
+                                    <td><?= $row['TANGGAL_BC11']; ?></td>
+                                    <td><?= $row['KODE_BARANG']; ?></td>
+                                    <td><?= $row['URAIAN']; ?></td>
+                                    <td><?= $row['UKURAN']; ?></td>
+                                    <td><?= $row['SPESIFIKASI_LAIN']; ?></td>
+                                    <td><?= $row['KODE_SATUAN']; ?></td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <?php } ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -301,9 +314,12 @@ if (isset($_POST['filter_date'])) {
                             Laporan Mutasi Barang | IT Inventory <?= $resultHeadSetting['company'] ?>
                         </p>
                         <p class="text-center">
-                            <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
-                            <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:<?= $resultHeadSetting['telp'] ?></span>
-                            <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> <?= $resultHeadSetting['email'] ?></span>
+                            <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>
+                                <?= $resultHeadSetting['website'] ?></span>
+                            <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i>
+                                T:<?= $resultHeadSetting['telp'] ?></span>
+                            <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i>
+                                <?= $resultHeadSetting['email'] ?></span>
                         </p>
                     </div>
                 </div>
@@ -321,26 +337,26 @@ include "include/jsDatatables.php";
 include "include/jsForm.php";
 ?>
 <script type="text/javascript">
-    // TableBarangTarif
-    $(document).ready(function() {
-        $('#table-mutasi-barang').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
-            // dom: 'Bfrtip',
-            // buttons: [
-            //     'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
-            // ],
-            // "order": [],
-            // "columnDefs": [{
-            //     "targets": 'no-sort',
-            //     "orderable": false,
-            // }],
-            // iDisplayLength: -1
-        });
+// TableBarangTarif
+$(document).ready(function() {
+    $('#table-mutasi-barang').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+        // dom: 'Bfrtip',
+        // buttons: [
+        //     'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+        // ],
+        // "order": [],
+        // "columnDefs": [{
+        //     "targets": 'no-sort',
+        //     "orderable": false,
+        // }],
+        // iDisplayLength: -1
     });
+});
 </script>
