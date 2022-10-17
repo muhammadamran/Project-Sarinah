@@ -86,13 +86,13 @@ include "include/top-header.php";
 
     .class-utama {
         padding: 10px;
-        width: 50%;
+        width: 100%;
     }
 
     @media only screen and (min-width: 600px) {
         .class-utama {
             padding: 10px;
-            width: 100%;
+            width: 50%;
         }
     }
 
