@@ -55,9 +55,9 @@ include "include/top-header.php";
     </div>
     <div class="col-xl-12 col-md-12" id="for-info-index">
         <?php
-		$dataForInfo = $dbcon->query("SELECT * FROM tbl_informasi WHERE id='1'");
-		$resultForInfo = mysqli_fetch_array($dataForInfo);
-		?>
+        $dataForInfo = $dbcon->query("SELECT * FROM tbl_informasi WHERE id='1'");
+        $resultForInfo = mysqli_fetch_array($dataForInfo);
+        ?>
         <?php if ($resultForInfo['info_tipe'] == 'Text Berjalan') { ?>
         <div style="background: <?= $resultForInfo['info_bg'] ?>;padding: 5px;border-radius: 5px;margin-bottom: 10px;">
             <marquee style="color: <?= $resultForInfo['info_color'] ?>" class="text-announcement-m"><b><i
@@ -82,6 +82,13 @@ include "include/top-header.php";
         margin-top: 30px;
         /*margin-bottom: 30px;*/
         justify-content: center;
+    }
+
+    @media (max-width:554px) {
+        .class-utama {
+            padding: 10px;
+            width: 50%;
+        }
     }
 
     .class-utama {
@@ -149,60 +156,60 @@ include "include/top-header.php";
     }
     </style>
     <?php
-	if ($resultRoleModules['da_one'] == 'none' && $resultRoleModules['da_two'] == 'none') {
-		$TitleDashboard = 'none';
-	} else {
-		$TitleDashboard = 'show';
-	}
+    if ($resultRoleModules['da_one'] == 'none' && $resultRoleModules['da_two'] == 'none') {
+        $TitleDashboard = 'none';
+    } else {
+        $TitleDashboard = 'show';
+    }
 
-	if (
-		$resultRoleModules['v_bc'] == 'none' &&
-		$resultRoleModules['v_cttpb'] == 'none' &&
-		$resultRoleModules['v_filterttpb'] == 'none' &&
-		$resultRoleModules['v_daftar_barang'] == 'none' &&
-		$resultRoleModules['v_tarif_hs'] == 'none' &&
-		$resultRoleModules['v_pemasok'] == 'none' &&
-		$resultRoleModules['v_perusahaan'] == 'none' &&
-		$resultRoleModules['v_alat_angkut'] == 'none' &&
-		$resultRoleModules['v_tempat_penimbunan'] == 'none' &&
-		$resultRoleModules['v_kantor_bea_cukai'] == 'none' &&
-		$resultRoleModules['v_negara'] == 'none' &&
-		$resultRoleModules['v_pelabuhan_dn'] == 'none' &&
-		$resultRoleModules['v_pelabuhan_ln'] == 'none' &&
-		$resultRoleModules['v_mata_uang'] == 'none' &&
-		$resultRoleModules['v_satuan'] == 'none' &&
-		$resultRoleModules['v_kemasan'] == 'none' &&
-		$resultRoleModules['v_departemen'] == 'none' &&
-		$resultRoleModules['v_hak_akses'] == 'none' &&
-		$resultRoleModules['v_jabatan'] == 'none' &&
-		$resultRoleModules['v_kuota_mitra'] == 'none' &&
-		$resultRoleModules['v_pengaturan_tbb'] == 'none' &&
-		$resultRoleModules['v_pengaturan_realtime'] == 'none' &&
-		$resultRoleModules['v_pengaturan_informasi'] == 'none' &&
-		$resultRoleModules['v_user_manajemen'] == 'none'
-	) {
-		$TitleViewDataOnline = 'none';
-		$long = '8';
-	} else {
-		$TitleViewDataOnline = 'show';
-	}
+    if (
+        $resultRoleModules['v_bc'] == 'none' &&
+        $resultRoleModules['v_cttpb'] == 'none' &&
+        $resultRoleModules['v_filterttpb'] == 'none' &&
+        $resultRoleModules['v_daftar_barang'] == 'none' &&
+        $resultRoleModules['v_tarif_hs'] == 'none' &&
+        $resultRoleModules['v_pemasok'] == 'none' &&
+        $resultRoleModules['v_perusahaan'] == 'none' &&
+        $resultRoleModules['v_alat_angkut'] == 'none' &&
+        $resultRoleModules['v_tempat_penimbunan'] == 'none' &&
+        $resultRoleModules['v_kantor_bea_cukai'] == 'none' &&
+        $resultRoleModules['v_negara'] == 'none' &&
+        $resultRoleModules['v_pelabuhan_dn'] == 'none' &&
+        $resultRoleModules['v_pelabuhan_ln'] == 'none' &&
+        $resultRoleModules['v_mata_uang'] == 'none' &&
+        $resultRoleModules['v_satuan'] == 'none' &&
+        $resultRoleModules['v_kemasan'] == 'none' &&
+        $resultRoleModules['v_departemen'] == 'none' &&
+        $resultRoleModules['v_hak_akses'] == 'none' &&
+        $resultRoleModules['v_jabatan'] == 'none' &&
+        $resultRoleModules['v_kuota_mitra'] == 'none' &&
+        $resultRoleModules['v_pengaturan_tbb'] == 'none' &&
+        $resultRoleModules['v_pengaturan_realtime'] == 'none' &&
+        $resultRoleModules['v_pengaturan_informasi'] == 'none' &&
+        $resultRoleModules['v_user_manajemen'] == 'none'
+    ) {
+        $TitleViewDataOnline = 'none';
+        $long = '8';
+    } else {
+        $TitleViewDataOnline = 'show';
+    }
 
-	if (
-		$resultRoleModules['re_masuk_barang'] == 'none' &&
-		$resultRoleModules['re_keluar_barang'] == 'none' &&
-		$resultRoleModules['re_mutasi_barang'] == 'none' &&
-		$resultRoleModules['re_posisi_barang'] == 'none' &&
-		$resultRoleModules['re_realisasi'] == 'none' &&
-		$resultRoleModules['re_data_tpb'] == 'none' &&
-		$resultRoleModules['re_ck_plb'] == 'none' &&
-		$resultRoleModules['re_ck_sarinah'] == 'none' &&
-		$resultRoleModules['re_log'] == 'none'
-	) {
-		$TitleReport = 'none';
-	} else {
-		$TitleReport = 'show';
-	}
-	?>
+    if (
+        $resultRoleModules['re_masuk_barang'] == 'none' &&
+        $resultRoleModules['re_keluar_barang'] == 'none' &&
+        $resultRoleModules['re_mutasi_barang'] == 'none' &&
+        $resultRoleModules['re_posisi_barang'] == 'none' &&
+        $resultRoleModules['re_realisasi'] == 'none' &&
+        $resultRoleModules['re_data_tpb'] == 'none' &&
+        $resultRoleModules['re_ck_plb'] == 'none' &&
+        $resultRoleModules['re_ck_sarinah'] == 'none' &&
+        $resultRoleModules['re_log'] == 'none'
+    ) {
+        $TitleReport = 'none';
+    } else {
+        $TitleReport = 'show';
+    }
+    ?>
     <div class="row-choose">
         <!-- begin col-3 -->
         <!-- <div class="col-md-4"> -->
