@@ -68,7 +68,7 @@ $data = json_decode($content, true);
                                 <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun"
                                     class="image" width="50%">
                             </div>
-                            <div class="col-sm-9">
+                            <div class="col-sm-9" style="margin-top: 10px;">
                                 <div class="row">
                                     <div class="col-xl-5">
                                         <div class="form-group">
@@ -78,7 +78,7 @@ $data = json_decode($content, true);
                                         </div>
                                     </div>
                                     <div class="col-xl-2"
-                                        style="display: flex;justify-content: center;align-self: center;">
+                                        style="display: flex;justify-content: center;align-self: center;margin-top: 25px;">
                                         <div class="form-group">
                                             S.D
                                         </div>
@@ -122,13 +122,13 @@ $data = json_decode($content, true);
                                 </a>
                                 <?php } ?>
                                 <!-- For Filter Tanggal -->
-                                <a href="#modal-Filter-tanggal" class="btn btn-sm btn-default m-b-10"
+                                <!-- <a href="#modal-Filter-tanggal" class="btn btn-sm btn-default m-b-10"
                                     data-toggle="modal" title="Filter Tanggal" style="padding: 7px;">
                                     <div style="display: flex;justify-content: space-between;align-items: end;">
                                         <i class="fas fa-filter"
                                             style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Filter Tanggal
                                     </div>
-                                </a>
+                                </a> -->
                                 <div class="modal fade" id="modal-Filter-tanggal">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
