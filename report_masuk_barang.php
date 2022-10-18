@@ -58,61 +58,49 @@ $data = json_decode($content, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Tabel TPB Inventory</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Masuk Barang</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <form action="tbl_tpb.php" method="GET">
-                        <fieldset>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Pilih Tabel <font style="color: red;">*</font>
-                                </label>
-                                <div class="col-md-7">
-                                    <select class="default-select2 form-control" name="TableName" required>
-                                        <?php if ($TableName == NULL) { ?>
-                                        <option value="">-- Pilih Tabel --</option>
-                                        <?php
-                                            $result = $dbcon->query("SELECT TABLE_NAME FROM view_select_table ORDER BY TABLE_NAME ASC");
-                                            foreach ($result as $row) {
-                                            ?>
-                                        <option value="<?= $row['TABLE_NAME'] ?>"><?= $row['TABLE_NAME'] ?></option>
-                                        <?php } ?>
-                                        <?php } else { ?>
-                                        <option value="<?= $TableName ?>"><?= $TableName ?></option>
-                                        <option value="">-- Pilih Tabel --</option>
-                                        <?php
-                                            $result = $dbcon->query("SELECT TABLE_NAME FROM view_select_table ORDER BY TABLE_NAME ASC");
-                                            foreach ($result as $row) {
-                                            ?>
-                                        <option value="<?= $row['TABLE_NAME'] ?>"><?= $row['TABLE_NAME'] ?></option>
-                                        <?php } ?>
-                                        <?php } ?>
-                                    </select>
+                    <form action="" method="POST">
+                        <div class="modal-header">
+                            <h4 class="modal-title">[Laporan Masuk Barang] Filter Tanggal</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="display: grid;justify-content: center;align-items: center;">
+                                <div class="col-12" style="display: flex;justify-content: center;">
+                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun"
+                                        class="image" width="50%">
                                 </div>
                             </div>
-                            <div class="form-group row m-b-15">
-                                <label class="col-md-3 col-form-label">Limit Data</label>
-                                <div class="col-md-7">
-                                    <?php if ($FindLimit == NULL) { ?>
-                                    <input type="number" class="form-control" id="IDFindLimit" name="FindLimit"
-                                        placeholder="Limit Data ...">
-                                    <?php } else { ?>
-                                    <input type="number" class="form-control" id="IDFindLimit" name="FindLimit"
-                                        placeholder="Limit Data ..." value="<?= $FindLimit ?>">
-                                    <?php } ?>
+                            <hr>
+                            <div class="row" style="display: flex;align-items: center;">
+                                <div class="col-xl-5">
+                                    <div class="form-group">
+                                        <input type="date" name="StartTanggal" class="form-control"
+                                            value="<?= $StartTanggal; ?>" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2" style="display: flex;justify-content: center;">
+                                    <div class="form-group">
+                                        s.d
+                                    </div>
+                                </div>
+                                <div class="col-xl-5">
+                                    <div class="form-group">
+                                        <input type="date" name="EndTanggal" class="form-control"
+                                            value="<?= $EndTanggal; ?>" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-md-7 offset-md-3">
-                                    <button type="submit" name="find" class="btn btn-info m-r-5">
-                                        <i class="fa fa-search"></i> Cari
-                                    </button>
-                                    <a href="tbl_tpb.php" type="button" class="btn btn-yellow m-r-5">
-                                        <i class="fa fa-refresh"></i> Reset
-                                    </a>
-                                </div>
-                            </div>
-                        </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i
+                                    class="fas fa-times-circle"></i> Tutup</a>
+                            <button type="submit" name="filter_date" class="btn btn-default"><i
+                                    class="fas fa-filter"></i> Filter Tanggal</button>
+                        </div>
                     </form>
                 </div>
             </div>
