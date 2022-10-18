@@ -63,34 +63,38 @@ $data = json_decode($content, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <form action="" method="POST">
-                        <div class="row" style="display: grid;justify-content: center;align-items: center;">
-                            <div class="col-12" style="display: flex;justify-content: center;">
+                        <div class="row">
+                            <div class="col-sm-3">
                                 <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun"
                                     class="image" width="50%">
                             </div>
+                            <div class="col-sm-9">
+                                <div class="row" style="display: flex;align-items: center;">
+                                    <div class="col-xl-5">
+                                        <div class="form-group">
+                                            <input type="date" name="StartTanggal" class="form-control"
+                                                value="<?= $StartTanggal; ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2" style="display: flex;justify-content: center;">
+                                        <div class="form-group">
+                                            s.d
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-5">
+                                        <div class="form-group">
+                                            <input type="date" name="EndTanggal" class="form-control"
+                                                value="<?= $EndTanggal; ?>" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="submit" name="filter_date" class="btn btn-sm btn-info m-r-5"><i
+                                        class="fas fa-filter"></i>
+                                    Filter Tanggal</button>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="row" style="display: flex;align-items: center;">
-                            <div class="col-xl-4">
-                                <div class="form-group">
-                                    <input type="date" name="StartTanggal" class="form-control"
-                                        value="<?= $StartTanggal; ?>" required>
-                                </div>
-                            </div>
-                            <div class="col-xl-2" style="display: flex;justify-content: center;">
-                                <div class="form-group">
-                                    s.d
-                                </div>
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="form-group">
-                                    <input type="date" name="EndTanggal" class="form-control"
-                                        value="<?= $EndTanggal; ?>" required>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" name="filter_date" class="btn btn-default"><i class="fas fa-filter"></i>
-                            Filter Tanggal</button>
                     </form>
                 </div>
             </div>
