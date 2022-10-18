@@ -70,29 +70,31 @@ $data = json_decode($content, true);
                             </div>
                             <div class="col-sm-9">
                                 <div class="row" style="display: flex;align-items: center;">
-                                    <div class="col-xl-5">
+                                    <div class="col-xl-12">
                                         <div class="form-group">
+                                            <label>Tanggal</label>
                                             <input type="date" name="StartTanggal" class="form-control"
                                                 value="<?= $StartTanggal; ?>" required>
                                         </div>
                                     </div>
-                                    <div class="col-xl-2" style="display: flex;justify-content: center;">
+                                    <div class="col-xl-12" style="display: flex;justify-content: center;">
                                         <div class="form-group">
                                             s.d
                                         </div>
                                     </div>
-                                    <div class="col-xl-5">
+                                    <div class="col-xl-12">
                                         <div class="form-group">
+                                            <label>Tanggal</label>
                                             <input type="date" name="EndTanggal" class="form-control"
                                                 value="<?= $EndTanggal; ?>" required>
                                         </div>
                                     </div>
+                                    <div class="col-sm-12">
+                                        <button type="submit" name="filter_date" class="btn btn-sm btn-info m-r-5"><i
+                                                class="fas fa-filter"></i>
+                                            Filter Tanggal</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <button type="submit" name="filter_date" class="btn btn-sm btn-info m-r-5"><i
-                                        class="fas fa-filter"></i>
-                                    Filter Tanggal</button>
                             </div>
                         </div>
                     </form>
