@@ -77,7 +77,8 @@ $data = json_decode($content, true);
                                                 value="<?= $StartTanggal; ?>" required>
                                         </div>
                                     </div>
-                                    <div class="col-xl-2">
+                                    <div class="col-xl-2"
+                                        style="display: flex;justify-content: center;align-self: center;">
                                         <div class="form-group">
                                             S.D
                                         </div>
@@ -90,7 +91,7 @@ $data = json_decode($content, true);
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
-                                        <button type="submit" name="filter_date" class="btn btn-sm btn-info m-r-5"><i
+                                        <button type="submit" name="filter_date" class="btn btn-info m-r-5"><i
                                                 class="fas fa-filter"></i>
                                             Filter Tanggal</button>
                                     </div>
