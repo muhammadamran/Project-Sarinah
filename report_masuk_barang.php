@@ -21,11 +21,13 @@ if (isset($_POST['filter_date'])) {
         $EndTanggal     = $_POST['EndTanggal'];
         // $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
     }
+
+    $Filter = 'work';
 }
 
 // API - 
 include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'reportMasukBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal);
+$content = get_content($resultAPI['url_api'] . 'reportMasukBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal . '&Filter=' . $Filter);
 $data = json_decode($content, true);
 ?>
 
