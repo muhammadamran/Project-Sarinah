@@ -64,27 +64,27 @@ $data = json_decode($content, true);
                 <div class="panel-body text-inverse">
                     <form action="" method="POST">
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-3" style="display: flex;justify-content: center;">
                                 <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun"
                                     class="image" width="50%">
                             </div>
                             <div class="col-sm-9">
-                                <div class="row" style="display: flex;align-items: center;">
-                                    <div class="col-xl-12">
+                                <div class="row">
+                                    <div class="col-xl-5">
                                         <div class="form-group">
-                                            <label>Tanggal</label>
+                                            <label>Tanggal Mulai</label>
                                             <input type="date" name="StartTanggal" class="form-control"
                                                 value="<?= $StartTanggal; ?>" required>
                                         </div>
                                     </div>
-                                    <div class="col-xl-12" style="display: flex;justify-content: center;">
+                                    <div class="col-xl-2">
                                         <div class="form-group">
-                                            s.d
+                                            S.D
                                         </div>
                                     </div>
-                                    <div class="col-xl-12">
+                                    <div class="col-xl-5">
                                         <div class="form-group">
-                                            <label>Tanggal</label>
+                                            <label>Tanggal Selesai</label>
                                             <input type="date" name="EndTanggal" class="form-control"
                                                 value="<?= $EndTanggal; ?>" required>
                                         </div>
