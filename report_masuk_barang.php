@@ -104,11 +104,13 @@ $data = json_decode($content, true);
         </div>
     </div>
     <!-- End Select Tabel -->
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="panel panel-inverse" data-sortable-id="ui-perusahaan">
+    <?php if (isset($_POST['filter_date'])) { ?>
+    <div class="row" style="display: flex;justify-content: end;">
+        <div class="col-xl-4">
+            <div class="panel panel-inverse" data-sortable-id="ui-perusahaan"
+                style="padding: 15px;display: flex;justify-content: space-evenly;">
                 <?php if (isset($_POST['filter_date'])) { ?>
-                <a href="./report_masuk_barang.php" class="btn btn-yellow m-b-10" title="Reset" style="padding: 7px;">
+                <a href="./report_masuk_barang.php" class="btn btn-yellow" title="Reset" style="padding: 7px;">
                     <div style="display: flex;justify-content: space-between;align-items: end;">
                         <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
                     </div>
@@ -119,7 +121,7 @@ $data = json_decode($content, true);
                     style="display: inline-block;">
                     <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
                     <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                    <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
+                    <button type="submit" name="find_" class="btn btn-sm btn-white">
                         <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"
                             data-toggle="popover" data-trigger="hover" data-title="Export File Excel"
                             data-placement="top" data-content="Klik untuk mengexport data dalam file Excel"> Export
@@ -130,7 +132,7 @@ $data = json_decode($content, true);
                     style="display: inline-block;">
                     <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
                     <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                    <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
+                    <button type="submit" name="find_" class="btn btn-sm btn-white">
                         <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"
                             data-toggle="popover" data-trigger="hover" data-title="Print File" data-placement="top"
                             data-content="Klik untuk Print File"> Print
@@ -140,6 +142,8 @@ $data = json_decode($content, true);
             </div>
         </div>
     </div>
+    <?php } ?>
+
     <!-- Begin Row -->
     <div class="row">
         <div class="col-xl-12">
