@@ -52,8 +52,74 @@ $data = json_decode($content, true);
         </div>
     </div>
     <div class="line-page"></div>
-    <!-- Begin Row -->
 
+    <!-- begin Select Tabel -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Tabel TPB Inventory</h4>
+                    <?php include "include/panel-row.php"; ?>
+                </div>
+                <div class="panel-body text-inverse">
+                    <form action="tbl_tpb.php" method="GET">
+                        <fieldset>
+                            <div class="form-group row m-b-15">
+                                <label class="col-md-3 col-form-label">Pilih Tabel <font style="color: red;">*</font>
+                                </label>
+                                <div class="col-md-7">
+                                    <select class="default-select2 form-control" name="TableName" required>
+                                        <?php if ($TableName == NULL) { ?>
+                                        <option value="">-- Pilih Tabel --</option>
+                                        <?php
+                                            $result = $dbcon->query("SELECT TABLE_NAME FROM view_select_table ORDER BY TABLE_NAME ASC");
+                                            foreach ($result as $row) {
+                                            ?>
+                                        <option value="<?= $row['TABLE_NAME'] ?>"><?= $row['TABLE_NAME'] ?></option>
+                                        <?php } ?>
+                                        <?php } else { ?>
+                                        <option value="<?= $TableName ?>"><?= $TableName ?></option>
+                                        <option value="">-- Pilih Tabel --</option>
+                                        <?php
+                                            $result = $dbcon->query("SELECT TABLE_NAME FROM view_select_table ORDER BY TABLE_NAME ASC");
+                                            foreach ($result as $row) {
+                                            ?>
+                                        <option value="<?= $row['TABLE_NAME'] ?>"><?= $row['TABLE_NAME'] ?></option>
+                                        <?php } ?>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row m-b-15">
+                                <label class="col-md-3 col-form-label">Limit Data</label>
+                                <div class="col-md-7">
+                                    <?php if ($FindLimit == NULL) { ?>
+                                    <input type="number" class="form-control" id="IDFindLimit" name="FindLimit"
+                                        placeholder="Limit Data ...">
+                                    <?php } else { ?>
+                                    <input type="number" class="form-control" id="IDFindLimit" name="FindLimit"
+                                        placeholder="Limit Data ..." value="<?= $FindLimit ?>">
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-3">
+                                    <button type="submit" name="find" class="btn btn-info m-r-5">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                    <a href="tbl_tpb.php" type="button" class="btn btn-yellow m-r-5">
+                                        <i class="fa fa-refresh"></i> Reset
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Select Tabel -->
+    <!-- Begin Row -->
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan">
