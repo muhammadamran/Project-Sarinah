@@ -245,18 +245,14 @@ $data = json_decode($content, true);
                                         <?= $row['TANGGAL_DAFTAR']; ?>
                                         <?php } ?>
                                     </td>
-                                    <td style="text-align: left">
-                                        <?php if ($row['PEMASOK'] != '' && $row['ID_PEMASOK'] != '') { ?>
-                                        <?= $row['PEMASOK']; ?>
-                                        <?php } else if ($row['PEMASOK'] == '' && $row['ID_PEMASOK'] != '') { ?>
-                                        <?= $row['ID_PEMASOK']; ?>
-                                        <?php } else if ($row['PEMASOK'] != '' && $row['ID_PEMASOK'] == '') { ?>
-                                        <?= $row['ID_PEMASOK']; ?>
-                                        <?php } else if ($row['PEMASOK'] == '' && $row['ID_PEMASOK'] == '') { ?>
+                                    <td style="text-align: center">
+                                        <?php if ($row['PEMASOK'] == NULL) { ?>
                                         <center>
                                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                             </font>
                                         </center>
+                                        <?php } else { ?>
+                                        <?= $row['PEMASOK']; ?>
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: center"><?= $row['POS_TARIF']; ?></td>
