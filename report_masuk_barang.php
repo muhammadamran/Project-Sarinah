@@ -228,20 +228,27 @@ $data = json_decode($content, true);
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
-                                    <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
-                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB</td>
                                     <td style="text-align: center">
-                                        <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
-                                        <?= $row['TANGGAL_BC11']; ?>
+                                        <?= $row['NOMOR_DAFTAR']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['TANGGAL_DAFTAR'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['TANGGAL_DAFTAR']; ?>
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: left">
                                         <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
                                         <center>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                             </font>
                                         </center>
                                         <?php } else { ?>
@@ -299,23 +306,23 @@ include "include/jsDatatables.php";
 // TableBarangTarif
 $(document).ready(function() {
     $('#table-masuk-barang').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ]
         // dom: 'Bfrtip',
         // buttons: [
-        //     'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
-        // ],
-        // "order": [],
-        // "columnDefs": [{
-        //     "targets": 'no-sort',
-        //     "orderable": false,
-        // }],
-        // iDisplayLength: -1
+        //     'copyHtml5',
+        //     'excelHtml5',
+        //     'csvHtml5',
+        //     'pdfHtml5'
+        // ]
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+        ],
+        "order": [],
+        "columnDefs": [{
+            "targets": 'no-sort',
+            "orderable": false,
+        }],
+        iDisplayLength: -1
     });
 });
 </script>
