@@ -104,31 +104,64 @@ $data = json_decode($content, true);
         </div>
     </div>
     <!-- End Select Tabel -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel-inverse" data-sortable-id="ui-perusahaan">
+                <?php if (isset($_POST['filter_date'])) { ?>
+                <a href="./report_masuk_barang.php" class="btn btn-yellow m-b-10" title="Reset" style="padding: 7px;">
+                    <div style="display: flex;justify-content: space-between;align-items: end;">
+                        <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
+                    </div>
+                </a>
+                <?php } ?>
+                <?php if (isset($_POST['filter_date'])) { ?>
+                <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST"
+                    style="display: inline-block;">
+                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                    <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
+                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"
+                            data-toggle="popover" data-trigger="hover" data-title="Export File Excel"
+                            data-placement="top" data-content="Klik untuk mengexport data dalam file Excel"> Export
+                        Excel
+                    </button>
+                </form>
+                <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST"
+                    style="display: inline-block;">
+                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                    <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
+                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"
+                            data-toggle="popover" data-trigger="hover" data-title="Print File" data-placement="top"
+                            data-content="Klik untuk Print File"> Print
+                    </button>
+                </form>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
     <!-- Begin Row -->
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan">
                 <div class="row">
-                    <div class="col-xl-12">
+                    <!-- <div class="col-xl-12">
                         <div class="report-button-filter">
                             <span class="pull-right hidden-print">
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                <a href="./report_masuk_barang.php" class="btn btn-yellow m-b-10" title="Reset"
-                                    style="padding: 7px;">
-                                    <div style="display: flex;justify-content: space-between;align-items: end;">
-                                        <i class="fas fa-refresh"
-                                            style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
-                                    </div>
-                                </a>
+                                    <a href="./report_masuk_barang.php" class="btn btn-yellow m-b-10" title="Reset" style="padding: 7px;">
+                                        <div style="display: flex;justify-content: space-between;align-items: end;">
+                                            <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
+                                        </div>
+                                    </a>
                                 <?php } ?>
-                                <!-- For Filter Tanggal -->
-                                <!-- <a href="#modal-Filter-tanggal" class="btn btn-sm btn-default m-b-10"
+                                <a href="#modal-Filter-tanggal" class="btn btn-sm btn-default m-b-10"
                                     data-toggle="modal" title="Filter Tanggal" style="padding: 7px;">
                                     <div style="display: flex;justify-content: space-between;align-items: end;">
                                         <i class="fas fa-filter"
                                             style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Filter Tanggal
                                     </div>
-                                </a> -->
+                                </a>
                                 <div class="modal fade" id="modal-Filter-tanggal">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -182,36 +215,28 @@ $data = json_decode($content, true);
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End For Filter Tanggal -->
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST"
-                                    style="display: inline-block;">
-                                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                                    <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
-                                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"
-                                            data-toggle="popover" data-trigger="hover" data-title="Export File Excel"
-                                            data-placement="top"
-                                            data-content="Klik untuk mengexport data dalam file Excel"> Export Excel
-                                    </button>
-                                </form>
-                                <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST"
-                                    style="display: inline-block;">
-                                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                                    <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
-                                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"
-                                            data-toggle="popover" data-trigger="hover" data-title="Print File"
-                                            data-placement="top" data-content="Klik untuk Print File"> Print
-                                    </button>
-                                </form>
+                                    <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                                        <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                                        <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
+                                            <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel" data-toggle="popover" data-trigger="hover" data-title="Export File Excel" data-placement="top" data-content="Klik untuk mengexport data dalam file Excel"> Export Excel
+                                        </button>
+                                    </form>
+                                    <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                                        <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                                        <button type="submit" name="find_" class="btn btn-sm btn-white m-b-10">
+                                            <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print" data-toggle="popover" data-trigger="hover" data-title="Print File" data-placement="top" data-content="Klik untuk Print File"> Print
+                                        </button>
+                                    </form>
                                 <?php } ?>
                             </span>
                         </div>
-                    </div>
-                    <div class="col-xl-12">
+                    </div> -->
+                    <!-- <div class="col-xl-12">
                         <div class="line-page-table"></div>
-                    </div>
+                    </div> -->
                     <div style="display: flex;align-items: center;margin-top: 15px;margin-bottom: -0px;">
                         <div class="col-md-3">
                             <div style="display: flex;justify-content: center;">
