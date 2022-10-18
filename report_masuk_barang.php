@@ -246,13 +246,13 @@ $data = json_decode($content, true);
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: left">
-                                        <?php if ($row['NAMA_PEMASOK'] != NULL && $row['ID_PEMASOK'] != NULL) { ?>
-                                        <?= $row['NAMA_PEMASOK']; ?>
-                                        <?php } else if ($row['NAMA_PEMASOK'] == NULL && $row['ID_PEMASOK'] != NULL) { ?>
+                                        <?php if ($row['PEMASOK'] != NULL && $row['ID_PEMASOK'] != NULL) { ?>
+                                        <?= $row['PEMASOK']; ?>
+                                        <?php } else if ($row['PEMASOK'] == NULL && $row['ID_PEMASOK'] != NULL) { ?>
                                         <?= $row['ID_PEMASOK']; ?>
-                                        <?php } else if ($row['NAMA_PEMASOK'] != NULL && $row['ID_PEMASOK'] == NULL) { ?>
+                                        <?php } else if ($row['PEMASOK'] != NULL && $row['ID_PEMASOK'] == NULL) { ?>
                                         <?= $row['ID_PEMASOK']; ?>
-                                        <?php } else if ($row['NAMA_PEMASOK'] == NULL && $row['ID_PEMASOK'] == NULL) { ?>
+                                        <?php } else if ($row['PEMASOK'] == NULL && $row['ID_PEMASOK'] == NULL) { ?>
                                         <center>
                                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                             </font>
