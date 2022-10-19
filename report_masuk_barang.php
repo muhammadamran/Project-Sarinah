@@ -141,6 +141,16 @@ $data = json_decode($content, true);
                         </div>
                     </div>
                 </div>
+                <style>
+                .bar {
+                    display: flex;
+                    justify-content: end;
+                    background: transparent;
+                    margin: 0px;
+                    margin-bottom: 10px;
+                    margin-top: -10px;
+                }
+                </style>
                 <div class="panel-body text-inverse">
                     <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
                     </div>
