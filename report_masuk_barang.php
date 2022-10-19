@@ -107,8 +107,9 @@ $data = json_decode($content, true);
     </div>
     <!-- End Select Tabel -->
 
-    <?php if (isset($_POST['filter_date'])) { ?>
     <div class="row" style="display: flex;justify-content: end;">
+        <?php if (isset($_POST['filter_date'])) { ?>
+
         <div class="col-xl-3">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan"
                 style="padding: 15px;display: flex;justify-content: space-evenly;">
@@ -140,8 +141,9 @@ $data = json_decode($content, true);
                 </form>
             </div>
         </div>
+        <?php } ?>
+
     </div>
-    <?php } ?>
 
     <!-- Begin Row -->
     <div class="row">
