@@ -106,7 +106,7 @@ $data = json_decode($content, true);
         </div>
     </div>
     <!-- End Select Tabel -->
-    <div class="row" style="display: flex;justify-content: end;">
+    <div style="display: flex;justify-content: end;">
         <div class="col-xl-3">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan"
                 style="padding: 15px;display: flex;justify-content: space-evenly;">
