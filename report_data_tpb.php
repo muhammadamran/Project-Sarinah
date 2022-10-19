@@ -46,23 +46,17 @@ $data = json_decode($content, true);
                             <!-- Nomor Pengajuan Sarinah (NOMOR_AJUAJU) -->
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Nomor Pengajuan</label>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <input type="text" class="form-control" name="NoPengajuan"
                                         placeholder="Nomor Pengajuan ..." value="<?= $NoPengajuan ?>">
                                 </div>
-                            </div>
-                            <!-- BTN 1 -->
-                            <div class="form-group row" style="justify-content: flex-end;">
-                                <div class="col-md-7 offset-md-3">
+                                <div class="col-md-2">
                                     <button type="submit" class="btn btn-info m-r-5" name="findOne">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
-                                    <a href="report_data_tpb.php" type="button" class="btn btn-yellow m-r-5">
-                                        <i class="fa fa-refresh"></i> Reset
-                                    </a>
                                 </div>
                             </div>
                         </fieldset>
@@ -175,16 +169,13 @@ $data = json_decode($content, true);
                             </div>
                         </fieldset>
                         <fieldset>
-                            <!-- <div class="form-group row" style="justify-content: flex-end;">
+                            <div class="form-group row" style="justify-content: flex-end;">
                                 <div class="col-md-7 offset-md-3">
-                                    <button type="submit" class="btn btn-info m-r-5" name="findOne">
-                                        <i class="fa fa-search"></i> Cari
-                                    </button>
                                     <a href="report_data_tpb.php" type="button" class="btn btn-yellow m-r-5">
                                         <i class="fa fa-refresh"></i> Reset
                                     </a>
                                 </div>
-                            </div> -->
+                            </div>
                         </fieldset>
                     </form>
                 </div>
