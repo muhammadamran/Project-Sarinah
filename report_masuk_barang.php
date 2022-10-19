@@ -383,6 +383,21 @@ include "include/footer.php";
 include "include/jsDatatables.php";
 ?>
 <script type="text/javascript">
+$(function() {
+    $("#input-filter").change(function() {
+        if ($(this).val() == "TGL") {
+            $("#form_tgl").show();
+            $("#form_aju").hide();
+        } else if ($(this).val() == "AJU") {
+            $("#form_tgl").hide();
+            $("#form_aju").show();
+        } else {
+            $("#form_tgl").hide();
+            $("#form_aju").hide();
+        }
+    });
+});
+
 // TableBarangTarif
 $(document).ready(function() {
     $('#table-masuk-barang').DataTable({
