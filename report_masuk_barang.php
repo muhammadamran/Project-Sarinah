@@ -153,37 +153,42 @@ $data = json_decode($content, true);
                     </div>
                     <?php if (isset($_POST['filter_date'])) { ?>
                     <div class="bar">
-                        <a href="./report_masuk_barang.php" class="btn btn-secondary" title="Reset"
-                            style="padding: 7px;">
-                            <div style="display: flex;justify-content: space-between;align-items: end;">
-                                <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
-                            </div>
-                        </a>
-                        &nbsp;
-                        <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST"
-                            style="display: inline-block;">
-                            <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                            <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                            <button type="submit" name="find_" class="btn btn-secondary">
-                                <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"
-                                    data-toggle="popover" data-trigger="hover" data-title="Export File Excel"
-                                    data-placement="top" data-content="Klik untuk mengexport data dalam file Excel">
-                                Export
-                                Excel
-                            </button>
-                        </form>
-                        &nbsp;
-                        <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST"
-                            style="display: inline-block;">
-                            <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                            <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                            <button type="submit" name="find_" class="btn btn-secondary">
-                                <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"
-                                    data-toggle="popover" data-trigger="hover" data-title="Print File"
-                                    data-placement="top" data-content="Klik untuk Print File">
-                                Print
-                            </button>
-                        </form>
+                        <div>
+                            <a href="./report_masuk_barang.php" class="btn btn-secondary" title="Reset"
+                                style="padding: 7px;">
+                                <div style="display: flex;justify-content: space-between;align-items: end;">
+                                    <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+
+                            <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST"
+                                style="display: inline-block;">
+                                <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                                <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                                <button type="submit" name="find_" class="btn btn-secondary">
+                                    <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"
+                                        data-toggle="popover" data-trigger="hover" data-title="Export File Excel"
+                                        data-placement="top" data-content="Klik untuk mengexport data dalam file Excel">
+                                    Export
+                                    Excel
+                                </button>
+                            </form>
+                        </div>
+                        <div>
+                            <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST"
+                                style="display: inline-block;">
+                                <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                                <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                                <button type="submit" name="find_" class="btn btn-secondary">
+                                    <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"
+                                        data-toggle="popover" data-trigger="hover" data-title="Print File"
+                                        data-placement="top" data-content="Klik untuk Print File">
+                                    Print
+                                </button>
+                            </form>
+                        </div>
                     </div>
                     <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
                     </div>
