@@ -46,10 +46,10 @@ $data = json_decode($content, true);
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <i class="fas fa-filter"></i> Filter Data TPB Sarinah
-                        <a href="report_data_tpb.php" type="button" class="label label-default">
-                            <i class="fa fa-refresh"></i> Reset
-                        </a>
                     </h4>
+                    <a href="report_data_tpb.php" type="button" class="label label-default">
+                        <i class="fa fa-refresh"></i> Reset
+                    </a>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class=" panel-body text-inverse">
