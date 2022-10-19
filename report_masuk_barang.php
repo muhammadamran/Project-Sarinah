@@ -287,7 +287,7 @@ $data = json_decode($content, true);
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center;">Jenis Dok. Pabean PLb</th>
+                                    <th style="text-align: center;">Jenis Dok. Pabean PLB</th>
                                     <th style="text-align: center;">No. Daftar PLB</th>
                                     <th style="text-align: center;">Tanggal Submit PLB</th>
                                 </tr>
