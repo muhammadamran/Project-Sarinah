@@ -12,6 +12,13 @@ include "include/api.php";
 $content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?where=' . $_where);
 $data = json_decode($content, true);
 ?>
+<style>
+@media (max-width: 767.5px) {
+    #OKEBTN {
+        margin-top: 10px;
+    }
+}
+</style>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
     <div class="page-title-css">
@@ -53,7 +60,7 @@ $data = json_decode($content, true);
                                     <input type="text" class="form-control" name="NoPengajuan"
                                         placeholder="Nomor Pengajuan ..." value="<?= $NoPengajuan ?>">
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2" id="OKEBTN">
                                     <button type="submit" class="btn btn-info m-r-5" name="findOne">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
