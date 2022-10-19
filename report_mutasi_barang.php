@@ -254,7 +254,6 @@ $data = json_decode($content, true);
                             <thead>
                                 <tr>
                                     <th width="1%">#</th>
-                                    <th style="text-align: center;">Tanggal</th>
                                     <th style="text-align: center;">Kode Barang (No. HS)</th>
                                     <th style="text-align: center;">Barang</th>
                                     <th style="text-align: center;">Jenis</th>
