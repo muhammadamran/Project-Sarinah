@@ -310,7 +310,9 @@ $data = json_decode($content, true);
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
-                                    <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB</td>
+                                    <td style="text-align: center">
+                                        BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB
+                                    </td>
                                     <td style="text-align: center">
                                         <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
