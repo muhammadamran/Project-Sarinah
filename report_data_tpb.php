@@ -6,91 +6,6 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/top-sidebar.php";
 include "include/cssDatatables.php";
-// include "include/sidebar.php";
-
-$NoPengajuan = '';
-$NoBC27 = '';
-$TanggalBC27One = '';
-$TanggalBC27Two = '';
-$Supplier = '';
-$KodeNegara = '';
-$NamaNegara = '';
-$Party = '';
-$NoContainer = '';
-$MataUang = '';
-$TanggalMasukBarangOne = '';
-$TanggalMasukBarangTwo = '';
-$TanggalKeluarBarangOne = '';
-$TanggalKeluarBarangTwo = '';
-if (isset($_POST["findOne"])) {
-    if ($_POST["NoPengajuan"] != '') {
-        $NoPengajuan = $_POST['NoPengajuan'];
-    }
-
-    // if ($_POST["TanggalInputOne"] != '') {
-    //     $TanggalInputOne = $_POST['TanggalInputOne'];
-    // }
-
-    // if ($_POST["TanggalInputTwo"] != '') {
-    //     $TanggalInputTwo = $_POST['TanggalInputTwo'];
-    // }
-
-    if ($_POST["NoBC27"] != '') {
-        $NoBC27 = $_POST['NoBC27'];
-    }
-
-    if ($_POST["TanggalBC27One"] != '') {
-        $TanggalBC27One = $_POST['TanggalBC27One'];
-    }
-
-    if ($_POST["TanggalBC27Two"] != '') {
-        $TanggalBC27Two = $_POST['TanggalBC27Two'];
-    }
-
-    if ($_POST["Supplier"] != '') {
-        $Supplier = $_POST['Supplier'];
-    }
-
-    // if ($_POST["AlamatSupplier"] != '') {
-    //     $AlamatSupplier = $_POST['AlamatSupplier'];
-    // }
-
-    if ($_POST["KodeNegara"] != '') {
-        $KodeNegara = $_POST['KodeNegara'];
-    }
-
-    if ($_POST["NamaNegara"] != '') {
-        $NamaNegara = $_POST['NamaNegara'];
-    }
-
-    if ($_POST["Party"] != '') {
-        $Party = $_POST['Party'];
-    }
-
-    if ($_POST["NoContainer"] != '') {
-        $NoContainer = $_POST['NoContainer'];
-    }
-
-    if ($_POST["MataUang"] != '') {
-        $MataUang = $_POST['MataUang'];
-    }
-
-    if ($_POST["TanggalMasukBarangOne"] != '') {
-        $TanggalMasukBarangOne = $_POST['TanggalMasukBarangOne'];
-    }
-
-    if ($_POST["TanggalMasukBarangTwo"] != '') {
-        $TanggalMasukBarangTwo = $_POST['TanggalMasukBarangTwo'];
-    }
-
-    if ($_POST["TanggalKeluarBarangOne"] != '') {
-        $TanggalKeluarBarangOne = $_POST['TanggalKeluarBarangOne'];
-    }
-
-    if ($_POST["TanggalKeluarBarangTwo"] != '') {
-        $TanggalKeluarBarangTwo = $_POST['TanggalKeluarBarangTwo'];
-    }
-}
 
 // API - 
 include "include/api.php";
@@ -128,77 +43,74 @@ $data = json_decode($content, true);
                 <div class="panel-body text-inverse">
                     <form action="" id="fformone" method="POST">
                         <fieldset>
+                            <!-- Nomor Pengajuan Sarinah (NOMOR_AJUAJU) -->
                             <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">No. Pengajuan</label>
+                                <label class="col-md-3 col-form-label">Nomor Pengajuan</label>
                                 <div class="col-md-2">
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="NoPengajuan"
-                                        placeholder="No. Pengajuan ..." value="<?= $NoPengajuan ?>">
+                                        placeholder="Nomor Pengajuan ..." value="<?= $NoPengajuan ?>">
                                 </div>
                             </div>
-                            <!-- <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">Tanggal Input PLB</label>
-                                <div class="col-md-2">
-                                    <font class="titik-dua">:</font>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="date" class="form-control" name="TanggalInputOne" placeholder="Tanggal Input PLB ..." value="<?= $TanggalInputOne ?>">
-                                </div>
-                                <div class="col-md-1" style="display: flex;justify-content: center;">
-                                    <font>s.d</font>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="date" class="form-control" name="TanggalInputTwo" placeholder="Tanggal Input PLB ..." value="<?= $TanggalInputTwo ?>">
-                                </div>
-                            </div> -->
+                            <!-- Nomor BC 2.7 -->
                             <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">No. BC.27</label>
+                                <label class="col-md-3 col-form-label">No. BC. 27</label>
                                 <div class="col-md-2">
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="NoBC27" placeholder="No. BC.27 ..."
+                                    <input type="text" class="form-control" name="NoBC27" placeholder="No. BC. 27 ..."
                                         value="<?= $NoBC27 ?>">
                                 </div>
                             </div>
+                            <!-- Tanggal Masuk -->
                             <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">Tanggal BC.27</label>
+                                <label class="col-md-3 col-form-label">Tanggal Masuk</label>
                                 <div class="col-md-2">
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="date" class="form-control" name="TanggalBC27One"
-                                        placeholder="Tanggal BC.27 ..." value="<?= $TanggalBC27One ?>">
+                                    <input type="date" class="form-control" name="TanggalMasukOne"
+                                        placeholder="Tanggal Masuk ..." value="<?= $TanggalMasukOne ?>">
                                 </div>
                                 <div class="col-md-1" style="display: flex;justify-content: center;">
                                     <font>s.d</font>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="date" class="form-control" name="TanggalBC27Two"
-                                        placeholder="Tanggal BC.27 ..." value="<?= $TanggalBC27Two ?>">
+                                    <input type="date" class="form-control" name="TanggalMasukTwo"
+                                        placeholder="Tanggal Masuk ..." value="<?= $TanggalMasukTwo ?>">
+                                </div>
+                            </div>
+                            <!-- Tanngall Keluar -->
+                            <div class="form-group row m-b-15" style="align-items: center;">
+                                <label class="col-md-3 col-form-label">Tanggal Keluar</label>
+                                <div class="col-md-2">
+                                    <font class="titik-dua">:</font>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="TanggalKeluarOne"
+                                        placeholder="Tanggal Keluar ..." value="<?= $TanggalKeluarOne ?>">
+                                </div>
+                                <div class="col-md-1" style="display: flex;justify-content: center;">
+                                    <font>s.d</font>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="TanggalKeluarTwo"
+                                        placeholder="Tanggal Keluar ..." value="<?= $TanggalKeluarTwo ?>">
                                 </div>
                             </div>
                             <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">Supplier</label>
+                                <label class="col-md-3 col-form-label">Nama Penerima Barang</label>
                                 <div class="col-md-2">
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="Supplier" placeholder="Supplier ..."
-                                        value="<?= $Supplier ?>">
+                                    <input type="text" class="form-control" name="NamaPenerimaBarang"
+                                        placeholder="Nama Penerima Barang ..." value="<?= $NamaPenerimaBarang ?>">
                                 </div>
                             </div>
-                            <!-- <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">Alamat Supplier</label>
-                                <div class="col-md-2">
-                                    <font class="titik-dua">:</font>
-                                </div>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="AlamatSupplier" placeholder="Alamat Supplier ..." value="<?= $AlamatSupplier ?>">
-                                </div>
-                            </div> -->
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Kode Negara / Nama Negara Supplier</label>
                                 <div class="col-md-2">
@@ -214,16 +126,6 @@ $data = json_decode($content, true);
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" name="NamaNegara"
                                         placeholder="Nama Negara ..." value="<?= $NamaNegara ?>">
-                                </div>
-                            </div>
-                            <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">Party</label>
-                                <div class="col-md-2">
-                                    <font class="titik-dua">:</font>
-                                </div>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="Party" placeholder="Party ..."
-                                        value="<?= $Party ?>">
                                 </div>
                             </div>
                             <div class="form-group row m-b-15" style="align-items: center;">
@@ -244,40 +146,6 @@ $data = json_decode($content, true);
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="MataUang" placeholder="Mata Uang ..."
                                         value="<?= $MataUang ?>">
-                                </div>
-                            </div>
-                            <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">Tanggal Masuk Barang</label>
-                                <div class="col-md-2">
-                                    <font class="titik-dua">:</font>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="date" class="form-control" name="TanggalMasukBarangOne"
-                                        placeholder="Tanggal Masuk Barang ..." value="<?= $TanggalMasukBarangOne ?>">
-                                </div>
-                                <div class="col-md-1" style="display: flex;justify-content: center;">
-                                    <font>s.d</font>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="date" class="form-control" name="TanggalMasukBarangTwo"
-                                        placeholder="Tanggal Masuk Barang ..." value="<?= $TanggalMasukBarangTwo ?>">
-                                </div>
-                            </div>
-                            <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">Tanggal Keluar Barang</label>
-                                <div class="col-md-2">
-                                    <font class="titik-dua">:</font>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="date" class="form-control" name="TanggalKeluarBarangOne"
-                                        placeholder="Tanggal Keluar Barang ..." value="<?= $TanggalKeluarBarangOne ?>">
-                                </div>
-                                <div class="col-md-1" style="display: flex;justify-content: center;">
-                                    <font>s.d</font>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="date" class="form-control" name="TanggalKeluarBarangTwo"
-                                        placeholder="Tanggal Keluar Barang ..." value="<?= $TanggalKeluarBarangTwo ?>">
                                 </div>
                             </div>
                             <div class="form-group row" style="justify-content: flex-end;">
