@@ -337,7 +337,7 @@ $data = json_decode($content, true);
                                         <?= $row['PEMASOK']; ?>
                                         <?php } ?>
                                     </td>
-                                    <td style="text-align: center"><?= $row['POS_TARIF']; ?></td>
+                                    <td style="text-align: center"><?= $row['KODE_BARANG']; ?></td>
                                     <td><?= $row['URAIAN']; ?></td>
                                     <td>
                                         <div style="display: flex;justify-content: space-between;align-items: center">
