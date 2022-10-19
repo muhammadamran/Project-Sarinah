@@ -54,6 +54,19 @@ $data = json_decode($content, true);
                                         placeholder="Nomor Pengajuan ..." value="<?= $NoPengajuan ?>">
                                 </div>
                             </div>
+                            <!-- BTN 1 -->
+                            <div class="form-group row" style="justify-content: flex-end;">
+                                <div class="col-md-7 offset-md-3">
+                                    <button type="submit" class="btn btn-info m-r-5" name="findOne">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                    <a href="report_data_tpb.php" type="button" class="btn btn-yellow m-r-5">
+                                        <i class="fa fa-refresh"></i> Reset
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
                             <!-- Nomor BC 2.7 -->
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">No. BC. 27</label>
@@ -65,6 +78,8 @@ $data = json_decode($content, true);
                                         value="<?= $NoBC27 ?>">
                                 </div>
                             </div>
+                        </fieldset>
+                        <fieldset>
                             <!-- Tanggal Masuk -->
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Tanggal Masuk</label>
@@ -83,6 +98,8 @@ $data = json_decode($content, true);
                                         placeholder="Tanggal Masuk ..." value="<?= $TanggalMasukTwo ?>">
                                 </div>
                             </div>
+                        </fieldset>
+                        <fieldset>
                             <!-- Tanngall Keluar -->
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Tanggal Keluar</label>
@@ -101,6 +118,8 @@ $data = json_decode($content, true);
                                         placeholder="Tanggal Keluar ..." value="<?= $TanggalKeluarTwo ?>">
                                 </div>
                             </div>
+                        </fieldset>
+                        <fieldset>
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Nama Penerima Barang</label>
                                 <div class="col-md-2">
@@ -111,6 +130,8 @@ $data = json_decode($content, true);
                                         placeholder="Nama Penerima Barang ..." value="<?= $NamaPenerimaBarang ?>">
                                 </div>
                             </div>
+                        </fieldset>
+                        <fieldset>
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Kode Negara / Nama Negara Supplier</label>
                                 <div class="col-md-2">
@@ -128,6 +149,8 @@ $data = json_decode($content, true);
                                         placeholder="Nama Negara ..." value="<?= $NamaNegara ?>">
                                 </div>
                             </div>
+                        </fieldset>
+                        <fieldset>
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">No. Container</label>
                                 <div class="col-md-2">
@@ -138,6 +161,8 @@ $data = json_decode($content, true);
                                         placeholder="No. Container ..." value="<?= $NoContainer ?>">
                                 </div>
                             </div>
+                        </fieldset>
+                        <fieldset>
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Mata Uang</label>
                                 <div class="col-md-2">
@@ -148,7 +173,9 @@ $data = json_decode($content, true);
                                         value="<?= $MataUang ?>">
                                 </div>
                             </div>
-                            <div class="form-group row" style="justify-content: flex-end;">
+                        </fieldset>
+                        <fieldset>
+                            <!-- <div class="form-group row" style="justify-content: flex-end;">
                                 <div class="col-md-7 offset-md-3">
                                     <button type="submit" class="btn btn-info m-r-5" name="findOne">
                                         <i class="fa fa-search"></i> Cari
@@ -157,7 +184,7 @@ $data = json_decode($content, true);
                                         <i class="fa fa-refresh"></i> Reset
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </fieldset>
                     </form>
                 </div>
