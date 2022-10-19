@@ -123,14 +123,14 @@ $data = json_decode($content, true);
                                 <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <input type="date" class="form-control" name="TanggalKeluarOne"
                                         placeholder="Tanggal Keluar ..." value="<?= $TanggalKeluarOne ?>">
                                 </div>
-                                <div class="col-md-1" style="display: flex;justify-content: center;">
+                                <div class="col-md-2" style="display: flex;justify-content: center;">
                                     <font>s.d</font>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <input type="date" class="form-control" name="TanggalKeluarTwo"
                                         placeholder="Tanggal Keluar ..." value="<?= $TanggalKeluarTwo ?>">
                                 </div>
@@ -153,7 +153,6 @@ $data = json_decode($content, true);
                                     <input type="text" class="form-control" name="NamaPenerimaBarang"
                                         placeholder="Nama Penerima Barang ..." value="<?= $NamaPenerimaBarang ?>">
                                 </div>
-
                                 <div class="col-md-2" id="OKEBTN">
                                     <button type="submit" class="btn btn-info m-r-5" name="FindNamaPenerimaBarang">
                                         <i class="fa fa-search"></i> Cari
@@ -173,15 +172,15 @@ $data = json_decode($content, true);
                                     <input type="text" class="form-control" name="KodeNegara"
                                         placeholder="Kode Negara ..." value="<?= $KodeNegara ?>">
                                 </div>
-                                <div class="col-md-1" style="display: flex;justify-content: center;">
+                                <div class="col-md-2" style="display: flex;justify-content: center;">
                                     <font>/</font>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <input type="text" class="form-control" name="NamaNegara"
                                         placeholder="Nama Negara ..." value="<?= $NamaNegara ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-info m-r-5" name="FindTglMasuk">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindNegara">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
@@ -192,12 +191,17 @@ $data = json_decode($content, true);
                         <fieldset>
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">No. Container</label>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <input type="text" class="form-control" name="NoContainer"
                                         placeholder="No. Container ..." value="<?= $NoContainer ?>">
+                                </div>
+                                <div class="col-md-2" id="OKEBTN">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindContainer">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
                                 </div>
                             </div>
                         </fieldset>
@@ -212,6 +216,11 @@ $data = json_decode($content, true);
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="MataUang" placeholder="Mata Uang ..."
                                         value="<?= $MataUang ?>">
+                                </div>
+                                <div class="col-md-2" id="OKEBTN">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindMataUang">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
                                 </div>
                             </div>
                         </fieldset>
