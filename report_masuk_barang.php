@@ -159,6 +159,7 @@ $data = json_decode($content, true);
                                 <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
                             </div>
                         </a>
+                        &nbsp;
                         <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST"
                             style="display: inline-block;">
                             <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
@@ -171,6 +172,7 @@ $data = json_decode($content, true);
                                 Excel
                             </button>
                         </form>
+                        &nbsp;
                         <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST"
                             style="display: inline-block;">
                             <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
