@@ -322,7 +322,7 @@ $data = json_decode($content, true);
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
-                                        <?= $row['TANGGAL_DAFTAR']; ?>
+                                        <?= $row['ck5_plb_submit']; ?>
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: center">
