@@ -389,7 +389,7 @@ $data = json_decode($content, true);
                                         $_where = where_add($_where, ' tpb.TANGGAL_BC11 BETWEEN "' . $TanggalKeluarBarangOne . '" AND "' . $TanggalKeluarBarangTwo . '"');
                                     }
 
-                                    // echo $_where;
+                                    echo $_where;
                                     $result2 = mysqli_query($dbcon, "SELECT *
                                                                   FROM tpb_header AS tpb
                                                                  LEFT OUTER JOIN tpb_kemasan AS kem ON tpb.ID=kem.ID_HEADER
