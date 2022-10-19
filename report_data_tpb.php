@@ -45,6 +45,9 @@ $data = json_decode($content, true);
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
                     <h4 class="panel-title"><i class="fas fa-filter"></i> Filter Data TPB Sarinah</h4>
+                    <a href="report_data_tpb.php" type="button" class="label label-default m-r-5">
+                        <i class="fa fa-refresh"></i> Reset
+                    </a>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -226,13 +229,13 @@ $data = json_decode($content, true);
                         </fieldset>
                     </form>
                     <fieldset>
-                        <div class="form-group row" style="justify-content: flex-end;">
+                        <!-- <div class="form-group row" style="justify-content: flex-end;">
                             <div class="col-md-7 offset-md-3">
                                 <a href="report_data_tpb.php" type="button" class="btn btn-yellow m-r-5">
                                     <i class="fa fa-refresh"></i> Reset
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
                     </fieldset>
                 </div>
             </div>
