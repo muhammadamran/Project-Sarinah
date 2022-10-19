@@ -47,7 +47,8 @@ $data = json_decode($content, true);
                     <h4 class="panel-title">
                         <i class="fas fa-filter"></i> Filter Data TPB Sarinah
                     </h4>
-                    <a href="report_data_tpb.php" type="button" class="label label-default">
+                    <a href="report_data_tpb.php" type="button" class="label label-default"
+                        style="padding: 2px;margin-top: 2px;margin-right: 5px;">
                         <i class="fa fa-refresh"></i> Reset
                     </a>
                     <?php include "include/panel-row.php"; ?>
