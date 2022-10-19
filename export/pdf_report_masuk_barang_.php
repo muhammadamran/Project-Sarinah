@@ -7,7 +7,7 @@ $resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
 // exit;
 // API - 
 include "../include/api.php";
-$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $_POST['StartTanggal'] . '&EndTanggal=' . $_POST['EndTanggal']);
+$content = get_content($resultAPI['url_api'] . 'reportMasukBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal . '&Filter=' . $Filter);
 $data = json_decode($content, true);
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $data = json_decode($content, true);
     <?php } else { ?>
         <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
     <?php } ?> -->
-    <title>Laporan Keluar Barang - Tanggal: <?= $_POST['StartTanggalS'] ?> s.d <?= $_POST['EndTanggalS'] ?></title>
+    <title>Laporan Masuk Barang - Tanggal: <?= $_POST['StartTanggalS'] ?> s.d <?= $_POST['EndTanggalS'] ?></title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -139,25 +139,22 @@ function date_indo($date, $print_day = false)
                         <tr>
                             <th rowspan="2" width="1%">#</th>
                             <th colspan="3" style="text-align: center;">Dokumen Pabean</th>
-                            <th colspan="2" style="text-align: center;">Bukti Pengeluaran</th>
-                            <th rowspan="2" style="text-align: center;">Pembeli / Penerima</th>
+                            <th rowspan="2" style="text-align: center;">Supplier</th>
                             <th rowspan="2" style="text-align: center;">Kode Barang (No. HS)</th>
                             <th rowspan="2" style="text-align: center;">Barang</th>
                             <th rowspan="2" style="text-align: center;">Jumlah</th>
                             <th rowspan="2" style="text-align: center;">Nilai Barang</th>
                         </tr>
                         <tr>
-                            <th style="text-align: center;">Jenis</th>
-                            <th style="text-align: center;">No.</th>
-                            <th style="text-align: center;">Tanggal</th>
-                            <th style="text-align: center;">No.</th>
-                            <th style="text-align: center;">Tanggal</th>
+                            <th style="text-align: center;">Jenis Dok. Pabean PLB</th>
+                            <th style="text-align: center;">No. Daftar PLB</th>
+                            <th style="text-align: center;">Tanggal Submit PLB</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php if ($data['status'] == 404) { ?>
                         <tr>
-                            <td colspan="12">
+                            <td colspan="9">
                                 <center>
                                     <div style="display: flex;justify-content: center; align-items: center">
                                         <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
@@ -171,66 +168,51 @@ function date_indo($date, $print_day = false)
                         <?php $no++ ?>
                         <tr>
                             <!-- 9 -->
-                            <!-- NO -->
                             <td><?= $no ?>.</td>
-                            <!-- BC -->
-                            <td>BC<?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
-                            <!-- AJU -->
                             <td style="text-align: center">
-                                <?php if ($row['NOMOR_AJU'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB
+                            </td>
+                            <td style="text-align: center">
+                                <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                 </font>
                                 <?php } else { ?>
-                                <?= $row['NOMOR_AJU']; ?>
+                                <?= $row['NOMOR_DAFTAR']; ?>
                                 <?php } ?>
                             </td>
-                            <!-- TGL AJU (FILTER) -->
-                            <?php
-                                    $dataTGLAJU = $row['TGL_AJU'];
-                                    $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
-                                    $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
-                                    $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
-
-                                    $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
-                                    ?>
-                            <td><?= $datTGLAJU; ?></td>
-                            <!-- NOMOR BC 11 -->
                             <td style="text-align: center">
-                                <?php if ($row['NOMOR_BC11'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                <?php if ($row['ck5_plb_submit'] == NULL) { ?>
+                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                 </font>
                                 <?php } else { ?>
-                                <?= $row['NOMOR_BC11']; ?>
+                                <?= $row['ck5_plb_submit']; ?>
                                 <?php } ?>
                             </td>
-                            <!-- TGL BC 11 -->
                             <td style="text-align: center">
-                                <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                </font>
+                                <?php if ($row['PEMASOK'] == NULL) { ?>
+                                <center>
+                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                    </font>
+                                </center>
                                 <?php } else { ?>
-                                <?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?>
+                                <?= $row['PEMASOK']; ?>
                                 <?php } ?>
                             </td>
-                            <!-- NAMA PEMASOK -->
                             <td style="text-align: center">
-                                <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                </font>
-                                <?php } else { ?>
-                                <?= $row['NAMA_PEMASOK']; ?>
-                                <?php } ?>
+                                <?php
+                                        if ($row['KODE_BARANG'] == NULL) {
+                                            $KDBRG = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                        } else {
+                                            $KDBRG = $row['KODE_BARANG'];
+                                        }
+                                        if ($row['POS_TARIF'] == NULL) {
+                                            $POSTARIF = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                        } else {
+                                            $POSTARIF = $row['POS_TARIF'];
+                                        }
+                                        ?>
+                                <?= $KDBRG ?> (<?= $POSTARIF ?>)
                             </td>
-                            <!-- HS -->
-                            <td style="text-align: center">
-                                <?php if ($row['POS_TARIF'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                </font>
-                                <?php } else { ?>
-                                <?= $row['POS_TARIF']; ?>
-                                <?php } ?>
-                            </td>
-                            <!-- BARANG -->
                             <td><?= $row['URAIAN']; ?></td>
                             <td>
                                 <div style="display: flex;justify-content: space-between;align-items: center">
