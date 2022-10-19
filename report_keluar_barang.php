@@ -237,30 +237,38 @@ $data = json_decode($content, true);
                                     <!-- NO -->
                                     <td><?= $no ?>.</td>
                                     <!-- BC -->
-                                    <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                                    <td style="text-align: center;">BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
                                     <!-- AJU -->
                                     <td style="text-align: center">
-                                        <?php if ($row['NOMOR_AJU'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
-                                        <?= $row['NOMOR_AJU']; ?>
+                                        <?= $row['NOMOR_DAFTAR']; ?>
                                         <?php } ?>
                                     </td>
                                     <!-- TGL AJU (FILTER) -->
-                                    <?php
-                                            $dataTGLAJU = $row['TGL_AJU'];
-                                            $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
-                                            $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
-                                            $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
+                                    <!-- <?php
+                                                    $dataTGLAJU = $row['TGL_AJU'];
+                                                    $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
+                                                    $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
+                                                    $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
 
-                                            $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
-                                            ?>
-                                    <td><?= $datTGLAJU; ?></td>
+                                                    $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
+                                                    ?>
+                                            <td><?= $datTGLAJU; ?></td> -->
+                                    <td style="text-align: center">
+                                        <?php if ($row['TANGGAL_DAFTAR'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['TANGGAL_DAFTAR']; ?>
+                                        <?php } ?>
+                                    </td>
                                     <!-- NOMOR BC 11 -->
                                     <td style="text-align: center">
                                         <?php if ($row['NOMOR_BC11'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
                                         <?= $row['NOMOR_BC11']; ?>
@@ -269,7 +277,7 @@ $data = json_decode($content, true);
                                     <!-- TGL BC 11 -->
                                     <td style="text-align: center">
                                         <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
                                         <?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?>
@@ -278,7 +286,7 @@ $data = json_decode($content, true);
                                     <!-- NAMA PEMASOK -->
                                     <td style="text-align: center">
                                         <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
                                         <?= $row['NAMA_PEMASOK']; ?>
@@ -287,7 +295,7 @@ $data = json_decode($content, true);
                                     <!-- HS -->
                                     <td style="text-align: center">
                                         <?php if ($row['POS_TARIF'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
                                         <?= $row['POS_TARIF']; ?>
