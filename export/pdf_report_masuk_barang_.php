@@ -3,8 +3,6 @@ include "../include/connection.php";
 
 $dataHeadSettting = $dbcon->query("SELECT * FROM tbl_setting");
 $resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
-// var_dump($_POST['StartTanggal']);
-// exit;
 // API - 
 include "../include/api.php";
 $content = get_content($resultAPI['url_api'] . 'reportMasukBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal . '&Filter=' . $Filter);
