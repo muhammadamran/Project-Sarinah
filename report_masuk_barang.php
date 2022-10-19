@@ -318,7 +318,7 @@ $data = json_decode($content, true);
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: center">
-                                        <?php if ($row['TANGGAL_DAFTAR'] == NULL) { ?>
+                                        <?php if ($row['ck5_plb_submit'] == NULL) { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
