@@ -100,7 +100,7 @@ $data = json_decode($content, true);
                                     <input type="date" class="form-control" name="TanggalMasukOne"
                                         placeholder="Tanggal Masuk ..." value="<?= $TanggalMasukOne ?>">
                                 </div>
-                                <div class="col-md-1" style="display: flex;justify-content: center;">
+                                <div class="col-md-2" style="display: flex;justify-content: center;">
                                     <font>s.d</font>
                                 </div>
                                 <div class="col-md-2">
