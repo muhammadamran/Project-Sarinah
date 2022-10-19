@@ -153,16 +153,15 @@ $data = json_decode($content, true);
                     </div>
                     <?php if (isset($_POST['filter_date'])) { ?>
                     <div class="bar">
-                        <div>
+                        <div style="padding: 5px;">
                             <a href="./report_masuk_barang.php" class="btn btn-secondary" title="Reset"
-                                style="padding: 7px;">
+                                style="padding: 8px;">
                                 <div style="display: flex;justify-content: space-between;align-items: end;">
                                     <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
                                 </div>
                             </a>
                         </div>
-                        <div>
-
+                        <div style="padding: 5px;">
                             <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST"
                                 style="display: inline-block;">
                                 <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
@@ -176,7 +175,7 @@ $data = json_decode($content, true);
                                 </button>
                             </form>
                         </div>
-                        <div>
+                        <div style="padding: 5px;">
                             <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST"
                                 style="display: inline-block;">
                                 <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
