@@ -345,23 +345,23 @@ include "include/jsForm.php";
 // TableBarangTarif
 $(document).ready(function() {
     $('#table-mutasi-barang').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ]
         // dom: 'Bfrtip',
         // buttons: [
-        //     'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
-        // ],
-        // "order": [],
-        // "columnDefs": [{
-        //     "targets": 'no-sort',
-        //     "orderable": false,
-        // }],
-        // iDisplayLength: -1
+        //     'copyHtml5',
+        //     'excelHtml5',
+        //     'csvHtml5',
+        //     'pdfHtml5'
+        // ]
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+        ],
+        "order": [],
+        "columnDefs": [{
+            "targets": 'no-sort',
+            "orderable": false,
+        }],
+        iDisplayLength: -1
     });
 });
 </script>
