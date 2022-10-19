@@ -112,14 +112,11 @@ $data = json_decode($content, true);
         <div class="col-xl-3">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan"
                 style="padding: 15px;display: flex;justify-content: space-evenly;">
-                <?php if (isset($_POST['filter_date'])) { ?>
                 <a href="./report_masuk_barang.php" class="btn btn-yellow" title="Reset" style="padding: 7px;">
                     <div style="display: flex;justify-content: space-between;align-items: end;">
                         <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
                     </div>
                 </a>
-                <?php } ?>
-                <?php if (isset($_POST['filter_date'])) { ?>
                 <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST"
                     style="display: inline-block;">
                     <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
@@ -141,7 +138,6 @@ $data = json_decode($content, true);
                             data-content="Klik untuk Print File"> Print
                     </button>
                 </form>
-                <?php } ?>
             </div>
         </div>
     </div>
