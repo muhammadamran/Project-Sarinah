@@ -44,13 +44,15 @@ $data = json_decode($content, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-filter"></i> Filter Data TPB Sarinah</h4>
-                    <a href="report_data_tpb.php" type="button" class="label label-default m-r-5">
-                        <i class="fa fa-refresh"></i> Reset
-                    </a>
+                    <h4 class="panel-title">
+                        <i class="fas fa-filter"></i> Filter Data TPB Sarinah
+                        <a href="report_data_tpb.php" type="button" class="label label-default">
+                            <i class="fa fa-refresh"></i> Reset
+                        </a>
+                    </h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
-                <div class="panel-body text-inverse">
+                <div class=" panel-body text-inverse">
                     <form action="" id="fformone" method="POST">
                         <fieldset>
                             <!-- Nomor Pengajuan Sarinah (NOMOR_AJUAJU) -->
