@@ -13,12 +13,14 @@ $EndTanggal = '';
 
 if (isset($_POST['filter_date'])) {
     if ($_POST["StartTanggal"] != '') {
-        $StartTanggal   = $_POST['StartTanggal'] . " 00:00:00";
+        $StartTanggal   = $_POST['StartTanggal'];
+        // $StartTanggal   = $_POST['StartTanggal'] . " 00:00:00";
         // $rStartTanggal  = str_replace("-", "", $_POST['StartTanggal']);
     }
 
     if ($_POST["EndTanggal"] != '') {
-        $EndTanggal     = $_POST['EndTanggal'] . " 00:00:00";
+        $EndTanggal     = $_POST['EndTanggal'];
+        // $EndTanggal     = $_POST['EndTanggal'] . " 00:00:00";
         // $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
     }
 
