@@ -20,7 +20,7 @@ $data = json_decode($content, true);
     <?php } else { ?>
         <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
     <?php } ?> -->
-    <title>Laporan Keluar Barang - Tanggal: <?= $_POST['StartTanggalS'] ?> s.d <?= $_POST['EndTanggalS'] ?></title>
+    <title>Laporan Keluar Barang - Tanggal: <?= $_POST['StartTanggal'] ?> s.d <?= $_POST['EndTanggal'] ?></title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -121,8 +121,8 @@ function date_indo($date, $print_day = false)
                         <font style="font-size: 24px;font-weight: 800;">LAPORAN PENGELUARAN BARANG PER DOKUMEN PABEAN
                         </font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
-                        <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $_POST['StartTanggalS'] ?> S.D
-                            <?= $_POST['EndTanggalS'] ?></font>
+                        <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $_POST['StartTanggal'] ?> S.D
+                            <?= $_POST['EndTanggal'] ?></font>
                         <div class="line-page-table"></div>
                         <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
                     </div>
@@ -134,7 +134,7 @@ function date_indo($date, $print_day = false)
                 <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
                 </div>
                 <!-- <div class="table-responsive"> -->
-                <table id="table-masuk-barang" class="table table-striped table-bordered table-td-valign-middle">
+                <table id="table-keluar-barang" class="table table-striped table-bordered table-td-valign-middle">
                     <thead>
                         <tr>
                             <th rowspan="2" width="1%">#</th>
@@ -174,30 +174,38 @@ function date_indo($date, $print_day = false)
                             <!-- NO -->
                             <td><?= $no ?>.</td>
                             <!-- BC -->
-                            <td>BC<?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                            <td style="text-align: center;">BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
                             <!-- AJU -->
                             <td style="text-align: center">
-                                <?php if ($row['NOMOR_AJU'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                 </font>
                                 <?php } else { ?>
-                                <?= $row['NOMOR_AJU']; ?>
+                                <?= $row['NOMOR_DAFTAR']; ?>
                                 <?php } ?>
                             </td>
                             <!-- TGL AJU (FILTER) -->
-                            <?php
-                                    $dataTGLAJU = $row['TGL_AJU'];
-                                    $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
-                                    $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
-                                    $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
+                            <!-- <?php
+                                            $dataTGLAJU = $row['TGL_AJU'];
+                                            $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
+                                            $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
+                                            $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
 
-                                    $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
-                                    ?>
-                            <td><?= $datTGLAJU; ?></td>
+                                            $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
+                                            ?>
+                                            <td><?= $datTGLAJU; ?></td> -->
+                            <td style="text-align: center">
+                                <?php if ($row['TANGGAL_DAFTAR'] == NULL) { ?>
+                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                </font>
+                                <?php } else { ?>
+                                <?= $row['TANGGAL_DAFTAR']; ?>
+                                <?php } ?>
+                            </td>
                             <!-- NOMOR BC 11 -->
                             <td style="text-align: center">
                                 <?php if ($row['NOMOR_BC11'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                 </font>
                                 <?php } else { ?>
                                 <?= $row['NOMOR_BC11']; ?>
@@ -206,7 +214,7 @@ function date_indo($date, $print_day = false)
                             <!-- TGL BC 11 -->
                             <td style="text-align: center">
                                 <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                 </font>
                                 <?php } else { ?>
                                 <?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?>
@@ -215,7 +223,7 @@ function date_indo($date, $print_day = false)
                             <!-- NAMA PEMASOK -->
                             <td style="text-align: center">
                                 <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                 </font>
                                 <?php } else { ?>
                                 <?= $row['NAMA_PEMASOK']; ?>
@@ -223,12 +231,19 @@ function date_indo($date, $print_day = false)
                             </td>
                             <!-- HS -->
                             <td style="text-align: center">
-                                <?php if ($row['POS_TARIF'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                </font>
-                                <?php } else { ?>
-                                <?= $row['POS_TARIF']; ?>
-                                <?php } ?>
+                                <?php
+                                        if ($row['KODE_BARANG'] == NULL) {
+                                            $KDBRG = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                        } else {
+                                            $KDBRG = $row['KODE_BARANG'];
+                                        }
+                                        if ($row['POS_TARIF'] == NULL) {
+                                            $POSTARIF = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                        } else {
+                                            $POSTARIF = $row['POS_TARIF'];
+                                        }
+                                        ?>
+                                <?= $KDBRG ?> (<?= $POSTARIF ?>)
                             </td>
                             <!-- BARANG -->
                             <td><?= $row['URAIAN']; ?></td>

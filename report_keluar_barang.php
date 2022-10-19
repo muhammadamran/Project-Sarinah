@@ -14,18 +14,18 @@ $EndTanggal = '';
 if (isset($_POST['filter_date'])) {
     if ($_POST["StartTanggal"] != '') {
         $StartTanggal   = $_POST['StartTanggal'];
-        $rStartTanggal  = str_replace("-", "", $_POST['StartTanggal']);
+        // $rStartTanggal  = str_replace("-", "", $_POST['StartTanggal']);
     }
 
     if ($_POST["EndTanggal"] != '') {
         $EndTanggal     = $_POST['EndTanggal'];
-        $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
+        // $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
     }
 }
 
 // API - 
 include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $rStartTanggal . '&EndTanggal=' . $rEndTanggal);
+$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal);
 $data = json_decode($content, true);
 ?>
 
@@ -101,6 +101,47 @@ $data = json_decode($content, true);
         </div>
     </div>
     <!-- Begin Row -->
+
+
+    <?php if (isset($_POST['filter_date'])) { ?>
+    <div class="row" style="display: flex;justify-content: end;">
+        <div class="col-xl-3">
+            <div class="panel panel-inverse" data-sortable-id="ui-perusahaan"
+                style="padding: 15px;display: flex;justify-content: space-evenly;">
+                <?php if (isset($_POST['filter_date'])) { ?>
+                <a href="./report_keluar_barang.php" class="btn btn-yellow" title="Reset" style="padding: 7px;">
+                    <div style="display: flex;justify-content: space-between;align-items: end;">
+                        <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
+                    </div>
+                </a>
+                <?php } ?>
+                <?php if (isset($_POST['filter_date'])) { ?>
+                <form action="./export/excel_report_keluar_barang.php" target="_blank" method="POST"
+                    style="display: inline-block;">
+                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                    <button type="submit" name="find_" class="btn btn-sm btn-white">
+                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"
+                            data-toggle="popover" data-trigger="hover" data-title="Export File Excel"
+                            data-placement="top" data-content="Klik untuk mengexport data dalam file Excel"> Export
+                        Excel
+                    </button>
+                </form>
+                <form action="./export/pdf_report_keluar_barang.php" target="_blank" method="POST"
+                    style="display: inline-block;">
+                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                    <button type="submit" name="find_" class="btn btn-sm btn-white">
+                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"
+                            data-toggle="popover" data-trigger="hover" data-title="Print File" data-placement="top"
+                            data-content="Klik untuk Print File"> Print
+                    </button>
+                </form>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
 
     <div class="row">
         <div class="col-xl-12">
@@ -184,9 +225,9 @@ $data = json_decode($content, true);
                             </span>
                         </div>
                     </div> -->
-                    <div class="col-xl-12">
+                    <!-- <div class="col-xl-12">
                         <div class="line-page-table"></div>
-                    </div>
+                    </div> -->
                     <div style="display: flex;align-items: center;margin-top: 15px;margin-bottom: -0px;">
                         <div class="col-md-3">
                             <div style="display: flex;justify-content: center;">
