@@ -294,12 +294,19 @@ $data = json_decode($content, true);
                                     </td>
                                     <!-- HS -->
                                     <td style="text-align: center">
-                                        <?php if ($row['POS_TARIF'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['POS_TARIF']; ?>
-                                        <?php } ?>
+                                        <?php
+                                                if ($row['KODE_BARANG'] == NULL) {
+                                                    $KDBRG = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                                } else {
+                                                    $KDBRG = $row['KODE_BARANG'];
+                                                }
+                                                if ($row['POS_TARIF'] == NULL) {
+                                                    $POSTARIF = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                                } else {
+                                                    $POSTARIF = $row['POS_TARIF'];
+                                                }
+                                                ?>
+                                        <?= $KDBRG ?> (<?= $POSTARIF ?>)
                                     </td>
                                     <!-- BARANG -->
                                     <td><?= $row['URAIAN']; ?></td>
