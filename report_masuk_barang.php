@@ -146,9 +146,6 @@ $data = json_decode($content, true);
                     display: flex;
                     justify-content: end;
                     background: transparent;
-                    margin: 0px;
-                    margin-bottom: 10px;
-                    margin-top: -10px;
                 }
                 </style>
                 <div class="panel-body text-inverse">
