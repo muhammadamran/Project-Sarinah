@@ -57,34 +57,43 @@ $data = json_decode($content, true);
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="NoPengajuan"
-                                        placeholder="Nomor Pengajuan ..." value="<?= $NoPengajuan ?>">
+                                    <input type="text" class="form-control" name="NomorPengajuan"
+                                        placeholder="Nomor Pengajuan ..." value="<?= $NomorPengajuan ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-info m-r-5" name="findOne">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindNomorPengajuan">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
                             </div>
                         </fieldset>
+                    </form>
+                    <form action="" id="fformone" method="POST">
                         <fieldset>
                             <!-- Nomor BC 2.7 -->
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">No. BC. 27</label>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <input type="text" class="form-control" name="NoBC27" placeholder="No. BC. 27 ..."
                                         value="<?= $NoBC27 ?>">
                                 </div>
+                                <div class="col-md-2" id="OKEBTN">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindNoBC27">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                </div>
                             </div>
                         </fieldset>
+                    </form>
+                    <form action="" id="fformone" method="POST">
                         <fieldset>
                             <!-- Tanggal Masuk -->
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Tanggal Masuk</label>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-3">
@@ -98,13 +107,20 @@ $data = json_decode($content, true);
                                     <input type="date" class="form-control" name="TanggalMasukTwo"
                                         placeholder="Tanggal Masuk ..." value="<?= $TanggalMasukTwo ?>">
                                 </div>
+                                <div class="col-md-2" id="OKEBTN">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindTglMasuk">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                </div>
                             </div>
                         </fieldset>
+                    </form>
+                    <form action="" id="fformone" method="POST">
                         <fieldset>
                             <!-- Tanngall Keluar -->
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Tanggal Keluar</label>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-3">
@@ -118,24 +134,39 @@ $data = json_decode($content, true);
                                     <input type="date" class="form-control" name="TanggalKeluarTwo"
                                         placeholder="Tanggal Keluar ..." value="<?= $TanggalKeluarTwo ?>">
                                 </div>
+                                <div class="col-md-2" id="OKEBTN">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindTglKeluar">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                </div>
                             </div>
                         </fieldset>
+                    </form>
+                    <form action="" id="fformone" method="POST">
                         <fieldset>
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Nama Penerima Barang</label>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <input type="text" class="form-control" name="NamaPenerimaBarang"
                                         placeholder="Nama Penerima Barang ..." value="<?= $NamaPenerimaBarang ?>">
                                 </div>
+
+                                <div class="col-md-2" id="OKEBTN">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindNamaPenerimaBarang">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                </div>
                             </div>
                         </fieldset>
+                    </form>
+                    <form action="" id="fformone" method="POST">
                         <fieldset>
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Kode Negara / Nama Negara Supplier</label>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-2">
@@ -149,8 +180,15 @@ $data = json_decode($content, true);
                                     <input type="text" class="form-control" name="NamaNegara"
                                         placeholder="Nama Negara ..." value="<?= $NamaNegara ?>">
                                 </div>
+                                <div class="col-md-2" id="OKEBTN">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindTglMasuk">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                </div>
                             </div>
                         </fieldset>
+                    </form>
+                    <form action="" id="fformone" method="POST">
                         <fieldset>
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">No. Container</label>
@@ -163,28 +201,30 @@ $data = json_decode($content, true);
                                 </div>
                             </div>
                         </fieldset>
+                    </form>
+                    <form action="" id="F-MataUang" method="POST">
                         <fieldset>
                             <div class="form-group row m-b-15" style="align-items: center;">
                                 <label class="col-md-3 col-form-label">Mata Uang</label>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <input type="text" class="form-control" name="MataUang" placeholder="Mata Uang ..."
                                         value="<?= $MataUang ?>">
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset>
-                            <div class="form-group row" style="justify-content: flex-end;">
-                                <div class="col-md-7 offset-md-3">
-                                    <a href="report_data_tpb.php" type="button" class="btn btn-yellow m-r-5">
-                                        <i class="fa fa-refresh"></i> Reset
-                                    </a>
-                                </div>
-                            </div>
-                        </fieldset>
                     </form>
+                    <fieldset>
+                        <div class="form-group row" style="justify-content: flex-end;">
+                            <div class="col-md-7 offset-md-3">
+                                <a href="report_data_tpb.php" type="button" class="btn btn-yellow m-r-5">
+                                    <i class="fa fa-refresh"></i> Reset
+                                </a>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
             </div>
         </div>
