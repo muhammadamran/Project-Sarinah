@@ -287,9 +287,9 @@ $data = json_decode($content, true);
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center;">Jenis</th>
-                                    <th style="text-align: center;">No.</th>
-                                    <th style="text-align: center;">Tanggal</th>
+                                    <th style="text-align: center;">Jenis Dok. Pabean PLb</th>
+                                    <th style="text-align: center;">No. Daftar PLB</th>
+                                    <th style="text-align: center;">Tanggal Submit PLB</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -337,7 +337,21 @@ $data = json_decode($content, true);
                                         <?= $row['PEMASOK']; ?>
                                         <?php } ?>
                                     </td>
-                                    <td style="text-align: center"><?= $row['KODE_BARANG']; ?></td>
+                                    <td style="text-align: center">
+                                        <?php
+                                                if ($row['KODE_BARANG'] == NULL) {
+                                                    $KDBRG = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                                } else {
+                                                    $KDBRG = $row['KODE_BARANG'];
+                                                }
+                                                if ($row['POS_TARIF'] == NULL) {
+                                                    $POSTARIF = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                                } else {
+                                                    $POSTARIF = $row['POS_TARIF'];
+                                                }
+                                                ?>
+                                        <?= $KDBRG ?> (<?= $POSTARIF ?>)
+                                    </td>
                                     <td><?= $row['URAIAN']; ?></td>
                                     <td>
                                         <div style="display: flex;justify-content: space-between;align-items: center">
