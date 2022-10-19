@@ -96,14 +96,14 @@ $data = json_decode($content, true);
                                 <div class="col-md-1">
                                     <font class="titik-dua">:</font>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <input type="date" class="form-control" name="TanggalMasukOne"
                                         placeholder="Tanggal Masuk ..." value="<?= $TanggalMasukOne ?>">
                                 </div>
                                 <div class="col-md-1" style="display: flex;justify-content: center;">
                                     <font>s.d</font>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <input type="date" class="form-control" name="TanggalMasukTwo"
                                         placeholder="Tanggal Masuk ..." value="<?= $TanggalMasukTwo ?>">
                                 </div>
