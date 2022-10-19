@@ -132,7 +132,7 @@ function date_indo($date, $print_day = false)
                 <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
                 </div>
                 <!-- <div class="table-responsive"> -->
-                <table id="table-masuk-barang" class="table table-striped table-bordered table-td-valign-middle">
+                <table border="1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th rowspan="2" width="1%">#</th>
