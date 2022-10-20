@@ -8,6 +8,6 @@ echo $response;
 echo "<br>";
 
 foreach ($data['result'] as $row) {
-    echo $row['KODE_DOKUMEN_PEABEAN'];
+    echo $row['NOMOR_AJU'];
     echo "<br>";
 }
