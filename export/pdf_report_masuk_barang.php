@@ -209,7 +209,7 @@ function date_indo($date, $print_day = false)
                                             $POSTARIF = $row['POS_TARIF'];
                                         }
                                         ?>
-                                <?= $KDBRG ?> (<?= $POSTARIF ?>)
+                                <?= $KDBRG ?>
                             </td>
                             <td><?= $row['URAIAN']; ?></td>
                             <td>

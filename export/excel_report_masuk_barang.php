@@ -200,7 +200,7 @@ $data = json_decode($content, true);
                                 $POSTARIF = $row['POS_TARIF'];
                             }
                             ?>
-                    <?= $KDBRG ?> (<?= $POSTARIF ?>)
+                    <?= $KDBRG ?>
                 </td>
                 <td><?= $row['URAIAN']; ?></td>
                 <td>
