@@ -326,7 +326,7 @@ if (isset($_POST['FindMataUang'])) {
                         <table id="TableDataTPB" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th rowspan="2" width="1%">#</th>
+                                    <th rowspan="2" width="1%">No.</th>
                                     <th colspan="4" style="text-align:center">BC 2.7 PLB</th>
                                     <th colspan="4" style="text-align:center">BC 2.7 Sarinah</th>
                                     <th rowspan="2" style="text-align:center">KD / Negara</th>
@@ -477,29 +477,28 @@ if (isset($_POST['FindMataUang'])) {
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
-                                        <a href="#alamat<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal"
-                                            title="Cont. Details"><i class="fas fa-box"></i> Alamat</a>
+                                        <a href="#AlamatTujuan<?= $row['ID'] ?>" class="btn btn-sm btn-info"
+                                            data-toggle="modal" title="Alamat Tujuan"><i class="fas fa-map"></i> Detail
+                                            Alamat</a>
                                         <?php } ?>
                                     </td>
                                 </tr>
-                                <div class="modal fade" id="alamat<?= $row['ID'] ?>">
+                                <!-- Alamat -->
+                                <div class="modal fade" id="AlamatTujuan<?= $row['ID'] ?>">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <form action="" method="POST">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">[Cont. Details <?= $row['ID'] ?>] No.
-                                                        Pengajuan Sarinah - <?= $row['NOMOR_AJU'] ?></h4>
+                                                    <h4 class="modal-title">[Detail Alamat Tujuan]
+                                                        <?= $row['NAMA_PENERIMA_BARANG'] ?></h4>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-hidden="true">×</button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <fieldset>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <?= $row['ALAMAT_PENERIMA_BARANG']; ?>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
+                                                    <div class="alert alert-secondary m-b-0">
+                                                        <h5><i class="fa fa-map"></i> Detail Alamat:</h5>
+                                                        <p><?= $row['ALAMAT_PENERIMA_BARANG'] ?></p>
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i
@@ -509,6 +508,7 @@ if (isset($_POST['FindMataUang'])) {
                                         </div>
                                     </div>
                                 </div>
+                                <!-- End Alamat -->
                                 <?php } ?>
                                 <?php } ?>
                             </tbody>
