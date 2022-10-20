@@ -346,14 +346,30 @@ $data = json_decode($content, true);
                                         <?= $row['TANGGAL_DAFTAR']; ?>
                                         <?php } ?>
                                     </td>
-                                    <td><?= $row['POS_TARIF']; ?></td>
-                                    <td><?= $row['SERI_BARANG']; ?></td>
-                                    <td><?= $row['URAIAN']; ?></td>
-                                    <td>
-                                        <div style="display: flex;justify-content: space-between;align-items: center">
-                                            <font><?= $row['KODE_SATUAN']; ?></font>
-                                            <font><?= $row['JUMLAH_SATUAN']; ?></font>
-                                        </div>
+
+                                    <td style="text-align: center;">
+                                        <?php if ($row['KODE_BARANG'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['KODE_BARANG']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['SERI_BARANG'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['SERI_BARANG']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <?php if ($row['URAIAN'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['URAIAN']; ?>
+                                        <?php } ?>
                                     </td>
                                     <td>
                                         <div style="display: flex;justify-content: space-between;align-items: center">
@@ -361,12 +377,6 @@ $data = json_decode($content, true);
                                             <font><?= $row['JUMLAH_SATUAN']; ?></font>
                                         </div>
                                     </td>
-                                    <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
-                                    <td><?= $row['TPB_TANGGAL_BC11']; ?></td>
-                                    <td><?= $row['TPB_TANGGAL_BC11']; ?></td>
-                                    <td><?= $row['POS_TARIF']; ?></td>
-                                    <td><?= $row['SERI_BARANG']; ?></td>
-                                    <td><?= $row['URAIAN']; ?></td>
                                     <td>
                                         <div style="display: flex;justify-content: space-between;align-items: center">
                                             <font><?= $row['KODE_VALUTA']; ?></font>
