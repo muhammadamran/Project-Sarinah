@@ -299,20 +299,11 @@ if (isset($_POST['FindMataUang'])) {
                             </div>
                         </fieldset>
                     </form>
-                    <fieldset>
-                        <div class="form-group row m-b-15" style="align-items: center;">
-                            <label class="col-md-3 col-form-label"></label>
-                            <div class="col-md-1">
-                                <font class="titik-dua">:</font>
-                            </div>
-                            <div class="col-md-6">
-                            </div>
-                            <div class="col-md-2" id="OKEBTN">
-                                <a href="report_data_tpb.php" class="btn btn-info m-r-5">
-                                    <i class="fa fa-refresh"></i> Reset
-                                </a>
-                            </div>
-                        </div>
+                    <div class="col-md-2" id="OKEBTN">
+                        <a href="report_data_tpb.php" class="btn btn-yellow m-r-5">
+                            <i class="fa fa-refresh"></i> Reset
+                        </a>
+                    </div>
                     </fieldset>
                 </div>
             </div>
