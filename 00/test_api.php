@@ -11,7 +11,8 @@ function get_content($URL)
     return $data;
 }
 
-$content = get_content('http://117.54.102.106/tpbbackend/api/dataBC27.php');
+// $content = get_content('http://117.54.102.106/tpbbackend/api/dataBC27.php');
+$content = get_content('http://api2.itinventory-sarinah.com:8091/tpbbackend/api/dataBC27.php');
 $data = json_decode($content, true);
 
 var_dump($data);
