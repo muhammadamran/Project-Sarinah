@@ -6,6 +6,10 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/top-sidebar.php";
 include "include/cssDatatables.php";
+// API - 
+include "include/api.php";
+$contentCon = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_NomorPengajuanKon&ID=' . $_GET['ID']);
+$dataCon = json_decode($contentCon, true);
 ?>
 <style>
 @media (max-width: 767.5px) {
@@ -47,6 +51,50 @@ include "include/cssDatatables.php";
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class=" panel-body text-inverse">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php if ($dataCon['status'] == 404) { ?>
+                                <div
+                                    style="padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
+                                    <center>
+                                        <div style="display: grid;">
+                                            <i class="far fa-times-circle no-data"></i>
+                                            Tidak ada data
+                                        </div>
+                                    </center>
+                                </div>
+                                <?php } else { ?>
+                                <?php $no = 0; ?>
+                                <?php foreach ($dataCon['result'] as $row) { ?>
+                                <?php $no++ ?>
+                                <div
+                                    style="display: flex;justify-content: space-between;align-items: center;padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
+                                    <div style="display: grid;">
+                                        <font>No.</font>
+                                        <font style="font-weight: 400;"><?= $nocont; ?>.
+                                        </font>
+                                    </div>
+                                    <div style="display: grid;">
+                                        <font>Cont. Details</font>
+                                        <font style="font-weight: 400;">
+                                            <?= $cont['KODE_TIPE_KONTAINER']; ?> /
+                                            <?= $cont['KODE_UKURAN_KONTAINER']; ?>
+                                        </font>
+                                    </div>
+                                    <div style="display: grid;">
+                                        <font>Cont. No</font>
+                                        <font style="font-weight: 400;">
+                                            <?= $cont['NOMOR_KONTAINER']; ?></font>
+                                    </div>
+                                </div>
+                                <?php } ?>
+                                <?php } ?>
+                                <div class="form-group">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
             </div>
         </div>
