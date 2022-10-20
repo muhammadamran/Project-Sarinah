@@ -119,8 +119,8 @@ function date_indo($date, $print_day = false)
                         <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN PABEAN
                         </font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
-                        <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $StartTanggal ?> S.D
-                            <?= $EndTanggal ?></font>
+                        <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $_POST['StartTanggal'] ?> S.D
+                            <?= $_POST['EndTanggal'] ?></font>
                         <div class="line-page-table"></div>
                         <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
                     </div>
