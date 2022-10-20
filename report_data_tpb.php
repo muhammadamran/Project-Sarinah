@@ -384,14 +384,30 @@ if (isset($_POST['FindMataUang'])) {
                                     <td><?= $row['NOMOR_AJU']; ?></td>
                                     <?php
                                             // FOR TANGGAL INPUT TPB
-                                            $TPB_YYMMDD = SUBSTR($row2['NOMOR_AJU'], 12, 8);
+                                            $TPB_YYMMDD = SUBSTR($row['NOMOR_AJU'], 12, 8);
                                             $TPB_YY = SUBSTR($TPB_YYMMDD, 0, 4);
                                             $TPB_MM = SUBSTR($TPB_YYMMDD, 4, 2);
                                             $TPB_DD = SUBSTR($TPB_YYMMDD, 6, 2);
                                             ?>
-                                    <td><?= $TPB_YY . "-" . $TPB_MM . "-" . $TPB_DD; ?></td>
-                                    <td><?= $row['TANGGAL_DAFTAR']; ?></td>
-                                    <td><?= $row['NOMOR_DAFTAR']; ?></td>
+                                    <td style="text-align: center">
+                                        <?= $TPB_YY . "-" . $TPB_MM . "-" . $TPB_DD; ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['TANGGAL_DAFTAR'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['TANGGAL_DAFTAR']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['NOMOR_DAFTAR']; ?>
+                                        <?php } ?>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                                 <?php } ?>
