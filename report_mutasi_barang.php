@@ -298,7 +298,12 @@ $data = json_decode($content, true);
                                     <td><?= $row['URAIAN']; ?></td>
                                     <td><?= $row['UKURAN']; ?></td>
                                     <td><?= $row['TIPE']; ?></td>
-                                    <td><?= $row['KODE_SATUAN']; ?></td>
+                                    <td>
+                                        <div style="display: flex;justify-content: space-between;align-items: center">
+                                            <font><?= $row['KODE_SATUAN']; ?></font>
+                                            <font><?= $row['JUMLAH_SATUAN']; ?></font>
+                                        </div>
+                                    </td>
                                     <td>0</td>
                                     <td>0</td>
                                     <td>0</td>
