@@ -6,79 +6,6 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/top-sidebar.php";
 include "include/cssDatatables.php";
-
-$NomorPengajuan = '';
-$NoBC27 = '';
-$TanggalMasukOne = '';
-$TanggalMasukTwo = '';
-$TanggalKeluarOne = '';
-$TanggalKeluarTwo = '';
-$NamaPenerimaBarang = '';
-$KodeNegara = '';
-$NamaNegara = '';
-$NoContainer = '';
-$MataUang = '';
-
-// API - 
-include "include/api.php";
-if (isset($_POST['FindNomorPengajuan'])) {
-    $NomorPengajuan   = $_POST['NomorPengajuan'];
-
-    $content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_NomorPengajuan&NomorPengajuan=' . $_POST['NomorPengajuan']);
-    $data = json_decode($content, true);
-}
-
-if (isset($_POST['FindNoBC27'])) {
-    $FindNoBC27   = $_POST['FindNoBC27'];
-
-    $content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_NoBC27&FindNoBC27=' . $_POST['FindNoBC27']);
-    $data = json_decode($content, true);
-}
-
-if (isset($_POST['FindTglMasuk'])) {
-    $TanggalMasukOne   = $_POST['TanggalMasukOne'];
-    $TanggalMasukTwo   = $_POST['TanggalMasukTwo'];
-
-    $content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_TglMasuk&TanggalMasukOne=' . $_POST['TanggalMasukOne'] . '&TanggalMasukTwo=' . $_POST['TanggalMasukTwo']);
-    $data = json_decode($content, true);
-}
-
-if (isset($_POST['FindTglKeluar'])) {
-    $TanggalKeluarOne   = $_POST['TanggalKeluarOne'];
-    $TanggalKeluarTwo   = $_POST['TanggalKeluarTwo'];
-
-    $content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_TglKeluar&TanggalKeluarOne=' . $_POST['TanggalKeluarOne'] . '&TanggalKeluarTwo=' . $_POST['TanggalKeluarTwo']);
-    $data = json_decode($content, true);
-}
-
-if (isset($_POST['FindNamaPenerimaBarang'])) {
-    $NamaPenerimaBarang   = $_POST['NamaPenerimaBarang'];
-
-    $content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_NamaPenerimaBarang&NamaPenerimaBarang=' . $_POST['NamaPenerimaBarang']);
-    $data = json_decode($content, true);
-}
-
-if (isset($_POST['FindNegara'])) {
-    $KodeNegara   = $_POST['KodeNegara'];
-    $NamaNegara   = $_POST['NamaNegara'];
-
-    $content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_NamaNegara&KodeNegara=' . $_POST['KodeNegara'] . '&NamaNegara=' . $_POST['NamaNegara']);
-    $data = json_decode($content, true);
-}
-
-if (isset($_POST['FindContainer'])) {
-    $NoContainer   = $_POST['NoContainer'];
-
-    $content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_NoContainer&NoContainer=' . $_POST['NoContainer']);
-    $data = json_decode($content, true);
-}
-
-if (isset($_POST['FindMataUang'])) {
-    $MataUang   = $_POST['MataUang'];
-
-    $content = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_Matauang&MataUang=' . $_POST['MataUang']);
-    $data = json_decode($content, true);
-}
 ?>
 <style>
 @media (max-width: 767.5px) {
@@ -93,13 +20,14 @@ if (isset($_POST['FindMataUang'])) {
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-desktop icon-page"></i>
-                <font class="text-page">Data TPB / Sarinah</font>
+                <font class="text-page">Data TPB / Sarinah - Detail Kontainer</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Index</a></li>
                 <li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Data TPB</a></li>
-                <li class="breadcrumb-item active">Sarinah Records</li>
+                <li class="breadcrumb-item"><a href="javascript:;">Sarinah Records</a></li>
+                <li class="breadcrumb-item active">Detail Kontainer</li>
             </ol>
         </div>
         <div>
@@ -113,12 +41,8 @@ if (isset($_POST['FindMataUang'])) {
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <i class="fas fa-filter"></i> Filter Data TPB Sarinah
+                        <i class="fas fa-filter"></i> Data TPB Sarinah - Detail Kontainer: AJU: <?= $_GET['AJU']; ?>
                     </h4>
-                    <a href="report_data_tpb.php" type="button" class="label label-default"
-                        style="padding: 2px;margin-top: 2px;margin-right: 5px;">
-                        <i class="fa fa-refresh"></i> Reset
-                    </a>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class=" panel-body text-inverse">
