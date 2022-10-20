@@ -297,7 +297,7 @@ $data = json_decode($content, true);
                                     </td>
                                     <td><?= $row['URAIAN']; ?></td>
                                     <td><?= $row['UKURAN']; ?></td>
-                                    <td><?= $row['SPESIFIKASI_LAIN']; ?></td>
+                                    <td><?= $row['SL_BRG']; ?></td>
                                     <td><?= $row['KODE_SATUAN']; ?></td>
                                     <td>0</td>
                                     <td>0</td>
