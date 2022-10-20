@@ -477,18 +477,38 @@ if (isset($_POST['FindMataUang'])) {
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
-                                        <?= $row['ALAMAT_PENERIMA_BARANG']; ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: left">
-                                        <?php if ($row['ALAMAT_PENERIMA_BARANG'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['ALAMAT_PENERIMA_BARANG']; ?>
+                                        <a href="#alamat<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal"
+                                            title="Cont. Details"><i class="fas fa-box"></i> Alamat</a>
                                         <?php } ?>
                                     </td>
                                 </tr>
+                                <div class="modal fade" id="alamat<?= $row['ID'] ?>">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="" method="POST">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">[Cont. Details <?= $row['ID'] ?>] No.
+                                                        Pengajuan Sarinah - <?= $row['NOMOR_AJU'] ?></h4>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">×</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <fieldset>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <?= $row['ALAMAT_PENERIMA_BARANG']; ?>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i
+                                                            class="fas fa-times-circle"></i> Tutup</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 <?php } ?>
                                 <?php } ?>
                             </tbody>
