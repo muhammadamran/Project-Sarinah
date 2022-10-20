@@ -374,7 +374,24 @@ if (isset($_POST['FindMataUang'])) {
                                 <?php $no++; ?>
                                 <tr>
                                     <td><?= $no ?>.</td>
+                                    <!-- PLB -->
                                     <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <!-- Sarinah GB -->
+                                    <td><?= $row['NOMOR_AJU']; ?></td>
+                                    <?php
+                                            // FOR TANGGAL INPUT TPB
+                                            $TPB_YYMMDD = SUBSTR($row2['NOMOR_AJU'], 12, 8);
+                                            $TPB_YY = SUBSTR($TPB_YYMMDD, 0, 4);
+                                            $TPB_MM = SUBSTR($TPB_YYMMDD, 4, 2);
+                                            $TPB_DD = SUBSTR($TPB_YYMMDD, 6, 2);
+                                            ?>
+                                    <td><?= $TPB_YY . "-" . $TPB_MM . "-" . $TPB_DD; ?></td>
+                                    <td><?= $row['TANGGAL_DAFTAR']; ?></td>
+                                    <td><?= $row['NOMOR_DAFTAR']; ?></td>
                                 </tr>
                                 <?php } ?>
                                 <?php } ?>
