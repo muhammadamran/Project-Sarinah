@@ -301,13 +301,11 @@ $data = json_decode($content, true);
                                         <?= $row['URAIAN']; ?>
                                         <?php } ?>
                                     </td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['JUMLAH_KEMASAN'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['JUMLAH_KEMASAN']; ?>
-                                        <?php } ?>
+                                    <td>
+                                        <div style="display: flex;justify-content: space-between;align-items: center">
+                                            <font><?= $row['KODE_VALUTA']; ?></font>
+                                            <font><?= $row['CIF']; ?></font>
+                                        </div>
                                     </td>
                                     <!-- SARINAH -->
                                     <td style="text-align: center;">
@@ -345,8 +343,8 @@ $data = json_decode($content, true);
                                     </td>
                                     <td>
                                         <div style="display: flex;justify-content: space-between;align-items: center">
-                                            <font><?= $row['KODE_VALUTA']; ?></font>
-                                            <font><?= $row['CIF']; ?></font>
+                                            <font><?= $row['KODE_SATUAN']; ?></font>
+                                            <font><?= $row['JUMLAH_SATUAN']; ?></font>
                                         </div>
                                     </td>
                                     <td>BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
@@ -355,12 +353,6 @@ $data = json_decode($content, true);
                                     <td><?= $row['POS_TARIF']; ?></td>
                                     <td><?= $row['SERI_BARANG']; ?></td>
                                     <td><?= $row['URAIAN']; ?></td>
-                                    <td>
-                                        <div style="display: flex;justify-content: space-between;align-items: center">
-                                            <font><?= $row['KODE_SATUAN']; ?></font>
-                                            <font><?= $row['JUMLAH_SATUAN']; ?></font>
-                                        </div>
-                                    </td>
                                     <td>
                                         <div style="display: flex;justify-content: space-between;align-items: center">
                                             <font><?= $row['KODE_VALUTA']; ?></font>
