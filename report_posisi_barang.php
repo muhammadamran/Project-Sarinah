@@ -303,6 +303,12 @@ $data = json_decode($content, true);
                                     </td>
                                     <td>
                                         <div style="display: flex;justify-content: space-between;align-items: center">
+                                            <font><?= $row['KODE_SATUAN']; ?></font>
+                                            <font><?= $row['JUMLAH_SATUAN']; ?></font>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex;justify-content: space-between;align-items: center">
                                             <font><?= $row['KODE_VALUTA']; ?></font>
                                             <font><?= $row['CIF']; ?></font>
                                         </div>
