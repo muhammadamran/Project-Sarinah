@@ -244,21 +244,54 @@ $data = json_decode($content, true);
                                 <tr>
                                     <!-- 9 -->
                                     <td><?= $no ?>.</td>
-                                    <td><?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
+                                    <!-- PLB -->
+                                    <td style="text-align: center;">
+                                        <?php if ($row['KODE_JENIS_DOK_ASAL'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        BC <?= $row['KODE_JENIS_DOK_ASAL']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['NOMOR_AJU_DOK_ASAL'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['NOMOR_AJU_DOK_ASAL']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['TANGGAL_DAFTAR_DOK_ASAL'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['TANGGAL_DAFTAR_DOK_ASAL']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <!-- SARINAH -->
+                                    <td style="text-align: center;">
+                                        <?php if ($row['KODE_DOKUMEN_PABEAN'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        BC <?= $row['KODE_DOKUMEN_PABEAN']; ?>
+                                        <?php } ?>
+                                    </td>
                                     <td style="text-align: center;">
                                         <?php if ($row['NOMOR_AJU'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
                                         <?= $row['NOMOR_AJU']; ?>
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: center;">
-                                        <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                        <?php if ($row['TANGGAL_DAFTAR'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
-                                        <?= $row['TANGGAL_BC11']; ?>
+                                        <?= $row['TANGGAL_DAFTAR']; ?>
                                         <?php } ?>
                                     </td>
                                     <td><?= $row['POS_TARIF']; ?></td>
