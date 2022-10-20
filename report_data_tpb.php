@@ -326,6 +326,7 @@ if (isset($_POST['FindMataUang'])) {
                         <table id="TableDataTPB" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
+                                    <th rowspan="2" width="1%">#</th>
                                     <th colspan="4" style="text-align:center">BC.27 PLB</th>
                                     <th colspan="4" style="text-align:center">BC.27 Sarinah</th>
                                     <th rowspan="2" style="text-align:center">KD / Negara</th>
