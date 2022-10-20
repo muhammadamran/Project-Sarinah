@@ -18,7 +18,7 @@ $data = json_decode($content, true);
     <?php } else { ?>
         <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
     <?php } ?> -->
-    <title>Laporan Masuk Barang - Tanggal: <?= $_POST['StartTanggalS'] ?> s.d <?= $_POST['EndTanggalS'] ?></title>
+    <title>Laporan Masuk Barang - Tanggal: <?= $_POST['StartTanggal'] ?> s.d <?= $_POST['EndTanggal'] ?></title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
