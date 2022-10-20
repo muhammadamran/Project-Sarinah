@@ -379,7 +379,6 @@ if (isset($_POST['FindMataUang'])) {
                                     <td><?= $row['NOMOR_AJU']; ?></td>
                                     <td><?= $row['NOMOR_AJU']; ?></td>
                                     <td><?= $row['NOMOR_AJU']; ?></td>
-                                    <td><?= $row['NOMOR_AJU']; ?></td>
                                     <!-- Sarinah GB -->
                                     <td><?= $row['NOMOR_AJU']; ?></td>
                                     <?php
