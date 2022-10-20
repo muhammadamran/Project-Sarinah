@@ -1,5 +1,5 @@
 <?php
-$url = "http://api2.itinventory-sarinah.com:8088/";
+$url = "http://api2.itinventory-sarinah.com:8091/";
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
