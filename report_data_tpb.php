@@ -482,6 +482,11 @@ if (isset($_POST['FindMataUang'])) {
                                             Alamat</a>
                                         <?php } ?>
                                     </td>
+                                    <td style="text-align: center">
+                                        <a href="#kontainer<?= $row2['ID'] ?>" class="btn btn-primary"
+                                            data-toggle="modal" title="Cont. Details"><i class="fas fa-box"></i> Cont.
+                                            Details</a>
+                                    </td>
                                 </tr>
                                 <!-- Alamat -->
                                 <div class="modal fade" id="AlamatTujuan<?= $row['ID'] ?>">
@@ -509,6 +514,77 @@ if (isset($_POST['FindMataUang'])) {
                                     </div>
                                 </div>
                                 <!-- End Alamat -->
+
+                                <!-- Cont. Details -->
+                                <?php
+                                        $contentCon = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_NomorPengajuanKon&ID=' . $row['ID']);
+                                        $dataCon = json_decode($contentCon, true);
+                                        ?>
+                                <div class="modal fade" id="kontainer<?= $row['ID'] ?>">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="" method="POST">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">[Cont. Details <?= $row['ID'] ?>] No.
+                                                        Pengajuan - <?= $row2['NOMOR_AJU'] ?></h4>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">×</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <fieldset>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <?php if ($dataCon['status'] == 404) { ?>
+                                                                <div
+                                                                    style="padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
+                                                                    <center>
+                                                                        <div style="display: grid;">
+                                                                            <i class="far fa-times-circle no-data"></i>
+                                                                            Tidak ada data
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                                <?php } else { ?>
+                                                                <?php $no = 0; ?>
+                                                                <?php foreach ($dataCon['result'] as $row) { ?>
+                                                                <?php $no++ ?>
+                                                                <div
+                                                                    style="display: flex;justify-content: space-between;align-items: center;padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
+                                                                    <div style="display: grid;">
+                                                                        <font>No.</font>
+                                                                        <font style="font-weight: 400;"><?= $nocont; ?>.
+                                                                        </font>
+                                                                    </div>
+                                                                    <div style="display: grid;">
+                                                                        <font>Cont. Details</font>
+                                                                        <font style="font-weight: 400;">
+                                                                            <?= $cont['KODE_TIPE_KONTAINER']; ?> /
+                                                                            <?= $cont['KODE_UKURAN_KONTAINER']; ?>
+                                                                        </font>
+                                                                    </div>
+                                                                    <div style="display: grid;">
+                                                                        <font>Cont. No</font>
+                                                                        <font style="font-weight: 400;">
+                                                                            <?= $cont['NOMOR_KONTAINER']; ?></font>
+                                                                    </div>
+                                                                </div>
+                                                                <?php } ?>
+                                                                <?php } ?>
+                                                                <div class="form-group">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i
+                                                            class="fas fa-times-circle"></i> Tutup</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Cont. Details -->
                                 <?php } ?>
                                 <?php } ?>
                             </tbody>
