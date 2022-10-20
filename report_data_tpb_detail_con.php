@@ -56,42 +56,70 @@ $dataCon = json_decode($contentCon, true);
                     <fieldset>
                         <div class="row">
                             <div class="col-md-12">
-                                <?php if ($dataCon['status'] == 404) { ?>
-                                <div
-                                    style="padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
-                                    <center>
-                                        <div style="display: grid;">
-                                            <i class="far fa-times-circle no-data"></i>
-                                            Tidak ada data
+
+                                <table id="TableDataTPB"
+                                    class="table table-striped table-bordered table-td-valign-middle">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2" width="1%">No.</th>
+                                            <th style="text-align:center">Nomor Kontainer</th>
+                                            <th style="text-align:center">Tipe Kontainer</th>
+                                            <th style="text-align:center">Ukuran Kontainer</th>
+                                            <th style="text-align:center">Nomor Polisi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if ($dataCon['status'] == 404) { ?>
+                                        <div
+                                            style="padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i>
+                                                    Tidak ada data
+                                                </div>
+                                            </center>
                                         </div>
-                                    </center>
-                                </div>
-                                <?php } else { ?>
-                                <?php $no = 0; ?>
-                                <?php foreach ($dataCon['result'] as $row) { ?>
-                                <?php $no++ ?>
-                                <div
-                                    style="display: flex;justify-content: space-between;align-items: center;padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
-                                    <div style="display: grid;">
-                                        <font>No.</font>
-                                        <font style="font-weight: 400;"><?= $nocont; ?>.
-                                        </font>
-                                    </div>
-                                    <div style="display: grid;">
-                                        <font>Cont. Details</font>
-                                        <font style="font-weight: 400;">
-                                            <?= $cont['KODE_TIPE_KONTAINER']; ?> /
-                                            <?= $cont['KODE_UKURAN_KONTAINER']; ?>
-                                        </font>
-                                    </div>
-                                    <div style="display: grid;">
-                                        <font>Cont. No</font>
-                                        <font style="font-weight: 400;">
-                                            <?= $cont['NOMOR_KONTAINER']; ?></font>
-                                    </div>
-                                </div>
-                                <?php } ?>
-                                <?php } ?>
+                                        <?php } else { ?>
+                                        <?php $no = 0; ?>
+                                        <?php foreach ($dataCon['result'] as $row) { ?>
+                                        <?php $no++ ?>
+                                        <td><?= $no ?>.</td>
+                                        <td style="text-align: center">
+                                            <?php if ($row['NOMOR_KONTAINER'] == NULL) { ?>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                            </font>
+                                            <?php } else { ?>
+                                            <?= $row['NOMOR_KONTAINER']; ?>
+                                            <?php } ?>
+                                        </td>
+                                        <td style="text-align: center">
+                                            <?php if ($row['KODE_TIPE_KONTAINER'] == NULL) { ?>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                            </font>
+                                            <?php } else { ?>
+                                            <?= $row['KODE_TIPE_KONTAINER']; ?>
+                                            <?php } ?>
+                                        </td>
+                                        <td style="text-align: center">
+                                            <?php if ($row['KODE_UKURAN_KONTAINER'] == NULL) { ?>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                            </font>
+                                            <?php } else { ?>
+                                            <?= $row['KODE_UKURAN_KONTAINER']; ?>
+                                            <?php } ?>
+                                        </td>
+                                        <td style="text-align: center">
+                                            <?php if ($row['NO_POLISI'] == NULL) { ?>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                            </font>
+                                            <?php } else { ?>
+                                            <?= $row['NO_POLISI']; ?>
+                                            <?php } ?>
+                                        </td>
+                                        <?php } ?>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                                 <div class="form-group">
                                 </div>
                             </div>
