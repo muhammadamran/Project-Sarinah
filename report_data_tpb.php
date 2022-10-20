@@ -483,7 +483,7 @@ if (isset($_POST['FindMataUang'])) {
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: center">
-                                        <a href="#kontainer<?= $row2['ID'] ?>" class="btn btn-primary"
+                                        <a href="#kontainer<?= $row['ID'] ?>" class="btn btn-primary"
                                             data-toggle="modal" title="Cont. Details"><i class="fas fa-box"></i> Cont.
                                             Details</a>
                                     </td>
