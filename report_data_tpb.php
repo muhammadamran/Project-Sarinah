@@ -299,6 +299,8 @@ if (isset($_POST['FindMataUang'])) {
                             </div>
                         </fieldset>
                     </form>
+                    <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
+                    </div>
                     <div class="form-group row m-b-15" style="align-items: center;">
                         <div class="col-md-3" id="OKEBTN">
                             <a href="report_data_tpb.php" class="btn btn-yellow m-r-5">
