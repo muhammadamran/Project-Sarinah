@@ -15,5 +15,5 @@ function get_content($URL)
 $content = get_content('http://api2.itinventory-sarinah.com:8091/tpbbackend/api/dataBC27.php');
 $data = json_decode($content, true);
 
-var_dump($data);
+var_dump($content);
 exit;
