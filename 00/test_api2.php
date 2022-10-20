@@ -1,5 +1,5 @@
 <?php
-$url = "http://api2.itinventory-sarinah.com:8091/";
+$url = "http://api2.itinventory-sarinah.com:8091/tpbbackend/api/dataBC27.php";
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
