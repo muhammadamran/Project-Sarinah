@@ -135,7 +135,7 @@ if (isset($_POST['FindMataUang'])) {
                                         placeholder="Nomor Pengajuan ..." value="<?= $NomorPengajuan ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-default m-r-5" name="FindNomorPengajuan">
+                                    <button type="submit" class="btn btn-white m-r-5" name="FindNomorPengajuan">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
@@ -155,7 +155,7 @@ if (isset($_POST['FindMataUang'])) {
                                         value="<?= $NoBC27 ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-default m-r-5" name="FindNoBC27">
+                                    <button type="submit" class="btn btn-white m-r-5" name="FindNoBC27">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
@@ -182,7 +182,7 @@ if (isset($_POST['FindMataUang'])) {
                                         placeholder="Tanggal Masuk ..." value="<?= $TanggalMasukTwo ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-default m-r-5" name="FindTglMasuk">
+                                    <button type="submit" class="btn btn-white m-r-5" name="FindTglMasuk">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
@@ -209,7 +209,7 @@ if (isset($_POST['FindMataUang'])) {
                                         placeholder="Tanggal Keluar ..." value="<?= $TanggalKeluarTwo ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-default m-r-5" name="FindTglKeluar">
+                                    <button type="submit" class="btn btn-white m-r-5" name="FindTglKeluar">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
@@ -228,7 +228,7 @@ if (isset($_POST['FindMataUang'])) {
                                         placeholder="Nama Penerima Barang ..." value="<?= $NamaPenerimaBarang ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-default m-r-5" name="FindNamaPenerimaBarang">
+                                    <button type="submit" class="btn btn-white m-r-5" name="FindNamaPenerimaBarang">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
@@ -254,7 +254,7 @@ if (isset($_POST['FindMataUang'])) {
                                         placeholder="Nama Negara ..." value="<?= $NamaNegara ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-default m-r-5" name="FindNegara">
+                                    <button type="submit" class="btn btn-white m-r-5" name="FindNegara">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
@@ -273,7 +273,7 @@ if (isset($_POST['FindMataUang'])) {
                                         placeholder="No. Container ..." value="<?= $NoContainer ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-default m-r-5" name="FindContainer">
+                                    <button type="submit" class="btn btn-white m-r-5" name="FindContainer">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
@@ -292,7 +292,7 @@ if (isset($_POST['FindMataUang'])) {
                                         value="<?= $MataUang ?>">
                                 </div>
                                 <div class="col-md-2" id="OKEBTN">
-                                    <button type="submit" class="btn btn-default m-r-5" name="FindMataUang">
+                                    <button type="submit" class="btn btn-white m-r-5" name="FindMataUang">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
                                 </div>
