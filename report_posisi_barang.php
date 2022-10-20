@@ -338,6 +338,14 @@ $data = json_decode($content, true);
                                         <?= $row['TANGGAL_DAFTAR']; ?>
                                         <?php } ?>
                                     </td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['TANGGAL_DAFTAR'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['TANGGAL_DAFTAR']; ?>
+                                        <?php } ?>
+                                    </td>
                                     <td><?= $row['POS_TARIF']; ?></td>
                                     <td><?= $row['SERI_BARANG']; ?></td>
                                     <td><?= $row['URAIAN']; ?></td>
