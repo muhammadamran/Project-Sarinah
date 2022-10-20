@@ -327,8 +327,8 @@ if (isset($_POST['FindMataUang'])) {
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">#</th>
-                                    <th colspan="4" style="text-align:center">BC.27 PLB</th>
-                                    <th colspan="4" style="text-align:center">BC.27 Sarinah</th>
+                                    <th colspan="4" style="text-align:center">BC 2.7 PLB</th>
+                                    <th colspan="4" style="text-align:center">BC 2.7 Sarinah</th>
                                     <th rowspan="2" style="text-align:center">KD / Negara</th>
                                     <th rowspan="2" style="text-align:center">Supplier</th>
                                     <th rowspan="2" style="text-align:center">Jumlah Barang</th>
@@ -336,19 +336,19 @@ if (isset($_POST['FindMataUang'])) {
                                     <th rowspan="2" style="text-align:center">Valas</th>
                                     <th rowspan="2" style="text-align:center">Nilai Total</th>
                                     <th colspan="3" style="text-align:center">Tujuan</th>
-                                    <th rowspan="2" style="text-align:center">Tanggal Masuk Barang</th>
-                                    <th rowspan="2" style="text-align:center">Tanggal Keluar Barang</th>
+                                    <th rowspan="2" style="text-align:center">Tgl Masuk Barang</th>
+                                    <th rowspan="2" style="text-align:center">Tgl Keluar Barang</th>
                                     <th rowspan="2" style="text-align:center">Cont. Details</th>
                                 </tr>
                                 <tr>
                                     <!-- PLB -->
                                     <th style="text-align:center">No. Pengajuan</th>
-                                    <th style="text-align:center">Tanggal Input</th>
+                                    <th style="text-align:center">Tgl Input</th>
                                     <th style="text-align:center">No. Daftar</th>
-                                    <th style="text-align:center">Tanggal Daftar</th>
+                                    <th style="text-align:center">Tgl Daftar</th>
                                     <!-- Sarinah -->
-                                    <th style="text-align:center">No. AJU</th>
-                                    <th style="text-align:center">Tanggal Input</th>
+                                    <th style="text-align:center">No. Pengajuan</th>
+                                    <th style="text-align:center">Tgl Input</th>
                                     <th style="text-align:center">No. Daftar</th>
                                     <th style="text-align:center">Tanggal Daftar</th>
                                     <!-- Tujuan -->
