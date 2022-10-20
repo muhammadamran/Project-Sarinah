@@ -303,7 +303,7 @@ if (isset($_POST['FindMataUang'])) {
                     </div>
                     <div class="form-group row m-b-15" style="align-items: center;justify-content: center;">
                         <div class="col-md-3" id="OKEBTN" style="margin-top: 10px;margin-bottom: -15px;">
-                            <a href="report_data_tpb.php" class="btn btn-secondary m-r-5">
+                            <a href="report_data_tpb.php" class="btn btn-block btn-secondary m-r-5">
                                 <i class="fa fa-refresh"></i> Reset
                             </a>
                         </div>
