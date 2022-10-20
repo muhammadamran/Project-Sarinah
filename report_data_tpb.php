@@ -529,8 +529,9 @@ if (isset($_POST['FindMataUang'])) {
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: center">
-                                        <a href="#kontainer<?= $row['ID'] ?>" class="btn btn-primary"
-                                            data-toggle="modal" title="Cont. Details"><i class="fas fa-box"></i> Cont.
+                                        <a href="report_data_tpb_detail_con.php?ID=<?= $row['ID']; ?>&AJU=<?= $row['NOMOR_AJU'] ?>"
+                                            class="btn btn-primary" title="Cont. Details"><i class="fas fa-box"></i>
+                                            Cont.
                                             Details</a>
                                     </td>
                                 </tr>

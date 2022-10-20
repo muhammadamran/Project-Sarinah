@@ -31,6 +31,7 @@ $dataCon = json_decode($contentCon, true);
                 <li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Data TPB</a></li>
                 <li class="breadcrumb-item active">Sarinah Records</li>
+                <li class="breadcrumb-item active">Cont. Details</li>
             </ol>
         </div>
         <div>
@@ -44,12 +45,8 @@ $dataCon = json_decode($contentCon, true);
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <i class="fas fa-filter"></i> Filter Data TPB Sarinah
+                        <i class="fas fa-filter"></i> Data Cont. Details TPB Sarinah - <?= $_GET['AJU']; ?>
                     </h4>
-                    <a href="report_data_tpb.php" type="button" class="label label-default"
-                        style="padding: 2px;margin-top: 2px;margin-right: 5px;">
-                        <i class="fa fa-refresh"></i> Reset
-                    </a>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class=" panel-body text-inverse">
