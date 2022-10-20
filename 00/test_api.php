@@ -3,9 +3,6 @@ $api_url = 'http://117.54.102.106/tpbbackend/api/dataBC23.php';
 $content = file_get_contents($api_url);
 $data = json_decode($content, true);
 
-var_dump($data);
-exit;
-
 $response = $data['status'];
 echo $response;
 echo "<br>";
