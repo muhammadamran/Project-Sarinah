@@ -505,7 +505,7 @@ if (isset($_POST['FindMataUang'])) {
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
-                                        <a href="#AlamatTujuan<?= $row['ID'] ?>" class="btn btn-sm btn-info"
+                                        <a href="#AlamatTujuan<?= $row['ID_HDR'] ?>" class="btn btn-sm btn-info"
                                             data-toggle="modal" title="Alamat Tujuan"><i class="fas fa-map"></i> Detail
                                             Alamat</a>
                                         <?php } ?>
@@ -529,14 +529,15 @@ if (isset($_POST['FindMataUang'])) {
                                         <?php } ?>
                                     </td>
                                     <td style="text-align: center">
-                                        <a href="report_data_tpb_detail_con.php?ID=<?= $row['ID']; ?>&AJU=<?= $row['NOMOR_AJU'] ?>"
-                                            class="btn btn-primary" title="Cont. Details"><i class="fas fa-box"></i>
+                                        <a href="report_data_tpb_detail_con.php?ID=<?= $row['ID_HDR']; ?>&AJU=<?= $row['NOMOR_AJU'] ?>"
+                                            class="btn btn-primary" target="_blank" title="Cont. Details"><i
+                                                class="fas fa-box"></i>
                                             Cont.
                                             Details</a>
                                     </td>
                                 </tr>
                                 <!-- Alamat -->
-                                <div class="modal fade" id="AlamatTujuan<?= $row['ID'] ?>">
+                                <div class="modal fade" id="AlamatTujuan<?= $row['ID_HDR'] ?>">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <form action="" method="POST">
