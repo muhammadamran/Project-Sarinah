@@ -46,7 +46,7 @@ $dataCon = json_decode($contentCon, true);
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <i class="fas fa-info-circle"></i> Data TPB Sarinah - Detail Kontainer (<?= $_GET['ID']; ?>):
+                        <i class="fas fa-info-circle"></i> Data TPB Sarinah - Detail Kontainer :
                         AJU:
                         <?= $_GET['AJU']; ?>
                     </h4>
