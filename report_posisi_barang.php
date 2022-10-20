@@ -293,12 +293,20 @@ $data = json_decode($content, true);
                                         <?= $row['SERI_BARANG']; ?>
                                         <?php } ?>
                                     </td>
-                                    <td style="text-align: center;">
+                                    <td style="text-align: left;">
                                         <?php if ($row['URAIAN'] == NULL) { ?>
                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                         </font>
                                         <?php } else { ?>
                                         <?= $row['URAIAN']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['JUMLAH_KEMASAN'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['JUMLAH_KEMASAN']; ?>
                                         <?php } ?>
                                     </td>
                                     <!-- SARINAH -->
