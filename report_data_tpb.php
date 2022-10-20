@@ -336,6 +336,7 @@ if (isset($_POST['FindMataUang'])) {
                                     <th rowspan="2" style="text-align:center">Valas</th>
                                     <th rowspan="2" style="text-align:center">Nilai Total</th>
                                     <th colspan="3" style="text-align:center">Tujuan</th>
+                                    <th rowspan="2" style="text-align:center">Origin</th>
                                     <th rowspan="2" style="text-align:center">Tgl Masuk Barang</th>
                                     <th rowspan="2" style="text-align:center">Tgl Keluar Barang</th>
                                     <th rowspan="2" style="text-align:center">Cont. Details</th>
@@ -508,6 +509,14 @@ if (isset($_POST['FindMataUang'])) {
                                         <a href="#AlamatTujuan<?= $row['ID_HDR'] ?>" class="btn btn-sm btn-info"
                                             data-toggle="modal" title="Alamat Tujuan"><i class="fas fa-map"></i> Detail
                                             Alamat</a>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: left">
+                                        <?php if ($row['KODE_NEGARA_PEMASOK'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['KODE_NEGARA_PEMASOK']; ?>
                                         <?php } ?>
                                     </td>
                                     <!-- Tgl Masuk -->
