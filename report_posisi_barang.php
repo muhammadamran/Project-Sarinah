@@ -293,6 +293,14 @@ $data = json_decode($content, true);
                                         <?= $row['SERI_BARANG']; ?>
                                         <?php } ?>
                                     </td>
+                                    <td style="text-align: center;">
+                                        <?php if ($row['URAIAN'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['URAIAN']; ?>
+                                        <?php } ?>
+                                    </td>
                                     <!-- SARINAH -->
                                     <td style="text-align: center;">
                                         <?php if ($row['KODE_DOKUMEN_PABEAN'] == NULL) { ?>
