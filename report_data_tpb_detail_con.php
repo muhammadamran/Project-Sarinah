@@ -9,6 +9,7 @@ include "include/cssDatatables.php";
 // API - 
 include "include/api.php";
 $contentCon = get_content($resultAPI['url_api'] . 'reportDataTPB.php?function=get_NomorPengajuanKon&ID=' . $_GET['ID']);
+http: //127.0.0.1/tpbbackend/api/reportDataTPB.php?function=get_NomorPengajuanKon&ID=1
 $dataCon = json_decode($contentCon, true);
 ?>
 <style>
@@ -45,7 +46,8 @@ $dataCon = json_decode($contentCon, true);
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <i class="fas fa-info-circle"></i> Data TPB Sarinah - Detail Kontainer: AJU:
+                        <i class="fas fa-info-circle"></i> Data TPB Sarinah - Detail Kontainer (<?= $_GET['ID']; ?>):
+                        AJU:
                         <?= $_GET['AJU']; ?>
                     </h4>
                     <?php include "include/panel-row.php"; ?>
