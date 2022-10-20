@@ -407,6 +407,87 @@ if (isset($_POST['FindMataUang'])) {
                                         <?= $row['NOMOR_DAFTAR']; ?>
                                         <?php } ?>
                                     </td>
+                                    <!-- Lainnya -->
+                                    <td style="text-align: center">
+                                        <?php if ($row['KODE_NEGARA'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['KODE_NEGARA']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['NAMA_PEMASOK']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['JUMLAH_BARANG'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['JUMLAH_BARANG']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['UKURAN'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['UKURAN']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['KODE_VALUTA'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['KODE_VALUTA']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['CIF'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['CIF']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: left">
+                                        <?php if ($row['NPWP'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['NPWP']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: left">
+                                        <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['NAMA_PENERIMA_BARANG']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: left">
+                                        <?php if ($row['ALAMAT_PENERIMA_BARANG'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['ALAMAT_PENERIMA_BARANG']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: left">
+                                        <?php if ($row['ALAMAT_PENERIMA_BARANG'] == NULL) { ?>
+                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                        </font>
+                                        <?php } else { ?>
+                                        <?= $row['ALAMAT_PENERIMA_BARANG']; ?>
+                                        <?php } ?>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                                 <?php } ?>
