@@ -1,4 +1,3 @@
-<!-- Select2 -->
 <script src="assets/plugins/jquery-migrate/dist/jquery-migrate.min.js"></script>
 <script src="assets/plugins/moment/moment.js"></script>
 <script src="assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>

@@ -41,12 +41,6 @@
                 <span>Dashboard - Summary </span>
             </a>
         </li>
-        <!-- <li class="<?= $uriSegmentsTop[1] == 'index_summary.php' ? 'active-top' : '' ?>">
-			<a href="index_summary.php">
-				<i class="fas fa-tasks"></i>
-				<span>Summary </span> 
-			</a>
-		</li> -->
         <?php
 		if (
 			$resultRoleModules['v_bc'] == 'none' &&
