@@ -1,3 +1,12 @@
+<?php
+// QUERY SETTING APPLICATION
+$dataHeadSettting = $dbcon->query("SELECT * FROM tbl_setting");
+$resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
+// QUERY SETTING REAL TIME
+$dataSetRealTime = $dbcon->query("SELECT * FROM tbl_realtime ORDER BY id DESC LIMIT 1");
+$resultSetRealTime = mysqli_fetch_array($dataSetRealTime);
+$SetTime = $resultSetRealTime['reload'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
