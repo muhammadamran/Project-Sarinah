@@ -8,6 +8,8 @@ $access = mysqli_fetch_array($role);
     <div class="navbar-header">
         <a href="index.php" class="navbar-brand"><span class="navbar-logo"></span>
             <?php
+            $dataSettting = $dbcon->query("SELECT * FROM tbl_setting");
+            $resultSetting = mysqli_fetch_array($dataSettting);
             $cekforAppName = $resultSetting['app_name'];
             if ($cekforAppName == NULL) {
                 $alertAppName = 'App Name';

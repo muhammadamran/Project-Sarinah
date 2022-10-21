@@ -73,6 +73,9 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             <li class="<?= $uriSegments[1] == 'index.php' ? 'active' : '' ?>">
                 <a href="index.php"><i class="fas fa-chalkboard-teacher"></i> <span>Index</span></a>
             </li>
+            <!-- <li class="<?= $uriSegments[1] == 'dashboard.php' ? 'active' : '' ?>">
+				<a href="dashboard.php"><i class="fas fa-chart-pie"></i> <span>Dashboard</span></a>
+			</li> -->
             <?php
 			if ($resultRoleModules['da_one'] == 'none' && $resultRoleModules['da_two'] == 'none') {
 				$TitleDashboard = 'none';
@@ -84,6 +87,9 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
                 style="display: <?= $TitleDashboard ?>;">
                 <a href="index_dashboard.php"><i class="fas fa-chart-pie"></i> <span>Dashboard - Summary</span></a>
             </li>
+            <!-- <li class="<?= $uriSegments[1] == 'index_summary.php' ? 'active' : '' ?>">
+				<a href="index_summary.php"><i class="fas fa-tasks"></i> <span>Summary</span></a>
+			</li> -->
             <?php
 			if (
 				$resultRoleModules['v_bc'] == 'none' &&
